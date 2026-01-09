@@ -1,0 +1,14 @@
+langchain
+langgraph
+langchain-openai
+ccxt
+fastapi
+uvicorn
+pydantic
+pandas
+pandas-ta
+python-dotenv
+requests
+sqlalchemy
+psycopg2-binary
+alembic
