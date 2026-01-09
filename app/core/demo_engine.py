@@ -30,6 +30,7 @@ class DemoEngine:
             return {
                 'total': {'USDT': balance},
                 'free': {'USDT': balance}, # For simplicity, all balance is free
+                'USDT': {'total': balance, 'free': balance}, # CCXT style convenience key
                 'info': {'data': {'balance': balance}} # BingX-like compatibility
             }
 

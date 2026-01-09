@@ -62,7 +62,17 @@ class RiskAgent(BaseAgent):
         try:
             logger.info("Calculating dynamic position size...")
             balance = await self.exchange.fetch_balance()
-            free_usdt = float(balance['USDT']['free'])
+            
+            # Robust balance extraction supporting CCXT, BingX info, and Repo fallback
+            if 'USDT' in balance and isinstance(balance['USDT'], dict):
+                free_usdt = float(balance['USDT'].get('free', 0))
+            elif 'free' in balance and 'USDT' in balance['free']:
+                free_usdt = float(balance['free']['USDT'])
+            elif 'info' in balance and 'data' in balance['info'] and 'balance' in balance['info']['data']:
+                free_usdt = float(balance['info']['data']['balance'])
+            else:
+                # Last resort: try direct 'USDT' if it was a flat float (unlikely in CCXT but for safety)
+                free_usdt = float(balance.get('USDT', 0))
             
             # Risk 2% of equity per trade, adjusted by ATR
             risk_percent = 0.02 
