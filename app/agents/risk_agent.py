@@ -12,14 +12,22 @@ class RiskAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="RiskAgent")
         self.max_trade_size = settings.ORDER_SIZE_USDT
-        self.exchange = ccxt.bingx({
-            'apiKey': settings.BINGX_API_KEY,
-            'secret': settings.BINGX_SECRET_KEY,
-            'options': {
-                'defaultType': 'swap',
-                'sandbox': settings.BINGX_IS_SANDBOX,
-            }
-        })
+        
+        # Use demo engine or live BingX based on DEMO_MODE
+        if settings.DEMO_MODE:
+            from app.core.demo_engine import demo_engine
+            self.exchange = demo_engine
+            logger.info("RiskAgent initialized in DEMO mode")
+        else:
+            self.exchange = ccxt.bingx({
+                'apiKey': settings.BINGX_API_KEY,
+                'secret': settings.BINGX_SECRET_KEY,
+                'options': {
+                    'defaultType': 'swap',
+                    'sandbox': settings.BINGX_IS_SANDBOX,
+                }
+            })
+            logger.info("RiskAgent initialized in LIVE mode")
 
     async def run_loop(self):
         event_bus.subscribe(EventType.SIGNAL, self.on_signal)
@@ -91,6 +99,8 @@ class RiskAgent(BaseAgent):
 
     async def stop(self):
         await super().stop()
-        await self.exchange.close()
+        # Only close if it's a real exchange connection (demo_engine close is a stub)
+        if hasattr(self.exchange, 'close'):
+            await self.exchange.close()
 
 import asyncio

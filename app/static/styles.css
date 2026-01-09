@@ -117,6 +117,33 @@ body {
     align-items: center;
 }
 
+.mode-badge {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.mode-label {
+    color: var(--text-secondary);
+}
+
+.mode-value {
+    font-weight: 700;
+}
+
+.mode-badge.demo .mode-value {
+    color: var(--warning);
+}
+
+.mode-badge.live .mode-value {
+    color: var(--success);
+}
+
 .trading-status-card {
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));

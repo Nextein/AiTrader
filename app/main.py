@@ -48,7 +48,8 @@ async def get_status():
         "config": {
             "symbols": settings.TRADING_SYMBOLS,
             "timeframe": settings.TIMEFRAME,
-            "sandbox": settings.BINGX_IS_SANDBOX
+            "sandbox": settings.BINGX_IS_SANDBOX,
+            "demo_mode": settings.DEMO_MODE
         },
         "agents": [agent.get_status() for agent in governor.agents]
     }

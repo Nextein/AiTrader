@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const agentsContainer = document.getElementById('agents-container');
     const statSignals = document.getElementById('stat-signals');
     const statOrders = document.getElementById('stat-orders');
+    const modeVal = document.getElementById('mode-value');
     const clearLogsBtn = document.getElementById('clear-logs');
 
     let isRunning = false;
@@ -29,6 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
             statusPulse.style.animation = isRunning ? 'pulse 2s infinite' : 'none';
 
             symbolVal.innerText = Array.isArray(data.config.symbols) ? data.config.symbols.join(', ') : data.config.symbol;
+
+            if (modeVal) {
+                const isDemo = data.config.demo_mode;
+                modeVal.innerText = isDemo ? 'DEMO' : 'LIVE';
+                const modeIndicator = document.getElementById('mode-indicator');
+                if (modeIndicator) {
+                    modeIndicator.className = isDemo ? 'mode-badge demo' : 'mode-badge live';
+                }
+            }
 
             // Update button states
             startBtn.disabled = isRunning;
