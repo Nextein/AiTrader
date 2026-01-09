@@ -8,6 +8,7 @@ class BaseAgent(ABC):
     def __init__(self, name: str):
         self.name = name
         self.is_running = False
+        self.is_active = True  # Task 2: Activation state
         self.start_time = None
         self.processed_count = 0
 
@@ -33,6 +34,7 @@ class BaseAgent(ABC):
         return {
             "name": self.name,
             "is_running": self.is_running,
+            "is_active": self.is_active,
             "type": self.__class__.__name__,
             "uptime": uptime,
             "processed_count": self.processed_count,

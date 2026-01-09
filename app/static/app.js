@@ -112,8 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
                        </div>`
                     : '';
 
+                const isActive = agent.is_active !== undefined ? agent.is_active : true;
+                const cardOpacity = isActive ? '1' : '0.5';
+                const cardFilter = isActive ? 'none' : 'grayscale(50%)';
+
                 return `
-                    <div class="agent-card-detailed ${agent.is_running ? 'status-active' : 'status-idle'}">
+                    <div class="agent-card-detailed ${agent.is_running ? 'status-active' : 'status-idle'}" style="opacity: ${cardOpacity}; filter: ${cardFilter};">
                         <div class="agent-header">
                             <div class="agent-title-box">
                                 <span class="agent-status-dot"></span>
@@ -125,6 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="agent-stat-row">
                                 <span class="agent-stat-label">Communication Role</span>
                                 <span class="agent-stat-value">${getAgentRole(agent.name)}</span>
+                            </div>
+                            <div class="agent-stat-row">
+                                <span class="agent-stat-label">Activation</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="activation-toggle" data-agent="${agent.name}" ${isActive ? 'checked' : ''}>
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
                             <div class="agent-stat-row">
                                 <span class="agent-stat-label">Uptime</span>
@@ -142,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             ${configHtml}
                             <div class="agent-actions">
-                                <button class="btn btn-small btn-glow-success restart-agent" data-agent="${agent.name}">
+                                <button class="btn btn-small btn-glow-success restart-agent" data-agent="${agent.name}" ${!isActive ? 'disabled' : ''}>
                                     <i data-lucide="refresh-cw"></i> RESTART
                                 </button>
-                                <button class="btn btn-small btn-icon" title="View Logs">
+                                <button class="btn btn-small btn-icon view-events" data-agent="${agent.name}" title="View Events">
                                     <i data-lucide="list"></i>
                                 </button>
                             </div>
@@ -177,6 +188,40 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.innerHTML = '<i data-lucide="refresh-cw"></i> RESTART';
                     if (window.lucide) lucide.createIcons();
                 }
+            };
+        });
+
+        // Add event listeners for activation toggles (Task 2)
+        document.querySelectorAll('.activation-toggle').forEach(toggle => {
+            toggle.onchange = async (e) => {
+                const name = toggle.getAttribute('data-agent');
+                const isActive = toggle.checked;
+
+                try {
+                    const endpoint = isActive ? 'activate' : 'deactivate';
+                    const resp = await fetch(`/agents/${name}/${endpoint}`, { method: 'POST' });
+                    const result = await resp.json();
+
+                    if (resp.ok) {
+                        console.log(`Agent ${name} ${endpoint}d:`, result);
+                        setTimeout(updateStatus, 500); // Refresh UI
+                    } else {
+                        console.error(`Failed to ${endpoint} agent:`, result);
+                        toggle.checked = !isActive; // Revert toggle
+                    }
+                } catch (e) {
+                    console.error('Activation toggle failed', e);
+                    toggle.checked = !isActive; // Revert toggle
+                }
+            };
+        });
+
+        // Add event listeners for view events buttons (Task 1)
+        document.querySelectorAll('.view-events').forEach(btn => {
+            btn.onclick = async (e) => {
+                e.stopPropagation();
+                const name = btn.getAttribute('data-agent');
+                await showAgentEvents(name);
             };
         });
     }
@@ -421,6 +466,69 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             console.error('Failed to fetch equity data', e);
         }
+    }
+
+    async function showAgentEvents(agentName) {
+        try {
+            const resp = await fetch(`/agents/${agentName}/events?limit=50`);
+            const data = await resp.json();
+
+            const modal = document.getElementById('agent-events-modal');
+            const modalTitle = document.getElementById('modal-agent-name');
+            const eventsContainer = document.getElementById('modal-events-list');
+
+            modalTitle.innerText = agentName;
+
+            if (data.events && data.events.length > 0) {
+                eventsContainer.innerHTML = data.events.map(event => {
+                    const time = new Date(event.timestamp).toLocaleTimeString();
+                    const priorityColor = {
+                        'CRITICAL': 'var(--danger)',
+                        'HIGH': 'var(--warning)',
+                        'NORMAL': 'var(--accent)',
+                        'LOW': 'var(--text-secondary)'
+                    }[event.priority] || 'var(--text-secondary)';
+
+                    let eventData = typeof event.data === 'string' ? event.data : JSON.stringify(event.data, null, 2);
+
+                    return `
+                        <div class="event-item">
+                            <div class="event-header">
+                                <span class="event-time">${time}</span>
+                                <span class="event-type">${event.event_type}</span>
+                                <span class="event-priority" style="background: ${priorityColor};">${event.priority}</span>
+                            </div>
+                            <div class="event-data"><pre>${eventData}</pre></div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                eventsContainer.innerHTML = '<div class="empty-state">No events found for this agent</div>';
+            }
+
+            modal.style.display = 'flex';
+        } catch (e) {
+            console.error('Failed to fetch agent events', e);
+            alert('Failed to load agent events');
+        }
+    }
+
+    // Close modal handlers
+    const modal = document.getElementById('agent-events-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+        };
+    }
+
+    if (modal) {
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
     }
 
     // Initial load

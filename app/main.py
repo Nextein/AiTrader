@@ -1,9 +1,11 @@
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import FastAPI, BackgroundTasks, HTTPException
 from fastapi.staticfiles import StaticFiles
 from app.agents.governor_agent import governor
 from app.core.config import settings
 from app.core.database import SessionLocal, engine
 from app.models.models import AuditLogModel, EquityModel, Base
+from app.core.event_bus import event_bus
+import asyncio
 import uvicorn
 
 app = FastAPI(title="ChartChampion AI - Multi-Agent Trading System")
@@ -58,7 +60,42 @@ async def restart_agent(name: str):
             await agent.stop()
             asyncio.create_task(agent.start())
             return {"message": f"Agent {name} restarted"}
-    return {"error": f"Agent {name} not found"}, 404
+    raise HTTPException(status_code=404, detail=f"Agent {name} not found")
+
+@app.get("/agents/{name}/events")
+async def get_agent_events(name: str, limit: int = 50):
+    """Get recent events created by a specific agent (Task 1)"""
+    events = event_bus.get_agent_events(name, limit)
+    if not events:
+        # Check if agent exists
+        agent_exists = any(agent.name == name for agent in governor.agents)
+        if not agent_exists:
+            raise HTTPException(status_code=404, detail=f"Agent {name} not found")
+    return {"agent_name": name, "events": events, "count": len(events)}
+
+@app.post("/agents/{name}/activate")
+async def activate_agent(name: str):
+    """Activate a specific agent (Task 2)"""
+    for agent in governor.agents:
+        if agent.name == name:
+            if hasattr(agent, 'is_active'):
+                agent.is_active = True
+                return {"message": f"Agent {name} activated", "is_active": True}
+            else:
+                return {"message": f"Agent {name} does not support activation control"}
+    raise HTTPException(status_code=404, detail=f"Agent {name} not found")
+
+@app.post("/agents/{name}/deactivate")
+async def deactivate_agent(name: str):
+    """Deactivate a specific agent (Task 2)"""
+    for agent in governor.agents:
+        if agent.name == name:
+            if hasattr(agent, 'is_active'):
+                agent.is_active = False
+                return {"message": f"Agent {name} deactivated", "is_active": False}
+            else:
+                return {"message": f"Agent {name} does not support activation control"}
+    raise HTTPException(status_code=404, detail=f"Agent {name} not found")
 
 @app.get("/logs")
 async def get_logs(limit: int = 50):
