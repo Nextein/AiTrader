@@ -32,6 +32,8 @@ class TestDemoMode(unittest.IsolatedAsyncioTestCase):
             patch('app.agents.governor_agent.SessionLocal', self.TestSessionLocal),
             patch('app.core.demo_engine.SessionLocal', self.TestSessionLocal),
             patch('app.agents.market_data_agent.SessionLocal', self.TestSessionLocal),
+            patch('app.agents.audit_log_agent.SessionLocal', self.TestSessionLocal),
+            patch('app.models.models.SessionLocal', self.TestSessionLocal, create=True),
         ]
         for p in self.patchers:
             p.start()
@@ -39,7 +41,8 @@ class TestDemoMode(unittest.IsolatedAsyncioTestCase):
     async def asyncTearDown(self):
         for p in self.patchers:
             p.stop()
-        
+        event_bus.clear_subscribers()
+        self.test_engine.dispose()
         if os.path.exists(self.test_db_path):
             try:
                 os.remove(self.test_db_path)

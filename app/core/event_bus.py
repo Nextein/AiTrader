@@ -72,6 +72,11 @@ class EventBus:
         self._subscribers[event_type].append(callback)
         logger.info(f"Subscribed to {event_type.value}")
 
+    def clear_subscribers(self):
+        """Clears all subscribers across all event types. Useful for testing."""
+        self._subscribers = {}
+        logger.info("Cleared all event bus subscribers.")
+
     async def publish(self, event_type: EventType, data: Dict[str, Any], priority: EventPriority = None):
         """
         Publish an event to the event bus with optional priority override.
