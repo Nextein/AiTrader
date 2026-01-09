@@ -55,6 +55,7 @@ class MarketDataAgent(BaseAgent):
                 }
                 
                 await event_bus.publish(EventType.MARKET_DATA, data)
+                self.processed_count += 1
 
                 # Persist to DB
                 self.persist_candles(data["candles"])

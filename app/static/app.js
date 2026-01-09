@@ -82,27 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="agent-status-dot"></span>
                         <span class="agent-name">${agent.name}</span>
                     </div>
-                    <div class="agent-meta text-muted" style="font-size: 0.7rem; margin-top: 0.5rem;">
-                        Type: ${agent.type}
-                    </div>
                 </div>
             `).join('');
         }
 
         // Full view (Agents tab)
         const fullContainer = document.getElementById('agents-container-full');
+        const healthyThreadsVal = document.getElementById('healthy-threads-val');
+
+        if (healthyThreadsVal) {
+            const runningCount = agents.filter(a => a.is_running).length;
+            healthyThreadsVal.innerText = `${runningCount}/${agents.length}`;
+        }
+
         if (fullContainer) {
             fullContainer.innerHTML = agents.map(agent => {
                 const configEntries = Object.entries(agent.config || {});
                 const configHtml = configEntries.length > 0
                     ? `<div class="agent-config-box" style="margin-top: 1rem; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 8px;">
                         <div style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; font-weight: bold;">Configuration</div>
-                        ${configEntries.map(([k, v]) => `
-                            <div class="agent-stat-row" style="border-bottom: none; padding: 2px 0;">
-                                <span class="agent-stat-label" style="font-size: 0.75rem;">${k}</span>
-                                <span class="agent-stat-value" style="font-size: 0.75rem;">${v}</span>
-                            </div>
-                        `).join('')}
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+                            ${configEntries.map(([k, v]) => `
+                                <div style="font-size: 0.7rem; color: var(--text-secondary)">${k}:</div>
+                                <div style="font-size: 0.7rem; text-align: right; color: var(--accent)">${v}</div>
+                            `).join('')}
+                        </div>
                        </div>`
                     : '';
 
@@ -117,23 +121,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="agent-body">
                             <div class="agent-stat-row">
+                                <span class="agent-stat-label">Communication Role</span>
+                                <span class="agent-stat-value">${getAgentRole(agent.name)}</span>
+                            </div>
+                            <div class="agent-stat-row">
+                                <span class="agent-stat-label">Uptime</span>
+                                <span class="agent-stat-value">${formatUptime(agent.uptime)}</span>
+                            </div>
+                            <div class="agent-stat-row">
+                                <span class="agent-stat-label">Events Processed</span>
+                                <span class="agent-stat-value">${agent.processed_count || 0}</span>
+                            </div>
+                            <div class="agent-stat-row">
                                 <span class="agent-stat-label">Status</span>
                                 <span class="agent-stat-value" style="color: ${agent.is_running ? 'var(--success)' : 'var(--danger)'}">
-                                    ${agent.is_running ? 'RUNNING' : 'STOPPED'}
+                                    ${agent.is_running ? 'RUNNING' : 'IDLE'}
                                 </span>
-                            </div>
-                            <div class="agent-stat-row">
-                                <span class="agent-stat-label">Thread Health</span>
-                                <span class="agent-stat-value">Excellent</span>
-                            </div>
-                            <div class="agent-stat-row">
-                                <span class="agent-stat-label">Last Ping</span>
-                                <span class="agent-stat-value">${new Date().toLocaleTimeString()}</span>
                             </div>
                             ${configHtml}
                             <div class="agent-actions">
                                 <button class="btn btn-small btn-glow-success restart-agent" data-agent="${agent.name}">
                                     <i data-lucide="refresh-cw"></i> RESTART
+                                </button>
+                                <button class="btn btn-small btn-icon" title="View Logs">
+                                    <i data-lucide="list"></i>
                                 </button>
                             </div>
                         </div>
@@ -141,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }).join('');
         }
+
+        updateFlowStates(agents);
 
         if (window.lucide) lucide.createIcons();
 
@@ -208,6 +221,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const full = document.getElementById('log-container-full');
         if (mini) mini.innerHTML = logHtml;
         if (full) full.innerHTML = logHtml;
+
+        // Visual pulse in flow diagram
+        if (logs.length > 0) {
+            triggerFlowPulse(logs[0]);
+        }
+    }
+
+    function triggerFlowPulse(latestLog) {
+        const type = latestLog.event_type;
+        const agent = latestLog.agent_name;
+
+        let nodeId = null;
+        if (type === 'market_data' || agent.includes('Market')) nodeId = 'node-market';
+        else if (type === 'regime_change' || agent.includes('Regime') || type.includes('anomaly')) nodeId = 'node-analysis';
+        else if (type.includes('signal') || agent.includes('Strategy')) nodeId = 'node-strategy';
+        else if (agent.includes('Risk')) nodeId = 'node-risk';
+        else if (type.includes('order') || agent.includes('Execution')) nodeId = 'node-execution';
+
+        if (nodeId) {
+            const el = document.getElementById(nodeId);
+            if (el) {
+                el.classList.add('pulse-active');
+                setTimeout(() => el.classList.remove('pulse-active'), 1000);
+            }
+        }
     }
 
     startBtn.addEventListener('click', async () => {
@@ -257,6 +295,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    function formatUptime(seconds) {
+        if (!seconds) return '--';
+        if (seconds < 60) return `${seconds}s`;
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}m ${secs}s`;
+    }
+
+    function getAgentRole(name) {
+        const roles = {
+            'MarketData': 'Data Producer',
+            'RegimeDetection': 'Analyst',
+            'AnomalyDetection': 'Watchdog',
+            'EMACrossStrategy': 'Strategist',
+            'Strategy': 'Strategist',
+            'Risk': 'Gatekeeper',
+            'Execution': 'Executor',
+            'AuditLog': 'Historian',
+            'Aggregator': 'Reporter',
+            'Governor': 'Orchestrator'
+        };
+        for (const [key, role] of Object.entries(roles)) {
+            if (name.includes(key)) return role;
+        }
+        return 'Participant';
+    }
+
+    function updateFlowStates(agents) {
+        // Simple logic to highlight flow nodes based on running agents
+        const hasMarket = agents.some(a => a.name.includes('MarketData') && a.is_running);
+        const hasAnalysis = agents.some(a => (a.name.includes('Regime') || a.name.includes('Anomaly')) && a.is_running);
+        const hasStrategy = agents.some(a => (a.name.includes('Strategy')) && a.is_running);
+        const hasRisk = agents.some(a => a.name.includes('Risk') && a.is_running);
+        const hasExecution = agents.some(a => a.name.includes('Execution') && a.is_running);
+
+        if (hasMarket) document.getElementById('node-market')?.classList.add('active');
+        else document.getElementById('node-market')?.classList.remove('active');
+
+        if (hasAnalysis) document.getElementById('node-analysis')?.classList.add('active');
+        else document.getElementById('node-analysis')?.classList.remove('active');
+
+        if (hasStrategy) document.getElementById('node-strategy')?.classList.add('active');
+        else document.getElementById('node-strategy')?.classList.remove('active');
+
+        if (hasRisk) document.getElementById('node-risk')?.classList.add('active');
+        else document.getElementById('node-risk')?.classList.remove('active');
+
+        if (hasExecution) document.getElementById('node-execution')?.classList.add('active');
+        else document.getElementById('node-execution')?.classList.remove('active');
+    }
 
     // Initial load
     updateStatus();

@@ -37,6 +37,7 @@ class StrategyAgent(BaseAgent):
             return
         
         self.last_timestamp = timestamp
+        self.processed_count += 1
         candles = data.get("candles")
         df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
         

@@ -105,11 +105,56 @@
             </div>
 
             <div id="view-agents" class="view" style="display: none;">
-                <div class="section-header">
-                    <h3><i data-lucide="users"></i> Agent Orchestration</h3>
-                </div>
-                <div id="agents-container-full" class="agents-detailed-grid">
-                    <!-- Detailed agent cards will be injected here -->
+                <div class="agent-view-layout">
+                    <div class="agent-sidebar-info">
+                        <div class="section-header">
+                            <h3><i data-lucide="share-2"></i> Information Flow</h3>
+                        </div>
+                        <div class="flow-preview-card">
+                            <div class="flow-node" id="node-market">
+                                <div class="node-icon"><i data-lucide="database"></i></div>
+                                <div class="node-label">Market Data</div>
+                                <div class="node-desc">Price & Volume Ingestion</div>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="chevron-down"></i></div>
+                            <div class="flow-node" id="node-analysis">
+                                <div class="node-icon"><i data-lucide="brain-circuit"></i></div>
+                                <div class="node-label">Intelligence</div>
+                                <div class="node-desc">Regime & Anomaly Detection</div>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="chevron-down"></i></div>
+                            <div class="flow-node" id="node-strategy">
+                                <div class="node-icon"><i data-lucide="trending-up"></i></div>
+                                <div class="node-label">Strategy</div>
+                                <div class="node-desc">Signal Generation (EMA, RSI)</div>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="chevron-down"></i></div>
+                            <div class="flow-node" id="node-risk">
+                                <div class="node-icon"><i data-lucide="shield-check"></i></div>
+                                <div class="node-label">Risk Guard</div>
+                                <div class="node-desc">Exposure & Drawdown Check</div>
+                            </div>
+                            <div class="flow-arrow"><i data-lucide="chevron-down"></i></div>
+                            <div class="flow-node" id="node-execution">
+                                <div class="node-icon"><i data-lucide="zap"></i></div>
+                                <div class="node-label">Execution</div>
+                                <div class="node-desc">Exchange Order Placement</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="agent-main-content">
+                        <div class="section-header">
+                            <h3><i data-lucide="users"></i> Agent Orchestration</h3>
+                            <div class="header-stats">
+                                <span class="badge-outline">Healthy Threads: <span
+                                        id="healthy-threads-val">0/0</span></span>
+                            </div>
+                        </div>
+                        <div id="agents-container-full" class="agents-detailed-grid">
+                            <!-- Detailed agent cards will be injected here -->
+                        </div>
+                    </div>
                 </div>
             </div>
 
