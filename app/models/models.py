@@ -36,6 +36,7 @@ class OrderModel(Base):
     amount = Column(Float)
     price = Column(Float)
     status = Column(String) # OPEN, FILLED, CANCELLED
+    is_demo = Column(Integer, default=0) # 0 for live, 1 for demo
     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class AuditLogModel(Base):
@@ -51,3 +52,9 @@ class EquityModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     total_equity = Column(Float)
     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+class DemoBalanceModel(Base):
+    __tablename__ = "demo_balance"
+    id = Column(Integer, primary_key=True, index=True)
+    balance = Column(Float, default=1000.0)
+    last_updated = Column(DateTime, default=lambda: datetime.now(timezone.utc))

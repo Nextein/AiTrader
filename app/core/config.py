@@ -31,5 +31,9 @@ class Settings(BaseModel):
     TRADING_SYMBOLS: list = ["BTC-USDT", "ETH-USDT", "SOL-USDT"]
     TIMEFRAME: str = "1m"
     ORDER_SIZE_USDT: float = 10.0
+    
+    # Demo Mode
+    DEMO_MODE: bool = os.getenv("DEMO_MODE", "False").lower() == "true"
+    INITIAL_DEMO_BALANCE: float = float(os.getenv("INITIAL_DEMO_BALANCE", "1000.0"))
 
 settings = Settings()

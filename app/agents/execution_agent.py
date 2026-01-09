@@ -10,20 +10,31 @@ logger = logging.getLogger("ExecutionAgent")
 class ExecutionAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="ExecutionAgent")
-        self.exchange = ccxt.bingx({
-            'apiKey': settings.BINGX_API_KEY,
-            'secret': settings.BINGX_SECRET_KEY,
-            'options': {
-                'defaultType': 'swap',
-                'sandbox': settings.BINGX_IS_SANDBOX,
-            }
-        })
+        self.latest_prices = {}
+        if settings.DEMO_MODE:
+            from app.core.demo_engine import demo_engine
+            self.exchange = demo_engine
+            logger.info("ExecutionAgent: Running in DEMO MODE")
+        else:
+            self.exchange = ccxt.bingx({
+                'apiKey': settings.BINGX_API_KEY,
+                'secret': settings.BINGX_SECRET_KEY,
+                'options': {
+                    'defaultType': 'swap',
+                    'sandbox': settings.BINGX_IS_SANDBOX,
+                }
+            })
+            logger.info("ExecutionAgent: Running in LIVE/SANDBOX MODE")
 
     async def run_loop(self):
         event_bus.subscribe(EventType.ORDER_REQUEST, self.on_order_request)
         event_bus.subscribe(EventType.EMERGENCY_EXIT, self.on_emergency_exit)
+        event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
         while self.is_running:
             await asyncio.sleep(1)
+
+    async def on_market_data(self, data):
+        self.latest_prices[data['symbol']] = data['latest_close']
 
     async def on_emergency_exit(self, data):
         logger.warning("ExecutionAgent: EMERGENCY EXIT RECEIVED. CLOSING ALL POSITIONS.")
@@ -71,11 +82,15 @@ class ExecutionAgent(BaseAgent):
             side = data['side']
             amount = data['amount']
             
+            # For demo mode, we need to pass the price since it's a simulation
+            price = self.latest_prices.get(symbol, 0.0) if settings.DEMO_MODE else None
+            
             order = await self.exchange.create_order(
                 symbol=symbol,
                 type='market',
                 side=side,
-                amount=amount
+                amount=amount,
+                price=price
             )
             
             logger.info(f"ORDER FILLED: {order['id']} | {side.upper()} {amount} {symbol}")

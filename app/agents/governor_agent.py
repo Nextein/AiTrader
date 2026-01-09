@@ -48,7 +48,12 @@ class GovernorAgent:
         for agent in self.agents:
             self.tasks.append(asyncio.create_task(agent.start()))
             
-        # 3. Start equity snapshotting
+        # 3. Initialize Demo Balance if needed
+        if settings.DEMO_MODE:
+            from app.core.demo_engine import demo_engine
+            await demo_engine.initialize_balance()
+            
+        # 4. Start equity snapshotting
         self.tasks.append(asyncio.create_task(self.equity_snapshot_loop()))
             
         logger.info("Governor: All agents are running.")
@@ -56,14 +61,18 @@ class GovernorAgent:
     async def equity_snapshot_loop(self):
         """Periodically snapshots the account equity for history."""
         # Use an exchange instance for balance fetching
-        exchange = ccxt.bingx({
-            'apiKey': settings.BINGX_API_KEY,
-            'secret': settings.BINGX_SECRET_KEY,
-            'options': {
-                'defaultType': 'swap',
-                'sandbox': settings.BINGX_IS_SANDBOX,
-            }
-        })
+        if settings.DEMO_MODE:
+            from app.core.demo_engine import demo_engine
+            exchange = demo_engine
+        else:
+            exchange = ccxt.bingx({
+                'apiKey': settings.BINGX_API_KEY,
+                'secret': settings.BINGX_SECRET_KEY,
+                'options': {
+                    'defaultType': 'swap',
+                    'sandbox': settings.BINGX_IS_SANDBOX,
+                }
+            })
         try:
             while self.is_running:
                 try:
