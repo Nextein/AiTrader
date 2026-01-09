@@ -10,6 +10,7 @@ from app.agents.ema_cross_strategy_agent import EMACrossStrategyAgent
 from app.agents.aggregator_agent import AggregatorAgent
 from app.agents.regime_detection_agent import RegimeDetectionAgent
 from app.agents.anomaly_detection_agent import AnomalyDetectionAgent
+from app.agents.dummy_strategy_agent import DummyStrategyAgent
 from app.core.event_bus import event_bus, EventType
 from app.core.database import SessionLocal
 from app.models.models import EquityModel
@@ -31,7 +32,8 @@ class GovernorAgent:
             RiskAgent(),
             ExecutionAgent(),
             AuditLogAgent(),
-            AnomalyDetectionAgent()
+            AnomalyDetectionAgent(),
+            DummyStrategyAgent(signal_interval=5, name="DummyStrategy1")
         ]
         self.is_running = False
         self.tasks = []

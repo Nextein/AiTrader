@@ -6,7 +6,6 @@ This is a list of tasks to be completed by the coding agent:
 
 2. The user should be able to activate and deactivate different strategy agents in the agents tab.
 
-3. The user should be able to activate and deactivate different agents overall in the agents tab. Eventually there will be multiple risk agents for example with different risk profiles and logic, and multiple "workflows" will be running concurrently. The system architecture should allow for this growth and versatility in agent connection.
 
 3. MarketData agent should constantly be spilling out data events for every symbol available in each exchange connected.
 
