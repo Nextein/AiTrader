@@ -75,15 +75,46 @@ class GovernorAgent:
                     'sandbox': settings.BINGX_IS_SANDBOX,
                 }
             })
+        
         try:
             while self.is_running:
                 try:
+                    logger.debug(f"GovernorAgent: Fetching balance for equity snapshot (Demo: {settings.DEMO_MODE})")
                     balance = await exchange.fetch_balance()
-                    total_equity = float(balance['total']['USDT']) if 'total' in balance and 'USDT' in balance['total'] else float(balance['info']['data']['balance']) # BingX specific check
+                    
+                    total_equity = 0.0
+                    try:
+                        if settings.DEMO_MODE:
+                            total_equity = float(balance['total']['USDT'])
+                        else:
+                            # Try multiple possible keys for total equity in CCXT/BingX response
+                            if 'total' in balance and 'USDT' in balance['total']:
+                                total_equity = float(balance['total']['USDT'])
+                            elif 'USDT' in balance and isinstance(balance['USDT'], dict) and 'total' in balance['USDT']:
+                                total_equity = float(balance['USDT']['total'])
+                            elif 'info' in balance and 'data' in balance['info'] and 'balance' in balance['info']['data']:
+                                total_equity = float(balance['info']['data']['balance'])
+                            elif 'total' in balance and isinstance(balance['total'], (int, float)):
+                                total_equity = float(balance['total'])
+                            else:
+                                # Final fallback
+                                total_equity = float(balance.get('USDT', {}).get('total', 0)) or float(balance.get('USDT', 0))
+                    except (KeyError, TypeError, ValueError) as e:
+                        logger.warning(f"GovernorAgent: Extraction failed for {balance}. Error: {e}")
+                        # If extraction failed but we have some number in the response, try to find it
+                        if isinstance(balance, dict):
+                            # Try to find anything that looks like a balance
+                            if 'USDT' in balance:
+                                if isinstance(balance['USDT'], (int, float)): total_equity = float(balance['USDT'])
+                                elif isinstance(balance['USDT'], dict): total_equity = float(balance['USDT'].get('total', balance['USDT'].get('free', 0)))
+                            elif 'free' in balance and 'USDT' in balance['free']:
+                                total_equity = float(balance['free']['USDT'])
                     
                     if not total_equity:
-                        # Fallback for different BingX response structures
-                        total_equity = float(balance['USDT']['total'])
+                        logger.warning(f"GovernorAgent: Could not determine equity value from {balance}")
+                        total_equity = 0.0
+
+                    logger.debug(f"GovernorAgent: Processed equity value: {total_equity}")
 
                     with SessionLocal() as db:
                         equity_entry = EquityModel(total_equity=total_equity)

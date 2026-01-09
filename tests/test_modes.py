@@ -11,12 +11,14 @@ from app.core.event_bus import event_bus, EventType
 class TestModesIntegration(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         self.original_demo_mode = settings.DEMO_MODE
-        # Setup clean DB for each test if needed, or use mocks
+        # Force a clean database for each integration test
+        Base.metadata.drop_all(bind=engine)
         Base.metadata.create_all(bind=engine)
 
     async def asyncTearDown(self):
-        settings.DEMO_MODE = self.original_demo_mode
-        event_bus.clear_subscribers()
+        # We can rely on conftest.py for most cleanup, 
+        # but let's ensure the DB is clean for next tests if needed.
+        pass
 
     async def test_demo_mode_flag_in_orders(self):
         """Verify that orders created in demo mode have is_demo=1."""
@@ -75,24 +77,88 @@ class TestModesIntegration(unittest.IsolatedAsyncioTestCase):
         
         # Mock balance
         from app.core.demo_engine import demo_engine
-        demo_engine.fetch_balance = AsyncMock(return_value={'USDT': {'free': 1000.0}})
-        
-        signal = {
-            "symbol": "BTC-USDT",
-            "signal": "BUY",
-            "confidence": 0.9,
-            "price": 50000,
-            "rationale": "Test"
-        }
-        
-        await risk_agent.on_signal(signal)
-        
-        # Should publish ORDER_REQUEST
-        mock_pub.assert_called()
+        with patch.object(demo_engine, 'fetch_balance', AsyncMock(return_value={'total': {'USDT': 1000.0}, 'free': {'USDT': 1000.0}})):
+            signal = {
+                "symbol": "BTC-USDT",
+                "signal": "BUY",
+                "confidence": 0.9,
+                "price": 50000,
+                "rationale": "Test"
+            }
+            
+            await risk_agent.on_signal(signal)
+            
+            # Should publish ORDER_REQUEST
+            mock_pub.assert_called()
         args, _ = mock_pub.call_args
         event_type, order_request = args
         self.assertEqual(event_type, EventType.ORDER_REQUEST)
         self.assertEqual(order_request["symbol"], "BTC-USDT")
+
+    async def test_governor_equity_snapshot_integration(self):
+        """Verify GovernorAgent correctly snapshots equity to the database."""
+        from app.agents.governor_agent import GovernorAgent
+        from app.models.models import EquityModel
+        
+        settings.DEMO_MODE = True
+        governor = GovernorAgent()
+        governor.is_running = True
+        
+        # Mock sleep to run once and exit
+        with patch('asyncio.sleep', side_effect=[None, asyncio.CancelledError]):
+            try:
+                await governor.equity_snapshot_loop()
+            except (asyncio.CancelledError, Exception):
+                pass
+
+        with SessionLocal() as db:
+            snapshot = db.query(EquityModel).first()
+            self.assertIsNotNone(snapshot)
+            # Should be the default 1000.0 from conftest.py patch
+            self.assertEqual(snapshot.total_equity, 1000.0)
+
+    async def test_full_demo_execution_flow(self):
+        """Test the full flow from Governor start to a filled order in database."""
+        from app.agents.governor_agent import GovernorAgent
+        from app.models.models import OrderModel
+        
+        settings.DEMO_MODE = True
+        governor = GovernorAgent()
+        
+        # We need to mock ccxt even for governor start to avoid background leaks
+        # even though conftest.py does it, we should be explicit with governor.agents
+        await governor.start()
+        try:
+            # wait for setup
+            await asyncio.sleep(0.5)
+            
+            # Send Market Data to set price in ExecutionAgent
+            await event_bus.publish(EventType.MARKET_DATA, {
+                "symbol": "BTC-USDT",
+                "latest_close": 50000.0,
+                "timeframe": "1m",
+                "candles": [[i, 50, 50, 50, 50, 10] for i in range(20)],
+                "timestamp": 123456789,
+                "agent": "MarketDataAgent"
+            })
+            await asyncio.sleep(0.2)
+            
+            # Request Order
+            order_data = {
+                "symbol": "BTC-USDT",
+                "side": "buy",
+                "amount": 0.01
+            }
+            await event_bus.publish(EventType.ORDER_REQUEST, order_data)
+            await asyncio.sleep(0.5)
+            
+            # Verify order in DB
+            with SessionLocal() as db:
+                order = db.query(OrderModel).filter(OrderModel.is_demo == 1).first()
+                self.assertIsNotNone(order)
+                self.assertEqual(order.symbol, "BTC-USDT")
+        finally:
+            await governor.stop()
 
 if __name__ == "__main__":
     unittest.main()

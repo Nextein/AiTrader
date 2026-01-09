@@ -23,14 +23,6 @@ class MockAgent(BaseAgent):
             pass
 
 class TestAgentsUnit(unittest.IsolatedAsyncioTestCase):
-    def setUp(self):
-        # Global mock for ccxt to prevent network calls
-        self.patcher_ccxt = patch('ccxt.async_support.bingx', return_value=AsyncMock())
-        self.mock_ccxt_global = self.patcher_ccxt.start()
-
-    def tearDown(self):
-        self.patcher_ccxt.stop()
-
     async def asyncSetUp(self):
         self.original_demo_mode = settings.DEMO_MODE
         # Reset event bus or other global state if necessary
@@ -92,29 +84,29 @@ class TestAgentsUnit(unittest.IsolatedAsyncioTestCase):
     async def test_risk_agent_dynamic_sizing_atr(self, mock_publish):
         settings.DEMO_MODE = True
         from app.core.demo_engine import demo_engine
-        demo_engine.fetch_balance = AsyncMock(return_value={'USDT': {'free': 10000.0}})
         
-        agent = RiskAgent()
-        agent.is_running = True
-        
-        # Mock ATR calculation
-        # Candles: [timestamp, open, high, low, close, volume]
-        candles = [[i, 50000, 51000, 49000, 50000, 100] for i in range(20)]
-        agent.latest_candles = candles
-        
-        # Signal data
-        signal_data = {
-            "symbol": "BTC-USDT",
-            "signal": "BUY",
-            "confidence": 0.9,
-            "price": 50000,
-            "rationale": "Strong indicator"
-        }
-        
-        await agent.on_signal(signal_data)
-        
-        # Verify order request was published
-        mock_publish.assert_called()
+        with patch.object(demo_engine, 'fetch_balance', AsyncMock(return_value={'total': {'USDT': 10000.0}, 'free': {'USDT': 10000.0}})):
+            agent = RiskAgent()
+            agent.is_running = True
+            
+            # Mock ATR calculation
+            # Candles: [timestamp, open, high, low, close, volume]
+            candles = [[i, 50000, 51000, 49000, 50000, 100] for i in range(20)]
+            agent.latest_candles = candles
+            
+            # Signal data
+            signal_data = {
+                "symbol": "BTC-USDT",
+                "signal": "BUY",
+                "confidence": 0.9,
+                "price": 50000,
+                "rationale": "Strong indicator"
+            }
+            
+            await agent.on_signal(signal_data)
+            
+            # Verify order request was published
+            mock_publish.assert_called()
         args, kwargs = mock_publish.call_args
         event_type, order_request = args
         self.assertEqual(event_type, EventType.ORDER_REQUEST)
@@ -134,13 +126,15 @@ class TestAgentsUnit(unittest.IsolatedAsyncioTestCase):
         ]
         
         for balance_input, expected in formats:
-            agent.exchange.fetch_balance = AsyncMock(return_value=balance_input)
-            agent.latest_candles = [[i, 50, 51, 49, 50, 10] for i in range(20)]
             agent.is_running = True
+            from app.core.demo_engine import demo_engine
             
-            with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
-                await agent.on_signal({"confidence": 0.9, "symbol": "BTC-USDT", "signal": "BUY", "price": 50})
-                self.assertTrue(mock_pub.called, f"Failed for format {balance_input}")
+            with patch.object(demo_engine, 'fetch_balance', AsyncMock(return_value=balance_input)):
+                agent.latest_candles = [[i, 50, 51, 49, 50, 10] for i in range(20)]
+                
+                with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
+                    await agent.on_signal({"confidence": 0.9, "symbol": "BTC-USDT", "signal": "BUY", "price": 50})
+                    self.assertTrue(mock_pub.called, f"Failed for format {balance_input}")
 
     @patch('app.agents.governor_agent.SessionLocal')
     @patch('ccxt.async_support.bingx', return_value=AsyncMock())
@@ -196,40 +190,39 @@ class TestAgentsUnit(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(agent._timeframe_to_minutes("1d"), 1440)
         self.assertEqual(agent._timeframe_to_minutes("invalid"), 60)
 
-    @patch('ccxt.async_support.bingx', return_value=AsyncMock())
-    async def test_execution_agent_order(self, mock_ccxt):
+    async def test_execution_agent_order(self):
         settings.DEMO_MODE = True
-        agent = ExecutionAgent()
-        agent.is_running = True
-        agent.latest_prices["BTC-USDT"] = 50000.0
+        from app.core.demo_engine import demo_engine
         
-        # Mock exchange create_order
-        agent.exchange.create_order = AsyncMock(return_value={'id': 'test-id', 'status': 'filled'})
-        
-        with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
-            await agent.on_order_request({"symbol": "BTC-USDT", "side": "buy", "amount": 0.1})
+        with patch.object(demo_engine, 'create_order', AsyncMock(return_value={'id': 'test-id', 'status': 'filled'})):
+            agent = ExecutionAgent()
+            agent.is_running = True
+            agent.latest_prices["BTC-USDT"] = 50000.0
             
-            agent.exchange.create_order.assert_called()
-            mock_pub.assert_called_with(EventType.ORDER_FILLED, unittest.mock.ANY)
+            with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
+                await agent.on_order_request({"symbol": "BTC-USDT", "side": "buy", "amount": 0.1})
+                
+                demo_engine.create_order.assert_called()
+                mock_pub.assert_called_with(EventType.ORDER_FILLED, unittest.mock.ANY)
 
-    @patch('ccxt.async_support.bingx', return_value=AsyncMock())
-    async def test_execution_agent_emergency_exit(self, mock_ccxt):
-        agent = ExecutionAgent()
-        agent.exchange.cancel_all_orders = AsyncMock()
-        agent.exchange.fetch_balance = AsyncMock(return_value={'USDT': {'free': 100}})
-        agent.exchange.fetch_positions = AsyncMock(return_value=[
-            {'symbol': 'BTC-USDT', 'contracts': '0.1'} # Long position
-        ])
-        agent.exchange.create_order = AsyncMock()
+    async def test_execution_agent_emergency_exit(self):
+        settings.DEMO_MODE = True
+        from app.core.demo_engine import demo_engine
         
-        await agent.on_emergency_exit({})
-        
-        agent.exchange.cancel_all_orders.assert_called()
-        agent.exchange.fetch_positions.assert_called()
-        # Should create a sell order to close long
-        agent.exchange.create_order.assert_called_with(
-            symbol='BTC-USDT', type='market', side='sell', amount=0.1, params={'reduceOnly': True}
-        )
+        with patch.object(demo_engine, 'cancel_all_orders', AsyncMock()), \
+             patch.object(demo_engine, 'fetch_balance', AsyncMock(return_value={'USDT': {'free': 100, 'total': 100}})), \
+             patch.object(demo_engine, 'fetch_positions', AsyncMock(return_value=[{'symbol': 'BTC-USDT', 'contracts': '0.1'}])), \
+             patch.object(demo_engine, 'create_order', AsyncMock()):
+            
+            agent = ExecutionAgent()
+            await agent.on_emergency_exit({})
+            
+            demo_engine.cancel_all_orders.assert_called()
+            demo_engine.fetch_positions.assert_called()
+            # Should create a sell order to close long
+            demo_engine.create_order.assert_called_with(
+                symbol='BTC-USDT', type='market', side='sell', amount=0.1, params={'reduceOnly': True}
+            )
 
     async def test_aggregator_agent_voting(self):
         agent = AggregatorAgent(window_seconds=0.01)
@@ -324,34 +317,59 @@ class TestAgentsUnit(unittest.IsolatedAsyncioTestCase):
         agent = StrategyAgent(strategy_id="RSI_MACD")
         agent.is_running = True
         
-        # We'll use a mock to bypass the pandas_ta append problem
-        # by patching the indicators directly where they are read from df
-        with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
-            # We mock the indicators extraction
-            with patch('pandas.DataFrame.__getitem__') as mock_getitem:
-                # Return a mock Series that behaves like the indicators
-                mock_rsi = MagicMock()
-                mock_rsi.iloc.__getitem__.return_value = 20.0 # RSI < 35
+        # Use a more stable mock by patching the pandas_ta methods directly
+        # and ensuring they append the expected columns to the DataFrame.
+        def mock_rsi(length=None, append=False):
+            return pd.Series([20.0] * 40, name='RSI_14')
+
+        def mock_macd(fast=None, slow=None, signal=None, append=False):
+            return pd.DataFrame({
+                'MACD_12_26_9': [1.0] * 40,
+                'MACDs_12_26_9': [0.0] * 40,
+                'MACDh_12_26_9': [1.0] * 40
+            })
+
+        with patch('pandas_ta.rsi', side_effect=mock_rsi):
+            with patch('pandas_ta.macd', side_effect=mock_macd):
+                # We need to manually add columns to the df because our mocks 
+                # don't actually append (since 'append=True' logic is complex in pandas_ta)
+                # We'll patch the on_market_data to inject columns
+                original_on_market_data = agent.on_market_data
                 
-                mock_macd = MagicMock()
-                mock_macd.iloc.__getitem__.side_effect = [1.0, 0.0] # MACD > MACD_Signal
-                
-                def getitem_side_effect(key):
-                    if key == 'RSI_14': return mock_rsi
-                    if key == 'MACD_12_26_9': return mock_macd
-                    if key == 'MACDs_12_26_9': return mock_macd
-                    return MagicMock() # Fallback
-                
-                mock_getitem.side_effect = getitem_side_effect
-                
-                # Mock columns to avoid "Indicators not yet available"
-                with patch('pandas.DataFrame.columns', new_callable=PropertyMock) as mock_cols:
-                    mock_cols.return_value = pd.Index(['RSI_14', 'MACD_12_26_9', 'MACDs_12_26_9'])
+                async def patched_on_market_data(data):
+                    # Mock the DataFrame creation to include our signal columns
+                    with patch('pandas.DataFrame') as MockDF:
+                        df_instance = MagicMock()
+                        # Simulate the df with indicators
+                        df_instance.columns = pd.Index(['timestamp', 'open', 'high', 'low', 'close', 'volume', 'RSI_14', 'MACD_12_26_9', 'MACDs_12_26_9'])
+                        df_instance.__getitem__.side_effect = lambda key: {
+                            'RSI_14': pd.Series([20.0]),
+                            'MACD_12_26_9': pd.Series([1.0]),
+                            'MACDs_12_26_9': pd.Series([0.0])
+                        }.get(key, MagicMock())
+                        MockDF.return_value = df_instance
+                        
+                        # Now call original logic
+                        await original_on_market_data(data)
+
+                with patch('app.core.event_bus.event_bus.publish', new_callable=AsyncMock) as mock_pub:
+                    # Let's just mock the whole signal generation part for this test 
+                    # as pandas_ta mocking is extremely difficult due to its accessor nature.
+                    # Instead, let's verify that a signal IS sent when conditions are met.
                     
-                    candles = [[i, 50, 50, 50, 50, 10] for i in range(40)]
-                    await agent.on_market_data({"symbol": "BTC-USDT", "candles": candles, "timestamp": 1234, "latest_close": 50})
-                    
-                    mock_pub.assert_called()
+                    # We'll use a very simple mock for the indicators check
+                    with patch('pandas.DataFrame') as MockDF:
+                        df_mock = MagicMock()
+                        df_mock.columns = pd.Index(['RSI_14', 'MACD_12_26_9', 'MACDs_12_26_9'])
+                        df_mock.__getitem__.side_effect = lambda key: pd.Series([20.0] if 'RSI' in key else ([1.0] if 'MACD_' in key else [0.0]))
+                        MockDF.return_value = df_mock
+                        
+                        candles = [[i, 50, 50, 50, 50, 10] for i in range(40)]
+                        await agent.on_market_data({"symbol": "BTC-USDT", "candles": candles, "timestamp": 1234, "latest_close": 50})
+                        
+                        mock_pub.assert_called()
+                        args, _ = mock_pub.call_args
+                        self.assertEqual(args[1]["signal"], "BUY")
 
     async def test_regime_detection_agent(self):
         from app.agents.regime_detection_agent import RegimeDetectionAgent
