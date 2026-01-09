@@ -427,6 +427,59 @@ body {
     color: var(--danger);
 }
 
+.type-market {
+    background: rgba(0, 242, 254, 0.2);
+    color: #00f2fe;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 4px;
+    /* Square-ish */
+}
+
+.type-regime {
+    background: rgba(138, 43, 226, 0.2);
+    color: #8a2be2;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 4px;
+    /* Square-ish */
+}
+
+/* Text Colors */
+.text-success {
+    color: var(--success);
+}
+
+.text-warning {
+    color: var(--warning);
+}
+
+.text-danger {
+    color: var(--danger);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-muted {
+    color: var(--text-secondary);
+}
+
+.log-msg.success {
+    color: var(--success);
+}
+
+.log-msg.warning {
+    color: var(--warning);
+}
+
+.log-msg.error {
+    color: var(--danger);
+}
+
+.log-msg.info {
+    color: var(--text-primary);
+}
+
 /* Modal */
 .modal {
     display: none;

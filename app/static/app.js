@@ -357,7 +357,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const logHtml = logs.map(log => {
             const date = new Date(log.timestamp).toLocaleTimeString();
             let typeClass = '';
+            let msgClass = '';
             let msg = typeof log.data === 'string' ? log.data : JSON.stringify(log.data);
+            const lowerMsg = msg.toLowerCase();
+
+            // Heuristic for message color
+            if (lowerMsg.includes('error') || lowerMsg.includes('failed') || lowerMsg.includes('exception') || lowerMsg.includes('critical')) {
+                msgClass = 'error';
+            } else if (lowerMsg.includes('warning') || lowerMsg.includes('warn')) {
+                msgClass = 'warning';
+            } else if (lowerMsg.includes('success') || lowerMsg.includes('completed') || lowerMsg.includes('connected') || lowerMsg.includes('initialized')) {
+                msgClass = 'success';
+            }
 
             if (log.event_type.includes('signal')) {
                 typeClass = 'type-signal';
@@ -365,11 +376,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 typeClass = 'type-order';
             } else if (log.event_type.includes('error')) {
                 typeClass = 'type-error';
+                msgClass = 'error'; // Ensure error events are always red
             } else if (log.event_type === 'market_data') {
+                typeClass = 'type-market';
                 // Task 8: Making logs beautiful (enhanced market data)
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
                 const candleCount = d.candles ? d.candles.length : 0;
-                msg = `<span style="color: var(--text-secondary);">${d.symbol}</span> <span style="color: var(--accent);">${d.latest_close.toFixed(2)}</span> (${candleCount} candles)`;
+                msg = `<span class="text-muted">${d.symbol}</span> <span class="text-accent">${d.latest_close.toFixed(2)}</span> (${candleCount} candles)`;
+            } else if (log.event_type === 'regime_change') {
+                typeClass = 'type-regime';
             } else if (log.event_type === 'signal') {
                 // Task 8: Beautiful signals
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
@@ -388,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="log-ts">${date}</span>
                     <span class="log-agent">${log.agent_name}</span>
                     <span class="log-type ${typeClass}">${log.event_type}</span>
-                    <span class="log-msg">${msg}</span>
+                    <span class="log-msg ${msgClass}">${msg}</span>
                 </div>
             `;
         }).join('');
