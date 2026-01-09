@@ -30,14 +30,14 @@ class AggregatorAgent(BaseAgent):
         if not self.is_running:
             return
 
-        ts = data.get("timestamp")
+        ts = data.get("timestamp") or int(asyncio.get_event_loop().time())
         if ts not in self.signal_buffer:
             self.signal_buffer[ts] = []
             # Start a timer to process signals for this timestamp after a delay
             self.processing_tasks[ts] = asyncio.create_task(self.delayed_process(ts))
         
         self.signal_buffer[ts].append(data)
-        logger.info(f"Buffered signal from {data.get('strategy_id')} for processing.")
+        logger.info(f"Buffered signal from {data.get('strategy_id', data.get('agent', 'Unknown'))} for processing.")
 
     async def delayed_process(self, ts: int):
         # Wait for other strategies to chime in

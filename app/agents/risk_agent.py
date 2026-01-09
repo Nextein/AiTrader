@@ -78,15 +78,24 @@ class RiskAgent(BaseAgent):
             risk_percent = 0.02 
             atr = self.calculate_atr(self.latest_candles)
             
+            # Fallback for price if missing or zero
+            signal_price = data.get("price")
+            if not signal_price or signal_price <= 0:
+                if self.latest_candles and len(self.latest_candles) > 0:
+                    signal_price = self.latest_candles[-1][4] # Last Close
+                else:
+                    logger.error("Risk Rejected: No price info available for calculation")
+                    return
+
             if atr is not None and atr > 0:
                 # Formula: Size = (Equity * Risk%) / (ATR * N)
                 # Here N=2 for a 2x ATR stop distance buffer
                 n_factor = 2
-                trade_size_usdt = (free_usdt * risk_percent) / (atr / data.get("price") * n_factor)
+                trade_size_usdt = (free_usdt * risk_percent) / (atr / signal_price * n_factor)
                 trade_size_usdt = min(trade_size_usdt, free_usdt * 0.1) # Max 10% of balance per trade
             else:
                 trade_size_usdt = self.max_trade_size # Fallback
-                
+            
             if free_usdt < trade_size_usdt:
                 logger.warning(f"Risk Rejected: Insufficient balance ({free_usdt:.2f} USDT < {trade_size_usdt:.2f} USDT)")
                 return
@@ -95,8 +104,8 @@ class RiskAgent(BaseAgent):
                 "symbol": data.get("symbol"),
                 "side": "buy" if data.get("signal") == "BUY" else "sell",
                 "type": "market",
-                "amount": trade_size_usdt / data.get("price"), # amount in base asset
-                "price": data.get("price"),
+                "amount": trade_size_usdt / signal_price, # amount in base asset
+                "price": signal_price,
                 "rationale": f"{data.get('rationale')} | Dynamic Size: {trade_size_usdt:.2f} USDT",
                 "agent": self.name
             }
