@@ -42,8 +42,18 @@ async def get_status():
             "symbol": settings.TRADING_SYMBOL,
             "timeframe": settings.TIMEFRAME,
             "sandbox": settings.BINGX_IS_SANDBOX
-        }
+        },
+        "agents": [agent.get_status() for agent in governor.agents]
     }
+
+@app.post("/agents/restart/{name}")
+async def restart_agent(name: str):
+    for agent in governor.agents:
+        if agent.name == name:
+            await agent.stop()
+            asyncio.create_task(agent.start())
+            return {"message": f"Agent {name} restarted"}
+    return {"error": f"Agent {name} not found"}, 404
 
 @app.get("/logs")
 async def get_logs(limit: int = 50):

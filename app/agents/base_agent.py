@@ -19,3 +19,11 @@ class BaseAgent(ABC):
     @abstractmethod
     async def run_loop(self):
         pass
+
+    def get_status(self):
+        return {
+            "name": self.name,
+            "is_running": self.is_running,
+            "type": self.__class__.__name__,
+            "config": {}
+        }

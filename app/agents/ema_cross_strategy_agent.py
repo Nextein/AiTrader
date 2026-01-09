@@ -16,6 +16,15 @@ class EMACrossStrategyAgent(BaseAgent):
         self.slow_period = slow_period
         self.last_timestamp = None
 
+    def get_status(self):
+        status = super().get_status()
+        status["config"] = {
+            "strategy_id": self.strategy_id,
+            "fast_period": self.fast_period,
+            "slow_period": self.slow_period
+        }
+        return status
+
     async def run_loop(self):
         event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
         while self.is_running:

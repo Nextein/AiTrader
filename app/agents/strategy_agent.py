@@ -13,6 +13,13 @@ class StrategyAgent(BaseAgent):
         # Optimization: track last processed timestamp to avoid duplicate signals for same candle
         self.last_timestamp = None
 
+    def get_status(self):
+        status = super().get_status()
+        status["config"] = {
+            "strategy_id": self.strategy_id
+        }
+        return status
+
     async def run_loop(self):
         # Subscribe to market data
         event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)

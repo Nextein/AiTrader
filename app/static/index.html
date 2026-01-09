@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="dark-theme">
     <div class="dashboard-wrapper">
         <aside class="sidebar">
@@ -55,52 +57,72 @@
                 </div>
             </header>
 
-            <section class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon signal"><i data-lucide="zap"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-label">Total Signals</span>
-                        <span id="stat-signals" class="stat-value">0</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon order"><i data-lucide="shopping-cart"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-label">Orders Executed</span>
-                        <span id="stat-orders" class="stat-value">0</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon regime"><i data-lucide="trending-up"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-label">Market Regime</span>
-                        <span id="regime-value" class="stat-value">--</span>
-                    </div>
-                </div>
-            </section>
-
-            <div class="content-grid">
-                <section class="agents-section">
-                    <div class="section-header">
-                        <h3><i data-lucide="activity"></i> Active Agents</h3>
-                    </div>
-                    <div id="agents-container" class="agents-grid">
-                        <!-- Agent cards will be injected here -->
-                        <div class="empty-state">No agents initialized</div>
-                    </div>
-                </section>
-
-                <section class="audit-section">
-                    <div class="section-header">
-                        <h3><i data-lucide="scroll_text"></i> Audit Trail</h3>
-                        <div class="log-actions">
-                            <button id="clear-logs" class="btn-icon"><i data-lucide="trash-2"></i></button>
+            <div id="view-dashboard" class="view">
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon signal"><i data-lucide="zap"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Signals</span>
+                            <span id="stat-signals" class="stat-value">0</span>
                         </div>
                     </div>
-                    <div id="log-container" class="log-viewport">
-                        <div class="log-entry system-msg">Connecting to audit stream...</div>
+                    <div class="stat-card">
+                        <div class="stat-icon order"><i data-lucide="shopping-cart"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Orders Executed</span>
+                            <span id="stat-orders" class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon regime"><i data-lucide="trending-up"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Market Regime</span>
+                            <span id="regime-value" class="stat-value">--</span>
+                        </div>
                     </div>
                 </section>
+
+                <div class="content-grid">
+                    <section class="agents-section">
+                        <div class="section-header">
+                            <h3><i data-lucide="activity"></i> Active Agents</h3>
+                        </div>
+                        <div id="agents-container-mini" class="agents-grid">
+                            <!-- Agent cards will be injected here -->
+                            <div class="empty-state">No agents initialized</div>
+                        </div>
+                    </section>
+
+                    <section class="audit-section-mini">
+                        <div class="section-header">
+                            <h3><i data-lucide="scroll-text"></i> Live Events</h3>
+                        </div>
+                        <div id="log-container-mini" class="log-viewport mini">
+                            <div class="log-entry system-msg">Connecting to event stream...</div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div id="view-agents" class="view" style="display: none;">
+                <div class="section-header">
+                    <h3><i data-lucide="users"></i> Agent Orchestration</h3>
+                </div>
+                <div id="agents-container-full" class="agents-detailed-grid">
+                    <!-- Detailed agent cards will be injected here -->
+                </div>
+            </div>
+
+            <div id="view-logs" class="view" style="display: none;">
+                <div class="section-header">
+                    <h3><i data-lucide="terminal"></i> Transaction Audit Trail</h3>
+                    <div class="log-actions">
+                        <button id="clear-logs" class="btn-icon"><i data-lucide="trash-2"></i></button>
+                    </div>
+                </div>
+                <div id="log-container-full" class="log-viewport full">
+                    <div class="log-entry system-msg">Loading historical data...</div>
+                </div>
             </div>
         </main>
     </div>
@@ -109,4 +131,5 @@
         lucide.createIcons();
     </script>
 </body>
+
 </html>

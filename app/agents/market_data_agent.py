@@ -25,6 +25,14 @@ class MarketDataAgent(BaseAgent):
         self.symbol = settings.TRADING_SYMBOL
         self.timeframe = settings.TIMEFRAME
 
+    def get_status(self):
+        status = super().get_status()
+        status["config"] = {
+            "symbol": self.symbol,
+            "timeframe": self.timeframe
+        }
+        return status
+
     async def run_loop(self):
         while self.is_running:
             try:
