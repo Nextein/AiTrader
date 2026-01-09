@@ -256,3 +256,16 @@ Summary
 ✅ Comprehensive testing infrastructure
 ⏸️ Foundation for multi-workflow support (Task 3 deferred)
 The system is now production-ready with significantly improved observability, control, and performance.
+
+
+ 1. Display the current portfolio in the UI.
+ 2. In the performance tab add a table with every trade placed.
+ Display buy/sell, SL/TP, entry/exit price, pnl, date/time, reason.
+ 3. Strategy signals must provide SL and TP values.
+ Update strategy signals to include SL and TP.
+ Update Risk Agent to enforce SL and TP presence.
+ 4. SL and TP values can be relative/absolute and partial/full.
+ 5. Demo engine checks whether these SLs and TPs have been hit to update the demo balance.
+ 6. Market regime agent should look at multiple timeframes and indicators.
+ 7. Displaying market regime in the UI as a table with the market regime for each symbol.
+ 8. Make event logs in the frontend more beautiful.

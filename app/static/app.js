@@ -259,8 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}
-
     function updateRegimes(agents) {
         // Find RegimeDetectionAgent and extract 'regimes' data
         const regimeAgent = agents.find(a => a.name === 'RegimeDetectionAgent');
@@ -435,194 +433,194 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-stopBtn.addEventListener('click', async () => {
-    try {
-        await fetch('/stop', { method: 'POST' });
-        updateStatus();
-    } catch (e) {
-        console.error('Stop failed', e);
-    }
-});
+    stopBtn.addEventListener('click', async () => {
+        try {
+            await fetch('/stop', { method: 'POST' });
+            updateStatus();
+        } catch (e) {
+            console.error('Stop failed', e);
+        }
+    });
 
-emergencyBtn.addEventListener('click', async () => {
-    if (!confirm('!!! EMERGENCY STOP !!!\nThis will CLOSE ALL POSITIONS and stop the system. Are you sure?')) return;
+    emergencyBtn.addEventListener('click', async () => {
+        if (!confirm('!!! EMERGENCY STOP !!!\nThis will CLOSE ALL POSITIONS and stop the system. Are you sure?')) return;
 
-    emergencyBtn.disabled = true;
-    emergencyBtn.innerText = 'CLOSING...';
+        emergencyBtn.disabled = true;
+        emergencyBtn.innerText = 'CLOSING...';
 
-    try {
-        await fetch('/emergency-stop', { method: 'POST' });
-        updateStatus();
-        alert('Emergency stop command issued successfully.');
-    } catch (e) {
-        console.error('Emergency stop failed', e);
-        alert('Failed to issue emergency stop!');
-    } finally {
-        emergencyBtn.disabled = false;
-        emergencyBtn.innerHTML = '<i data-lucide="alert-triangle"></i> EMERGENCY STOP';
-        if (window.lucide) lucide.createIcons();
-    }
-});
-
-clearLogsBtn.addEventListener('click', () => {
-    const msg = '<div class="log-entry system-msg">Logs cleared (locally)</div>';
-    const mini = document.getElementById('log-container-mini');
-    const full = document.getElementById('log-container-full');
-    if (mini) mini.innerHTML = msg;
-    if (full) full.innerHTML = msg;
-});
-
-// Navigation logic
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        const viewId = item.getAttribute('data-view');
-
-        // Hide all views
-        document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
-
-        // Show target view
-        const targetView = document.getElementById(`view-${viewId}`);
-        if (targetView) {
-            targetView.style.display = 'block';
-            // Trigger icon refresh for the new view
+        try {
+            await fetch('/emergency-stop', { method: 'POST' });
+            updateStatus();
+            alert('Emergency stop command issued successfully.');
+        } catch (e) {
+            console.error('Emergency stop failed', e);
+            alert('Failed to issue emergency stop!');
+        } finally {
+            emergencyBtn.disabled = false;
+            emergencyBtn.innerHTML = '<i data-lucide="alert-triangle"></i> EMERGENCY STOP';
             if (window.lucide) lucide.createIcons();
         }
     });
-});
 
-function formatUptime(seconds) {
-    if (!seconds) return '--';
-    if (seconds < 60) return `${seconds}s`;
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}m ${secs}s`;
-}
+    clearLogsBtn.addEventListener('click', () => {
+        const msg = '<div class="log-entry system-msg">Logs cleared (locally)</div>';
+        const mini = document.getElementById('log-container-mini');
+        const full = document.getElementById('log-container-full');
+        if (mini) mini.innerHTML = msg;
+        if (full) full.innerHTML = msg;
+    });
 
-function getAgentRole(name) {
-    const roles = {
-        'MarketData': 'Data Producer',
-        'RegimeDetection': 'Analyst',
-        'AnomalyDetection': 'Watchdog',
-        'EMACrossStrategy': 'Strategist',
-        'Strategy': 'Strategist',
-        'Risk': 'Gatekeeper',
-        'Execution': 'Executor',
-        'AuditLog': 'Historian',
-        'Aggregator': 'Reporter',
-        'Governor': 'Orchestrator'
-    };
-    for (const [key, role] of Object.entries(roles)) {
-        if (name.includes(key)) return role;
+    // Navigation logic
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+
+            const viewId = item.getAttribute('data-view');
+
+            // Hide all views
+            document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+
+            // Show target view
+            const targetView = document.getElementById(`view-${viewId}`);
+            if (targetView) {
+                targetView.style.display = 'block';
+                // Trigger icon refresh for the new view
+                if (window.lucide) lucide.createIcons();
+            }
+        });
+    });
+
+    function formatUptime(seconds) {
+        if (!seconds) return '--';
+        if (seconds < 60) return `${seconds}s`;
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}m ${secs}s`;
     }
-    return 'Participant';
-}
 
-function updateFlowStates(agents) {
-    // Simple logic to highlight flow nodes based on running agents
-    const hasMarket = agents.some(a => a.name.includes('MarketData') && a.is_running);
-    const hasAnalysis = agents.some(a => (a.name.includes('Regime') || a.name.includes('Anomaly')) && a.is_running);
-    const hasStrategy = agents.some(a => (a.name.includes('Strategy')) && a.is_running);
-    const hasRisk = agents.some(a => a.name.includes('Risk') && a.is_running);
-    const hasExecution = agents.some(a => a.name.includes('Execution') && a.is_running);
+    function getAgentRole(name) {
+        const roles = {
+            'MarketData': 'Data Producer',
+            'RegimeDetection': 'Analyst',
+            'AnomalyDetection': 'Watchdog',
+            'EMACrossStrategy': 'Strategist',
+            'Strategy': 'Strategist',
+            'Risk': 'Gatekeeper',
+            'Execution': 'Executor',
+            'AuditLog': 'Historian',
+            'Aggregator': 'Reporter',
+            'Governor': 'Orchestrator'
+        };
+        for (const [key, role] of Object.entries(roles)) {
+            if (name.includes(key)) return role;
+        }
+        return 'Participant';
+    }
 
-    if (hasMarket) document.getElementById('node-market')?.classList.add('active');
-    else document.getElementById('node-market')?.classList.remove('active');
+    function updateFlowStates(agents) {
+        // Simple logic to highlight flow nodes based on running agents
+        const hasMarket = agents.some(a => a.name.includes('MarketData') && a.is_running);
+        const hasAnalysis = agents.some(a => (a.name.includes('Regime') || a.name.includes('Anomaly')) && a.is_running);
+        const hasStrategy = agents.some(a => (a.name.includes('Strategy')) && a.is_running);
+        const hasRisk = agents.some(a => a.name.includes('Risk') && a.is_running);
+        const hasExecution = agents.some(a => a.name.includes('Execution') && a.is_running);
 
-    if (hasAnalysis) document.getElementById('node-analysis')?.classList.add('active');
-    else document.getElementById('node-analysis')?.classList.remove('active');
+        if (hasMarket) document.getElementById('node-market')?.classList.add('active');
+        else document.getElementById('node-market')?.classList.remove('active');
 
-    if (hasStrategy) document.getElementById('node-strategy')?.classList.add('active');
-    else document.getElementById('node-strategy')?.classList.remove('active');
+        if (hasAnalysis) document.getElementById('node-analysis')?.classList.add('active');
+        else document.getElementById('node-analysis')?.classList.remove('active');
 
-    if (hasRisk) document.getElementById('node-risk')?.classList.add('active');
-    else document.getElementById('node-risk')?.classList.remove('active');
+        if (hasStrategy) document.getElementById('node-strategy')?.classList.add('active');
+        else document.getElementById('node-strategy')?.classList.remove('active');
 
-    if (hasExecution) document.getElementById('node-execution')?.classList.add('active');
-    else document.getElementById('node-execution')?.classList.remove('active');
-}
+        if (hasRisk) document.getElementById('node-risk')?.classList.add('active');
+        else document.getElementById('node-risk')?.classList.remove('active');
 
-async function updateEquityChart() {
-    try {
-        const resp = await fetch('/equity');
-        const data = await resp.json();
+        if (hasExecution) document.getElementById('node-execution')?.classList.add('active');
+        else document.getElementById('node-execution')?.classList.remove('active');
+    }
 
-        if (data.length === 0) return;
+    async function updateEquityChart() {
+        try {
+            const resp = await fetch('/equity');
+            const data = await resp.json();
 
-        const labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
-        const values = data.map(d => d.total_equity);
+            if (data.length === 0) return;
 
-        if (!equityChart) {
-            const ctx = document.getElementById('equity-chart').getContext('2d');
-            equityChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Total Equity (USDT)',
-                        data: values,
-                        borderColor: '#00f2fe',
-                        backgroundColor: 'rgba(0, 242, 254, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
+            const labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
+            const values = data.map(d => d.total_equity);
+
+            if (!equityChart) {
+                const ctx = document.getElementById('equity-chart').getContext('2d');
+                equityChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Equity (USDT)',
+                            data: values,
+                            borderColor: '#00f2fe',
+                            backgroundColor: 'rgba(0, 242, 254, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 2
+                        }]
                     },
-                    scales: {
-                        y: {
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#8b949e' }
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
                         },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: '#8b949e' }
+                        scales: {
+                            y: {
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#8b949e' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#8b949e' }
+                            }
                         }
                     }
-                }
-            });
-        } else {
-            equityChart.data.labels = labels;
-            equityChart.data.datasets[0].data = values;
-            equityChart.update();
+                });
+            } else {
+                equityChart.data.labels = labels;
+                equityChart.data.datasets[0].data = values;
+                equityChart.update();
+            }
+        } catch (e) {
+            console.error('Failed to fetch equity data', e);
         }
-    } catch (e) {
-        console.error('Failed to fetch equity data', e);
     }
-}
 
-async function showAgentEvents(agentName) {
-    try {
-        const resp = await fetch(`/agents/${agentName}/events?limit=50`);
-        const data = await resp.json();
+    async function showAgentEvents(agentName) {
+        try {
+            const resp = await fetch(`/agents/${agentName}/events?limit=50`);
+            const data = await resp.json();
 
-        const modal = document.getElementById('agent-events-modal');
-        const modalTitle = document.getElementById('modal-agent-name');
-        const eventsContainer = document.getElementById('modal-events-list');
+            const modal = document.getElementById('agent-events-modal');
+            const modalTitle = document.getElementById('modal-agent-name');
+            const eventsContainer = document.getElementById('modal-events-list');
 
-        modalTitle.innerText = agentName;
+            modalTitle.innerText = agentName;
 
-        if (data.events && data.events.length > 0) {
-            eventsContainer.innerHTML = data.events.map(event => {
-                const time = new Date(event.timestamp).toLocaleTimeString();
-                const priorityColor = {
-                    'CRITICAL': 'var(--danger)',
-                    'HIGH': 'var(--warning)',
-                    'NORMAL': 'var(--accent)',
-                    'LOW': 'var(--text-secondary)'
-                }[event.priority] || 'var(--text-secondary)';
+            if (data.events && data.events.length > 0) {
+                eventsContainer.innerHTML = data.events.map(event => {
+                    const time = new Date(event.timestamp).toLocaleTimeString();
+                    const priorityColor = {
+                        'CRITICAL': 'var(--danger)',
+                        'HIGH': 'var(--warning)',
+                        'NORMAL': 'var(--accent)',
+                        'LOW': 'var(--text-secondary)'
+                    }[event.priority] || 'var(--text-secondary)';
 
-                let eventData = typeof event.data === 'string' ? event.data : JSON.stringify(event.data, null, 2);
+                    let eventData = typeof event.data === 'string' ? event.data : JSON.stringify(event.data, null, 2);
 
-                return `
+                    return `
                         <div class="event-item">
                             <div class="event-header">
                                 <span class="event-time">${time}</span>
@@ -632,45 +630,45 @@ async function showAgentEvents(agentName) {
                             <div class="event-data"><pre>${eventData}</pre></div>
                         </div>
                     `;
-            }).join('');
-        } else {
-            eventsContainer.innerHTML = '<div class="empty-state">No events found for this agent</div>';
-        }
+                }).join('');
+            } else {
+                eventsContainer.innerHTML = '<div class="empty-state">No events found for this agent</div>';
+            }
 
-        modal.style.display = 'flex';
-    } catch (e) {
-        console.error('Failed to fetch agent events', e);
-        alert('Failed to load agent events');
+            modal.style.display = 'flex';
+        } catch (e) {
+            console.error('Failed to fetch agent events', e);
+            alert('Failed to load agent events');
+        }
     }
-}
 
-// Close modal handlers
-const modal = document.getElementById('agent-events-modal');
-const closeBtn = document.getElementById('close-modal');
+    // Close modal handlers
+    const modal = document.getElementById('agent-events-modal');
+    const closeBtn = document.getElementById('close-modal');
 
-if (closeBtn) {
-    closeBtn.onclick = () => {
-        modal.style.display = 'none';
-    };
-}
-
-if (modal) {
-    modal.onclick = (e) => {
-        if (e.target === modal) {
+    if (closeBtn) {
+        closeBtn.onclick = () => {
             modal.style.display = 'none';
-        }
-    };
-}
+        };
+    }
 
-// Initial load
-updateStatus();
-fetchLogs();
-updateEquityChart();
+    if (modal) {
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    }
 
-// Polling
-setInterval(updateStatus, 5000);
-setInterval(fetchLogs, 3000);
-setInterval(updateEquityChart, 10000);
-setInterval(fetchPortfolio, 2000); // Polling for portfolio
-setInterval(fetchTrades, 5000); // Polling for trades history
+    // Initial load
+    updateStatus();
+    fetchLogs();
+    updateEquityChart();
+
+    // Polling
+    setInterval(updateStatus, 5000);
+    setInterval(fetchLogs, 3000);
+    setInterval(updateEquityChart, 10000);
+    setInterval(fetchPortfolio, 2000); // Polling for portfolio
+    setInterval(fetchTrades, 5000); // Polling for trades history
 });
