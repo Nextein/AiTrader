@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from app.agents.governor_agent import governor
 from app.core.config import settings
 from app.core.database import SessionLocal, engine
-from app.models.models import AuditLogModel, EquityModel, Base
+from app.models.models import AuditLogModel, EquityModel, OrderModel, Base
 from app.core.event_bus import event_bus
 import asyncio
 import uvicorn
@@ -108,7 +108,35 @@ async def get_logs(limit: int = 50):
 async def get_equity(limit: int = 100):
     with SessionLocal() as db:
         history = db.query(EquityModel).order_by(EquityModel.timestamp.asc()).limit(limit).all()
+        history = db.query(EquityModel).order_by(EquityModel.timestamp.asc()).limit(limit).all()
         return history
+
+@app.get("/portfolio")
+async def get_portfolio():
+    """Get current open positions (Task 1)"""
+    with SessionLocal() as db:
+        # In our simple model, anything FILLED (and not CLOSED) is an open position
+        # We check for orders with status FILLED and closed_at is NULL
+        # But wait, OrderModel status logic needs consistency.
+        # DemoEngine updates status to CLOSED. 
+        # Live execution needs logic to update status too (currently missing).
+        # For now, we rely on the status field.
+        
+        orders = db.query(OrderModel).filter(
+            OrderModel.status == 'FILLED',
+            OrderModel.closed_at.is_(None)
+        ).all()
+        return orders
+
+@app.get("/trades")
+async def get_trades(limit: int = 100):
+    """Get trade history (Task 2)"""
+    with SessionLocal() as db:
+        # Fetch closed orders
+        trades = db.query(OrderModel).filter(
+            OrderModel.status == 'CLOSED'
+        ).order_by(OrderModel.closed_at.desc()).limit(limit).all()
+        return trades
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

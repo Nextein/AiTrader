@@ -3,6 +3,9 @@ import ccxt.async_support as ccxt
 from app.agents.base_agent import BaseAgent
 from app.core.config import settings
 from app.core.event_bus import event_bus, EventType
+from app.core.database import SessionLocal
+from app.models.models import OrderModel
+from datetime import datetime, timezone
 import logging
 
 logger = logging.getLogger("ExecutionAgent")
@@ -35,6 +38,10 @@ class ExecutionAgent(BaseAgent):
 
     async def on_market_data(self, data):
         self.latest_prices[data['symbol']] = data['latest_close']
+        
+        # Task 5: Trigger Demo Engine SL/TP check if in Demo Mode
+        if settings.DEMO_MODE and hasattr(self.exchange, 'check_sl_tp'):
+            await self.exchange.check_sl_tp(data)
 
     async def on_emergency_exit(self, data):
         logger.warning("ExecutionAgent: EMERGENCY EXIT RECEIVED. CLOSING ALL POSITIONS.")
@@ -85,13 +92,45 @@ class ExecutionAgent(BaseAgent):
             # For demo mode, we need to pass the price since it's a simulation
             price = self.latest_prices.get(symbol, 0.0) if settings.DEMO_MODE else None
             
+            # Extract SL/TP/Rationale
+            sl_price = data.get('sl_price')
+            tp_price = data.get('tp_price')
+            rationale = data.get('rationale')
+            
+            params = {
+                'sl_price': sl_price,
+                'tp_price': tp_price,
+                'rationale': rationale
+            }
+            
             order = await self.exchange.create_order(
                 symbol=symbol,
                 type='market',
                 side=side,
                 amount=amount,
-                price=price
+                price=price,
+                params=params
             )
+            
+            # Persist to DB if LIVE mode (DemoEngine does it internally)
+            if not settings.DEMO_MODE:
+                with SessionLocal() as db:
+                    db_order = OrderModel(
+                        exchange_order_id=str(order.get('id', 'unknown')),
+                        symbol=symbol,
+                        side=side,
+                        order_type='market',
+                        amount=amount,
+                        price=order.get('price', price), # Use filled price if avail
+                        sl_price=sl_price,
+                        tp_price=tp_price,
+                        rationale=rationale,
+                        status=order.get('status', 'OPEN'),
+                        is_demo=0,
+                        timestamp=datetime.now(timezone.utc)
+                    )
+                    db.add(db_order)
+                    db.commit()
             
             logger.info(f"ORDER FILLED: {order['id']} | {side.upper()} {amount} {symbol}")
             order["agent"] = self.name

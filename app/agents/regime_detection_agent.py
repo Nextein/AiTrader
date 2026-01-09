@@ -10,8 +10,15 @@ logger = logging.getLogger("RegimeDetection")
 class RegimeDetectionAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="RegimeDetectionAgent")
-        self.current_regime = "UNKNOWN"
-        self.last_timestamp = None
+        self.regimes = {} # {symbol: regime}
+        self.last_timestamps = {} # {symbol: timestamp}
+
+    def get_status(self):
+        status = super().get_status()
+        status["data"] = {
+            "regimes": self.regimes
+        }
+        return status
 
     async def run_loop(self):
         event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
@@ -22,10 +29,12 @@ class RegimeDetectionAgent(BaseAgent):
         if not self.is_running:
             return
 
+        symbol = data.get("symbol")
         ts = data.get("timestamp")
-        if ts == self.last_timestamp:
+        
+        if self.last_timestamps.get(symbol) == ts:
             return
-        self.last_timestamp = ts
+        self.last_timestamps[symbol] = ts
 
         candles = data.get("candles")
         df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
@@ -39,17 +48,19 @@ class RegimeDetectionAgent(BaseAgent):
             return
 
         adx = df['ADX_14'].iloc[-1]
-        logger.info(f"Market Monitoring: ADX={adx:.2f} | Current Regime={self.current_regime}")
+        current_regime = self.regimes.get(symbol, "UNKNOWN")
+        logger.info(f"Market Monitoring [{symbol}]: ADX={adx:.2f} | Current Regime={current_regime}")
         
         new_regime = "RANGING"
         if adx > 25:
             new_regime = "TRENDING"
         
-        if new_regime != self.current_regime:
-            logger.info(f"Regime Change Detected: {self.current_regime} -> {new_regime} (ADX: {adx:.2f})")
-            self.current_regime = new_regime
+        if new_regime != current_regime:
+            logger.info(f"Regime Change Detected [{symbol}]: {current_regime} -> {new_regime} (ADX: {adx:.2f})")
+            self.regimes[symbol] = new_regime
             await event_bus.publish(EventType.REGIME_CHANGE, {
-                "regime": self.current_regime,
+                "symbol": symbol,
+                "regime": new_regime,
                 "adx": adx,
                 "timestamp": ts,
                 "agent": self.name

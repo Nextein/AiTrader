@@ -77,12 +77,18 @@ class EMACrossStrategyAgent(BaseAgent):
 
         if signal != "HOLD":
             logger.info(f"[{self.strategy_id}] Generated Signal: {signal}")
+            price = data.get("latest_close")
+            sl = price * 0.98 if signal == "BUY" else price * 1.02
+            tp = price * 1.05 if signal == "BUY" else price * 0.95
+            
             await event_bus.publish(EventType.STRATEGY_SIGNAL, {
                 "strategy_id": self.strategy_id,
                 "symbol": data.get("symbol"),
                 "signal": signal,
                 "confidence": confidence,
                 "rationale": rationale,
-                "price": data.get("latest_close"),
+                "price": price,
+                "sl_price": sl,
+                "tp_price": tp,
                 "timestamp": timestamp
             })

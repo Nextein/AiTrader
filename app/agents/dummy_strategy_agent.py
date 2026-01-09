@@ -48,13 +48,16 @@ class DummyStrategyAgent(BaseAgent):
         
         # Generate signal every N market data events
         if self.market_data_count % self.signal_interval == 0:
+            signal_price = data.get("latest_close", 0)
             signal_data = {
                 "strategy_id": self.name,
                 "symbol": data.get("symbol", "UNKNOWN"),
                 "signal": "BUY" if self.signals_generated % 2 == 0 else "SELL",
                 "confidence": 1.0, # Dummy confidence
                 "reason": f"Test signal #{self.signals_generated + 1}",
-                "price": data.get("latest_close", 0),
+                "price": signal_price,
+                "sl_price": signal_price * 0.95 if self.signals_generated % 2 == 0 else signal_price * 1.05,
+                "tp_price": signal_price * 1.10 if self.signals_generated % 2 == 0 else signal_price * 0.90,
                 "timestamp": data.get("timestamp"),
                 "agent": self.name
             }

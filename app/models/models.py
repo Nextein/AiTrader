@@ -23,6 +23,8 @@ class SignalModel(Base):
     confidence = Column(Float)
     rationale = Column(String)
     price = Column(Float)
+    sl_price = Column(JSON) # Supports list of SLs
+    tp_price = Column(JSON) # Supports list of TPs
     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     strategy_id = Column(String)
 
@@ -35,9 +37,15 @@ class OrderModel(Base):
     order_type = Column(String)
     amount = Column(Float)
     price = Column(Float)
-    status = Column(String) # OPEN, FILLED, CANCELLED
+    sl_price = Column(JSON)
+    tp_price = Column(JSON)
+    exit_price = Column(Float)
+    pnl = Column(Float)
+    rationale = Column(String)
+    status = Column(String) # OPEN, FILLED, CANCELLED, CLOSED
     is_demo = Column(Integer, default=0) # 0 for live, 1 for demo
     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    closed_at = Column(DateTime)
 
 class AuditLogModel(Base):
     __tablename__ = "audit_logs"

@@ -10,6 +10,19 @@ Do not implement any of these yet.
 3. The user should be able to activate and deactivate different agents overall in the agents tab. Eventually there will be multiple risk agents for example with different risk profiles and logic, and multiple "workflows" will be running concurrently. The system architecture should allow for this growth and versatility in agent connection.
 
 
+# Tests
+9. Increase code coverage of tests. Do not be shy with the number of tests created.
+10. Increase branch coverage of tests.
+11. Increase function coverage of tests.
+12. Increase line coverage of tests.
+13. Increase statement coverage of tests.
+14. Increase condition coverage of tests.
+15. Increase mutation coverage of tests.
+16. Increase path coverage of tests.
+17. Increase complexity coverage of tests.
+18. 
+
+
 # Analyst AI Agent
 
 I am running Ollama in my windows laptop where I am running the AITrader. I am running it on port 11434. I have the following models downloaded because they are the best I could find given my hardware constraints:

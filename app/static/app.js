@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeVal = document.getElementById('mode-value');
     const clearLogsBtn = document.getElementById('clear-logs');
 
+    // New Elements
+    const portfolioBody = document.getElementById('portfolio-body');
+    const regimeBody = document.getElementById('regime-body');
+    const tradeHistoryBody = document.getElementById('trade-history-body');
+
     let isRunning = false;
     let knownAgents = new Set();
     let equityChart = null;
@@ -46,8 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
             startBtn.style.opacity = isRunning ? '0.5' : '1';
             stopBtn.style.opacity = !isRunning ? '0.5' : '1';
 
+
             if (data.agents) {
                 updateAgents(data.agents);
+                updateRegimes(data.agents); // Task 7
             }
 
         } catch (e) {
@@ -55,6 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
             statusPulse.style.background = 'var(--danger)';
             statusPulse.style.animation = 'none';
         }
+    }
+
+    async function fetchPortfolio() { // Task 1
+        try {
+            const resp = await fetch('/portfolio');
+            const positions = await resp.json();
+            renderPortfolio(positions);
+        } catch (e) { console.error('Portfolio fetch failed', e); }
+    }
+
+    async function fetchTrades() { // Task 2
+        try {
+            const resp = await fetch('/trades?limit=50');
+            const trades = await resp.json();
+            renderTrades(trades);
+        } catch (e) { console.error('Trades fetch failed', e); }
     }
 
     async function fetchLogs() {
@@ -236,6 +259,93 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+}
+
+    function updateRegimes(agents) {
+        // Find RegimeDetectionAgent and extract 'regimes' data
+        const regimeAgent = agents.find(a => a.name === 'RegimeDetectionAgent');
+        if (!regimeAgent || !regimeAgent.data || !regimeAgent.data.regimes || !regimeBody) return;
+
+        const regimes = regimeAgent.data.regimes;
+        const entries = Object.entries(regimes);
+
+        if (entries.length === 0) {
+            regimeBody.innerHTML = '<tr><td colspan="4" class="empty-cell">No regime data yet</td></tr>';
+            return;
+        }
+
+        regimeBody.innerHTML = entries.map(([symbol, regime]) => {
+            const color = regime === 'TRENDING' ? 'var(--success)' : 'var(--warning)';
+            // We don't have per-symbol ADX here readily unless we store it in the agent.
+            // For now, just show regime.
+            return `
+                <tr>
+                    <td><span style="font-weight: bold; color: var(--text-primary)">${symbol}</span></td>
+                    <td><span style="color: ${color}; font-weight: bold; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px;">${regime}</span></td>
+                    <td>--</td>
+                    <td>${new Date().toLocaleTimeString()}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function renderPortfolio(orders) {
+        if (!portfolioBody) return;
+        if (orders.length === 0) {
+            portfolioBody.innerHTML = '<tr><td colspan="7" class="empty-cell">No open positions</td></tr>';
+            return;
+        }
+
+        portfolioBody.innerHTML = orders.map(o => {
+            const sideClass = o.side === 'buy' ? 'pos-buy' : 'pos-sell';
+            // PnL calc (approximate, static for now, ideally streamed)
+            // We need current price. We can get it from 'symbolVal' or 'marketData' logs if we cache it.
+            // For now, show '--' or store it.
+            const pnl = 0.0;
+            const sl = o.sl_price ? (Array.isArray(o.sl_price) ? o.sl_price.join(', ') : o.sl_price) : '--';
+            const tp = o.tp_price ? (Array.isArray(o.tp_price) ? o.tp_price.join(', ') : o.tp_price) : '--';
+
+            return `
+                <tr>
+                    <td><b>${o.symbol}</b></td>
+                    <td class="${sideClass}">${o.side.toUpperCase()}</td>
+                    <td>${o.amount.toFixed(4)}</td>
+                    <td>${o.price.toFixed(2)}</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td><span style="font-size: 0.8rem">SL: ${sl}<br>TP: ${tp}</span></td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function renderTrades(trades) {
+        if (!tradeHistoryBody) return;
+        if (trades.length === 0) {
+            tradeHistoryBody.innerHTML = '<tr><td colspan="8" class="empty-cell">No trade history</td></tr>';
+            return;
+        }
+
+        tradeHistoryBody.innerHTML = trades.map(t => {
+            const sideClass = t.side === 'buy' ? 'pos-buy' : 'pos-sell';
+            const pnlClass = t.pnl >= 0 ? 'pnl-pos' : 'pnl-neg';
+            const date = new Date(t.closed_at || t.timestamp).toLocaleString();
+
+            return `
+                <tr>
+                    <td>${date}</td>
+                    <td>${t.symbol}</td>
+                    <td class="${sideClass}">${t.side.toUpperCase()}</td>
+                    <td>${t.amount.toFixed(4)}</td>
+                    <td>${t.price.toFixed(2)}</td>
+                    <td>${t.exit_price ? t.exit_price.toFixed(2) : '--'}</td>
+                    <td class="${pnlClass}">${t.pnl ? t.pnl.toFixed(2) : '--'}</td>
+                    <td style="font-size: 0.8rem; color: var(--text-secondary);">${t.rationale || '--'}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
     function renderLogs(logs) {
         if (logs.length === 0) {
             const empty = '<div class="empty-state text-muted" style="padding: 1rem;">No logs found</div>';
@@ -258,10 +368,21 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (log.event_type.includes('error')) {
                 typeClass = 'type-error';
             } else if (log.event_type === 'market_data') {
-                // Task 1: Format market_data event (summarized)
+                // Task 8: Making logs beautiful (enhanced market data)
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
                 const candleCount = d.candles ? d.candles.length : 0;
-                msg = `<span style="color: var(--accent); font-weight: bold;">${d.symbol}</span> | ${d.timeframe} | ${candleCount} candles received | Close: ${d.latest_close}`;
+                msg = `<span style="color: var(--text-secondary);">${d.symbol}</span> <span style="color: var(--accent);">${d.latest_close.toFixed(2)}</span> (${candleCount} candles)`;
+            } else if (log.event_type === 'signal') {
+                // Task 8: Beautiful signals
+                const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
+                const sideColor = d.signal === 'BUY' ? 'var(--success)' : 'var(--danger)';
+                msg = `<span style="font-weight: bold; color: ${sideColor}">${d.signal} ${d.symbol}</span> @ ${d.price} | Conf: ${d.confidence} | Reason: ${d.rationale}`;
+            } else if (log.event_type === 'order_request' || log.event_type === 'order_filled') {
+                // Task 8: Beautiful orders
+                const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
+                const sideColor = d.side === 'buy' ? 'var(--success)' : 'var(--danger)';
+                const status = d.status || 'REQUESTED';
+                msg = `<span style="font-weight: bold; color: ${sideColor}">${d.side.toUpperCase()} ${d.symbol}</span> | Amt: ${d.amount.toFixed(4)} | Status: ${status}`;
             }
 
             return `
@@ -314,194 +435,194 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    stopBtn.addEventListener('click', async () => {
-        try {
-            await fetch('/stop', { method: 'POST' });
-            updateStatus();
-        } catch (e) {
-            console.error('Stop failed', e);
-        }
-    });
+stopBtn.addEventListener('click', async () => {
+    try {
+        await fetch('/stop', { method: 'POST' });
+        updateStatus();
+    } catch (e) {
+        console.error('Stop failed', e);
+    }
+});
 
-    emergencyBtn.addEventListener('click', async () => {
-        if (!confirm('!!! EMERGENCY STOP !!!\nThis will CLOSE ALL POSITIONS and stop the system. Are you sure?')) return;
+emergencyBtn.addEventListener('click', async () => {
+    if (!confirm('!!! EMERGENCY STOP !!!\nThis will CLOSE ALL POSITIONS and stop the system. Are you sure?')) return;
 
-        emergencyBtn.disabled = true;
-        emergencyBtn.innerText = 'CLOSING...';
+    emergencyBtn.disabled = true;
+    emergencyBtn.innerText = 'CLOSING...';
 
-        try {
-            await fetch('/emergency-stop', { method: 'POST' });
-            updateStatus();
-            alert('Emergency stop command issued successfully.');
-        } catch (e) {
-            console.error('Emergency stop failed', e);
-            alert('Failed to issue emergency stop!');
-        } finally {
-            emergencyBtn.disabled = false;
-            emergencyBtn.innerHTML = '<i data-lucide="alert-triangle"></i> EMERGENCY STOP';
+    try {
+        await fetch('/emergency-stop', { method: 'POST' });
+        updateStatus();
+        alert('Emergency stop command issued successfully.');
+    } catch (e) {
+        console.error('Emergency stop failed', e);
+        alert('Failed to issue emergency stop!');
+    } finally {
+        emergencyBtn.disabled = false;
+        emergencyBtn.innerHTML = '<i data-lucide="alert-triangle"></i> EMERGENCY STOP';
+        if (window.lucide) lucide.createIcons();
+    }
+});
+
+clearLogsBtn.addEventListener('click', () => {
+    const msg = '<div class="log-entry system-msg">Logs cleared (locally)</div>';
+    const mini = document.getElementById('log-container-mini');
+    const full = document.getElementById('log-container-full');
+    if (mini) mini.innerHTML = msg;
+    if (full) full.innerHTML = msg;
+});
+
+// Navigation logic
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        const viewId = item.getAttribute('data-view');
+
+        // Hide all views
+        document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+
+        // Show target view
+        const targetView = document.getElementById(`view-${viewId}`);
+        if (targetView) {
+            targetView.style.display = 'block';
+            // Trigger icon refresh for the new view
             if (window.lucide) lucide.createIcons();
         }
     });
+});
 
-    clearLogsBtn.addEventListener('click', () => {
-        const msg = '<div class="log-entry system-msg">Logs cleared (locally)</div>';
-        const mini = document.getElementById('log-container-mini');
-        const full = document.getElementById('log-container-full');
-        if (mini) mini.innerHTML = msg;
-        if (full) full.innerHTML = msg;
-    });
+function formatUptime(seconds) {
+    if (!seconds) return '--';
+    if (seconds < 60) return `${seconds}s`;
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}m ${secs}s`;
+}
 
-    // Navigation logic
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-
-            const viewId = item.getAttribute('data-view');
-
-            // Hide all views
-            document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
-
-            // Show target view
-            const targetView = document.getElementById(`view-${viewId}`);
-            if (targetView) {
-                targetView.style.display = 'block';
-                // Trigger icon refresh for the new view
-                if (window.lucide) lucide.createIcons();
-            }
-        });
-    });
-
-    function formatUptime(seconds) {
-        if (!seconds) return '--';
-        if (seconds < 60) return `${seconds}s`;
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins}m ${secs}s`;
+function getAgentRole(name) {
+    const roles = {
+        'MarketData': 'Data Producer',
+        'RegimeDetection': 'Analyst',
+        'AnomalyDetection': 'Watchdog',
+        'EMACrossStrategy': 'Strategist',
+        'Strategy': 'Strategist',
+        'Risk': 'Gatekeeper',
+        'Execution': 'Executor',
+        'AuditLog': 'Historian',
+        'Aggregator': 'Reporter',
+        'Governor': 'Orchestrator'
+    };
+    for (const [key, role] of Object.entries(roles)) {
+        if (name.includes(key)) return role;
     }
+    return 'Participant';
+}
 
-    function getAgentRole(name) {
-        const roles = {
-            'MarketData': 'Data Producer',
-            'RegimeDetection': 'Analyst',
-            'AnomalyDetection': 'Watchdog',
-            'EMACrossStrategy': 'Strategist',
-            'Strategy': 'Strategist',
-            'Risk': 'Gatekeeper',
-            'Execution': 'Executor',
-            'AuditLog': 'Historian',
-            'Aggregator': 'Reporter',
-            'Governor': 'Orchestrator'
-        };
-        for (const [key, role] of Object.entries(roles)) {
-            if (name.includes(key)) return role;
-        }
-        return 'Participant';
-    }
+function updateFlowStates(agents) {
+    // Simple logic to highlight flow nodes based on running agents
+    const hasMarket = agents.some(a => a.name.includes('MarketData') && a.is_running);
+    const hasAnalysis = agents.some(a => (a.name.includes('Regime') || a.name.includes('Anomaly')) && a.is_running);
+    const hasStrategy = agents.some(a => (a.name.includes('Strategy')) && a.is_running);
+    const hasRisk = agents.some(a => a.name.includes('Risk') && a.is_running);
+    const hasExecution = agents.some(a => a.name.includes('Execution') && a.is_running);
 
-    function updateFlowStates(agents) {
-        // Simple logic to highlight flow nodes based on running agents
-        const hasMarket = agents.some(a => a.name.includes('MarketData') && a.is_running);
-        const hasAnalysis = agents.some(a => (a.name.includes('Regime') || a.name.includes('Anomaly')) && a.is_running);
-        const hasStrategy = agents.some(a => (a.name.includes('Strategy')) && a.is_running);
-        const hasRisk = agents.some(a => a.name.includes('Risk') && a.is_running);
-        const hasExecution = agents.some(a => a.name.includes('Execution') && a.is_running);
+    if (hasMarket) document.getElementById('node-market')?.classList.add('active');
+    else document.getElementById('node-market')?.classList.remove('active');
 
-        if (hasMarket) document.getElementById('node-market')?.classList.add('active');
-        else document.getElementById('node-market')?.classList.remove('active');
+    if (hasAnalysis) document.getElementById('node-analysis')?.classList.add('active');
+    else document.getElementById('node-analysis')?.classList.remove('active');
 
-        if (hasAnalysis) document.getElementById('node-analysis')?.classList.add('active');
-        else document.getElementById('node-analysis')?.classList.remove('active');
+    if (hasStrategy) document.getElementById('node-strategy')?.classList.add('active');
+    else document.getElementById('node-strategy')?.classList.remove('active');
 
-        if (hasStrategy) document.getElementById('node-strategy')?.classList.add('active');
-        else document.getElementById('node-strategy')?.classList.remove('active');
+    if (hasRisk) document.getElementById('node-risk')?.classList.add('active');
+    else document.getElementById('node-risk')?.classList.remove('active');
 
-        if (hasRisk) document.getElementById('node-risk')?.classList.add('active');
-        else document.getElementById('node-risk')?.classList.remove('active');
+    if (hasExecution) document.getElementById('node-execution')?.classList.add('active');
+    else document.getElementById('node-execution')?.classList.remove('active');
+}
 
-        if (hasExecution) document.getElementById('node-execution')?.classList.add('active');
-        else document.getElementById('node-execution')?.classList.remove('active');
-    }
+async function updateEquityChart() {
+    try {
+        const resp = await fetch('/equity');
+        const data = await resp.json();
 
-    async function updateEquityChart() {
-        try {
-            const resp = await fetch('/equity');
-            const data = await resp.json();
+        if (data.length === 0) return;
 
-            if (data.length === 0) return;
+        const labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
+        const values = data.map(d => d.total_equity);
 
-            const labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
-            const values = data.map(d => d.total_equity);
-
-            if (!equityChart) {
-                const ctx = document.getElementById('equity-chart').getContext('2d');
-                equityChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Total Equity (USDT)',
-                            data: values,
-                            borderColor: '#00f2fe',
-                            backgroundColor: 'rgba(0, 242, 254, 0.1)',
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 2
-                        }]
+        if (!equityChart) {
+            const ctx = document.getElementById('equity-chart').getContext('2d');
+            equityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Equity (USDT)',
+                        data: values,
+                        borderColor: '#00f2fe',
+                        backgroundColor: 'rgba(0, 242, 254, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false }
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#8b949e' }
                         },
-                        scales: {
-                            y: {
-                                grid: { color: 'rgba(255,255,255,0.05)' },
-                                ticks: { color: '#8b949e' }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: '#8b949e' }
-                            }
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#8b949e' }
                         }
                     }
-                });
-            } else {
-                equityChart.data.labels = labels;
-                equityChart.data.datasets[0].data = values;
-                equityChart.update();
-            }
-        } catch (e) {
-            console.error('Failed to fetch equity data', e);
+                }
+            });
+        } else {
+            equityChart.data.labels = labels;
+            equityChart.data.datasets[0].data = values;
+            equityChart.update();
         }
+    } catch (e) {
+        console.error('Failed to fetch equity data', e);
     }
+}
 
-    async function showAgentEvents(agentName) {
-        try {
-            const resp = await fetch(`/agents/${agentName}/events?limit=50`);
-            const data = await resp.json();
+async function showAgentEvents(agentName) {
+    try {
+        const resp = await fetch(`/agents/${agentName}/events?limit=50`);
+        const data = await resp.json();
 
-            const modal = document.getElementById('agent-events-modal');
-            const modalTitle = document.getElementById('modal-agent-name');
-            const eventsContainer = document.getElementById('modal-events-list');
+        const modal = document.getElementById('agent-events-modal');
+        const modalTitle = document.getElementById('modal-agent-name');
+        const eventsContainer = document.getElementById('modal-events-list');
 
-            modalTitle.innerText = agentName;
+        modalTitle.innerText = agentName;
 
-            if (data.events && data.events.length > 0) {
-                eventsContainer.innerHTML = data.events.map(event => {
-                    const time = new Date(event.timestamp).toLocaleTimeString();
-                    const priorityColor = {
-                        'CRITICAL': 'var(--danger)',
-                        'HIGH': 'var(--warning)',
-                        'NORMAL': 'var(--accent)',
-                        'LOW': 'var(--text-secondary)'
-                    }[event.priority] || 'var(--text-secondary)';
+        if (data.events && data.events.length > 0) {
+            eventsContainer.innerHTML = data.events.map(event => {
+                const time = new Date(event.timestamp).toLocaleTimeString();
+                const priorityColor = {
+                    'CRITICAL': 'var(--danger)',
+                    'HIGH': 'var(--warning)',
+                    'NORMAL': 'var(--accent)',
+                    'LOW': 'var(--text-secondary)'
+                }[event.priority] || 'var(--text-secondary)';
 
-                    let eventData = typeof event.data === 'string' ? event.data : JSON.stringify(event.data, null, 2);
+                let eventData = typeof event.data === 'string' ? event.data : JSON.stringify(event.data, null, 2);
 
-                    return `
+                return `
                         <div class="event-item">
                             <div class="event-header">
                                 <span class="event-time">${time}</span>
@@ -511,43 +632,45 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="event-data"><pre>${eventData}</pre></div>
                         </div>
                     `;
-                }).join('');
-            } else {
-                eventsContainer.innerHTML = '<div class="empty-state">No events found for this agent</div>';
-            }
-
-            modal.style.display = 'flex';
-        } catch (e) {
-            console.error('Failed to fetch agent events', e);
-            alert('Failed to load agent events');
+            }).join('');
+        } else {
+            eventsContainer.innerHTML = '<div class="empty-state">No events found for this agent</div>';
         }
+
+        modal.style.display = 'flex';
+    } catch (e) {
+        console.error('Failed to fetch agent events', e);
+        alert('Failed to load agent events');
     }
+}
 
-    // Close modal handlers
-    const modal = document.getElementById('agent-events-modal');
-    const closeBtn = document.getElementById('close-modal');
+// Close modal handlers
+const modal = document.getElementById('agent-events-modal');
+const closeBtn = document.getElementById('close-modal');
 
-    if (closeBtn) {
-        closeBtn.onclick = () => {
+if (closeBtn) {
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
+}
+
+if (modal) {
+    modal.onclick = (e) => {
+        if (e.target === modal) {
             modal.style.display = 'none';
-        };
-    }
+        }
+    };
+}
 
-    if (modal) {
-        modal.onclick = (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-    }
+// Initial load
+updateStatus();
+fetchLogs();
+updateEquityChart();
 
-    // Initial load
-    updateStatus();
-    fetchLogs();
-    updateEquityChart();
-
-    // Polling
-    setInterval(updateStatus, 5000);
-    setInterval(fetchLogs, 3000);
-    setInterval(updateEquityChart, 10000);
+// Polling
+setInterval(updateStatus, 5000);
+setInterval(fetchLogs, 3000);
+setInterval(updateEquityChart, 10000);
+setInterval(fetchPortfolio, 2000); // Polling for portfolio
+setInterval(fetchTrades, 5000); // Polling for trades history
 });

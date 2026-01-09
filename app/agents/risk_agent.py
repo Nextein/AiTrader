@@ -29,6 +29,8 @@ class RiskAgent(BaseAgent):
             })
             logger.info("RiskAgent initialized in LIVE mode")
 
+        self.latest_candles = []
+
     async def run_loop(self):
         event_bus.subscribe(EventType.SIGNAL, self.on_signal)
         event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
@@ -57,6 +59,17 @@ class RiskAgent(BaseAgent):
         if data.get("confidence", 0) < 0.6:
             logger.info(f"Signal rejected: Confidence too low ({data.get('confidence')})")
             return
+
+        # Task 3: Enforce SL and TP values
+        sl_price = data.get("sl_price")
+        tp_price = data.get("tp_price")
+        if sl_price is None or tp_price is None:
+            logger.warning(f"Risk Rejected: Signal missing SL ({sl_price}) or TP ({tp_price})")
+            return
+            
+        # Task 4: Normalize SL/TP (could be list for multiple TPs)
+        if not isinstance(sl_price, list): sl_price = [sl_price]
+        if not isinstance(tp_price, list): tp_price = [tp_price]
 
         # Dynamic Position Sizing
         try:
@@ -106,6 +119,8 @@ class RiskAgent(BaseAgent):
                 "type": "market",
                 "amount": trade_size_usdt / signal_price, # amount in base asset
                 "price": signal_price,
+                "sl_price": sl_price,
+                "tp_price": tp_price,
                 "rationale": f"{data.get('rationale')} | Dynamic Size: {trade_size_usdt:.2f} USDT",
                 "agent": self.name
             }
