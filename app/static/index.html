@@ -3,46 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChartChampion AI | Trading Dashboard</title>
+    <title>ChartChampion AI | Pro Trading Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>
-                <span class="logo-icon">▲</span> 
-                ChartChampion AI
-            </h1>
-            <div id="system-status" class="status-badge">Checking connection...</div>
-        </header>
-
-        <section class="grid">
-            <div class="card">
-                <div class="card-title">Market Regime</div>
-                <div id="regime-value" class="card-value">--</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Active Symbol</div>
-                <div id="symbol-value" class="card-value">--</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Trading Status</div>
-                <div class="controls">
-                    <button id="start-btn" class="btn-primary">START</button>
-                    <button id="stop-btn" class="btn-danger">STOP</button>
+<body class="dark-theme">
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-text">CHART<span>CHAMPION</span></span>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h2 style="margin-bottom: 1rem; font-size: 1.25rem;">Live Audit Trail</h2>
-            <div id="log-container" class="log-container">
-                <!-- Logs will be injected here -->
-                <div class="log-entry">Waiting for system logs...</div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-view="agents">
+                    <i data-lucide="users"></i> Agents
+                </a>
+                <a href="#" class="nav-item" data-view="logs">
+                    <i data-lucide="terminal"></i> Audit Trail
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="system-status" class="status-indicator">
+                    <span class="pulse"></span>
+                    <span class="status-text">INITIALIZING</span>
+                </div>
             </div>
-        </section>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h2>Live Dashboard</h2>
+                    <p class="text-muted">Real-time multi-agent orchestration</p>
+                </div>
+                <div class="top-bar-actions">
+                    <div class="trading-status-card">
+                        <span class="label">Symbol:</span>
+                        <span id="symbol-value" class="value">--</span>
+                    </div>
+                    <button id="start-btn" class="btn btn-glow-success">
+                        <i data-lucide="play"></i> START SYSTEM
+                    </button>
+                    <button id="stop-btn" class="btn btn-glow-danger">
+                        <i data-lucide="square"></i> STOP SYSTEM
+                    </button>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon signal"><i data-lucide="zap"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Signals</span>
+                        <span id="stat-signals" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon order"><i data-lucide="shopping-cart"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Orders Executed</span>
+                        <span id="stat-orders" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon regime"><i data-lucide="trending-up"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Market Regime</span>
+                        <span id="regime-value" class="stat-value">--</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-grid">
+                <section class="agents-section">
+                    <div class="section-header">
+                        <h3><i data-lucide="activity"></i> Active Agents</h3>
+                    </div>
+                    <div id="agents-container" class="agents-grid">
+                        <!-- Agent cards will be injected here -->
+                        <div class="empty-state">No agents initialized</div>
+                    </div>
+                </section>
+
+                <section class="audit-section">
+                    <div class="section-header">
+                        <h3><i data-lucide="scroll_text"></i> Audit Trail</h3>
+                        <div class="log-actions">
+                            <button id="clear-logs" class="btn-icon"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </div>
+                    <div id="log-container" class="log-viewport">
+                        <div class="log-entry system-msg">Connecting to audit stream...</div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
     <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
