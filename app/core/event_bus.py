@@ -133,7 +133,7 @@ class EventBus:
         events = list(self._agent_events[agent_name])[-limit:]
         return [{
             'event_type': event.event_type.value,
-            'data': event.data,
+            'data': self._convert_to_serializable(event.data),
             'timestamp': event.timestamp.isoformat(),
             'priority': event.priority.name,
             'agent_name': event.agent_name
@@ -144,11 +144,28 @@ class EventBus:
         events = list(self._event_history)[-limit:]
         return [{
             'event_type': event.event_type.value,
-            'data': event.data,
+            'data': self._convert_to_serializable(event.data),
             'timestamp': event.timestamp.isoformat(),
             'priority': event.priority.name,
             'agent_name': event.agent_name
         } for event in events]
+    
+    def _convert_to_serializable(self, obj: Any) -> Any:
+        """Convert numpy and other non-serializable types to native Python types"""
+        import numpy as np
+        
+        if isinstance(obj, dict):
+            return {k: self._convert_to_serializable(v) for k, v in obj.items()}
+        elif isinstance(obj, (list, tuple)):
+            return [self._convert_to_serializable(item) for item in obj]
+        elif isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return obj
 
 # Global instance
 event_bus = EventBus()
