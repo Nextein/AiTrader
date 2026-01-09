@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elements
     const startBtn = document.getElementById('start-btn');
     const stopBtn = document.getElementById('stop-btn');
+    const emergencyBtn = document.getElementById('emergency-btn');
     const statusText = document.querySelector('.status-text');
     const statusPulse = document.querySelector('.pulse');
     const symbolVal = document.getElementById('symbol-value');
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isRunning = false;
     let knownAgents = new Set();
+    let equityChart = null;
 
     async function updateStatus() {
         try {
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             statusPulse.style.background = isRunning ? 'var(--success)' : 'var(--text-secondary)';
             statusPulse.style.animation = isRunning ? 'pulse 2s infinite' : 'none';
 
-            symbolVal.innerText = data.config.symbol;
+            symbolVal.innerText = Array.isArray(data.config.symbols) ? data.config.symbols.join(', ') : data.config.symbol;
 
             // Update button states
             startBtn.disabled = isRunning;
@@ -266,6 +268,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    emergencyBtn.addEventListener('click', async () => {
+        if (!confirm('!!! EMERGENCY STOP !!!\nThis will CLOSE ALL POSITIONS and stop the system. Are you sure?')) return;
+
+        emergencyBtn.disabled = true;
+        emergencyBtn.innerText = 'CLOSING...';
+
+        try {
+            await fetch('/emergency-stop', { method: 'POST' });
+            updateStatus();
+            alert('Emergency stop command issued successfully.');
+        } catch (e) {
+            console.error('Emergency stop failed', e);
+            alert('Failed to issue emergency stop!');
+        } finally {
+            emergencyBtn.disabled = false;
+            emergencyBtn.innerHTML = '<i data-lucide="alert-triangle"></i> EMERGENCY STOP';
+            if (window.lucide) lucide.createIcons();
+        }
+    });
+
     clearLogsBtn.addEventListener('click', () => {
         const msg = '<div class="log-entry system-msg">Logs cleared (locally)</div>';
         const mini = document.getElementById('log-container-mini');
@@ -347,11 +369,67 @@ document.addEventListener('DOMContentLoaded', () => {
         else document.getElementById('node-execution')?.classList.remove('active');
     }
 
+    async function updateEquityChart() {
+        try {
+            const resp = await fetch('/equity');
+            const data = await resp.json();
+
+            if (data.length === 0) return;
+
+            const labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
+            const values = data.map(d => d.total_equity);
+
+            if (!equityChart) {
+                const ctx = document.getElementById('equity-chart').getContext('2d');
+                equityChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Equity (USDT)',
+                            data: values,
+                            borderColor: '#00f2fe',
+                            backgroundColor: 'rgba(0, 242, 254, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#8b949e' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#8b949e' }
+                            }
+                        }
+                    }
+                });
+            } else {
+                equityChart.data.labels = labels;
+                equityChart.data.datasets[0].data = values;
+                equityChart.update();
+            }
+        } catch (e) {
+            console.error('Failed to fetch equity data', e);
+        }
+    }
+
     // Initial load
     updateStatus();
     fetchLogs();
+    updateEquityChart();
 
     // Polling
     setInterval(updateStatus, 5000);
     setInterval(fetchLogs, 3000);
+    setInterval(updateEquityChart, 10000);
 });

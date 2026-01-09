@@ -45,3 +45,9 @@ class AuditLogModel(Base):
     agent_name = Column(String)
     data = Column(JSON)
     timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+class EquityModel(Base):
+    __tablename__ = "equity_history"
+    id = Column(Integer, primary_key=True, index=True)
+    total_equity = Column(Float)
+    timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))

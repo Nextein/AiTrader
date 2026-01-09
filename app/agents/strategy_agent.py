@@ -46,6 +46,10 @@ class StrategyAgent(BaseAgent):
         df.ta.macd(fast=12, slow=26, signal=9, append=True)
         
         # Get latest values
+        if 'RSI_14' not in df.columns or 'MACD_12_26_9' not in df.columns or 'MACDs_12_26_9' not in df.columns:
+            logger.warning(f"[{self.strategy_id}] Indicators not yet available.")
+            return
+
         rsi = df['RSI_14'].iloc[-1]
         macd = df['MACD_12_26_9'].iloc[-1]
         macd_signal = df['MACDs_12_26_9'].iloc[-1]

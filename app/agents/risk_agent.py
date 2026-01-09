@@ -1,4 +1,6 @@
 import ccxt.async_support as ccxt
+import pandas as pd
+import pandas_ta as ta
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
 from app.core.config import settings
@@ -21,43 +23,70 @@ class RiskAgent(BaseAgent):
 
     async def run_loop(self):
         event_bus.subscribe(EventType.SIGNAL, self.on_signal)
+        event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
+        self.latest_candles = None
         while self.is_running:
             await asyncio.sleep(1)
+
+    async def on_market_data(self, data):
+        self.latest_candles = data.get("candles")
+
+    def calculate_atr(self, candles, period=14):
+        if not candles or len(candles) < period + 1:
+            return None
+        df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        atr = df.ta.atr(length=period)
+        if atr is None or atr.empty:
+            return None
+        val = atr.iloc[-1]
+        return float(val) if pd.notnull(val) else None
 
     async def on_signal(self, data):
         if not self.is_running:
             return
 
         # Basic risk validation
-        # 1. Confidence threshold
         if data.get("confidence", 0) < 0.6:
             logger.info(f"Signal rejected: Confidence too low ({data.get('confidence')})")
             return
 
-        # 2. Position sizing & Balance check
+        # Dynamic Position Sizing
         try:
-            logger.info(f"Checking BingX balance for {self.max_trade_size} USDT trade...")
+            logger.info("Calculating dynamic position size...")
             balance = await self.exchange.fetch_balance()
-            free_usdt = balance['USDT']['free']
+            free_usdt = float(balance['USDT']['free'])
             
-            if free_usdt < self.max_trade_size:
-                logger.warning(f"Risk Rejected: Insufficient balance ({free_usdt:.2f} USDT < {self.max_trade_size} USDT)")
+            # Risk 2% of equity per trade, adjusted by ATR
+            risk_percent = 0.02 
+            atr = self.calculate_atr(self.latest_candles)
+            
+            if atr is not None and atr > 0:
+                # Formula: Size = (Equity * Risk%) / (ATR * N)
+                # Here N=2 for a 2x ATR stop distance buffer
+                n_factor = 2
+                trade_size_usdt = (free_usdt * risk_percent) / (atr / data.get("price") * n_factor)
+                trade_size_usdt = min(trade_size_usdt, free_usdt * 0.1) # Max 10% of balance per trade
+            else:
+                trade_size_usdt = self.max_trade_size # Fallback
+                
+            if free_usdt < trade_size_usdt:
+                logger.warning(f"Risk Rejected: Insufficient balance ({free_usdt:.2f} USDT < {trade_size_usdt:.2f} USDT)")
                 return
                 
             order_request = {
                 "symbol": data.get("symbol"),
                 "side": "buy" if data.get("signal") == "BUY" else "sell",
                 "type": "market",
-                "amount": self.max_trade_size / data.get("price"), # amount in base asset
+                "amount": trade_size_usdt / data.get("price"), # amount in base asset
                 "price": data.get("price"),
-                "rationale": data.get("rationale"),
+                "rationale": f"{data.get('rationale')} | Dynamic Size: {trade_size_usdt:.2f} USDT",
                 "agent": self.name
             }
         except Exception as e:
-            logger.error(f"Error checking balance: {e}")
+            logger.error(f"Error calculating risk: {e}")
             return
 
-        logger.info(f"Risk Approved: {order_request['side']} {order_request['symbol']} size: {order_request['amount']}")
+        logger.info(f"Risk Approved: {order_request['side']} {order_request['symbol']} size: {order_request['amount']:.6f} ({trade_size_usdt:.2f} USDT)")
         await event_bus.publish(EventType.ORDER_REQUEST, order_request)
 
     async def stop(self):

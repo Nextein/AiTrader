@@ -24,7 +24,10 @@ class TestSystemPhase2(unittest.IsolatedAsyncioTestCase):
                 [1700000000000, 30000, 31000, 29000, 30500, 100],
                 [1700000060000, 30500, 31500, 30000, 25000, 100]
             ] * 50)
-            instance.create_order = AsyncMock(return_value={'id': 'test-order-phase2'})
+            instance.fetch_balance = AsyncMock(return_value={'USDT': {'free': 10000.0, 'total': 10000.0}, 'total': {'USDT': 10000.0}})
+            instance.fetch_positions = AsyncMock(return_value=[])
+            instance.cancel_all_orders = AsyncMock()
+            instance.create_order = AsyncMock(return_value={'id': 'test-order-phase2', 'status': 'closed'})
             instance.close = AsyncMock()
 
             # 2. Instantiate Agents
@@ -59,9 +62,24 @@ class TestSystemPhase2(unittest.IsolatedAsyncioTestCase):
                 
             event_bus.subscribe(EventType.ORDER_FILLED, on_order_filled)
 
-            # 5. Manually publish TWO strategy signals to test Aggregator
-            print("VERIFICATION: Publishing two conflicting signals to Aggregator...")
+            # 5. Manually publish Market Data first
+            print("VERIFICATION: Publishing Market Data...")
             ts = 1700000060000
+            ohlcv_data = [
+                [ts - 60000 * i, 30000, 31000, 29000, 30000, 100] for i in range(100)
+            ]
+            await event_bus.publish(EventType.MARKET_DATA, {
+                "symbol": "BTC-USDT",
+                "timeframe": "1m",
+                "candles": ohlcv_data,
+                "latest_close": 30000,
+                "timestamp": ts,
+                "agent": "MarketDataAgent"
+            })
+            await asyncio.sleep(0.1)
+
+            # 6. Manually publish TWO strategy signals
+            print("VERIFICATION: Publishing two conflicting signals to Aggregator...")
             
             # Signal 1: Strong BUY
             await event_bus.publish(EventType.STRATEGY_SIGNAL, {

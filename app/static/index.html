@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="dark-theme">
@@ -27,6 +28,9 @@
                 </a>
                 <a href="#" class="nav-item" data-view="logs">
                     <i data-lucide="terminal"></i> Audit Trail
+                </a>
+                <a href="#" class="nav-item" data-view="performance">
+                    <i data-lucide="line-chart"></i> Performance
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -53,6 +57,10 @@
                     </button>
                     <button id="stop-btn" class="btn btn-glow-danger">
                         <i data-lucide="square"></i> STOP SYSTEM
+                    </button>
+                    <button id="emergency-btn" class="btn btn-glow-danger"
+                        style="background: var(--danger); border: 2px solid white; animation: pulse-red 1s infinite;">
+                        <i data-lucide="alert-triangle"></i> EMERGENCY STOP
                     </button>
                 </div>
             </header>
@@ -167,6 +175,16 @@
                 </div>
                 <div id="log-container-full" class="log-viewport full">
                     <div class="log-entry system-msg">Loading historical data...</div>
+                </div>
+            </div>
+
+            <div id="view-performance" class="view" style="display: none;">
+                <div class="section-header">
+                    <h3><i data-lucide="line-chart"></i> Equity Curve</h3>
+                </div>
+                <div class="chart-container"
+                    style="background: var(--bg-secondary); border-radius: 12px; padding: 1.5rem; margin-top: 1rem;">
+                    <canvas id="equity-chart"></canvas>
                 </div>
             </div>
         </main>

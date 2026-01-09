@@ -15,6 +15,7 @@ class EventType(Enum):
     ANOMALY_ALERT = "anomaly_alert"
     ERROR = "error"
     SYSTEM_STATUS = "system_status"
+    EMERGENCY_EXIT = "emergency_exit"
 
 class EventBus:
     def __init__(self):

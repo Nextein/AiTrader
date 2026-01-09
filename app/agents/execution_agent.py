@@ -21,8 +21,42 @@ class ExecutionAgent(BaseAgent):
 
     async def run_loop(self):
         event_bus.subscribe(EventType.ORDER_REQUEST, self.on_order_request)
+        event_bus.subscribe(EventType.EMERGENCY_EXIT, self.on_emergency_exit)
         while self.is_running:
             await asyncio.sleep(1)
+
+    async def on_emergency_exit(self, data):
+        logger.warning("ExecutionAgent: EMERGENCY EXIT RECEIVED. CLOSING ALL POSITIONS.")
+        try:
+            # 1. Cancel all open orders
+            # BingX swap order cancellation
+            await self.exchange.cancel_all_orders()
+            logger.info("Emergency: All open orders cancelled.")
+
+            # 2. Close all positions
+            # For simplicity in MVP, we fetch positions and market close them
+            # This is exchange-specific. In BingX CCXT, we might need to iterate.
+            balances = await self.exchange.fetch_balance()
+            # In swap accounts, 'total' might show positions. 
+            # This is complex across different ccxt implementations.
+            # Most robust way is to fetch positions and close each.
+            positions = await self.exchange.fetch_positions()
+            for pos in positions:
+                contracts = float(pos['contracts'])
+                if contracts != 0:
+                    side = 'sell' if float(pos['contracts']) > 0 else 'buy'
+                    symbol = pos['symbol']
+                    logger.warning(f"Emergency: Closing position {symbol} volume {contracts}")
+                    await self.exchange.create_order(
+                        symbol=symbol,
+                        type='market',
+                        side=side,
+                        amount=abs(contracts),
+                        params={'reduceOnly': True}
+                    )
+            logger.info("Emergency: All positions close commands issued.")
+        except Exception as e:
+            logger.error(f"Emergency Closure Error: {e}")
 
     async def on_order_request(self, data):
         if not self.is_running:

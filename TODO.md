@@ -2,7 +2,7 @@
 
 This is a list of tasks to be completed by the agent:
 
-1. Change marketData event in UI to not display the candles data, only the symbol, timeframe and number of candles, or something similar that doesn't spam the UI so much but is still informative.
+
 2. Complete the Agents tab in the UI:
     - Add detailed view for each agent (configuration, current state, performance).
     - Implement a "restart agent" button for individual agents.

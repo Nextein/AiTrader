@@ -11,6 +11,10 @@ from app.agents.aggregator_agent import AggregatorAgent
 from app.agents.regime_detection_agent import RegimeDetectionAgent
 from app.agents.anomaly_detection_agent import AnomalyDetectionAgent
 from app.core.event_bus import event_bus, EventType
+from app.core.database import SessionLocal
+from app.models.models import EquityModel
+from app.core.config import settings
+import ccxt.async_support as ccxt
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -44,7 +48,46 @@ class GovernorAgent:
         for agent in self.agents:
             self.tasks.append(asyncio.create_task(agent.start()))
             
+        # 3. Start equity snapshotting
+        self.tasks.append(asyncio.create_task(self.equity_snapshot_loop()))
+            
         logger.info("Governor: All agents are running.")
+
+    async def equity_snapshot_loop(self):
+        """Periodically snapshots the account equity for history."""
+        # Use an exchange instance for balance fetching
+        exchange = ccxt.bingx({
+            'apiKey': settings.BINGX_API_KEY,
+            'secret': settings.BINGX_SECRET_KEY,
+            'options': {
+                'defaultType': 'swap',
+                'sandbox': settings.BINGX_IS_SANDBOX,
+            }
+        })
+        try:
+            while self.is_running:
+                try:
+                    balance = await exchange.fetch_balance()
+                    total_equity = float(balance['total']['USDT']) if 'total' in balance and 'USDT' in balance['total'] else float(balance['info']['data']['balance']) # BingX specific check
+                    
+                    if not total_equity:
+                        # Fallback for different BingX response structures
+                        total_equity = float(balance['USDT']['total'])
+
+                    with SessionLocal() as db:
+                        equity_entry = EquityModel(total_equity=total_equity)
+                        db.add(equity_entry)
+                        db.commit()
+                    
+                    logger.info(f"Equity Snapshot Saved: {total_equity:.2f} USDT")
+                except Exception as e:
+                    logger.error(f"Error in equity snapshot: {e}")
+                
+                # Snapshot every hour in production, but more frequent for demo/mvp visibility
+                sleep_time = 3600 if not settings.BINGX_IS_SANDBOX else 60 
+                await asyncio.sleep(sleep_time)
+        finally:
+            await exchange.close()
 
     async def stop(self):
         if not self.is_running:
@@ -61,6 +104,24 @@ class GovernorAgent:
         self.tasks = []
         self.is_running = False
         logger.info("Governor: System stopped.")
+
+    async def emergency_stop(self):
+        logger.warning("Governor: EMERGENCY STOP TRIGGERED!")
+        self.is_running = False
+        
+        # 1. Publish Emergency Exit Event (Execution agent will close positions)
+        await event_bus.publish(EventType.EMERGENCY_EXIT, {"reason": "User manual trigger"})
+        
+        # 2. Stop all agents
+        for agent in self.agents:
+            await agent.stop()
+            
+        # 3. Cancel tasks
+        for task in self.tasks:
+            task.cancel()
+        
+        self.tasks = []
+        logger.warning("Governor: System emergency stop complete.")
 
 # Global instance
 governor = GovernorAgent()
