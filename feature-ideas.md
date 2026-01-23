@@ -22,6 +22,7 @@ Do not implement any of these yet.
 17. Increase complexity coverage of tests.
 18. 
 
+4. SL and TP values can be relative to the entry price or absolute values. They can also be partial or full, allowing for multiple TPs or SLs to be set for a given entry.
 
 # Analyst AI Agent
 

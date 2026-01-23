@@ -73,3 +73,8 @@ python -m app.main
 ```
 Once the server is running, open your browser and navigate to:
 `http://localhost:8000/static/index.html`
+
+
+
+# Transcribe audio files to text
+for %f in (..\course\audio\*.wav) do build\bin\Release\whisper-cli.exe -m models\ggml-base.en.bin -f "%f" -otxt -of "..\course\text\%~nf.txt"
