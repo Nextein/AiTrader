@@ -1,0 +1,109 @@
+ Hello and welcome to this Entering Trades module.
+ Today, we're going to cover the Swing Failure Pattern and Liquidity.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of the Swing Failure Pattern as well as Liquidity
+ Areas, how to correctly implement them, and then go over some examples and tips and tricks
+ on how to best use them.
+ Now, let's go over the utility of Liquidity Areas and the Swing Failure Pattern.
+ Failure traders need liquidity to participate in the market.
+ Areas of heavy stop-loss placement provide that liquidity as they represent resting
+ market orders.
+ Swing Failure Patterns offer a low-risk and high-reward opportunity for possible trade entries.
+ In order to correctly implement the Swing Failure Pattern, it is important to understand
+ the concept of liquidity in the market.
+ Limit orders provide liquidity to the market, whereas market orders take liquidity from
+ the market.
+ Larger traders need liquidity to be able to participate in the market successfully, so
+ they are required to look for liquidity pools or areas, such as stop-loss areas, to participate.
+ Consolidation areas are ranges or areas in the chart where undecisive price action takes
+ place, and usually stop losses as resting market orders are commonly found at the edges
+ of these consolidation areas.
+ A Swing Failure Pattern is also known as a stop-hunt or a liquidity grab, and it is a
+ well-known mechanism that occurs in every market.
+ It is characterized by an attempt to take a swing above or below a significant high or
+ low pivot.
+ The Swing Failure Pattern occurs on all timeframes.
+ On the low timeframes, it provides a possibility for a nice scalp trade.
+ On the four-hour and higher timeframes, the Swing Failure Patterns provide possible trend
+ reversals.
+ Now let's have a look at a practical example.
+ Here we have a well-established high timeframe range on the Bitcoin chart.
+ Specifically, we are now looking at the high put-in on the 7th of December.
+ As you can observe, 20 days later, the high is taken and there is a swing failure pattern
+ with a four-hour candle close below the previous pivot.
+ This on its own is already a trigger for a possible short entry from the top of the range
+ after a swing failure pattern, which in this case provides very nice follow-through all
+ the way down to the bottom of the range.
+ It is safe to assume that traders entering short positions looking at the higher timeframe
+ range as it develops would put their stop loss above this significant high pivot.
+ A stop loss for a short trade is a market buy order.
+ Once price then travels beyond this pivot and triggers the stop losses or market buy
+ orders, it provides the opportunity for a larger trader or group of traders to enter
+ the market with the opposite orders, in this case market sell orders.
+ Entering a short trade after such a swing failure pattern provides a very nice risk reward
+ opportunity with a stop loss above the new weak high pivot and a possible target of the
+ bottom of the range or even further.
+ It is also possible to use the point of control of the range as a take profit area as well
+ as the value area high, the value area low or any other horizontal levels, fib levels
+ or other technical analysis tools that you use to determine your best confluence areas.
+ Even though swing failure patterns occur on every time frame, it is on the higher time
+ frames where powerful trend reversals can begin after such a swing failure pattern, in
+ this case with a full rotation to the opposite side of the range and as we can observe later
+ on continuation to the downside.
+ This would be the beginning of a very nice swing trade with take profit levels as we progress
+ through the range and the possibility of letting part of the trade run further on as
+ the range is lost or compounding the trade by entering another short as the range is
+ lost.
+ Now let's go over some tips and tricks on how to best trade the swing failure pattern.
+ For beginners we recommend that you follow these four steps.
+ Step one, wait for price action to take the high or low pivot in question.
+ Step two, wait for a candle close below the previous high or above the previous low that
+ you are considering.
+ Step three, take profit at the opposite edge of the range or the point of control if the
+ range is big.
+ Step four, compound or let the trade run as market structure changes.
+ For advanced traders we recommend that you trade the swing failure pattern using footprint
+ software such as exochards or ATAS.
+ The following three steps are helpful to determine a swing failure pattern in the making and
+ successfully occurring.
+ Step one, look for trapped traders and compare volume and delta on the swing attempts.
+ Step two, look for demand to appear in the form of large buying or selling imbalances
+ combined with an increase in open interest in the reverse direction of the swing.
+ Step three, look for a change in market structure to confirm the swing failure pattern.
+ Now let's have a look at a practical example using the footprint software exochards.
+ Here we have the bibit BTC USD chart on the 5 minute timeframe and we can observe a nicely
+ established sideways range.
+ Let's have a look at this pivot high and what happens when it is revisited here.
+ Our reference level or pivot high is approximately $44,925.
+ Now let's zoom in and use the delta cluster feature to see what is actually happening
+ inside the 5 minute candles.
+ Here we can observe that there is an increase in volume and positive delta as we approach
+ the highs.
+ Here we have 81 million volume in the 5 minute candle and 31 million positive delta.
+ On this push past our reference level we see that the volume is slightly higher and yet
+ positive delta is less.
+ We can also see market imbalances on the buy side and sell side at the top.
+ In this case all of the buying as well as the point of control at the top of the candle
+ could indicate possible trapped traders in this case longs if price reverses beyond a
+ reference level.
+ In this case we wait for the next candle and observe that price retraces below our reference
+ level and selling imbalances begin to appear.
+ Volume remains the same and yet delta has turned negative.
+ This already offers us a possibility to enter a short trade with a stop loss above the highs
+ and possibly expect a rotation to the lows of the range.
+ As we zoom out we can see that the trade has a nice follow through and offers us a pretty
+ much complete rotation to the lows of this local range.
+ As liquidity areas are being tapped and possible swing failure patterns begin to appear we
+ recommend that you do not try to catch a falling knife and that you instead wait for all ingredients
+ to be present.
+ Entering a swing failure pattern trade before step 3 is aggressive and very risky.
+ A stop loss placement below or above the swing failure pattern week is correct.
+ Here is the take-home message for this module.
+ Strategy is needed for larger traders to participate in the market.
+ Swing failure patterns offer powerful trade entries with a great risk reward ratio.
+ We recommend that you do not try to catch the falling knife and instead wait for all
+ ingredients to be present when trading a swing failure pattern.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

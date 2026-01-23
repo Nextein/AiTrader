@@ -1,0 +1,58 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering
+ Igor time. Please pause this video and take a moment to read this trade disclaimer
+ as the information contained in this video is not financial advice and is
+ only for educational purposes. In this module we will cover the utility of Igor
+ time, how to correctly implement it and then go over some examples and tips and
+ tricks on how to best use it. Igor time is used to time volatility. Major pivots
+ can be created or key levels can be broken on Igor time. It is very powerful once
+ you are able to read market context. In order to implement Igor time you will
+ need specialized software such as exocharts or ATAS. Then you can load the
+ sessions template by Igor. The next step is to note the four Igor sessions per
+ day each starting on Igor time. The Igor session times in UTC are as follows.
+ Is one from midnight to six in the morning. Is two from six in the morning to 12
+ noon. Is three from 12 noon to 8 p.m. and is four from 8 p.m. to midnight. To
+ implement Igor time you look for a major price move or a pivot to be
+ established at the start of each Igor time session. For example when is three
+ begins at 12 noon you can monitor price action from 1150 a.m. to 1230 p.m. UTC.
+ Being able to read market context is very important to determine the possible
+ direction of the price move. Now let's have a look at a practical example. Here
+ we have the Igor sessions template on exocharts desktop pro. We have expanded
+ the clusters and text for this is three is four and is one sessions. By expanding
+ the TPO profile in this way we can now follow price action as the 30 minute TPO
+ columns are formed. Is three which is generally the session with the highest
+ volume begins here and sets during the second row the pivot high for the session
+ which is we can observe is the beginning of a significant downtrend. The high is
+ set at the point of control of the previous session is two and then price
+ begins to move lower and lower. We can then observe that at the beginning of is
+ four a similar situation occurs with the high for the session being set during
+ the second TPO row and then the downtrend resuming to make a new lower low. Now we
+ can have a look at what is one did after this downtrend move. Once again in the
+ second TPO column of the session the pivot high was put in and in this case
+ an even a larger move to the downside occurred. This example shows why it is
+ so important to be aware of Igor time and the beginning of a new Igor session
+ as significant price pivots can be established that precede a strong price
+ move. In this case we can also observe that the points of control of the
+ previous session hold as resistance showing that the trend is intact. Igor
+ time only prepares you for a possible volume injection causing volatility. It
+ is important that you use market context technical analysis tools and order flow
+ reading to determine the direction of the price move. Igor session times are
+ different than the standard London New York and Asia legacy market trading hours.
+ Igor times are based on statistics gathered on when the most volatility
+ occurs at certain times of the day. Igor times are subject to change should a
+ new pattern emerge. Igor time is different than Fibonacci time. Fibonacci
+ time is useful to estimate price moves days weeks or even months in advance and
+ possible major trend reversals. Igor time is used for intraday trades. It is
+ possible to combine them to time a volatile move on a specific Fibonacci
+ time day. Now let's go over some tips and tricks. Common price moves on Igor time
+ are for example a swing failure pattern or the start of a major squeeze or price
+ move as volume is injected by larger traders. We recommend that you use the
+ Igor session template in combination with the chart champions footprint
+ template to monitor order flow. The most volatility is generally observed at the
+ start of IS 3. The general ranking by volume from highest to lowest is IS 3,
+ then IS 2 followed by IS 4 and finally IS 1. It is important to note that not
+ every Igor session has a volatile price move. Here is the take-home message for
+ this module. Igor times are useful to time volatility. Major pivot highs, lows
+ or breaks of key levels are expected at the start of Igor sessions on Igor
+ time. Reading market context correctly is necessary to anticipate the direction
+ of the price move. This concludes today's module. Thank you for watching and I'll
+ see you on the next one. Happy learning and happy trading!

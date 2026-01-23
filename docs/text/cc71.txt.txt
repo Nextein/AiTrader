@@ -1,0 +1,127 @@
+ Hello and welcome to this advanced strategies module. Today we're going to
+ be covering clusters and order blocks. Please pause this video and take a
+ moment to read this trade disclaimer. As the information contained in this
+ video is not financial advice and is only for educational purposes. In this
+ module we will cover the utility of clusters and order blocks, how to
+ correctly implement them, and then go over some examples and tips and tricks
+ on how to best use them. Clusters and order blocks are useful in the 4x stock
+ and cryptocurrency markets. They provide higher probabilities for trade setups
+ when used with confluence. Clusters specifically provide a more
+ advanced and powerful approach. In order to correctly implement order blocks we
+ recommend that you use the .25 range tool on trading view to mark the order
+ block. This would be the basic approach. To examine clusters which is the advanced
+ approach you will need specialized software such as exochards or attas.
+ Then in this software you can load the clusters template by Igor. A bullish
+ order block is the last down or red closed candle, formed at or near a key
+ level of support. The order block is only confirmed when the next candle
+ trades above the order blocks high. The most probable bullish order blocks are
+ followed by an impulsive price move up with imbalances and creating single
+ prints. The so-called unfinished business. Conversely a bearish order block is the
+ last up or green closed candle formed at or near a key level of resistance. The
+ bearish order block is only confirmed when the next candle trades below the
+ order blocks low. The most probable bearish order blocks are followed by
+ an impulsive price move down with imbalances and creating single prints.
+ Once again the so-called unfinished business. Now we are going to cover how
+ to trade an order block using the basic approach. We recommend that you use the
+ .25 range tool on trading view to mark the order block. Then pull from open to
+ close for a bullish order block or from close to open for a bearish order block.
+ The next step is to latter your orders at the zero, the .25, the .5 and the .75
+ levels when price revisits the order block. The invalidation and stop loss
+ placement for a bullish order block is below the swing low where the order block
+ was formed. Conversely the invalidation for a bearish order block and stop loss
+ placement is above the swing high where the order block was formed. When trading
+ an order block it is possible to choose price targets conservatively or
+ aggressively. The conservative target would be the next opposite order block and or
+ champions channel. The aggressive target would be above the next
+ swing high for a bullish order block or below the previous swing low for a bearish
+ order block. Now let's have a look at a practical example of a bullish order
+ block. Here we have the link USDT perpetual contract chart on the four
+ hour time frame on bibit. Down here we can identify a bullish order block as the
+ last red candle closing down before an impulsive green candle that began this
+ entire reversal move. Now we can use the fib retracement tool to mark the bullish
+ order block from the open to the close of the candle. In order to transform the
+ fib retracement tool into the .25 range tool you need to input these values
+ in the settings. We can classify this order block as interesting as it begins
+ at a key area with a swing failure pattern of the local lows as well as a
+ failed auction process of the previous lows from days before. The impulsive move
+ away from the order block has very nice follow through. Thus we can now expect
+ that upon revisiting this order block might react to it. Based on the basic
+ approach for order blocks using the .25 range tool we can then theoretically
+ ladder long orders at the 1 0.75 0.5 0.25 and 0 levels. The disadvantage in this
+ approach is that drawdown has to be experienced as price moves down
+ through the levels. The invalidation for this approach
+ is quite simple. The stop loss can be placed below the swing low
+ where the bullish order block was created. In this example we can observe that the
+ reaction from the .25 level of the order block
+ was very nice and totaled almost 8%. The aggressive approach is then to take
+ profits above these highs. The more conservative approach would be to take
+ profits already at the opposite CC from the previous
+ high to the low made. Now let's go over how to trade an order block
+ using the advanced approach with clusters. First identify the clusters
+ inside the candles. These are buy and sell orders.
+ You can activate your x-ray vision to see the clusters by using order flow
+ software such as exochards and atas with the e-gore clusters template.
+ Then use this information to better understand
+ trader behavior as the order block was formed. When identifying clusters
+ inside the candles you should check for delta, volume,
+ imbalances, trap traders and the point of control for both
+ volume and TBO. Then zoom in to the clusters to analyze this data
+ to then be able to form a trading plan.
+ After a practical example covering how to approach trading an order block
+ following the basic method we can ask ourselves the question
+ but what if there was a better way to trade this order block?
+ The answer is there is clusters. Here we have the clusters template
+ on atas showing us the same section of price action
+ with the bullish order block being created here
+ and price revisiting it here. Perhaps now we can zoom into the candles
+ with our x-ray vision and see if there is a reason
+ for the bounce from the .25 level that gave a nearly 8% move.
+ Let's check out the specific order block.
+ As we zoom in we already begin to see that there is a point of control
+ exactly at this level. Let's continue to zoom in
+ to find out what exact delta and volume information
+ was contained within this candle. Here we have our footprint bar
+ statistics and now we can actually look inside the candle
+ and see if there were any imbalances and where the point of control for this
+ candle was.
+ Using this information we can then look for the areas in the order block
+ with the highest volume transacted as those
+ will likely have the highest amount of trap traders
+ that can be involved in a reaction of such an order block.
+ The advantage of this approach is that we can zoom in to the
+ almost exact level where a reaction can be expected
+ and it is then not necessary to endure the drawdown of the basic
+ approach. The entries using this method with clusters
+ can be more precise and involve less risk.
+ Zooming back out now we have a good explanation of why price got the nice reaction
+ from this exact level and produced a nearly 8% move.
+ This level around 5.65 is the point of control as we can observe
+ here of the order block candle. In other words
+ the highest amount of transacted volume horizontally
+ was here and it provided a nearly 8% reaction.
+ Now let's go over some tips and tricks.
+ Using the body of the candle is recommended to mark the order block
+ with the 0.25 range tool. We also recommend that you look for at least
+ one strong confluence additionally. If no key level is hit
+ don't consider the order block as price will likely travel through it.
+ The higher the time frame of the order block
+ the larger the price move away from it can be.
+ It is possible to trade order blocks on any time frame.
+ The ideal age for an order block is
+ intraday, eager session to eager session
+ or one to two weeks back. These are very useful order blocks.
+ We recommend that you use clusters instead of just order blocks
+ with the 0.25 range tool as you will be able to get
+ better entries with less risk and less drawdown.
+ Cluster analysis combined with the CCTR trading strategy
+ is recommended as you will be able to get very precise entries
+ with a very good risk to reward ratio.
+ We also recommend that you prioritize clusters with more volume
+ as you can then expect a larger price move as a reaction.
+ Here is the take-home message for this module.
+ Clusters and order blocks are powerful tools
+ useful across all markets. With confluence they can provide
+ high probability trade setups. Cluster analysis provides an advanced
+ improved and more precise approach to trading order blocks.
+ This concludes today's module. Thank you for watching
+ and I'll see you on the next one. Happy learning and happy trading!

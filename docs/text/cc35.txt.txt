@@ -1,0 +1,63 @@
+ Hello and welcome to this volume module. Today we're going to be covering the
+ introduction to volume. Please pause this video and take a moment to read
+ this trade disclaimer. As the information contained in this video is not
+ financial advice and is only for educational purposes. In this module we
+ will cover the utility of using the volume metric, how to correctly implement
+ it, and then go over some tips and tricks on how to best use it. Volume is a great
+ metric to confirm an ongoing trend, a possible trend reversal, and the original
+ breakout or breakdown point from a range. It is also very useful to
+ monitor the health of a trend and to check reactions at key resistances or
+ support levels. In a high volume environment the liquidity is good, which
+ means orders can be filled with little to no slippage. Volume is simply the
+ number of contracts bought and sold, added together per time candle or volume
+ candle. We recommend that you focus on trading assets that have had a high
+ trading volume within the past 24 hours, especially when it comes to trading
+ altcoins. It is possible to check very detailed volume information and order
+ flow using software such as exochards and attas. Now let's have a look at a
+ practical example. The recommended settings for the volume profile tool on
+ trading view are moving average length 30 and style set to histogram. Your volume
+ profile should then look like this. The moving average line allows you to
+ easily see whether there are any volume increases or spikes when reaching certain
+ key levels. Now let's have a look at the changes in volume as we approach this
+ trend line. Here we can observe that the volume before approaching the trend line
+ is relatively low. Once the trend line is approached there is an increase in the
+ volume as we reject and lose the range support to move lower. Now let's observe
+ the behavior of volume as price action develops. On the following bearish drop
+ in price we see that there is also an increase in sell volume, well above the
+ moving average line. Then as the following range progresses volume is lower.
+ There is another spike in volume as these lows are taken and a swing
+ failure pattern occurs with an aggressive buyback and a bounce upwards. As this
+ range progresses volume tapers off. Once we reach this trend line again there is a
+ very strong reaction with a massive increase in sell volume and a subsequent
+ drop in price losing the entire previous range of support and moving down once
+ again bearishly. Here once these lows are taken there is also another increase in
+ volume above the average signaling some buying interest this time as you can see
+ on the green candles. After that a range follows with decreasing volume.
+ Finally we approach the trend line once again and after an initial weak
+ rejection there is a strong increase in volume as we break out of the trend line
+ and move higher in price. This is of course the simplified view of volume
+ behavior on trading view. However by using footprint software it is possible to see
+ very detailed statistics also in very low time frames and different types of
+ charts to pinpoint the turnaround points and the reactions at these key levels and
+ monitor the strength of the following moves. Now let's go over some tips and
+ tricks on how to best use volume. We recommend that you use volume to confirm
+ the health of a trend and to check the validity of possible breakouts or
+ breakdowns from a range. The recommended volume moving average setting is 30 and
+ also the histogram setting. Generally when price is rising and volume is
+ increasing it is considered a strong uptrend or bullish. However if price is
+ rising on decreasing volume it is considered a weak uptrend or bearish.
+ If price is declining and volume is increasing it is considered a strong
+ downtrend or bearish. However if price is declining on decreasing volume then
+ it is considered a weak downtrend and viewed as bullish. The spread is simply
+ the difference between the sell and the buy limit orders in the order book closest
+ to the current price. The spread should be as low as possible which indicates
+ good liquidity in the asset. Slippage means that orders get filled at
+ different prices than expected due to low liquidity. Here is the take-home
+ message for this module. Volume is a powerful metric useful to confirm the
+ health of a trend. Also to decipher a possible trend reversal and to check
+ the validity of a breakout or breakdown from a key level or range. It is possible
+ to use footprint software to obtain detailed volume statistics and order
+ flow statistics to have an edge on the competition. Liquidity and high volume
+ are crucial in the trading environment to be able to fill orders with little to
+ no slippage. This concludes today's module. Thank you for watching and I'll
+ see you on the next one. Happy learning and happy trading!

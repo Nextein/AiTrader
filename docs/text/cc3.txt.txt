@@ -1,0 +1,63 @@
+Getting started
+ Hello and welcome to this basics module, today we're going to be covering getting started.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover a general introduction to trading,
+ how to implement some key concepts and then go over some tips and tricks.
+ When approaching trading as a new discipline, it is important to set realistic expectations.
+ It is also key from the very beginning to calculate risk correctly and to use stop losses.
+ It is also very important to define an edge and to make a plan for each trade.
+ Trading as a discipline takes time and you can expect to invest 8 to 12 hours per day as a professional trader.
+ Losses are normal in trading and you have to accept and learn from them.
+ It takes an average of 3 to 5 years to become a consistently profitable trader.
+ Furthermore, trading is not a get-rich-quick scheme.
+ It is important to focus on the long-term vision and not the short-term picture.
+ Longevity through excellent risk management is the ultimate goal.
+ One of the most important concepts in trading is calculating risk.
+ If you take a small risk per trade, you can withstand losing streaks.
+ However, if you take high risk per trade, you can be out of business after a losing streak.
+ We recommend that you stay away from high leverage as otherwise too much capital is at risk per trade.
+ Also, we recommend a maximum of 1% account risk per trade for beginners.
+ Now, let's have a look at a practical example on how to calculate risk for a possible trade setup.
+ Let's assume that you have identified a confluence that you are interested in trading.
+ In this case, a monthly level and a CC confluence, specifically the 0.66 Fibonacci retracement level.
+ You then decide that this is enough confluence for you to enter a possible short swing trade.
+ Around this area and that your invalidation, in other words, where you are wrong on the trade is above the 786 of this Fibonacci retracement from high to low.
+ You also establish, using the Fibonacci extension tool, that you would like to see this trade ultimately reach the 1-to-1 Fibonacci extension from high to low to this lower high.
+ Or possible lower high. This would be around here.
+ This is then your trade setup and as you can see on this tool, the stop loss is approximately 4%.
+ For the purposes of this example, we will assume that the stop loss is really just exactly 4%.
+ As previously mentioned, we are only interested in taking a 1% account risk per trade.
+ Our account size for this example will be $5,400, so that a 1% risk implies a risk of $54 per trade.
+ We use the following formula. Position size equals $ risk divided by the stop loss and divided by 100.
+ In this case, our stop loss is 4% as determined here from the technical analysis setup, so that now we can input the numbers.
+ Our position size will be equal to $54, which is the maximum amount we are willing to risk on this trade.
+ And divide that by 4 divided by 100, as our stop loss is 4%.
+ This equals a position size of $1,350.
+ By using only this position size and entering a short trade at this monthly level and 0.66 confluence,
+ we can guarantee that if the trade goes against us and reaches our stop loss, we will take a 1% loss of this account, in other words, $54.
+ Keep in mind that there will also be market fees when your stop loss is executed.
+ It is also important to establish, take profit levels before entering the trade, based on market structure and confluence.
+ Ideally, we do not want to aim for the end target only on this trade, but actually take profits partially on the way there.
+ In summary, this will give us a clear plan and an exactly calculated risk for this trade setup.
+ This means there is no need to be anxious or emotional about the trade setup, because we know, before we even enter the trade, how much we can possibly lose and how much we can possibly gain.
+ It is also crucial to define your edge.
+ An edge can be defined as repeating the same procedure hundreds of times and being consistently profitable.
+ Without an edge, you are gambling.
+ If you have not worked out your edge, for example, by a combination of certain technical tools and perhaps volume analysis, then don't trade.
+ Finally, it is extremely important to always make a plan before you enter any trade.
+ You should know where you are going to exit the trade before you even enter it.
+ Always stick to your plan and keep it simple.
+ Your plan and strategy do not have to be complex.
+ You should strive for a simple and effective approach.
+ Now, let's go over some tips and tricks.
+ There is no best way to trade, only the way that works for you.
+ We recommend that you pick an area or asset and master it before moving on to the next one.
+ For example, focus on swing, day or scalp trading, or on crypto or stocks before you move on to the other categories or assets.
+ It is also important to stay humble, as you are always a student of the ever-evolving markets.
+ Here is the take-home message for this module.
+ When approaching trading as a new discipline, you should set realistic expectations, as it is not a get-rich-quick scheme.
+ It is crucial to calculate risk for each trade before entering any trades.
+ Finally, you should always define your edge and make a plan before trading.
+ No plan, no trade.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

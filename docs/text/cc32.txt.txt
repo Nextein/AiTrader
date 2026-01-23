@@ -1,0 +1,271 @@
+ Hello and welcome to this patterns module. Today, we're going to be covering harmonic patterns part one
+ Please pause this video and take a moment to read this trade disclaimer as the information contained in this video is
+ Not financial advice and is only for educational purposes in this module. We will cover the utility of
+ harmonic patterns
+ how to implement a few external and internal patterns correctly and
+ Then go over some examples and tips and tricks on how to best use them
+ Harmonic patterns are powerful Fibonacci constructs
+ They are a combination of Fibonacci retracement
+ the Fibonacci expansion the Fibonacci extension and
+ Also very important Fibonacci time
+ Harmonic patterns can provide bullish and bearish entries as well as price targets
+ Now we will cover the implementation of a few harmonic patterns
+ First we will go over two internal or consolidation harmonic patterns the bat and the guardley
+ Then we will cover three external patterns the ABCD the butterfly and the crab
+ All of these patterns work best on the four-hour and higher timeframes
+ The bat harmonic pattern is an internal pattern where xa can be an impulse of any size
+ point B is a retracement from the three a two to the point five of xa and
+ This is a requirement
+ To have a perfect bat a retracement to the point five is required
+ Point C is from the three a two to the eight eight six retracement of a to be
+ It is preferred to have the retracement be between the point five and the point six one eight
+ Finally point D the target of the harmonic pattern is the eight eight six of
+ x to a and
+ In the region of the one point six one eight to two point six one eight expansion of B to C
+ Once point D is reached and there is available confluence
+ it is possible to enter a trade from D and
+ target the six one eight of C to D and
+ As a secondary target point A
+ Now let's have a look at a visual example of the bat harmonic pattern
+ It is possible to draw this pattern using the xa BCD tool
+ on trading view
+ The completed pattern then looks like this
+ Let's check the Fibonacci requirements
+ For point B it is necessary to have a retracement of the move from x to a to the three a two
+ up to the point five
+ For a perfect bat the retracement for B should be to the point five. This is the case
+ For point C
+ We use the Fibonacci retracement tool from A to B and look for C to B between the three a two to the eight eight six
+ retracement
+ Ideally it should be between the point five and the point six one eight. This is also the case
+ For point D
+ We can use the retracement from x to a and
+ The eight eight six level as a target for D
+ The second option is
+ To use the one point six one eight to two point six one eight region of the expansion from B to C
+ As you can see these two tools together already provide nice confluence for point D
+ To establish targets
+ For a trade taken from D
+ We can use a Fibonacci retracement from C to D an aim for the six one eight and
+ All the way down to A or the beginning of the pattern
+ The stop loss would then be above X
+ To check the symmetry of the pattern we can use the Fibonacci time tool and measure from X to A
+ And expand it from A as we can see
+ Point B is the one-to-one time extension of X to A
+ Then we can check the duration from A to B and expand it from C to get a time target for point D
+ This example shows a bearish bad pattern offering a short entry setup from D
+ To trade a bullish bad pattern it can simply be inverted for a long entry at D
+ following the same criteria
+ The guardly harmonic pattern is an internal pattern where XA once again
+ Can be an impulse of any size?
+ Point B is then the six one eight retracement of X to A
+ This is a requirement
+ The six six is also acceptable
+ Point C is a three eight two two eight eight six retracement from A to B
+ The six one eight is preferred
+ Finally point D is the seven eight six Fibonacci retracement from X to A which is preferred
+ And in the region of the one point two seven two to one point six one eight
+ expansion of B to C
+ finally the targets from D are the six one eight of C to D and
+ also the one-to-one extension of XA from D
+ This is the case if the time from X to A is the same as from D to that one-to-one extension target
+ Let's have a look at a visual example of the guardly harmonic pattern
+ This pattern can also be drawn using the XA BCT pattern tool on trading view
+ The completed pattern looks like this
+ Let's check the fib levels
+ For point B
+ It is necessary to have a retracement of the move from X to A to the six one eight
+ The six six is also unacceptable target
+ For point C
+ It is preferred to see a retracement of the move from A to B
+ also to the six one eight
+ Even though
+ between the three a two and the eight eight six is also acceptable
+ For point D
+ The seven eight six of the move from X to A is preferred
+ here
+ The second option is the region between the one point two seven two and the one point six one eight of
+ the Fibonacci expansion from B to C
+ The price targets or a short trade taken from D would be
+ the six one eight of the Fibonacci retracement from C to D here and
+ also
+ the one-to-one extension of
+ the move from X to A
+ extended from D
+ down here
+ The trade would then look like this with an entry a D a stop loss above X and
+ I'd take profit one at the six one eight and possibly a final target at the one-to-one extension
+ of the move XA from D
+ Once again, the symmetry of the pattern is important
+ Here we can see that B is at the one-to-one time extension of
+ X to A from A
+ We can also see
+ that A to B extended from C
+ Gives a one-to-one time extension where D takes place
+ as a special case in
+ order to reach this Fibonacci one-to-one extension for the trade setup
+ It is important to check the time from X to A and
+ extended from D
+ So that it also has a one-to-one time extension
+ This example is a bearish guardly pattern
+ offering a short trade setup from D
+ By simply inverting the pattern it is possible to have a bullish
+ guardly pattern with a long entry at D following the same criteria
+ The ABCD pattern is an external pattern
+ where AB can be an impulse of any size
+ It is important to pay attention to symmetry and
+ Ideally A to B should be the same Fibonacci time length as C to D
+ Point C is simply a six one eight to seven eight six retracement of A to B
+ Here some leeway is allowed
+ finally point D is
+ the one point two seven two to one point six one eight expansion of B to C
+ Here we can have two rules
+ If C retraced to the seven eight six of AB
+ Then the target for D is at the one point two seven two expansion
+ However, if C retraced to the six one eight of AB then the target at D changes to the one point six one eight expansion of B to C
+ finally
+ Traits entered from D can have a target at B
+ at the three eight two and six one eight of C to D and
+ finally A
+ Let's have a look at a visual example of the ABCD pattern
+ We can draw this pattern on trading view using the tool by the same name
+ Once completed the pattern should look like this
+ Let's check the fib levels
+ For C we want to see a retracement of the move from A to B
+ between the six one eight and the seven eight six
+ for point D
+ The region between the one point two seven two and the one point six one eight
+ Fibonacci expansion of the move from B to C is
+ the target for D
+ Here we can use two rules
+ if C retraced to the six one eight of AB like on this example
+ Then we can expect D
+ to be at the one point six one eight expansion of the move from B to C
+ However, if C
+ retraces to the seven eight six of the move from A to B then we can expect D
+ to be at the one point two seven two
+ expansion of B to C
+ To establish price targets for a possible long from D
+ From this bullish ABCD pattern
+ We can use the Fibonacci retracement from C to D and
+ target B
+ Which is in this case also the three eight two
+ and the six one eight
+ as well as a
+ at the top of the pattern
+ The trade setup would then look like this
+ Once again, it is possible to invert the pattern to trade it bearishly from D
+ and
+ take a short position
+ With the same price targets and using the same criteria
+ The symmetry for this pattern is very important
+ We can use the Fibonacci time tool to measure the time from A to B and
+ extend it from C
+ To establish the one-to-one time extension for D
+ The butterfly harmonic pattern is an external pattern where once again
+ X to A can be an impulse of any size
+ B must then be a
+ 786 retracement of X to A
+ Point C is then a retracement from the three a two to the eight eight six of A to B
+ Here a six one eight retracement is preferred
+ D is then in the region of the one point six one eight to two point six one eight expansion of B to C
+ And the region of the one point two seven two to one point six one eight expansion of X to A
+ Finally the targets for traits taken from D are B
+ And the six one eight from A to D
+ Let's have a look at a visual example of the butterfly harmonic pattern
+ This pattern can be drawn using the X A B C D pattern tool on trading view
+ The finished pattern looks like this
+ Let's check the fib levels
+ Point B has to be a 786 retracement of the move from X to A
+ This is a requirement
+ Point C
+ Can be a retracement between the three eight two and the eight eight six of the move from A to B
+ However, a retracement to the six one eight is preferred
+ Point D
+ Should be in the region between the one point six one eight and the two point six one eight of the Fibonacci expansion
+ from B to C
+ Option two is
+ The region between the one point two seven two and the one point six one eight of the Fibonacci expansion from X to A
+ By using both tools together we can already see confluence for a possible price target for D
+ Possible price targets for a short trade taken from this bearish butterfly pattern from D
+ would be B and
+ the six one eight of
+ The Fibonacci retracement from A to D
+ The stop loss can be placed at an area beyond the one point six one eight
+ expansion from X to A
+ However, we recommend that you use market structure for stop loss placement
+ To check the symmetry of the pattern we can use the Fibonacci time tool in this example
+ We see that point B is at the zero point six one eight time extension of the move from X to A
+ We can also see that the move from A to B
+ Expanded from C gives us a one-to-one time extension for D
+ Once again in order to trade a bullish
+ Butterfly pattern we can simply invert the pattern and follow the same criteria
+ For a trade setup entering a long at D
+ The crab harmonic pattern is also an external pattern where once again XA can be an impulse of any size
+ Point B is then a three eight two six one eight retracement of X to A
+ The six one eight retracement is preferred
+ Point C is then a retracement between the three eight two to eight eight six of eight to B
+ Here a point five to point six one eight retracement is preferred
+ Point D is then a two point two four to three point six one eight expansion of B to C
+ Where the three point one four level is preferred?
+ If A to B is the same as C to D with Fibonacci time
+ Then D can be at the one point six one eight expansion of X to A
+ Also D can be at the one point six one eight extension from A to B by simply double clicking B
+ The targets for trades taken from D are the six one eight of C to D and A
+ Let's have a look at a visual example of the crab harmonic pattern
+ This pattern can be drawn using the XA/BCD pattern tool on trading view
+ Once completed it should look like this
+ Let's check the fib levels
+ Or point B. We are looking for a retracement between the three eight two and the six one eight of
+ The move from X to A
+ The preferred retracement is the six one eight
+ For point C. We are looking for a retracement between the three eight two and
+ The eight eight six of the move from A to B
+ The preferred retracement here is between the point five and the point six one eight
+ For point D we are looking at a target between the two point two four and
+ The three point six one eight Fibonacci expansion from B to C
+ The three point one four level is preferred
+ It is also possible to use the one point six one eight
+ Fibonacci expansion level of the move from X to A
+ If the pattern is symmetrical
+ The third option is to use a Fibonacci extension from A to B and
+ Double-clicking B to get the one point six one eight extension as a price target for D
+ If we turn on all three tools, we can then find confluence for the best possible target
+ The price targets or this bearish crab harmonic pattern
+ would be
+ the six one eight of the move from C to D and
+ also A
+ The trade setup for a short taken from D would look like this
+ To place the stop loss
+ We can use the one point six one eight of the Fibonacci expansion from X to A
+ However, once again, we recommend using market structure for stop loss placement
+ To trade the crab harmonic pattern
+ Bullishly we can simply
+ Invert the pattern and enter a long position from D
+ using the same criteria
+ Once again, the symmetry of the pattern is very important in
+ This case we have point B at the 0.618 time extension of the move
+ from X to A
+ Also, we have symmetry as A to B
+ extended from C
+ Gives us a one-to-one time extension for D
+ Now let's go over some tips and tricks on how to best use these harmonic patterns
+ The difference between the bat and the guardley pattern is the retracement to B
+ The best entry for the butterfly pattern is when A to B is the same as C to D in Fibonacci time
+ Here we can have D at the 1.272 extension of A to B from B
+ In order to implement harmonic patterns correctly it is important to pay attention to the correct look
+ By looking at the symmetry between each wave and the time for each wave as well
+ The volume profile of an internal harmonic pattern is that of a consolidation pattern
+ Officially it is recommended to trade a harmonic from the D of the harmonic pattern as it completes
+ For more advanced traders with more experience with Fibonacci and harmonics
+ It is possible to trade these patterns already from C
+ This is always dependent on the available confluence
+ We recommend that you never trade a harmonic pattern alone and always look for confluence at the important levels
+ It is best to use market structure for stop-loss placement and
+ Or take profit targets on the trades, even if they are based on harmonics
+ Here is the take-home message for this module
+ Harmonic patterns are powerful Fibonacci constructs
+ Symmetry and time are very important to get the correct look for these patterns and implement them accurately
+ These patterns work best on higher time frames with additional confluence
+ This concludes today's module. Thank you for watching and I'll see you on the next one
+ Happy learning and happy trading

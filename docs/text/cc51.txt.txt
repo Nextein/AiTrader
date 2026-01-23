@@ -1,0 +1,80 @@
+ Hello and welcome to this strategies module. Today we're going to be covering the chart
+ champions scalping strategy. Please pause this video and take a moment to read this trade
+ disclaimer as the information contained in this video is not financial advice and is
+ only for educational purposes. In this module we will cover the utility of the chart champions
+ scalping strategy, how to correctly implement it, and then go over some examples and tips
+ and tricks on how to best use it. The chart champions scalping strategy is an advanced
+ scalping strategy. It involves taking multiple traits per day, following strict criteria,
+ and targeting small gains repeatedly. With practice and full focus it can become a very
+ profitable strategy. To correctly implement the chart champions scalping strategy you
+ will need to activate the Bollinger Bands on Trading View. You will also need to activate
+ the following exponential moving averages, the 8, the 12, and the 26. This strategy works
+ best on the 3 to 5 minute time frame with high volatility. The core of the strategy revolves
+ around candle closes outside of the Bollinger Bands. When price closes outside of the Bollinger
+ Bands to the bottom you enter a long trade and target the EMA's 8, 12, and 26. When
+ price closes outside of the Bollinger Bands to the top you enter a short trade, also targeting
+ the EMA's 8, 12, and 26. The strategy usually offers 50 to 100 trades per day, generally
+ lasting minutes. It is time and focus intensive and requires full concentration. When a 3
+ minute candle closes outside of the Bollinger Bands, you can simply follow these steps.
+ Step 1. Enter a limit order at the price of the candle close. Step 2. Set the standard
+ stop loss to 1%, 0.5% or 0.2%, depending on the dollar range and volatility of the coin
+ that you are trading. Step 3. Target the 8, 12, and 26 exponential moving averages and
+ take 33% profit at each of these levels. Step 4. Once take profit 1 is it, you can move
+ your stop loss to entry. Now let's have a look at a practical example. To activate the
+ exponential moving averages in trading view, simply click on indicators and then type EMA
+ in the search box, selecting the top result. To activate the Bollinger Bands, simply type
+ BB in the search box and also select the top result. You will need 3 MAs for this strategy,
+ the 8, the 12 and the 26. You can set the length of the indicator under inputs. Now let's
+ have a look at a few possible trade opportunities using the chart champions scalping strategy.
+ Here we can observe a candle close on the 3 minute time frame outside of the Bollinger
+ Bands to the bottom. This is our trigger to enter a long trade at the price of the candle
+ close and target the 3 EMA's. In this case, we take take profit 1, 2, and 3 successfully
+ and close the trade. In this situation here, there is also a candle close outside of the
+ Bollinger Bands, giving us yet another long entry trigger. This trade turns out to be
+ a losing trade, as we do not reach any of the EMA's to take profit and get stopped
+ out. However, we are then presented with yet another opportunity to enter a long trade,
+ once again targeting our 3 EMA's. In this case, take profit 1 and take profit 2 are
+ reached as we hit EMA 8 and EMA 12. The last EMA 26 is not reached until much later, and
+ the trade is a successful trade. About an hour later, we have yet another opportunity
+ to enter a trade following the criteria of this scalping strategy, in this case a short
+ trade, as a candle closes outside of the Bollinger Bands to the top. Once again, we target our
+ 3 EMA's as take profit levels. This is another successful trade with all 3 take profit levels
+ hit. Shortly after that, we have yet another opportunity to enter a trade, in this case
+ a long trade, as the candle closes outside of the Bollinger Bands to the bottom. Take
+ profit 1 is hit relatively quickly, and the rest of the trade is stopped out. By following
+ the steps for the strategy, we can move our stop loss to break even or entry, when take
+ profit 1 is hit. As price reverses, and the trade goes against us, the stop loss is hit,
+ but the trade remains a winning trade. About an hour and a half later, we have yet another
+ opportunity to enter a trade, as this candle closes outside of the Bollinger Bands to the
+ top. In this case, it is a short entry trigger. And this turns out to be a losing trade, as
+ we do not reach take profit 1. However, shortly after, we are presented with another opportunity
+ to enter another short trade, and in this case, take profit 1 is reached before the rest of
+ the trade is stopped out. Thus, it counts as a winning trade. Up here, we are presented
+ once again with another opportunity to enter a short trade, as this candle clearly closes
+ outside of the Bollinger Bands to the top. In this case, take profit 1, take profit 2,
+ and a bit later, take profit 3 are hit, giving us a successful trade from beginning to end.
+ Finally, we have another opportunity to enter a long trade, as this candle closes outside
+ of the Bollinger Bands to the bottom. Take profit 1, 2, and 3 are all hit, thus producing
+ yet another successful trade. Now, let's go over some tips and tricks. To increase your
+ success rate with the chart champion scalping strategy, you can add complexity to the base
+ strategy. You can use horizontal, support, and resistance levels, you can do an overall
+ Elliot Wave count or simply look at the high time frame market structure, you can check
+ the moving up and down percentages, crossings, and RSI alerts, as well as use Fibonacci levels
+ for additional confluence. The chart champion scalping strategy is not a mechanical strategy,
+ and not all closes outside of the Bollinger Bands are good setups. We recommend that you
+ use a 1% fixed stop loss when there is high volatility. In low volatility settings, you
+ can use a 0.2% stop loss when aiming for a 0.5% gain. If the stop loss is too large because
+ of a long wick, for example, then the risk is not worth the small gain. It is easier to
+ trade with the momentum of the larger trend, as these trades have better probabilities
+ for success, and even follow through. To enter a counter trend position, we recommend
+ that you wait for divergences to form. We recommend that you always place a stop loss
+ in the order books. The chart champion scalping strategy requires
+ quick thinking and execution, and you should only use it when you can devote full focus
+ on concentration to your trading. We recommend that you always practice good risk management,
+ and that you use confluence to increase the success chance of your trades.
+ Here is the take-home message for this module. The chart champion's scalping strategy is
+ an advanced and quick paced strategy. It is based on a combination of the Bollinger
+ Bands and the exponential moving averages. By adding complexity with confluence, you
+ can greatly increase the success rate of the strategy.
+ This concludes today's module. Thank you for watching, and I'll see you on the next
+ one. Happy learning and happy trading!

@@ -1,0 +1,73 @@
+Daily Trading Routine
+ Hello and welcome to this basics module. Today, we're going to be covering the daily trading
+ routine. Please pause this video and take a moment to read this trade disclaimer. As
+ the information contained in this video is not financial advice and is only for educational
+ purposes. In this module, we will cover the utility of having a daily trading routine,
+ how to correctly implement it and then go over some tips and tricks on how to best use it.
+ By developing a daily trading routine, you can be prepared for the day ahead, as if you
+ don't have a plan, your plan is to fail. You should know the trade before you see it.
+ Being a daily routine will also allow you to avoid fear of missing out and avoid making
+ emotional decisions. And you can focus only on the pre-plan trades with calculated risk
+ in advance. To begin implementing your daily routine, we recommend that you take the following
+ first steps. First, mark out key levels. For example,
+ horizontal, support resistance levels, high volume nodes and naked points of control.
+ You should plan all possible trade setups, both bullish and bearish. Then you take the
+ trade that comes to you and you only enter the trade if the criteria for the trade setup
+ are met. Market context is extremely important as a part of your daily routine. You should
+ determine the market context every morning, as it provides a base understanding and structure
+ for the trading day ahead. Then you can also review new data since your last market context
+ check. An important aspect of market context is the trend direction. You should determine
+ the trend direction to see if price action is going sideways or is up or down trending.
+ You can use the 15 minute to 1 hour time frame for day trading and the daily time frame for
+ the high time frame trend. Your trading approach changes in trending
+ versus ranging days. As for example, on an uptrend day, you can aggressively buy the
+ dip in trail stop losses, versus trading only the edges of the range on a sideways day.
+ Private waves can be very helpful to provide further market context. For this, you should
+ take a look at a high time frame alien wave count. For example, in a wave 3 impulse, it
+ is possible to aggressively buy the dip, compound the trade and trail stop losses. However,
+ in a corrective triangle, for example, you should look for ranges, take profits regularly
+ and only take the best trade entries at the edges of the range.
+ Another important aspect to determine market context are CVD divergences. The cumulative
+ volume delta divergences can provide context of what the larger traders are doing and you
+ can check on the 15 minute and 1 hour time frames. You should ask the question, where
+ is price trying to go and is it doing a good job getting there? Then you should check are
+ larger traders causing absorption, as this can help you create bias for the day.
+ As part of your daily trading routine, it is important to be aware and make a note of
+ important levels. These are the Fibonacci Champions channel or 618266 retracement, both globally
+ and locally. Also, the VWAP volume weighted average price for the session, anchored VWAPs
+ and possibly the weekly VWAP. Also, points of control for the daily, weekly and monthly
+ time frames for the session, based on time and naked points of control. Further important
+ levels to be aware of are the value area high and value area low, both globally and locally.
+ Also the daily open and the previous day, week and month, open high, low and close levels.
+ Also the 4 hour EMAs, specifically the 55 and the 200, can be used even though this method
+ is inferior and obsolete. The next step in your daily trading routine is to determine
+ key horizontal levels. These are very strong levels with the highest confluence. If broken
+ or claimed, you can expect a support resistance flip. It is also highly likely that a trade
+ will be taken at this level. The next step in your daily trading routine is to check the
+ volume information. One, open interest. Has it changed compared to the previous day?
+ Two, daily volume and delta for the previous day. Three, funding. Is it bullish or bearish?
+ You can record statistics. Is open interest increasing over several days or perhaps decreasing?
+ Is volume also increasing or decreasing over several days? What about delta and how is the
+ funding evolving? Finally, to complete your daily trading routine, you can make a note
+ of key opens and general notes for the trading day. You can make a note of the daily, weekly
+ and monthly opens. Then you can decide which asset are you trading today.
+ The key notes can involve expectations for the day ahead. Now let's go over some tips
+ and tricks. We strongly recommend that you make a daily trading sheet for yourself. Here,
+ you should make a note of all the key reference levels. This will allow you to be prepared
+ for the trade setups before they become visible. You will be aware of the key levels and then
+ you can observe the market context as these levels are approached.
+ Here is an example of a daily trading sheet. As you can see, it includes many levels corresponding
+ to today's price action and also more global levels, which will probably not be visited
+ on the specific day. Nevertheless, it is good to be aware of the high time frame situation.
+ You can use this as an orientation and we encourage you to create your own daily trading
+ sheet with the levels that you prefer and that you use the most for your trade setups.
+ Coming about 30 minutes to prepare every morning provides you with an edge over the competition.
+ You will know exactly what you are doing long or short before the trading day has even begun.
+ When the alert goes off at the key level, you can then review the situation with order
+ flow and decide within one to five minutes whether you can take a trade or not.
+ Here is the take-home message for this module. With your daily trading routine, you will
+ be able to plan your trades and have an edge over the competition.
+ Be ready to trade when the alert goes off and most importantly, you will understand the
+ trade before it even appears.
+ This concludes today's module. Thank you for watching and I'll see you on the next
+ one. Happy learning and happy trading.

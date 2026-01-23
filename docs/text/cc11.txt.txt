@@ -1,0 +1,71 @@
+ Hello and welcome to this entering trades module.
+ Today, we're going to be covering the trade entry strategy.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of three different trade entry strategies,
+ how to correctly implement them, and then go over some examples and tips and tricks
+ on how to best use them.
+ The three entry options that we will cover offer advantages and disadvantages.
+ They can be applied to scalp traits, day traits, as well as swing traits.
+ It is important that you choose the method that fits your style and trading system best.
+ The first trade entry strategy or option is to preset limit orders, which is commonly
+ used by swing traders.
+ This method removes in the action emotions and avoids deviating from the original plan
+ when price finally reaches the desired level.
+ However, this method can cause unnecessary losses.
+ Now let's have a look at a practical example.
+ Let's assume that we are looking for a long position in this range and we would like to
+ preset limit orders between the CC and the 786 of this fit retracement from low to high.
+ Our invalidation is ultimately losing the lows of the entire range.
+ This has the advantage that we have a very clear plan and a very clear invalidation, allowing
+ us to remove emotion from this trade.
+ However, it bears the inherent risk of an unnecessary loss if we do not see the reaction
+ that we expected at these levels.
+ Let's observe what actually happened next.
+ Initially, we can see that our levels are reached and all our preset limit by orders
+ are filled.
+ However, the expected reaction never occurs and ultimately our trade is invalidated.
+ We can thus argue that if we had not preset the limit by orders, we could have simply
+ just waited to see if the expected reaction occurred or not and then enter based on that
+ new available data, thus avoiding an unnecessary loss.
+ The second trade entry strategy or option is to use market order entries.
+ Only used by swing and day traders.
+ The losses using this method should be less common as you buy with confirmation.
+ This method, however, adds an emotional aspect to the trade.
+ Now let's have a look at a practical example.
+ Let's assume that we are looking for a long trade entry from this key level that we have
+ mapped out.
+ Once price finally reaches that level, we are now confronted with the possibility of
+ entering at market if we like the reaction that we see.
+ However, we are now under the influence of our emotions as we see that price has very
+ impulsively reached this level and perhaps we start doubting our original plan and are
+ not sure if we're actually going to get the expected bounce or reaction from the key level.
+ In comparison to pre-setting limit by orders, however, we can actually decide based on the
+ reaction from this key level whether we want to enter or not.
+ If you can deal with the emotional aspect of this situation then this method might work
+ very well for you.
+ As we can observe, by sticking to the original plan, it was possible to enter a long position
+ and have a very nice follow through based on the reaction from this level.
+ The third trade entry strategy or option is to use alerts commonly used by swing and
+ day traders.
+ This method allows you to review price action as it unfolds at the desired level.
+ It then allows you to make an informed decision.
+ Now let's have a look at a practical example.
+ Let's assume that we are interested in trading this range bound asset once price action
+ approaches the edges of the range.
+ We can simply right click on the chart and set alerts at the levels that we are interested
+ in trading.
+ Once the alerts go off, we can then proceed to check order flow by using footprint software
+ like exocharts and ATAS as well as checking market structure and general market context
+ to then make an informed decision and enter a possible short trade at the top of the range
+ or a possible long trade at the bottom of the range.
+ We recommend that you use alerts at the levels that you are interested in trading.
+ Once the alert goes off, you can then review price action, volume, delta, open interest
+ and market structure as well as context and make an informed decision.
+ Here is the take home message for this module.
+ Resetting limit orders involves a higher risk as it can cause unnecessary losses.
+ Eating market orders involves increased emotion.
+ Setting alerts and then making an informed decision is recommended and sensible.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

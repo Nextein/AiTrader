@@ -1,0 +1,99 @@
+ Hello and welcome to this Tools and Charts module.
+ Today we're going to be covering Pitch Forks and the Pitch Fan.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the Pitch Forks and the Pitch Fan, how to correctly implement them,
+ and then go over some tips and tricks and examples on how to best use them.
+ Pitch Forks and the Pitch Fan are powerful tools that combine price, time, offer targets and even an invalidation.
+ They are useful to build trading strategies and also strong confluence.
+ The mid-line level of the Pitch Forks is critical.
+ In order to build a Pitch Forks you will need three significant pivots.
+ We recommend that you use the following levels, the median line and the one to determine the warning lines or outer lines.
+ The original Pitch Forks is useful when expecting an impulse such as an Elliot Wave 3 impulse.
+ The Shift and the Modified Shift Pitch Forks are useful when expecting a range, for example a WXY corrective piece.
+ Now let's have a look at a practical example.
+ Here we have the Bitcoin chart on the weekly timeframe.
+ We're going to click on this drop-down menu and select the Pitch Forks tool.
+ Then we're going to select three significant pivots.
+ The first one will be here, the second one will be this impulse high and the third one will be this impulse low.
+ Now we have constructed our Pitch Work.
+ The settings are the median line and the one to define the outer or warning lines.
+ In this case we are expecting a corrective piece of price action based on Elliot Wave theory.
+ And thus we will use the Modified Shift Pitch Forks instead of the original Pitch Forks, which is used when an impulse is to be expected.
+ Let's see what actually happened next.
+ As we can observe, the lower outer line provides a nice level of support and the median line acts as resistance.
+ After price manages to flip the resistance to support at the median line, it travels all the way up to the upper warning line.
+ Then follows a rotation through the midline, flipping it once again back to resistance very clearly and then following all the way down to the lower outer line.
+ As this is a high time frame pitchfork, it is possible to take multiple trade setups within the pitchfork.
+ If they trade it to the midline where they can be fully closed, once the midline is claimed as support, it is possible to once again take a long trade all the way up to the outer line where once again this trade can be closed.
+ On a sign of weakness and based on confluence and market context, it is possible to reverse the position and enter a short position once again to the midline of the pitchfork.
+ As the pitchfork establishes itself as resistance, the original short trade that could be closed at the midline can be reopened based on the new data and we have another possible short setup all the way down to the support trade line.
+ The Fibonacci pitchfork is built the same way as the standard pitchfork by using three significant pivots and it is especially useful for high time frame analysis.
+ We recommend that you use the following levels.
+ The 0.236, the 0.382, the 0.5, the 0.618, the 0.786, the 1, the 1.272, the 1.618, and the 2.
+ It is possible to use the internal fib levels as entries and take profit levels.
+ Keeping in mind that the midline is the most relevant level.
+ Now let's follow up with a practical example.
+ Here we are going to use the same pitchfork as on the previous example.
+ But this time we are interested in the internal Fibonacci levels as well as the external extension levels from the pitchfork.
+ In order to do so, we can simply load our Fibonacci template and all the levels appear.
+ The levels are as follows.
+ As we can observe, these levels can be used as possible entries, take profit levels, and price targets.
+ And we can even go on the lower timeframes to have more detail about the interaction of price action with these levels.
+ As usual, we recommend that you use Confluence with other technical analysis tools to build your trade setups.
+ We can observe that the pitchfork levels are respected internally as well as externally.
+ The pitchfan is a combination of the pitchfork and the Fibonacci speedfan.
+ And it is constructed using three significant pivots as well.
+ It also includes the time aspect like the Fibonacci speedfan.
+ We recommend that you use the following levels. The 0.25, the 0.382, the 0.5, the 0.618, the 1.25, and the 1.618.
+ Each of the Fib levels offers high time frame confluence.
+ Now let's have a look at a practical example.
+ Here we have the Fibon chart once again on the weekly time frame.
+ We are going to select the pitchfan from this drop down menu.
+ Now we will select three significant pivots.
+ The first one here, the second one here at this impulse high, and then the low one here at the impulse low.
+ The settings for the pitchfan are as follows.
+ As you can observe, we have internal levels for the pitchfan as well as external levels.
+ Similar to the Fibonacci pitchfork, it is possible to use the internal and external fib levels of the pitchfan as possible entries and take profit levels.
+ As usual, we recommend that you use additional confluence with other technical analysis tools to find your most probable and best trade setups.
+ Now let's go over some tips and tricks.
+ It is possible to build strategies based on the pitchfork.
+ One of them is the flat price action strategy, which is designed to fade a directional move.
+ The median line of the pitchfork offers a strong rejection.
+ And the warning or outer line offers support or resistance.
+ It is also possible to trade a support resistance flip of the median line to the other warning line.
+ Now let's have a look at a practical example of the flat price action pitchfork strategy, designed to fade a directional move or counter trade it.
+ Here we have the S&P 500 chart on the daily timeframe, and we have constructed a big pitchfork using this top pivot here, this bottom pivot here, and this high pivot here.
+ As we can observe, the median line of the pitchfork has already provided resistance on these two touches before moving down for an incomplete rotation to the outer warning line.
+ This was due to a swing failure pattern of this pivot low, which provided a nice reaction all the way back to the median line of the pitchfork.
+ We can now use this median line touch once again for a possible short trade setup.
+ As usual, we recommend that you use additional confluence.
+ Let's see what actually happened next.
+ As we can observe, this touch of the median line provided a full rotation down to the outer line and even exceeded expectations.
+ Another possible strategy based on the pitchfork is the mini median line strategy, which is a combination of a large pitchfork and smaller pitchforks.
+ The smaller pitchforks are constructed of the large pitchfork.
+ We recommend that you use significant pivots, such as swing failure patterns, to build the smaller pitchforks.
+ Now, let's have a look at a practical example of the mini median line pitchfork strategy.
+ Here, we have the BTC USD pair on the 4-hour timeframe on Bybit.
+ As we can observe, we have a larger pitchfork construction using this low pivot here, up to this high pivot here, and then this low pivot here.
+ We can observe that the midline is well respected.
+ The large pitchfork is in this example set to modified shift.
+ Now, we can construct smaller pitchforks off of the midline touches of the larger pitchfork.
+ For this, we recommend that you use significant pivots, ideally with additional confluence, to find possible trade setups.
+ As you can see, here was a possible long trade setup off of the median touch of this smaller pitchfork while remaining within the larger pitchfork.
+ Here, it is also possible to take a long trade setup off of the midline of the smaller pitchfork.
+ The smaller pitchforks for this construction are set to original.
+ As an added bonus, it is even possible to trade the backtest of the outer or warning line of the large pitchfork as well as the small pitchfork intersection,
+ providing a short trade entry setup all the way down to the warning line of the smaller pitchfork.
+ A third possible trading strategy based on the pitchfork is the price failure strategy.
+ This occurs when there is a rally in a strong trend, but ultimately a failure to reach the median line of the pitchfork.
+ We can then expect a price reversal to follow later.
+ Now, let's have a look at a practical example. Here, we have the Bitcoin chart on the daily timeframe and we find ourselves in a strong uptrend.
+ We have constructed a pitchfork using this low pivot here, this impulse high pivot here, and the following impulse low pivot here.
+ Based on the price failure strategy, we would like to see a rally unable to reach the midline of the pitchfork to then signal a possible price reversal.
+ Let's see what actually happened next. As we can observe, price was not able to reach the median line of the pitchfork and lost the entire pitchfork I support, flipped it to resistance and continued much lower.
+ The pitchfork and the Fibonacci pitchfan together can build very strong confluence. If the third pitchfork pivot in confluence with the Champions channel holds, then there is an 80% probability to reach the median line of the pitchfork.
+ High time frame pitchforks and pitchfans are the strongest.
+ Here is the take-home message for this module. In order to build pitchforks and the pitchfan, you will need three significant pivots.
+ The midline of the pitchfork is the most critical level. The pitchfan adds a time aspect to your technical analysis, similar to the Fibonacci speedfan.
+ We recommend that you use the pitchfork and the pitchfan together as well as with other technical tools for confluence. This concludes today's module. Thank you for watching, and I'll see you on the next one. Happy learning and happy trading!

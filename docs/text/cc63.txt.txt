@@ -1,0 +1,117 @@
+ Hello, and welcome to this TPO series module.
+ Today we're going to be covering the CC TPO template.
+ Please pause this video and take a moment to read this trade disclaimer,
+ as the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the chart champions TPO template,
+ how to correctly implement it, and then go over some examples and tips and tricks on how to best use it.
+ The CC TPO template is an all-in-one template that makes the relevant data easily accessible.
+ It includes TPO, a volume profile, and price candles.
+ This template empowers you to be able to find better trade setups.
+ In order to use the chart champions TPO template, you will need specialized software.
+ In this case, ExoCharts web.
+ Then simply load the standard CC TPO template,
+ and we recommend that you leave the default template settings,
+ as changing tick size will for example change the value area and POC calculations.
+ At the top of the TPO profile, you will find several daily statistics listed.
+ One of them is A/B TPO, for example listed as 30%/70%.
+ This shows the time spent above or below the point of control.
+ This is helpful when comparing with the volume point of control.
+ Right below the A/B TPO statistic, you will see the A/B VOL for volume statistic, for example listed as 100 million/243 million.
+ This shows the volume above or below the point of control for that daily session.
+ It is helpful when comparing with that time point of control.
+ It is important to note that these values will change depending on whether ExoCharts is basing the calculations on time or volume.
+ This will be explained later.
+ Additional statistics shown above the profiles are total delta as D, for example 11 million,
+ which shows the total delta for the daily session.
+ Above the volume profile, you will see a V for volume, for example 390 million,
+ which shows the total volume for the daily session as well.
+ You will also see the initial balance high listed as I/B H, for example 23,000 as a price level,
+ and the initial balance low listed as I/B L, for example 22,500, also listed as a price level.
+ Now let's have a look at a practical example of the chart champions TPO template.
+ As mentioned, this is ExoCharts web.
+ At the top of the TPO profile here, you can see that A/B TPO, A/B volume, delta, and rotation factor are listed.
+ Above the volume profile, you can see that we have initial balance high, initial balance low,
+ ACR for average candle range, and volume listed for that daily session.
+ For the purposes of this video and for clarity, the price candles have been turned off.
+ It is however possible to turn them on here by clicking on Mono Candle.
+ This is what the standard template setting will look like.
+ The Average Candle Range, or ACR, is listed above the volume profile on the right,
+ and it shows the average candle size in the current daily session.
+ This information can be used like the average true range.
+ It is useful for multi-day ranges.
+ By merging the profiles of these days, it is possible to get the ACR for all of the profile.
+ If then, upon breakout or breakdown of the range, you observe an increasing candle size,
+ you can add this information to the order flow reading of open interest, volume, and delta.
+ The rotation factor statistic is listed above the TPO profile.
+ It is the running tally for the daily session, where each 30-minute column is given a score of +1, 0, or -1.
+ It shows the direction of the attempted price move.
+ A high positive rotation factor is generally bullish.
+ The daily TPO statistics column is on the left of the TPO profile.
+ It shows the number of TPO blocks, the total volume, and the total delta horizontally.
+ It is helpful to then use high volume and delta transaction levels, which can provide a price rejection when reached,
+ for example, for a scalp trade possibility.
+ Now, let's have a look at a practical example of the daily TPO statistics column.
+ Here, to the left of the TPO profile, you have these statistics, showing you the number of TPO blocks,
+ the total volume, and the delta horizontally for each row.
+ You can then use this information when price revisits these levels to perhaps expect a possible rejection or reaction.
+ An additional feature of the Chart Champions TPO template is the TPO session open and close.
+ This shows as a little arrow next to the open and close of the daily session as well as a highlighted block.
+ Also, you can double-click the daily TPO profile to merge or expand profiles.
+ Profile merging will be covered in detail in a separate module.
+ Now, let's have a look at a practical example of the open and close feature.
+ Here, you can observe that there's a small arrow pointing to this highlighted block.
+ This is the beginning of this daily session.
+ Here, we can see a small arrow pointing to another highlighted block with a letter X.
+ It is also possible to double-click on the TPO profile to then merge it with other profiles.
+ If we zoom out, for example, we can merge this profile with the one that we were looking at by clicking on Merge.
+ Now, both days are combined into one larger profile showing us the same information but averaged out for both daily sessions.
+ Another feature on the template are the TPO letters in heat map colors.
+ The heat map is split into four zones of 12.
+ The first zone is red, the second one yellow, the third one green and the fourth one blue.
+ This is a nice feature that functions as a visual aid to see where price has spent the most time,
+ in which case the letters will show darker.
+ Where price spent less time, the letters will show as lighter.
+ In order to see this, you must disable the value area setting.
+ Now, let's have a look at a practical example of the TPO heat map feature.
+ First, we will deactivate the value area setting on the left here,
+ so that the value area is no longer highlighted in our profiles.
+ Next, we will expand the TPO profile so that we can see the clusters and text following the price action for that daily session.
+ As we can observe, the lighter tone of the letters implies more time spent.
+ The darker tone implies less time spent.
+ We can also observe that the letters begin with a red section that transitions into yellow followed by green and ending with blue.
+ One of the most powerful features of the template is the volume profile, which is at the right of the TPO profile.
+ It is helpful to see the points of control and compare them to each other, time versus volume.
+ You can also zoom in to the volume profile to see volume percent, or your preferred setting, and delta color,
+ with blue being positive delta and red being negative delta.
+ Now, let's have a look at a practical example of the volume profile.
+ The volume profile is here to the right of the TPO profile.
+ As you can observe, it shows each level horizontally with different colors.
+ This represents the delta, with blue being positive delta and red negative delta.
+ You can also observe that there is one bar in pink.
+ That is the volume point of control.
+ The numbers shown inside of the volume profile, in this case, are delta.
+ It is possible, however, to change this on TPO settings, volume profile, and add the statistic that you would like to see,
+ for example, volume percent.
+ As you can see, the numbers inside have now changed.
+ Additionally, if you go to POC VA, you can use volume for value area and POC calculation by checking this box here.
+ As you can see, the value area changes slightly, and so does the point of control.
+ In this case, they are nearly identical.
+ Sometimes, however, the difference can be quite large, which in itself can provide another trading strategy advantage.
+ Now, let's go over some tips and tricks.
+ Point of control and value area calculations will depend on the setting of the checkbox, use volume for value area POC calculation.
+ If the checkbox is activated, it will use volume.
+ If it is not activated, it will use time.
+ We recommend that you use the 30 minute time frame and tick size 50 with this template.
+ Changing these settings will also change the value area and point of control calculations.
+ If you see many negative rotation factor days during sideways price action,
+ then price is doing a bad job attempting to go lower.
+ It is then likely that the market will rally upwards.
+ The clear advantage of having the volume and TPO profiles next to each other is that it is easy to see discrepancies between them.
+ Time versus volume discrepancies can provide crucial information, as it is then possible to fade or counter trade a move.
+ A detailed description is covered in a separate module.
+ Here is the take-home message for this module.
+ The chart champions TPO template for Exochard's web allows you to easily view relevant daily statistics.
+ You will be able to compare time versus volume on one screen.
+ Then you can use this information to significantly increase the probabilities of your trade setups.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading!

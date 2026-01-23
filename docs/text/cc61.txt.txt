@@ -1,0 +1,107 @@
+ Hello and welcome to this TPO series module. Today we're gonna be covering
+ balances and the six rules. Please pause this video and take a moment to
+ read this trade disclaimer as the information contained in this video is
+ not financial advice and is only for educational purposes. In this module we
+ will cover the utility of understanding balances as well as using the six rules,
+ how to correctly implement them and then go over some examples and tips and
+ tricks on how to best use them. By being able to distinguish between market
+ balance and imbalance you will be able to adjust your trading approach which is
+ different for each of the market situations. Then you will also understand
+ the importance of well-respected parallel channels and naked points of
+ control. You will also be able to use the six rules to assist in making trading
+ decisions. In order to interpret market balance and imbalance you will need
+ specialized software such as exochards or ATAS and apply the provided TPO
+ templates on the chart champions website. You will then be able to define where
+ the balance or the range is determined by the value areas and the point of
+ control both time and volume-based. Then you should determine acceptance or
+ rejection in form of for example a swing failure pattern above and below
+ balance and combine this information with volume analysis. Now let's have a
+ look at a practical example. Using the standard TPO template provided on the
+ chart champions website you will be able to determine where the value area high
+ and the value area low for the trading session are found as well as the point
+ of control. It is also possible to go to TPO settings and change the setting for
+ the calculation of the value areas and the point of control so that you can
+ switch between time-based calculation and volume-based calculation and make
+ notes of any significant discrepancies. Ideally they should be the same. On a
+ trending day there is an imbalance between aggressive buyers and aggressive
+ sellers in form of market orders. The aggressive volume is increasing with
+ each imbalance wave. Pair value then moves up with the direction of the
+ trend. In other words the value area follows the imbalanced move. Now let's
+ have a look at a practical example of a trending day. Here we have the standard
+ TPO template provided on the chart champions website. This is the BTC/USD
+ pair on Bybit. Here we can observe that at the beginning of the trading session
+ price is initially staying stable and within the value area of the previous day.
+ Then an impulsive move breaks the balance and moves into an imbalanced
+ situation leaving behind a big row of inefficiencies or single prints. Price
+ continues trending upwards in imbalanced mode as market long orders which are
+ the aggressive market participants continue to push price higher and higher.
+ Finally an old balance area or range is found where market participants agree
+ that this is the new fair value for the asset. End the trending day moves into
+ a more balanced state. So the imbalanced move changes to balance and price is
+ once again contained within the value area high and the value area low for
+ the remainder of the trading session. On a balanced day price remains range
+ bound in the value area or at fair value. The tests of the value area high and
+ value area low fail and it is possible to counter trade these weak attempts that
+ can result in swing failure patterns or failed auctions outside of the value
+ area. If however there is an increase in volume and open interest on these
+ attempts it is recommended to not take a trade right away and wait. It is also
+ possible to follow the momentum of that attempt with a previous entry from the
+ opposite side of the value area. Now let's have a look at a practical example of a
+ balanced day using the same TPO template. Here we can observe that price action
+ remains range bound between the value area high and the value area low for the
+ entirety of the trading session. The attempt to break balance and go into
+ imbalance at the value area high here fails. Shortly after the attempt to break
+ to the downside through the value area low and go into imbalance also fails and
+ we remain range bound. It is thus possible using a combination of TPO and
+ order flow analysis to counter trend or fade these attempts at the edges of the
+ value areas. Now let's go over six very important rules that can assist you in
+ making a trading decisions in balanced and imbalanced market situations. Rule
+ number one if price gains acceptance into an old balance or range it is likely to
+ retest the other side of the balance. For example if it falls below the value
+ area high it rotates to the value area low and vice versa. Rule number two
+ price inside a balance or range is expected to reject from the value area
+ high and bounce from the value area low and remain range bound. Rule number three
+ when price moves from balance to imbalance it will generally move into an old
+ balance or range. This is the reason why you should not delete a well respected
+ channel. Rule number four if price rejects from an old range point of
+ control rule number one can be invalidated and price will then return to the
+ previous balanced area. This is the reason for marking naked points of
+ control. Rule number five if time delta and open interest build at the value
+ area high or value area low of a balanced profile or range it is likely going to
+ break through. In this situation market context is key. Rule number six on the
+ first attempt to break balance without an increase in delta and open interest it
+ is possible to look to fade or counter trade the move such as in the situation
+ of a swing failure pattern. Now let's have a look at a visual example of the six
+ rules. Here we have a two value areas marked with the fixed range tool showing
+ us a value area high a point of control and a value area low. For rule number one
+ let's assume that price action makes its way to the value area high of this range
+ and gains acceptance below the value area high. In that case it is very likely to
+ travel through the range and reach the opposite side or the value area low. For
+ rule number two we would then expect for price to remain in this new balance and
+ travel from the value area high to the value area low and vice versa. Now upon
+ the following rotation to the lows of the range we notice at the value area low
+ that there is a buildup in open interest and delta. We then look at the macro
+ market context and realize we came from a downtrend into this range from an
+ imbalance to a balance market situation and now something seems to be changing
+ and this balance is likely to break through. At this point we can make use of
+ rule number three and expect that in the case of a breakdown from this value
+ area low of support that price will find new balance within an older range or an
+ old balance area. Let's assume for the purposes of this example that this
+ begins to happen but price rejects from the point of control instead of traveling
+ to the value area low. In this case rule number four is then activated and the
+ rejection brings us back to the former range here. Finally we can use rule
+ number six to judge the strength of a first attempt to break balance. In this
+ case let's say here for this range. If we see that the attempt is without an
+ increase in delta and open interest we can look to fade the move and trade a
+ possible swing failure pattern of the previous size for a full rotation to the
+ lows of the range. Now let's go over some tips and tricks. It is key to analyze
+ the TPO chart together with footprint statistics and order flow. You always
+ have three trade options long short or no trade. We recommend that you attempt to
+ trade with a high volume and not with the specific transaction amounts. Here is
+ the take-home message for this module. The TPO profiles can help you distinguish
+ between market balance and imbalance and adjust your trading approach accordingly.
+ You should also note well-respected ranges for example in forms of parallel
+ channels and naked points of control. We recommend that you combine TPO and
+ order flow. The six rules are there to assist you with trading decisions. This
+ concludes today's module. Thank you for watching and I'll see you on the next
+ one. Happy learning and happy trading.

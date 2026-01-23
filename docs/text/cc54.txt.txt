@@ -1,0 +1,72 @@
+ Hello and welcome to this strategies module, today we're going to be covering the chart
+ champions value setup.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the CCB setup, how to correctly implement it,
+ and then go over some examples and tips and tricks on how to best use it.
+ The CCB setup is a strong strategy in range bound environments, which is very useful since
+ markets are ranging more often than they are trending.
+ The setup has clear criteria and a high probability when the market context fits.
+ Also, the CCB setup reinforces the power of range trading.
+ In order to implement the CCB setup, you will need footprint statistics software such as
+ exocharts or atas.
+ Then the first step is to identify the daily open and the previous day value area.
+ For the CCB setup, look for the daily open to be outside of the previous day value area.
+ Once you identify that the daily open is outside the previous day value area, you can
+ then check market context.
+ Ideally, the price action of the previous day or days should be range bound.
+ If this is the case, you can then wait for acceptance within the previous day value area.
+ In other words, an attempt to re-enter the range successfully.
+ You can use the rule of two consecutive 30 minute candle closes, ideally with an increase
+ in volume within the previous day value area.
+ Then you can enter a trade expecting a full rotation within the value area, for example,
+ from the value area high to the value area low or from the value area low to the value
+ area high, depending on which direction you are re-entering the range from.
+ Now let's have a look at a practical example on exocharts.
+ Here we have the BIBIT BTCUSD pair 15 minute chart and we can observe that the daily open
+ is outside the previous day value area.
+ The day begins here and price action moves down to the previous day value area high and
+ initially this level holds a support.
+ As the hours go by however, acceptance is gained inside the previous day value area and
+ over the course of the following hours we have a full rotation through the value area
+ all the way down to the previous day value area low, thus completing the CCV setup.
+ In this case, we also have a very nice reaction at the previous day value area low which acts
+ as a support level and we have yet another rotation through the entire range all the
+ way to the previous day value area high where once again this level acts as a support resistance
+ level.
+ In this case, a level flipped from support to resistance to then offer a rejection once
+ again within the value area.
+ This example also shows how powerful and successful range trading can be by looking for short
+ positions at the range high and long positions at the range low.
+ Before entering a trade using the chart champions value setup, it is important to check market
+ context.
+ Does it make sense to enter the trade or is the market showing very conflicting information?
+ In this case we can see that once price moves down from the daily open towards the previous
+ day value area high, it also flips the volume weighted average price or VWAP to resistance
+ which it cannot reclaim and ultimately begins to rotate fully within the previous day value
+ area.
+ By checking the market context and looking for confluence, you will be able to greatly
+ increase the success rate of this setup.
+ Now let's go over some tips and tricks.
+ The chart champions value setup will not work every time and has an approximate 80% success
+ rate.
+ This is why it is very important that you always check market context before entering
+ a trade using this setup.
+ We recommend that you use other technical tools and market structure and then you find
+ confluence to make your trade setup as highly probable as possible.
+ The CCV setup can work on any asset with high volume.
+ If price breaks out of a range, in this case the previous day value area and establishes
+ a low volume range outside of it, this presents ideal conditions for the CCV setup.
+ If however price breaks out of a range with large volume, the setup rules might fit but
+ the market context does not.
+ We recommend that you use this setup on the daily time frame, in other words using the
+ previous day value area to look for an intraday trade setup.
+ Here is the take-home message for this module.
+ The chart champions value setup or 80% setup consists of reentering the previous day value
+ area and expecting a full rotation within that range.
+ Before you enter a trade using this setup, it is very important that you consider market
+ context.
+ The CCV setup works best in range bound environments.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

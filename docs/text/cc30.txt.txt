@@ -1,0 +1,99 @@
+ Hello and welcome to this patterns module. Today we're going to be covering the
+ head and shoulders pattern. Please pause this video and take a moment to read
+ this trade disclaimer as the information contained in this video is not financial
+ advice and is only for educational purposes. In this module we're going to
+ cover the utility of the head and shoulders pattern, how to implement it,
+ and then go over some examples and tips and tricks on how to best use it. The
+ head and shoulders pattern is a powerful and very useful top reversal pattern.
+ Conversely, the inverse head and shoulders pattern is a very useful
+ bottoming pattern. The alternative three peaks pattern has a completely different
+ volume profile. To correctly implement a head and shoulders pattern, there need to
+ be three peaks formed. An initial left shoulder, a larger middle peak which is
+ the head, and then a third peak which is the right shoulder symmetrical to the
+ left shoulder. This symmetry is nice to have but not a requirement. Volume should
+ decline as the pattern develops and it is very important to see an increase on
+ bearish breakdown volume from the neckline of the pattern. It is possible to
+ estimate price targets by measuring the height of the head from the neckline and
+ extending it from the breakdown point of the neckline. To correctly implement the
+ inverse head and shoulders bottoming pattern, we also need three peaks formed
+ with a left shoulder, a head, and a right shoulder. Once again, it is important that
+ volume declines as the pattern develops and it is very important that there is
+ an increase in bullish breakout volume once the neckline is broken. We can also
+ establish price targets by extending once again the height of the head from
+ the neckline from the breakout point. The alternative three peaks pattern also
+ requires a triple peak formation. However, the main difference is that the
+ volume profile does not match the head and shoulder requirements. Also, it is not
+ possible to use a measured move of the largest peak to establish a price
+ target. Let's have a look at a theoretical example of a top reversal
+ head and shoulders pattern. Let's assume that our uptrend price action begins to
+ form this left shoulder with large volume. We then have a pullback on weak
+ bearish volume and then find support here and begin to form a second peak on
+ buying volume that is now lower than the initial volume of the left shoulder.
+ We then retrace on weak selen volume towards the neckline and then have one
+ final push beginning to form the third peak or right shoulder with even less
+ volume than on the volume of the head and the left shoulder left sides. We now
+ begin to retrace once again towards the neckline and the key point is reached.
+ What we want to see here to validate this pattern which is very important to be
+ patient and wait for this point to be reached is now an increase in selling
+ bearish volume to confirm the pattern. It is then possible to enter at market
+ upon seeing an increase in bearish selling volume for the breakdown or if
+ the initial breakdown is not that strong to wait for a retest of the neckline.
+ This rise towards the neckline should be on weak buying volume and then the
+ rejection should happen at the neckline with a once again increase in bearish
+ selling volume. This could provide us with another short entry. To now estimate a
+ price target for the breakdown we can simply measure the height of the head to
+ the neckline and then extend it from the breakdown point to establish a price
+ target. Once again volume is very important in this pattern. If there is no
+ significant increase in bearish selling volume upon breaking down this could be
+ a fake-out that leads to a reversal and further continuation to the upside. Now
+ let's have a look at a practical example of an inverse head and shoulders
+ bottoming reversal pattern. We have constructed the neckline using these
+ two pivots here. Our first shoulder would be this formation, this would be the head
+ peak and finally we would have our last shoulder here on the right. It is very
+ important that we pay attention to the volume profile. Volume should be
+ declining as the pattern progresses and most importantly volume should
+ dramatically increase once we reach the neckline and break out. Let's see what
+ actually happens next. As we can observe once the neckline is broken there is a
+ massive increase in volume as compared to the volume profile within the pattern.
+ This confirms ultimately that this pattern is an inverse head and shoulders
+ bottoming reversal pattern with a very bullish breakout and a massive
+ increase in bullish buying volume. Once again we can use a measured move of the
+ head of the pattern and extend it from the breakout point. As we can observe the
+ target was reached and there was a pullback in price to then have
+ continuation and exceed the initial price target. In this example the possible
+ trade is a long at market upon breakout from the pattern. The breakout is so
+ powerful and so bullish that there is no retest and no possibility to enter
+ along upon backtesting the neckline. Let's have a look at a practical example of
+ a three peaks pattern that can be mistaken for an inverse head and
+ shoulders bottoming pattern. Here we have used the trendline tool to
+ determine the possible neckline of the pattern. This can be considered the first
+ shoulder, here the head and here the right shoulder so far so good. However if we
+ take a closer look at the volume profile we will see that it is not fitting the
+ movements within the pattern and even though it is declining it does not fit
+ the criteria or the volume profile of a correct inverse head and shoulders
+ pattern. Let's see what happened next. Here we have a breakout from the trendline
+ and the volume has barely changed at all. What we should see upon breakout of the
+ neckline is a massive increase in bullish buying volume. Now let's go over some
+ tips and tricks on how to best use the head and shoulders pattern. Volume is
+ very important on the breakout from an inverse head and shoulders pattern and
+ from the breakdown of a head and shoulders pattern. A low volume breakout
+ or breakdown means that the pattern is not valid and a fakeout is possible and
+ also quite probable. Head and shoulders patterns play out better on higher
+ timeframes, for example the daily time frame. It is also possible to have valid
+ complex head and shoulders patterns. These have the same rules as the standard
+ patterns but they have different characteristics. For example it is
+ possible to have two left shoulders and two right shoulders and one head peak.
+ Another option is to have one left and one right shoulder as usual but two
+ heads. It is possible to see complex head and shoulders top reversal
+ patterns and complex inverse head and shoulders bottom reversal patterns. Using
+ eliot wave theory it is possible to see corrective and impulse waves together
+ forming three peaks and head and shoulders patterns. It is possible to
+ trade the individual waves and impulses as well as the overall pattern. Here is
+ the take-home message for this module. Head and shoulders are powerful and
+ useful top reversal patterns and inverse head and shoulders are powerful and
+ useful bottom reversal patterns. It is possible to establish a price target
+ from the breakout point of the neckline using the height of the head. It is very
+ important to pay attention to the volume profile in the pattern and
+ especially upon breakout or breakdown. This concludes today's module. Thank you
+ for watching and I'll see you on the next one. Happy learning and happy trading.
+ [BLANK_AUDIO]

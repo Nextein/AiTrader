@@ -1,0 +1,69 @@
+ Hello and welcome to this strategies module.
+ Today we're going to be covering the daily open strategy.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the three most important daily open types,
+ how to correctly implement them, and then go over some examples and tips and tricks on how to best use them.
+ The three most important daily open types can offer an entry and an invalidation for a possible trade setup.
+ Understanding the different open types gives conviction to trade the rest of the daily session.
+ Also, it offers a strong edge over the competition.
+ In order to correctly implement the different daily open types, we recommend that you follow these steps.
+ Step one, monitor the first hour of the new trading day.
+ It is crucial for the following 23 hours.
+ Step two, ask yourself, is it a strong move up or down?
+ Is price action trending? Is the volume high?
+ You can also note volume, the dollar amount move, and whether the daily open is inside or outside the previous day value area.
+ Step three, trade the retest of the daily open or the continued strength.
+ If you see a strong move, you can expect continuation.
+ If you see an initial meandering move, you can expect a retest.
+ Here are the three most important daily open types.
+ One, the open drive type. Price ideally opens outside of the previous day value area
+ and has a move with continued strength, and you can expect a trending day.
+ Two, the open test drive type.
+ The day begins off slow with meandering price action. Then backtests or retests the daily open
+ with then a strong rejection with volume.
+ Three, the open rejection reverse type. With a weak initial directional move,
+ a rejection of a key level, and then a strong reversal of price through the daily open
+ with high volume and follow through.
+ Now let's have a look at a practical example of the open drive type.
+ Here we have the BTC/USD pair on Bybit on the 50 minute time frame.
+ As we can observe, the daily open is here.
+ There is an impulsive move with high volume away from the daily open that sets the tone
+ for the day and has nice follow through, bringing us outside of the previous range
+ and value area into a new range.
+ On such days, it is possible to enter with the impulsive move and follow the trend for the day
+ and have the invalidation be below the daily open.
+ Now let's have a look at a practical example of the open test drive type.
+ Here we have the BTC/USD pair on Bybit on the 50 minute time frame.
+ As we can observe, the daily open is here.
+ After an initial move and meandering price action, we have a very nice backtest
+ and following rejection from the daily open with nice follow through for the rest of the day.
+ This open type occurs very often in crypto and it offers us a possibility for a very nice entry
+ with an invalidation beyond the retest of the daily open.
+ Now let's have a look at a practical example of the open rejection reverse type.
+ This is the BTC/USD pair on Bybit on the 50 minute time frame.
+ The daily open is here and initially we can observe how price action meanders around the level.
+ Then it makes a weak directional move towards this level of resistance
+ where then there is a reaction with volume and with follow through
+ going through the daily open and reversing the initial move.
+ If we turn on the volume profile, we can confirm that the initial move was on low volume
+ and the rejection was on high volume and had good follow through.
+ Ideally, you would look to enter a position once you see the initial weak move
+ towards a key level predetermined through your other technical analysis.
+ Ultimately, this is confirmed with the volume injection and the beginning of the reversal of the initial weak move.
+ Now let's go over some tips and tricks.
+ The initial balance or the first hour of the trading day is key to help predict the day type,
+ whether trending or range bound.
+ The daily open is always at midnight UTC time and it is the same for everyone in the world.
+ Cryptocurrency is a 24 hour market and the tests of key levels can take longer than in legacy markets.
+ You should use other technical analysis to establish price targets and take profit levels
+ as the daily open types can only provide you possible entries and invalidations.
+ Market context and experience are key to help determine the developing daily open type.
+ Here is the take-home message for this module.
+ Keeping in mind the three most important daily open types measure the strength of the daily open.
+ Check order flow to monitor for a volume injection.
+ Then you can predict the day type ahead by using the open type and the initial balance,
+ giving you a big advantage over the competition.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

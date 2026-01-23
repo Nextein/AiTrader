@@ -1,0 +1,43 @@
+ Hello and welcome to this volume module. Today we're going to be covering unbalanced volume.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the unbalanced volume indicator,
+ how to correctly implement it, and then go over some examples and tips and tricks on how to base use it.
+ Unbalanced volume provides a running total of the trading volume of an asset
+ and shows whether volume is flowing in or out of the trading pair.
+ It is very useful to monitor the health of an uptrend or a downtrend.
+ It is also useful to estimate a possible breakout or breakdown from a range.
+ To implement this leading indicator on trading view we recommend that you use the default settings.
+ It is then possible to monitor unbalanced volume as the trend progresses.
+ In general volume should follow the trend and it is possible to check for divergences and perhaps a formation of a top or bottom.
+ It is also useful to monitor unbalanced volume at the edges of ranges to see if volume leads price
+ and signals a possible breakout or breakdown from the range.
+ Now let's have a look at a practical example. To activate your unbalanced volume indicator simply search for it under indicators on trading view and select the top one.
+ Once activated it should look like this.
+ We recommend that you leave the settings as default.
+ Now we can use unbalanced volume to check for the health of this uptrend.
+ Initially we can see that price is making higher highs and unbalanced volume also makes higher highs.
+ Thus far the trend is healthy.
+ Then on the second part we see that price continues to make higher highs but unbalanced volume makes a lower high.
+ This is a bearish divergence showing that volume is not following the price movement.
+ As a result we see that the bearish divergences play out and there is a pullback in price.
+ Now let's take a look at an example of unbalanced volume leading price.
+ In this case we can see that price begins to break down from this upper range and moves to the next support level.
+ This support level holds for quite a few days.
+ However we can already see that unbalanced volume is making lower lows and lower highs even though price remains above this support level.
+ Thus we can say that volume is leading the move.
+ Finally price follows, breaks down from the support, back tested as resistance and continues to move down following the lead of the volume.
+ Now let's go over some tips and tricks on how to best use unbalanced volume.
+ This indicator is classified as a leading indicator showing real data as it comes in and providing a very powerful tool when used with other technical analysis tools as confluence.
+ It is also possible to look for patterns in unbalanced volume itself.
+ The unbalanced volume can be used across all timeframes.
+ The four hour time frame is the recommended one.
+ The unbalanced volume calculations are not needed to implement this tool and they are based in these three rules.
+ The current OBV equals the previous OBV plus the current candle volume if the current candle closing price is higher than the previous candle closing price.
+ Second, the current unbalanced volume is equal to the previous unbalanced volume minus the current candle volume if the current candle closing price is lower than the previous candle closing price.
+ Finally, the current OBV is equal to the previous OBV if the current candle closing price equals the previous candle closing price.
+ Here is the take home message for this module.
+ Unbalanced volume can be used to monitor the health of an uptrend or downtrend and to help identify possible tops and bottoms by checking for divergences.
+ It is also useful to estimate a possible break from a range as volume leads price.
+ OBV is a powerful leading indicator when used with other technical tools as confluence.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

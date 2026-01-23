@@ -1,0 +1,55 @@
+ Hello and welcome to this Fibonacci module.
+ Today we're going to be talking about the Fibonacci expansion tool.
+ Please pause and read this straight disclaimer.
+ The information contained in this module is not to be interpreted as financial advice,
+ and it is only for educational purposes.
+ Today we're going to be talking about the utility of the Fibonacci expansion tool,
+ how to implement it, and then go over some tips and tricks on how to best use it.
+ The Fibonacci expansion tool is a very helpful tool to add in another level of confluence for entries and targets.
+ It is used for moves which go external from the Fibonacci pull range that you are trading.
+ It is very useful for stocks and coins that go to all-time lows or all-time highs.
+ To use the Fibonacci expansion tool, you simply pick two pivots with the Fibonacci retracement tool and pull from left to right,
+ either from high to low or from low to high.
+ If price then goes external from these pivots, you use the Fibonacci expansion levels for entries or targets.
+ The levels that we recommend using are the 1.133, the 1.272, the 1.414, the 1.618, the 2, the 2.618, and the 3.618.
+ Let's put that knowledge into practice.
+ First, we activate our Fibonacci retracement tool.
+ We are going to pick the first swing-low pivot and pull from left to right to the swing-high pivot.
+ Now we can see the internal Fibonacci levels.
+ By changing templates to the expansion one, we can see the Fibonacci expansion levels.
+ You can change these settings by simply turning off the levels that you do not want to see, like the internal ones in this case,
+ and manually adding these levels to your Fibonacci retracement tool.
+ Now we can see that the move has gone external from the first two pivots and support has been found at the 1.133.
+ Let's have a look with an example in the other direction.
+ Let's assume this asset is an all-time high mode.
+ We pull from a swing-high to a swing-low,
+ and we can see that the asset found resistance at the 1.618 Fibonacci expansion.
+ We can use this level as a nice take-profit target.
+ Now let's cover some tips and tricks so you can make the best use of the Fibonacci expansion tool.
+ This tool can be used on every time frame.
+ You can also use different superimposed fib pulls to find confluence.
+ You can also build strong confluence with other tools such as other fibs or horizontal levels.
+ Another very useful implementation for the Fibonacci expansion tool is with assets that are hitting all-time lows.
+ Here you take a Fib expansion using the last-wing low to the last-wing high.
+ This is good to then generate targets where the move-down can find support.
+ Let's have a look at a practical example.
+ First, activate your Fibonacci retracement tool.
+ Then we're going to choose the low pivot and pull it from left to right to the swing-high pivot.
+ We can now see the internal Fibonacci levels.
+ Now I'm going to switch my template to the expansion levels so that I can see the external levels shown to the downside.
+ If price were to go external from this range, these are possible targets where they could find support.
+ Let's see what actually happened.
+ After staying internal for a while, price actually did go external and eventually found support at the 1.272 Fibonacci expansion level.
+ This shows you that these levels can be very powerful for finding possible support targets after a range is lost.
+ This is especially true if you can find additional confluence with other Fib tools, superimposed Fib pulls, or horizontal levels.
+ When an asset is at all-time highs and in price discovery mode, we recommend that you use the Fib expansion levels to find good take profit targets, not to establish short entries.
+ Let's have a look at an asset that breaks out into all-time high mode or price discovery mode after ranging for quite a while.
+ First we activate our Fib retracement tool and we pick a swing high point on the left and pull it to the right to the swing low point.
+ First we can see our internal Fib levels. Once price goes beyond the two pivots, we can switch to our expansion template and see if any of the Fib expansion levels offer us nice possible price targets, in this case the 1.133.
+ The asset continues to go higher and higher and we can continue to use the same tool to find possible price targets and future moves.
+ In this case we can see that the 1.618 from this Fib pull swing high to swing low gives us a very nice take profit area.
+ Once again we recommend using these levels as take profit levels, but not as short entries.
+ This tool, when combined with other tools like the Fibonacci extension, can give you very powerful confluence for take profit areas on impulsive assets.
+ Here's the take home message for today's module. The Fibonacci expansion tool is very useful for moves that go external from your initial Fibonacci retracement pull.
+ It is also a very useful tool to build strong confluence. It is especially useful also for assets that are all time lows or all time highs to generate price targets and take profit areas.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

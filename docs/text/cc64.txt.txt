@@ -1,0 +1,67 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering single prints.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of single prints, buying tails and selling
+ tails, how to correctly identify and implement them and then go over some examples and tips
+ and tricks on how to best use them. Single prints are very useful as possible support
+ or resistance levels. Buying and selling tails help to determine good highs and good lows.
+ These can increase the probabilities of your trade setups.
+ To easily identify single prints, buying tails and selling tails, we recommend that you use
+ specialized software such as ExoCharts or ATAS. On ExoCharts web you can simply load
+ the standard CCTBO template. The single prints, buying tails and selling
+ tails will be marked automatically. Single prints are simply inefficiencies in
+ price action. Three single rows are needed to officially create a single print, buying
+ tail or selling tail. However, we recommend that you look to trade single prints, buying
+ tails and selling tails that have at least 5 rows. They can be traded like a gap in the
+ stock market or the CME Bitcoin futures. Now let's have a look at a practical example
+ on ExoCharts web using the chart champion's TPO template. Here we have a daily session
+ with its TPO profile and the corresponding volume profile as well as the price action
+ candles. As we can observe, there was an impulsive move in price that left a row of single prints.
+ In this case, 5 rows with the starting and end value also automatically listed. We can
+ also see that there is a buying tail at the bottom of this daily profile with 6 rows.
+ If price is trading above a row of single prints, we expect the top of the single print
+ to act as support. If price is trading below a row of single prints, we expect the bottom
+ of the single print to act as resistance. If however, price gains acceptance into the
+ single print area, we expect it to be filled, much like a gap. Now let's follow up on the
+ previous example. Here we have the row of single prints that was created on an impulsive
+ move up in price. On the following 30 minute candle, we can see it back tested as support
+ on the top. A few hours later, it is once again back tested as support and it remains
+ support for the rest of the daily trading session.
+ If we have a look at the following daily session, we can observe that the single print no longer
+ acts as support at the top and is completely filled. Specifically on this candle, the support
+ comes from the bottom of the single print as price travels through it fully. Buying and
+ selling tails are like a single print, but at the high or low of the TPO profile. They
+ show evidence of a larger trader entering the market and causing a price reversal. They
+ also indicate that the high or low is good. Going back to our original example, we can
+ observe that we have a buying tail at the bottom of our profile. This occurred as price
+ went down here and a larger trader or group of traders entered the market and caused a
+ price reversal. This left a buying tail of 6 rows in size. This qualifies as a good low.
+ If we look at the top of the TPO profile, we see that there is no selling tail. This
+ qualifies as a poor high. A poor high or a poor low is simply a pivot high or low without
+ a selling tail or buying tail respectively. We can expect continuation in the direction
+ of the poor high or low. Alternatively, we can also expect a swing failure pattern to
+ go beyond the poor high or low and create a selling tail or buying tail. In other words,
+ cleaning up the poor high or poor low. Summarizing our previous example, we have a buying tail
+ at the bottom of our TPO profile and we do not have a selling tail at the top. This means
+ we have a good low but a poor high as the high was not aggressively defended. Let's see
+ what happened the next day. As we can observe, price continued higher, took out the previous
+ poor highs and a selling tail was created as this time a larger trader or group of traders
+ entered the market and reversed price back down to the range. This now qualifies as
+ a good high. It is important to use these characteristics of the TPO profile together
+ with confluence and market context. In this initial daily session, we see that there
+ is an impulsive move up during the session, leaving a row of single prints or inefficiencies.
+ With the good low and a poor high, thus we can expect this momentum that was also seen
+ the previous session to continue upwards and for these highs to be either taken out through
+ a swing failure pattern, as was the case the following day, or further continuation to
+ the upside. Now let's go over some tips and tricks. We recommend that you always check
+ the volume, delta and open interest inside a buying tail or selling tail. It is best
+ to see an increase in these parameters as it indicates many trap traders. If however,
+ the buying tail or selling tail is formed on low volume, low delta and no increase in
+ open interest, then we do not recommend to trade it. One notable exception would be
+ a major pivot high or low. Here is the take-home message for this module. With this knowledge,
+ you can now look for rejection or acceptance into an area of single prints and treat them
+ like a gap that is filled or as support or resistance levels. You can now identify poor
+ highs and lows and compare them to good highs and lows that have buying tails or selling
+ tails. With this, you can recognize strength or weakness early on to increase the probabilities
+ of your trade setups. This concludes today's module. Thank you for watching and I'll see
+ you on the next one. Happy learning and happy trading.

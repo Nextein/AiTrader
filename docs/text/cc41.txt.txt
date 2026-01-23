@@ -1,0 +1,66 @@
+ Hello and welcome to this footprint module. Today we're going to be covering
+ footprint charts. Please pause to read this trade disclaimer. All of the
+ information on this module is solely for educational purposes. No financial
+ advice in any shape of form is being given. In this module we're going to
+ cover the utility of footprint charts, how to implement them, and then we're
+ going to go over some tips and tricks and examples on how to best use them.
+ Footprint charts are a very powerful tool for your trading arsenal, as they
+ allow you to look inside a candle and see the amount of volume transacted at
+ each price. You can also see where there are many buyers and sellers
+ horizontally, which is helpful to determine support and resistance levels.
+ Also, you can determine the acceptance above or below a key level with great
+ precision. In order to use footprint charts, you will need to use footprint
+ software such as exocharts. We recommend that you use them in conjunction with
+ technical analysis at previously determined key levels. With footprint
+ charts, you will be able to monitor order flow including open interest, volume, and
+ delta, which is particularly useful for day trading and scalping. Let's have a
+ look at a practical example of what a footprint chart looks like on exocharts.
+ Here we have a standard template and we are using the Bybit BTC USD pair. It is
+ set to the one-hour time frame and for this example we have set it to the
+ delta cluster with no text. What you can see at the bottom of the screen is the
+ volume per candle, the delta per candle, and the cumulative volume delta. If we now
+ turn on the text setting to volume, we will be able to see numbers inside the
+ candles showing how much volume was traded at each price level. We can also
+ switch this to bid ask and then we will be able to see the market cell orders on
+ the left side and the market by orders on the right side. As you can see each
+ candle has a lighter area and a darker area. This is the value area. When we turn on
+ this setting, we can see where 68% of the volume in that candle was traded. If we
+ then combine the volume data with delta, open interest, and cumulative volume
+ delta, we can very precisely determine order flow at key levels to help us
+ implement higher probability trades. Now let's go over some tips and tricks on
+ how to best use footprint charts. A very useful feature is the bid ask profile,
+ which is most useful for day trading to see the live buying and selling interest
+ when approaching a key level. On the left side you will see the contracts sold at
+ market and on the right side you will see the contracts bought at market. There is
+ no right tick size and you can experiment with different values. In
+ general we recommend a higher tick size for a higher time frame analysis. The
+ value area setting shows as a lighter color range where 68% of the volume in
+ the candle was traded. You can use the open high low close setting to see the
+ shape of the candle as the volume could be mostly in the wake. In the footprint
+ charts only market orders are shown. Now let's have a look at the bid ask profile.
+ Here we can select this option from the drop-down menu. Now we see the same
+ candles but depicted differently showing us the selling on the left and the
+ buying on the right with different colors. We can also start to appreciate a
+ certain shape for these candles. Here on this price movement downwards we see
+ that the volume is very low in the initial drop and it picks up as soon as
+ we reach this area. We also see that the selling side is slightly larger than the
+ buy-in side. This shows that there is acceptance at this level. If we now turn
+ on the open high low close setting we can see the shape of the candlestick. As you
+ can see the body of the candle contains barely any volume and most of the volume
+ for this candle is contained within the wake. Let's have a look at another
+ example. Here on the bid ask profile we can see that there is very little volume
+ on the push upwards in price. Once we reach this level the volume and
+ transaction interest increases. On the next push to a higher range we see a
+ candle that reminds us of the letter P indicating that there is buying interest
+ and acceptance at this range. On the following candles however we see that
+ the buying interest decreases and the selling side of the candles increases.
+ We then proceed to auction lower to the range below and as volume and negative
+ delta increase we move further down. Now you can see that the shape of the
+ candles is inverted and the left side is now bigger than the right side showing
+ us that the acceptance is now at this level. Here is the take-home message for
+ this module. With footprint charts you will be able to see market orders inside
+ of the candles. You will be able to determine reactions at key levels with
+ great precision. If you combine volume delta and open interest you will have a
+ powerful combination to aid you in the execution of your trades. This concludes
+ today's module. Thank you for watching and I'll see you on the next one. Happy
+ learning and happy trading!

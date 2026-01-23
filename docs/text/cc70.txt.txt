@@ -1,0 +1,93 @@
+ Hello and welcome to this advanced strategies module. Today we're going to be
+ covering the Chart Champions Trend Reversal Strategy or CCTR. Please pause
+ this video and take a moment to read this trade disclaimer. As the information
+ contained in this video is not financial advice and is only for educational
+ purposes. In this module we will cover the utility of the CCTR strategy, how to
+ correctly implement it and then go over some examples and tips and tricks on how
+ to best use it. CCTR is a powerful scalping strategy offering very quick
+ trades. It helps you as a trader to strive for consistency with a strict set of
+ rules. The CCTR strategy will expand your arsenal of trading techniques. However
+ it is very important that you finish working through all other chart
+ champions modules first in order to understand all the moving parts involved
+ in the CCTR strategy. In order to implement the CCTR strategy you will need
+ specialized software such as exocharts or preferably Atas. Then you should load
+ the TR Scalp sessions template by Tiago and Igor and make sure that the range
+ U.S. chart is set to 44 26. You will then also need to load the sessions
+ template by Igor and set it to 5 minutes. Further requirements to implement the
+ CCTR strategy include high time frame charts opened simultaneously in order
+ to be aware of high time frame levels. The use of a level 2 order book can be
+ helpful though it is not strictly required. You will need ideally a
+ powerful computer with a minimum of two screens. In order to successfully
+ implement the CCTR strategy you will also need three special ingredients. One
+ the ability to follow rules and be a disciplined trader. Two you should be
+ okay with losing trades and not let your ego get in the way. Three and probably
+ most important is patience. Let the trade setups come to you. Now let's cover the
+ rules that you must follow in order to successfully and consistently implement
+ the CCTR strategy. One use trend reversal candles to snipe very low time frame
+ entries for quick scalps. Enter and exit only for scalpers. Two scalp only at key
+ levels. For example the VWAP, points of control, single prints, naked sessions,
+ point of control, babes, the daily open, the previous day equilibrium, the previous
+ day high, the previous day low, etc. Three enter trades at the above levels
+ upon seeing a trend reversal signal. Four if no level or confluence are
+ available it is still possible to enter a trade with bullish or bearish CVD
+ divergence is present or upon seeing a swing failure pattern followed by a
+ close above or below the reference level. Five look for large liquidations as
+ price hits a key level. This will greatly increase your success rate. Six take
+ 50% of your position size as profit at approximately the five minute ACR or
+ average candle range. Typically this is a 0.3% move on Bitcoin. Then close the
+ trade at the 10 minute ACR or approximately 0.6% move.
+ Seven if key levels are nearby use them as take profit levels. Eight when take
+ profit one hits the stop loss is always moved to entry. Nine if a high time
+ frame level is reached and the entry criteria are triggered allow the trade
+ to run longer as a day trade. The risk and stop loss remain the same. Now let's go
+ over a practical example. Here we have the CCTR template on ATAS. As you can see
+ on the top left we have set the range US chart to 0.44.26. This example covers
+ price action during Igor Session 3. As we can observe during the initial phase
+ of IS 3 price action moves downward towards the session VWAP. Then the low
+ for the session is set and after the backtest and local rejection from the
+ VWAP a higher low is made with bullish CVD divergences. As we can see CVD
+ making a lower low. Then we see a trend reversal candle print and can
+ already use this as a signal to enter a possible trade. In this case the VWAP
+ can pose a problem but the trade does result in a successful expansion allowing
+ us to take take profit one and take profit two using for example the session
+ point of control or the local highs here to close the trade fully. Then it gets
+ even better. There is a retracement once again towards the VWAP area and the
+ previous week value area low. Once again when we reach this area
+ bullish CVD divergences are formed clearly forming a higher low compared to
+ these lows here on price action and market structure but a lower low on the
+ CVD line. This provides us with yet another entry trigger upon seeing the
+ reversal TR candle print here or on the backtest of the previous week value area
+ low. Once again the trade expands fully and very nicely ultimately even reaching
+ the weekly open. However it is possible to already close the trade much
+ earlier following the strict rules set by the CCTR strategy. On both of these
+ possible trade setup examples the stop loss placement is below the trend
+ reversal signal WIC. Here for this example and here or here depending on the
+ entry for this example. Both of these options offer a very nice wrist reward
+ ratio. Now let's have a look at another practical example. Here we can see price
+ action descending into this level here the previous day open. Initially there
+ is a reaction that brings price almost to the session VWAP only to then retrace
+ again towards the previous day open. Here is where it gets really interesting. As
+ we can observe price action is making a higher low. However CVD is making
+ a very significant lower low implying bullish CVD divergences. This together
+ with a very nice and clean trend reversal print signal on to the key level is our
+ entry trigger for a long trade. The stop loss goes below the WIC of this
+ trend reversal candle. In this case we can use the session VWAP as our first
+ take profit. When it hits we can move our stop loss to entry. Then we can use the
+ previous day value area low or the previous week value area low as key
+ levels to close our trade. Having executed our CCTR strategy successfully.
+ Now let's go over some tips and tricks. We recommend that you take trade set up
+ screenshots and add them with annotations to your own private discord
+ server. This will serve as a journal. We also recommend that you set an alert at
+ the 30 minute ACR when price is approaching a high time frame level as
+ you will need enough time to get to your trading station. This is not a magical
+ strategy and you will get stopped out many times. You should view this as the
+ cost of doing business. When implementing the CCTR strategy it is also very
+ important to be aware of the eager session start times as your entry
+ criteria can be triggered around these times. Also do not get greedy and focus
+ instead on executing as many trades as possible while following the strict set
+ of rules. Here is the take-home message for this module. The CCTR strategy is
+ meant to help you strive for consistency by creating a solid trading plan with
+ the set of strict rules. Follow the rules and be quick but also be patient.
+ Ready, choose your level. Set, make your plan. Go, trade the plan. This concludes
+ today's module. Thank you for watching and I'll see you on the next one. Happy
+ learning and happy trading!

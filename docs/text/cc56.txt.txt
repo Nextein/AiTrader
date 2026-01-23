@@ -1,0 +1,63 @@
+ Hello and welcome to this strategies module. Today we're going to be covering
+ the liquidation trading strategy. Please pause this video and take a moment to
+ read this trade disclaimer as the information contained in this video is
+ not financial advice and is only for educational purposes. In this module we
+ will cover the utility of the liquidation trading strategy, how to correctly
+ implement it and then go over some examples and tips and tricks on how to
+ best use it. The liquidation trading strategy is a powerful scalping strategy.
+ It provides clear targets, quick exits and even better entries. This strategy is
+ especially strong and useful in high volume and volatile environments. To
+ implement the liquidation trading strategy first you should watch for an
+ area of consolidation at a pivotal level such as consolidation below
+ resistance or consolidation above support. Then watch the volume on
+ footprint software such as exochards or ATAS. For this strategy a high volume and
+ volatility environment is preferred. Finally trade the liquidation week for a
+ quick reversal. Here are four steps to follow when trading the liquidation
+ trading strategy. Step one, find consolidation under resistance or above
+ support. Step two, look for high volume around the consolidation low or high.
+ Then you can use the bibit calculator to determine the liquidation price. Step
+ three, look for a quick leverage flush or wake before a snapback reversal. Step
+ four, confirm the liquidation bubbles using exochards. Now let's have a look at a
+ practical example. Here we have the bibit BTC USD perpetual contract on the one
+ minute time frame and we can observe that we are consolidating under this
+ resistance level. Now we're going to have a look at these lows that are being held
+ as support and then using the liquidation trading strategy to get a sniper entry
+ upon the liquidation week of these lows. After completing step one finding
+ consolidation under resistance we can now move on to step two which is
+ attempting to find high volume around the consolidation low. Here we can see on
+ exochards that we have some selling volume accumulated here at the lows on
+ these weeks also on the one minute time frame and we form bullish CVD
+ divergences. Now we can move over to bibit and use the calculator tool here on the
+ top right to open this window and calculate the liquidation price of any
+ 100x overleveraged longs opening at those lows as support. We enter the price of
+ 45,760 and it shows us the liquidation price of 45,532. Now we can move on to
+ step three and look for a quick leverage flush before a snapback reversal. In other
+ words for all the longs that entered here with too much leverage to get
+ liquidated in a quick move to the downside and then a fast reversal to the
+ upside. We can mark the liquidation price that we calculated on bibit of
+ 45,532 so that we know where to place our entry order. This can be done either with
+ a limit order or a market order as soon as price begins to turn around. As we
+ can observe we get a very fast snapback reversal of about 0.5% from the
+ liquidation level that we calculated from bibit giving us a very nice
+ successful trade with the possibility of a quick take profit 1. If we leave the
+ stop loss below the wake and allow the rest of the position to run we have very
+ nice follow-through with a rotation all the way up to the resistance level. We can
+ also check exochards as this move is happening and confirm that liquidations
+ are taking place as we see the bubbles appear. Also we see a decrease in open
+ interest. Now let's go over some tips and tricks on how to best use the liquidation
+ trading strategy. You have two options to enter this trade. Option 1 preset
+ limit orders slightly below the liquidation price to account for
+ slippage depending on the volatility and volume between 0.2 to 0.5%. Option 2
+ market order as soon as the price begins to turn around. The invalidation is
+ always below the liquidation wake and this should be used on the 1 minute
+ time frame. We recommend that your first take profit is relatively quick and soon
+ and then that you move the stop loss to entry. The remainder of the position can
+ continue as often liquidations offer reversal points in the chart. The ultimate
+ target is subjective and it depends on context. We recommend that you be
+ conservative and fast. By using footprint software such as exochards or ATAS you
+ can add confidence to your trade. Here is the take-home message for this
+ module. The liquidation trading strategy is a strategy based on
+ liquidation wicks. The trades must be taken quickly. The entry and the
+ invalidation are simple making this a powerful fast-based trading strategy.
+ This concludes today's module. Thank you for watching and I'll see you on the
+ next one. Happy learning and happy trading.

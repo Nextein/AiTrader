@@ -1,0 +1,52 @@
+ Hello and welcome to this channel's module. Today we're going to be covering Fibonacci channels.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to cover the utility of the three Fibonacci channels,
+ how to implement them and then go over some examples and tips and tricks on how to best
+ use them. The three main Fibonacci channel types are useful for high time frame analysis.
+ They can add confluence to trading setups when used with other technical tools.
+ The channel levels can be used as support and resistance targets. The first channel type is
+ the standard Fibonacci channel which uses also the standard Fibonacci levels.
+ You implement it by selecting three pivots connecting the highs and the lows similar to a parallel channel.
+ If these fib levels are well respected it is a valid channel. Let's have a look at a practical
+ example. First we're going to activate our Fibonacci channel tool and then select two high pivots
+ and this low pivot here to establish a nice parallel channel. Inside we can see that the
+ Fibonacci levels are well respected and when used with additional confluence can provide us
+ very nice price targets for possible bounces and entries as well as take profit targets.
+ The settings can be introduced into the Fibonacci channel tool by simply typing in these numbers.
+ The zero, the zero three eight two, the zero point six one eight, the one, the zero point six six,
+ the zero point two three six, zero point five and the zero point seven eight six.
+ Now let's go over the Fibonacci extension channel. This channel is special because it uses external
+ target levels. The one point six one eight, the two, the two point six one eight, the three point six one eight and the four point two three six.
+ You implement it by using three pivots from peak to valley to peak to build the baseline or vice versa.
+ It is very important that the zero the zero point six one eight or the one are well respected otherwise the channel is not valid.
+ Let's have a look at a practical example. First we're going to activate our Fibonacci channel tool
+ and then we're going to select three pivots. Since this is a downtrend we will select a peak
+ as the first pivot, a valley as the second pivot and then another peak as the third pivot.
+ The reason why this is the third pivot is because it's the last peak available before the impulse started
+ that led us to our lowest valley. As we can observe the zero and the zero point six one eight levels are well respected.
+ Our channel is thus valid and we can now use the extended levels as possible price targets when combined with additional technical tools.
+ Let's see what happened next. As we can see price action continues to respect these levels offering us the possibility
+ to use them as possible and trees and take profits.
+ Now let's cover the long-term Fibonacci channel which is useful in the daily time frame or higher.
+ We recommend that you use log scale. The internal levels for this channel are the zero, the 0.25, the 0.5, the 0.75 and the one.
+ With this type of channel it is possible to estimate when long trends might be over and possibly reverse.
+ Let's have a look at a practical example. First we will activate our Fibonacci channel tool
+ and then select two upper pivots and a lower pivot to create our channel.
+ Now you can see the internal 0.25, 0.5 and 0.75 levels.
+ You can simply introduce these levels in the Fibonacci channel tool as shown here.
+ As we can observe price action respects these internal levels very well.
+ They act as resistance and as support multiple times.
+ The downtrend continues for over a year. Finally here it breaks out.
+ The breakout from the high time frame channel provides an over 70% move to the upside.
+ Keep in mind that this is a three-day chart and we have log scale activated
+ and that we are analyzing data that goes over a year. Let's go over some tips and tricks.
+ The 618 and its multiples are the preferred Fibonacci levels. We recommend that you
+ always use the Fibonacci channels with other technical tools to find the strongest confluence
+ possible. If you see that the internal levels of the Fibonacci channels are well respected
+ then you can assume that the channel is valid. Here is the take-home message for this module.
+ The Fibonacci channels are very useful for long-term analysis and price targets.
+ They are very strong confluence builders when used with other technical analysis tools.
+ The preferred levels are the 618 and its multiples and of course the champions channel
+ between the 618 and the 6.6. This concludes today's module. Thank you for watching
+ and I'll see you on the next one. Happy learning and happy trading!

@@ -1,0 +1,107 @@
+ Hello and welcome to this footprint module. Today we're going to be covering
+ exocharts. Please pause this video and take a moment to read this trade disclaimer
+ as the information contained in this video is not financial advice and is
+ only for educational purposes. In this module we're going to be covering the
+ utility of the exocharts software. We're going to go over some examples of how to
+ implement it and then over some tips and tricks. Exocharts is a powerful
+ footprint chart software. You will be able to monitor volume, delta, open
+ interest and TPO. This will provide you with the ability to perform professional
+ order flow analysis which will offer you a clear advantage in combination with
+ technical analysis. In order to use exocharts you will need to pay for a
+ subscription of about $30 per month. You will have access to multiple chart
+ types including volume, delta and trend reversal charts. There is a web version
+ available as well as a desktop pro version. Now let's have a look at a
+ practical example. First we're going to start by loading up a template shared
+ in the discord. This is the chart champions template. We have to open the
+ text file, select the entire content and then go to a template here on the top
+ left and click import. We proceed to paste the full text into this space here
+ and then hit import again. This will now show up at the bottom of our list where
+ we can then assign it to a hotkey or simply click on load. Once we have done
+ that you can see that we now have the standard template loaded and available.
+ Now let's go over some of the main features of this template. It is very
+ important that you always check that you are on the correct trading pair. Here on
+ the top left you can select the exchange as well as the pair. In this case it's
+ the Bybit BTC USD pair. This is the pair with the best order flow and hence the
+ reason why we prefer it. After we've selected the trading pair we can now
+ choose which type of chart we would like to see. We can either choose a time
+ interval similar to what is available on trading view or we can choose delta
+ charts, volume charts or even trend reversal charts. These charts provide you
+ with a different point of view for the same data based on delta or volume instead
+ of time. The next setting available is tick size. On this template it is set
+ to 50 which is fitting for the timeframe selected. If you intend to scalp trade
+ on lower timeframes a lower tick size may be more appropriate. There is no right
+ or wrong value here so you can experiment with different values. Our next option
+ is the cluster option on this drop-down menu. Here we have delta cluster
+ selected. It is also possible to select volume profile, delta profile, bid-ask
+ profile, volume cluster and delta cluster. These provide you with the same
+ information but with different visual representations. In order to see these
+ settings better let's turn off some of the other settings.
+ Now you can see that only the delta cluster setting has been activated and
+ when we zoom in we have no data in here and simply color shading. This is
+ already very valuable information. As you can see that darker shading represents a
+ higher concentration of delta. If we switch to a volume cluster the darker
+ shading represents a higher concentration of volume. This can be quite useful for
+ setting up possible trades as areas of high volume or high delta concentration
+ once revisited can prove to be support or resistance depending on the
+ confluence. If you choose the volume profile option you will see how much
+ volume was traded at each level within each candle. If you select delta profile
+ you will see the same information with the additional information of knowing
+ how much buying or selling was involved at each level. Now let's have a look at
+ the bid-ask profile option. As you can see it now shows you the buying on the
+ right side and the selling on the left side. Let's turn off some of the other
+ features to see this a little bit better. As you can see sometimes when there is a
+ very impulsive price move there is very little volume involved and once you reach
+ a certain level the sell or the buy volume increases. Ideally when losing a
+ level of support let's say this one here you would like to see that the selling
+ intensifies below the level showing you acceptance there. Conversely when
+ claiming a level after the initial impulsive move it is ideal to see a
+ thicker buy side on the bid-ask profile as compared to the sell side
+ reminding us of the letter P. This would indicate acceptance above the level. Now
+ let's have a look at the text options. Zooming in we can see that if we choose
+ volume we have a numerical representation of the volume traded at each level. If we
+ choose delta we instead see the delta at each level. If we choose bid-ask the
+ candle is divided into two sides. The left side shows us the market sell orders
+ and the right side shows us the market buy orders. If we activate the imbalance
+ option we can see the imbalances highlighted. The next setting is candle.
+ Usually it is said to none on this template. One useful feature could be OHLC or
+ Open High Low Close which shows you the shape of the actual candle on trading
+ view so that you can see if the volume was accumulated in the wake of the
+ candle or in the body of the candle. Additionally we can turn on a volume
+ profile, the trade count or the rec setting showing us short liquidations
+ in green and long liquidations in red. Next we will turn on the footprint bar
+ statistics again. Here we can see two rows with cumulative volume delta, one
+ for session and one for the full data, a row with volume and a row with delta
+ per candle. By clicking on the cogwheel here on the bottom left you can modify
+ the rows that are being shown or add new rows with different data depending on
+ what you would like to analyze. By activating the trade size option it is
+ possible to see the market orders grouped by their different size. Next we can
+ activate the candlestick statistics to see below or above the candle the
+ information that is also shown in the footprint bar statistics in this case
+ volume and delta per candle. Next you can activate the D bars which shows you a
+ visual representation of cumulative volume delta. This is very useful to read
+ CVD divergences. If we turn on the market settings again we can see on the right
+ for this template the previous day value area high, the previous day equilibrium,
+ the previous day point of control, the previous day value area low as well as
+ the daily open. By activating the value area setting it is possible to see where
+ most of the volume was transacted for each candle. By enabling the POC setting
+ we are also shown with a red line where the point of control for each candle is.
+ Additionally this template has a volume profile on the left and a depth of
+ market profile on the right already built in. If we zoom out we can see this on
+ the left and also on the right side of the screen. Let's have a look at some of
+ the other available templates. This is the open interest template showing us open
+ interest at the bottom, net shorts in the middle and net longs at the top. Here we
+ can then easily use this to determine whether a certain move in price is
+ healthy or not depending on what open interest is doing. This is the standard
+ TPO template or time price opportunity where we can see the sessions, naked
+ points of control, single print rows, buying tails, selling tails, value areas
+ and so on. The daily volume profile template is very useful to identify where
+ naked points of control from previous daily sessions are located. If we then
+ simply change the time frame to weekly and to monthly we can see where the
+ naked points of control from these respective sessions are located. Exo
+ charts calculates volume more accurately than trading view. Attas and Sierra
+ charts are alternative footprint software platforms. Here is the take-home message
+ for today's module. Exo charts is a professional footprint chart software.
+ With it it is possible to monitor order flow including volume, delta and open
+ interest. It is a very powerful addition to your trading arsenal and can take
+ your trading to the next level. This concludes today's module. Thank you for
+ watching and I'll see you on the next one. Happy learning and happy trading.

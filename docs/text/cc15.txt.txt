@@ -1,0 +1,56 @@
+ Hello and welcome to this Fibonacci module.
+ Today we're going to be covering the Fibonacci extension tool.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to be covering the utility of the Fibonacci extension tool,
+ how to implement it, and then we're going to go over some tips and tricks on how to best use it.
+ The Fibonacci extension tool is only used for external moves,
+ and thus it is slightly different than the other Fibonacci tools.
+ The most common extensions are the 1 to 1 and the 1 to 1.618.
+ These can be used as price targets for taking profits.
+ The Fibonacci extension tool is also the primary tool for Elliott waves.
+ However, you do not need Elliott wave knowledge to use this tool.
+ To implement the Fibonacci extension tool, you pull from left to right using three pivots.
+ If the asset is uptrending, you pull from low to high to a high low pivot.
+ However, if the asset is downtrending, you pull from high to low to a lower high pivot.
+ The main levels used for the Fibonacci extension tool are the 1, the 1.618, the 2, and the 2.618.
+ For Elliott waves, two additional levels are used, which are the 0.382 and the 0.618.
+ For harmonic patterns, two additional levels are used, which are the 1.133 and the 1.414.
+ Now, let's have a look at an example using an asset that, after ranging for quite a while, begins to uptrend impulsively.
+ First, we activate our trend-based Fibonacci extension tool, as it is called on trading view.
+ And then we pick three pivots.
+ First, a low pivot on the left, to a high pivot on the right, to a lower high pivot here on the right.
+ Now, we can see that the 1 to 1, the 1 to 1.618 and the 1 to 2 levels appear.
+ If you go to settings, you will see that you can manually introduce these levels and turn off all the other levels that you do not require.
+ Once again, the 1 to 1, the 1.618, the 1 to 2, and the 2.618 have been introduced in this template.
+ Now, let's see how helpful these levels can be to predict future price levels for an asset that is now in price discovery mode.
+ As we can see, it approaches the 1 to 1 area, and we can already use this as a possible take profit level.
+ Once the asset approaches the 1.618 level, however, it does find more resistance and taking profits has proven to be a very valuable move in this case.
+ Let's see how it progresses further on.
+ After a bit of corrective price action, the asset has now found its way to the 1 to 2 extension from our original 3 pivot pool.
+ And once again, pause this here.
+ We have now 1, 2, and 3 take profit levels from our original pool.
+ Let's see what happens next.
+ This correction is taking a bit longer than the 1 at the 1.618 level.
+ Now, we can see that after retracing, the asset begins another impulse all the way to the 2.618 level.
+ In this case, we have a nice example of an asset that from an initial pool after breaking out from a range reaches all of these 4 levels,
+ and we have been able to use them as take profit levels.
+ Now, let's have a look at an example of an asset that after an initial strong uptrend slows down, reverses, and begins to impulsively downtrend.
+ At this point, we can activate our trend-based VIB extension tool and pick a high pivot on the left to a low pivot to the right to the next lower high pivot on the right.
+ Now, you can see that our Fibonacci extension levels appear on the chart. Let's see if these were helpful as possible take profit areas from a possible short taken at the resistance area.
+ As we can see, both levels hit quite nicely and offer us a very nice take profit area on the initial impulse and even a take profit area at the 1.618 shortly after.
+ Interestingly enough, the asset begins to range after the impulsive move and ultimately finds support at the 1.618 level.
+ If you then use additional Fibonacci tools or horizontal levels, in conjunction with your Fibonacci extension tool, you can not only use these levels as nice take profit areas for a short position in this case, you can actually start to build a case of strong confluence for a possible entry as well.
+ Now let's go over some tips and tricks on how to best use the Fibonacci extension tool.
+ The one-to-one is a common target in corrective price action. The 1.618 is a common target for impulsive price action.
+ If price claims the 1.618 level, it is considered very impulsive. The new target becomes then the 2.618 Fibonacci extension.
+ Even if price action is very impulsive, the 1-to-1 Fibonacci extension is still a nice take profit level.
+ If an asset does not hit the 1-to-1 extension, it is usually considered a big sign of weakness.
+ The Fibonacci extension tool can be used in conjunction with negative fibs and fib expansions to build strong confluence.
+ Here is the take-home message for today's module.
+ The Fibonacci extension tool is used for external price moves only, and it is thus slightly different than other Fibonacci tools.
+ To implement it, you use three pivots.
+ The most common extensions are the 1-to-1 and the 1-to-1.618.
+ Also, the Fibonacci extension tool is the primary tool used in eliot waves.
+ However, no eliot wave knowledge is required to use it.
+ This concludes today's module. Thank you for watching, and I'll see you on the next one. Happy learning and happy trading!

@@ -1,0 +1,49 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering Igor Sessions.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the Igor Sessions, how to correctly implement
+ them and then go over some examples and tips and tricks on how to best use them.
+ The Igor Sessions are helpful primarily for day traders. They are useful to identify
+ resting liquidity, in other words points of control, especially on the lower timeframes.
+ They are similar to TPO charts, but they are traded differently. There are four Igor Sessions
+ per day. In order to use the Igor Sessions you will need specialized software, such as
+ exochards or ATAS. Then you can load the Sessions template by Igor. You should then
+ note the previous Sessions point of control. The Naked Session points of control are particularly
+ useful. The combination of a Naked Session point of control and one other strong factor
+ of confluence already offers a very high win rate for possible trade setups. This is because
+ trap traders exit their positions at the Naked Session point of control and scalp traders
+ enter positions expecting a reaction. The Naked Session points of control can also be
+ used on high timeframes similar to trading a daily Naked point of control, which is covered
+ in a separate module. Now let's have a look at a practical example. Here we have the Igor
+ Sessions template on exochards Desktop Pro. As we can observe, the daily TPO profile is
+ split into four different sessions, beginning with IS-1 and yellow, IS-2 in green, IS-3 in
+ purple and IS-4 in red. In this example we can observe that each of the sessions often
+ interacts with the point of control of the previous session. We can also observe that
+ there is resting liquidity in the form of a naked point of control from a previous session
+ up here, as well as down here from this IS-2 session. Two days later we can observe how
+ IS-3 taps the upper liquidity and rejects from this level and finds support at this single
+ print created also during this IS-2 session two days prior. Then IS-4, the fourth session
+ of the daily profile, finally taps the lower resting liquidity from that IS-2 session as
+ well. Now let's go over some tips and tricks. Naked session points of control are most useful
+ for day traders. They do not appear in the daily TPO profile. They provide good scalp
+ trades on low timeframes from the previous session liquidity. If a naked session point
+ of control is left untapped on the high time frame, make a note of it. Igor's sessions
+ are useful when trading a trending day. The point of control of each session should hold
+ a support or resistance in a trending day. When the previous session point of control
+ is lost as support or resistance, it is a sign of weakness in the trend. Now let's
+ have a look at another practical example. Here we can observe that price begins to down
+ trend around IS-4. Then each of the following sessions establishes a point of control that
+ becomes resistance for the future sessions. Here the IS-4 point of control is backtested
+ as resistance on IS-2. The IS-2 point of control is then backtested as resistance during IS-3,
+ thus showing us that the down trend is intact. Trading the naked session point of control
+ alone is not recommended. We recommend that you always look for confluence with at least
+ one other factor. A possible trade setup is a naked session point of control and the
+ session VWAP confluence, involving a swing failure pattern type of price move. A double
+ session point of control with a naked session point of control at the same level is very
+ strong confluence. It is possible to merge profiles together on the EAGOR session's
+ template. Merging is however recommended only when the points of control are overlapping.
+ Here is the take-home message for this module. The EAGOR sessions are helpful primarily for
+ day traders. They are useful to identify resting liquidity, in other words, points of control.
+ Naked session points of control with additional confluence are strong intraday levels. This
+ concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning
+ and happy trading!

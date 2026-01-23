@@ -1,0 +1,62 @@
+ Hello and welcome to this channels module. Today we're going to be covering parallel channels part 2.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we are going to cover the more advanced implementation of parallel channels
+ and go over some examples and tips and tricks on how to best use them.
+ In order to be ahead of the competition it is important to look for early signs that a range could be forming.
+ For this we can pay attention to possible support resistance flips on high time frame levels
+ such as daily, weekly and monthly levels and then a rejection or bounce from the following level.
+ We can then apply the parallel channel using the respective horizontal levels.
+ Let's have a look at a practical example.
+ Here we have a daily level that is initially support and on this move down is flipped to resistance.
+ Price continues to move down towards this other daily level where it seems to find support.
+ Now we can activate our parallel channel tool and use these daily levels to build our new parallel channel.
+ Let's see if it is then respected.
+ As we can observe price action is contained within the channel until it ultimately breaks out again.
+ This provides us with the opportunity to take possible long trades from the bottom of the channel,
+ use the midline as a take profit area and target the top of the channel where we then flip it around
+ and look for short positions to take profit at the middle of the channel and ultimately targeting the bottom of the channel.
+ Now let's go over some tips and tricks on how to best use parallel channels.
+ It is important to be aware of the concept of deviations of a range.
+ This means that price action initially leaves the range or parallel channel but then there is no follow through.
+ Price returns to the channel and continues rotating within the channel.
+ Closing outside of a channel is not bullish or bearish unless price can take the last high or low.
+ In other words, market structure must change to confirm the breakout.
+ If you are finding it difficult to interpret market structure, for example in very choppy price ranges,
+ it is possible to use a line chart to see it better.
+ We recommend that you adjust the channel after a break only when market structure remains unchanged and price returns to the channel.
+ We also recommend that you never delete a well respected channel as price action might revisit it and once again respect it very well.
+ Returning to our previous example, we can see that there is a false breakout from the channel and a true breakout.
+ This week here represents a very fast deviation to the downside whereas price action above the channel here represents a true breakout.
+ As market structure changes here, we do not adjust our parallel channel. We will now cover partial rises and declines as they can occur in several patterns,
+ such as right angled formations, broadening bottoms or wedges and parallel channels.
+ The concept is that price rotates within the pattern but at some point fails to reach a trend line or edge of the pattern.
+ A partial rise then signifies an early sign of weakness while a partial decline signifies an early sign of strength.
+ A partial rise is confirmed when price closes below the midline of a parallel channel and a partial decline is confirmed when price closes above the midline.
+ Partial declines and partial rises within a range signify constricting price action.
+ Constricting price action generally leads to a larger breakout or breakdown from the channel.
+ Let's have a look at a practical example.
+ Here we will construct a parallel channel using these two pivots at the high and this lower pivot.
+ As we can observe, the midline offers us very nice respect as well. Since this is a higher time frame channel, we can envision taking possible short positions at the top,
+ full profit at the middle and upon loss of the midline, another short position is possible to the low part of the channel.
+ Depending on confluence, we can then flip the trade to a possible long, once again to the midline and ultimately to the top of the channel.
+ Let's see how price action develops next.
+ Here we can observe that there is a partial decline in price action and we do not have a full rotation to the bottom of the channel.
+ This could be an early sign of strength. However, in the end it is important to always look at confluence and context to determine whether this information is helpful or not.
+ Let's see what happens next.
+ As we can observe, price action goes all the way to the top of the channel and attempts to break out, but ultimately falls back into the channel and rotates all the way quite impulsively to the low of the channel.
+ Now it is possible for us to adjust this parallel channel and use the new high pivot as market structure overall has not changed.
+ It is also important to adjust the lower pivot.
+ This is now our new channel.
+ Let's have a look at the further development of price action.
+ As we can observe now, there is once again a full rotation to the upper part of the parallel channel and then price seems to get stuck in this range, neither making higher highs nor lower lows.
+ This can already begin to be classified as constricting price action.
+ Once price moves away from this range, let's see if that's the case.
+ Ultimately, the dramatic move comes to the downside and not only rotates to the low of the channel, but loses it, back tested as resistance and continues downward.
+ Generally, horizontal parallel channels are easier to predict early on than sloping channels.
+ Wicks and candle body closes can be used to build the channel, depending on what fits best.
+ It is also possible to have a channel within a channel, for example a sloping channel within a sideways channel.
+ Here is the take-home message for this module. You can use high time frame horizontal levels to determine ranges and build parallel channels early on.
+ Deviations from parallel channels are common, and it is best to wait for a change in market structure for confirmation.
+ Partial rises and declines within the channel can give a heads up of possible weakness or strength.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading!

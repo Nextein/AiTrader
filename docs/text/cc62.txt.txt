@@ -1,0 +1,96 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering day types.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of understanding and differentiating between
+ the six different day types, how to correctly implement them, and then go over some examples
+ and tips and tricks on how to best use them. By understanding and knowing the six different
+ day types you will be able to plan the trading day ahead and be on the right side of the
+ market. You can also apply the previous day type and the initial balance of the current
+ session as context. This will allow you to start the trading day one step ahead of the competition.
+ In order to implement the different day types you will need specialized software such as
+ exochards or ATAS. Then you will be able to load the standard TPO template from the chart
+ champions website which shows the daily session. It is also possible to compare the current day
+ type with the previous day or days type and add the information from the initial balance
+ of the current session to plan the day ahead. A normal day typically has a very wide initial
+ balance as a larger trader or traders enter upon the market open. Generally this results in a
+ balanced day. This is typically seen in the stock market and less often in the crypto markets.
+ Now let's have a look at a practical example of a normal day. Here we have the standard TPO
+ template from the chart champions website on exochards web. It is set to the BIBIT BTC USD pair.
+ As we can observe the initial balance highlighted by this blue line here is relatively wide. End price
+ remains range bound for the rest of the session between the value area high and the value area low.
+ This type of day is typical for the stock market and not so typical for the crypto market.
+ The price action candles look like this as we can observe a range bound environment.
+ The normal day variation type usually has a smaller initial balance followed by range extension or price
+ expansion within the first six hours of the trading session equivalent to Igor session 1.
+ The price advance is then stopped by the Igor session 2 or the London stock market open.
+ This TPO profile can look like the letter P or like the letter B. Now let's have a look
+ at a practical example of a normal variation day. Typically for this day type the initial
+ balance is smaller. Then there is an expansion in price that is contained within the first six
+ hours of the trading session equivalent to Igor time session 1. Once the second Igor time session
+ begins or the London session price is then stopped and it remains range bound for the remainder of
+ the trading session. If we turn on the price candles we can observe that the price advanced was stopped
+ here and entered into a balance state remaining range bound until the daily trading session was over.
+ A neutral day type typically has the initial balance in the middle of the range. The first attempt to
+ break through the range highs fails and price rejects back into the range. The first attempt to
+ break through the lows of the range also fails and price reverses back into the range as well.
+ This is best if buying tails and selling tails are formed. Now let's have a look at a practical
+ example of a neutral day. Typically the initial balance for the neutral day is right in the middle
+ of the value area or the range. The first attempt to break the range highs fails and price rejects
+ and comes back into the range. Also the first attempt to break the lows of the range also fails
+ and price also rejects and comes back into the range. This is best if selling tails and buying
+ tails are created. If we turn on the price action candles we can observe that price initially tried
+ to break out towards the upside and rejected coming back into the range. A few hours later
+ there was an attempt to go for the lows of the range which also failed and price came back right
+ into the range, remaining range bound for the rest of the trading session. A neutral day also
+ offers a high probability for range bound price action the following day. Let's see what happened
+ the following day. As we can observe price remained also range bound within the value area and any
+ attempts to leave the value area failed and were rejected also with a selling tail and a buying tail.
+ These provide very nice possible entries for longs at the lower of the range and shorts at the top
+ of the range. The neutral day variation type is similar to a neutral day but the session close
+ is at the high or low of the day. This can provide a clue to the possible momentum for the following day.
+ This type of day is very useful for the stock market where scalp traits can be taking at the
+ next day market open based on this information. This is generally not recommended for the crypto
+ markets. Now let's have a look at a practical example of a neutral day variation. As we can observe
+ the profile is very similar to a neutral day. However, there is one key difference. The close
+ of the session is at the highs of the profile. It can also be at the lows of the profile.
+ This information can give you a heads up on the possible momentum for the following day.
+ This type of profile is very useful for the stock market as it can offer nice scalp traits
+ when the following session opens. The trend day type is characterized by a strong one-directional
+ move with increases in volume, delta and open interest. Price action leaves rows of single prints
+ and one time framing occurs, which is when each previous candle high or low is not broken,
+ for example on the 5 minute time frame. Counter trading the impulse is not recommended
+ as this impulsive move can push through the strongest confluence levels.
+ Now let's have a look at a practical example of a trending day. We're going to pick up where we
+ left off with the previous example, where we had a neutral day variation with a close of the session
+ at the highs. This supposedly can give us a heads up on how the following day might develop,
+ possibly with momentum to the upside in this case. As we can observe, this is what happened the
+ following day, as we had a strong one-directional move with increases in volume, delta and open
+ interest, leaving behind rows of single prints and breaking balance to find a new range higher up.
+ On such trending days, we recommend that you do not attempt to fade or counter trade the impulsive
+ move. It is better to remain patient, as these moves, especially if they are on increasing volume
+ delta and open interest, can slice through every resistance or support level that you might have
+ mapped out. The final day type is the double distribution day type. It contains two neutral day
+ profiles separated by one large column of single prints. It is one single impulse
+ separating the two balances or ranges, whereas the trending day contains multiple impulses,
+ leaving multiple rows of single prints. There is a trading strategy involving double distribution
+ days covered in a separate module. Now let's have a look at a practical example of a double
+ distribution day. This type of day shows two neutral day profiles separated by a big row or
+ column of single prints. The difference between a double distribution and a trending day is that
+ the double distribution day only has one column separating the two profiles. A trending day will
+ have multiple impulses with several rows of single prints being created. If we turn on the price
+ action candles, we can observe that we spend a few hours creating this first profile and then
+ a very impulsive moved followed, creating this big row or column of single prints. After that,
+ price found a balance in a new region and ultimately failed to break further down
+ and came back into the balance of the entire session. Now let's go over some tips and tricks.
+ The neutral day type offers the perfect range bound environment. There is a high probability
+ of range continuation the following day. The neutral day type occurs often in the crypto market.
+ When trading a trending market, we recommend that you trade with the direction of the trend.
+ When trading a range bound market, we recommend that you look for shorts at the highs and lungs
+ at the lows of the range. When a range is broken with increasing volume, open interest and delta,
+ the impulse can turn into a trend and thus we recommend that you do not fade or counter trade
+ the impulse. Here is the take-home message for this module. Recognizing which of the six day types
+ is forming will help you be on the right side of the market. You can use the previous day type
+ and the initial balance of the current session as context for the coming day.
+ This will allow you to be one step ahead of the competition and help you increase your win rate.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

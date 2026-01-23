@@ -1,0 +1,61 @@
+ Hello and welcome to this patterns module. Today we're going to be covering wedges.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of rising and falling wedges,
+ how to implement them, and then go over some examples and tips and tricks on how to best use them.
+ Wedge reversal patterns can provide powerful trend reversal entries.
+ It is possible to apply rising and falling wedges on price action.
+ Wedges can be used on all timeframes, however they are stronger on higher timeframes.
+ To implement wedges it is necessary to use two trend lines with at least five combined touches,
+ three on one trend line and two on the other.
+ It is important to monitor volume as the wedge forms as it should be declining.
+ Possible price targets upon breakout from the wedge are the 382 and the 618 Fibonacci retracement
+ as well as the start of the wedge formation.
+ The three recommended approaches to trade a wedge are one, an aggressive entry at the apex with additional confluence,
+ two, waiting for the trend line break with confirmation and entering at market,
+ and three, waiting for that trend line break and also a backtest of the trend line.
+ Let's have a look at a practical example of a rising wedge.
+ Here we have connected the top pivots with the trend line to form our resistance trend line of the wedge,
+ and here the bottom pivots to create our support trend line.
+ We can see that the trend lines are well respected and that we get five touches.
+ We also have a horizontal level up here, which is a key resistance level.
+ It is very important that we monitor volume as we progress through the wedge formation.
+ Initially, volume is not declining, but upon reaching the third touch of the top resistance trend line, it decreases.
+ This can be an early sign that a possible breakdown from the rising wedge is imminent.
+ The three possible ways to approach entering a trade with this rising wedge formation would be
+ the very aggressive short entry at the top resistance trend line
+ or entering at market upon losing the bottom trend line.
+ The third option of waiting for a backtest of the trend line and then entering a short does not occur in this example.
+ To establish possible price targets for the short trade, we can use the entire length of the rising wedge formation
+ and with a Fibonacci retracement, establish the 3A2 as the first take profit level,
+ the 618 as the second take profit level and the entirety of the move as the third take profit level.
+ As usual, we recommend using additional confluence and market structure to establish the best price targets for the trade.
+ Now, let's go over some tips and tricks. As a falling or rising wedge forms, the impulses should become weaker and volume should decrease.
+ It is also possible to have more than five touches of the trend lines.
+ The higher time frame wedges offer higher probabilities for successful trades. Rising and falling wedges can be applied in Elliot Wave Theory
+ and are described as ending diagonals.
+ In these wedges, we see that Wave 3 is often shorter than Wave 1 and consequently Wave 5 is also shorter than Wave 3.
+ Let's have a look at a practical example of a falling wedge.
+ First, we're going to select our trend line tool and then use these upper pivots to build the top of our wedge
+ and then use these bottom pivots to build the bottom of our wedge.
+ As you can see, price action is constricting within these two trend lines and the impulses are becoming shorter.
+ Volume as the wedge progresses is also decreasing.
+ Let's see what happens next. As we can observe, initially, price action remained bound within the two trend lines.
+ After an initial fakeout of the top trend line, it finally breaks out on very high volume.
+ To now establish price targets for this move, we can use the entirety of the formation.
+ Pulling a fibri-tracement from the top to the bottom.
+ Now we have the 3A2 as Take Profit 1, the 618 as Take Profit 2
+ and the entire move back to the beginning of the falling wedge formation as Take Profit 3.
+ Let's see if all price targets were hit.
+ Take Profit 1 was reached rather quickly.
+ Here is Take Profit 2 and finally, price action went fully to the top of the move to reach Take Profit 3.
+ The three possible ways to approach this trade would be to find a very aggressive long entry at the low part of this price action still within the wedge
+ if additional confluence is there, such as a horizontal level.
+ A second possible way is to mark it by upon breaking out of the wedge
+ and a third option is to test of the wedge and then enter the long position.
+ Here is the take-home message for this module.
+ Rising and falling wedges can provide powerful trend reversal entries.
+ Possible price targets upon successful breakout from a wedge are the 3A2 and the 618 Fibonacci retracement levels as well as the full length of the wedge formation.
+ As a wedge develops, it is important to monitor volume and use confluence for entries and price targets.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading!

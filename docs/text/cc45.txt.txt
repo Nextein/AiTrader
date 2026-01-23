@@ -1,0 +1,53 @@
+ Hello and welcome to this Tools and Charts module.
+ Today we're going to be covering trend line trading.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of using trend lines for your trade setups.
+ How to correctly implement them and then go over some examples and tips and tricks on how to best use them.
+ Trend lines can be very useful to determine the strength of a move.
+ It is also possible to determine a trend reversal by using the three trend line fan break.
+ Trend lines can be used across all markets.
+ A confirmed trend line requires three touches.
+ A breakdown or breakout from the trend line can be used as a take profit for current positions and possibly as an entry for a reverse or opposite trade.
+ For low time frame trend lines for example on the one hour time frame you can use 15 minute candles to confirm a possible breakdown or breakout from the trend line.
+ For a high time frame trend lines we recommend that you use at least daily candle closes to confirm a possible breakdown or breakout from the trend line.
+ Now let's have a look at a practical example.
+ Here we have the Bitcoin chart on the four hour time frame.
+ We will select the trend line tool from this drop down menu and then we will choose this pivot as our first pivot and this pivot here as our second pivot.
+ In order for the trend line to extend to the right you need to go to settings and click extend right line.
+ This way your trend line will automatically continue in exactly the angle of these two first pivots.
+ Most traders will wait for a third touch of the trend line before entering a possible trade and even wait for the fourth touch.
+ It is however possible to enter aggressively on the third touch of the trend line which ultimately confirms it as valid.
+ Let's see what actually happened next.
+ As we can observe the third touch of the trend line already provided a very nice possible short entry with a nice move to the downside.
+ In this example we even have a very nice fourth touch also respecting the trend line very well and providing yet another possible short entry with even more follow through.
+ It is important to note that often these fourth touches of the trend line can become crowded trades as many traders are now paying attention to the trend line.
+ The result can be that instead of getting a nice rejection like in this example that we break through the trend line and do exactly the opposite of what most traders expect.
+ Therefore it is very important to always use confluence with other technical analysis tools and read the market context and order flow to better prepare yourself for a possible fourth touch of the trend line.
+ The three trend line fan break is characterized by three consecutive trend lines breaking with a change in market structure.
+ The third trend line break can confirm a trend reversal.
+ Now let's have a look at a practical example of the three trend line fan break.
+ The first trend line is constructed by using this high pivot here and connecting it to this high pivot here. Initially price action is contained within this first trend line until it finally breaks here.
+ At this point we can add the second trend line with this new high pivot mate thus connecting the initial high pivot to this new high pivot.
+ Already we can notice that market structure is beginning to change and that the angle of the downtrend is also changing.
+ Ultimately price breaks through the second trend line and back tested as support making yet another higher high locally.
+ We can then add the third trend line by connecting the high pivot to this new high mate here.
+ As we can observe the third trend line is also initially resistance until it is impulsively broken through to give a very nice rise in price.
+ From the point of the breakout from the third trend line it would have been possible to enter a long position and have a very nice 7% move to the upside all the way to the original highs.
+ It is important that these breakouts or breakdowns happen with an increase in volume which we can observe here on the volume profile.
+ Also it is better to use these trend line patterns with additional confluence as this will increase the probabilities for your trade setup.
+ Now let's go over some tips and tricks. According to GAN theory a healthy trend should have a 45 degree angle.
+ A parabolic trend is significantly steeper than 45 degrees and when broken can provide a large retracement.
+ A flat trend is significantly less than 45 degrees and can be characterized as weak.
+ An internal trend line can be useful in a high time frame analysis.
+ This trend line is drawn through price action connecting as many highs and lows as possible.
+ Now let's have a look at an example of an internal trend line.
+ Here we have the bitcoin chart on the daily time frame and this trend line is created with this pivot up here connected to this second pivot here and then extended to the right.
+ As we can observe the trend line gives us a nice internal angle going through price action for this downtrend and it even plays a very nice resistance and later support role.
+ The fourth touch of a confirmed trend line might turn out to be a crowded trade as many traders are paying attention to the trend line and it can possibly break.
+ A breakdown or breakout from a trend line should occur with an increase in volume.
+ We recommend that you use confluence to increase the probabilities for your trade setups when using trend lines.
+ It requires three touches to confirm it.
+ It is possible to determine a trend reversal by using the three trend line fan break in combination with market structure.
+ The angle of a trend line is important as well as the volume upon breakout or breakdown from the trend line.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

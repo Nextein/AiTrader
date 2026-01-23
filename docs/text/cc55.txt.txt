@@ -1,0 +1,43 @@
+ Hello and welcome to this strategies module. Today we're going to be covering pivot points.
+ Please pause this video and take a moment to read this trade disclaimer. As the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of pivot points, how to correctly implement them,
+ and then go over some examples and tips and tricks on how to best use them.
+ Pivot points can provide targets for a move and even entries. They can also provide the
+ invalidation level for a trade setup. It is possible to design a trading strategy around pivot points.
+ In order to implement pivot points you will need to activate the pivot points standard indicator
+ in training view. Then you can select the pivot's time frame. We recommend that you use daily for
+ intraday trade setups and weekly for swing trade setups. You can also select the pivot type and
+ we recommend that you select Fibonacci. Now you can use the S&R pivots as support and resistance
+ levels. R1 and R2 are above P and they can be used as price targets for longs or even as short
+ entry levels. S1 and S2 are below P and they can be used as price targets for shorts or even as long
+ entry levels. Now let's have a look at a practical example. To activate the pivot points standard
+ indicator simply click on indicators in trading view and then type pivot points standard in the
+ search box selecting the top result. Next you can modify the settings in the indicator to fit the
+ trade setup that you're trying to find. For this example we are looking for a possible intraday
+ trade setup and we have selected the daily pivots time frame. We have also selected the Fibonacci
+ pivot type. Here you can enter the number of pivots back that you would like to see.
+ We recommend that unless you're doing back testing that you leave this setting at 1.
+ Here you can activate up to 5 S pivots and 5 R pivots.
+ Now let's see if we can find a possible intraday trade setup using the pivot system.
+ Here I have marked the daily open and we can observe that price is ranging around this level.
+ A possible trade setup would be either a long from the P center pivot or a possible short from
+ the first resistance pivot or even the second one. If we do find a possible long entry at the center
+ pivot and get the appropriate reaction we could target R1 and R2 as possible take profit levels.
+ Let's see what actually happened next. As we can observe price initially went up towards the first
+ resistance pivot and after a short deviation ended up rejecting from this level and traveling all the
+ way down to our P center pivot. In this case we could have possibly taken a short scalp trade
+ from the resistance pivot and subsequently a long trade from our P center pivot. Once we
+ enter a possible long trade here we can target once again the first resistance and the second
+ resistance pivots which in this case gave us a very nice successful trade setup. We recommend
+ that you always use confluence when attempting to find a trade entry using the pivot points system.
+ Here for example we could have used a Fibonacci retracement from low to high to find a very nice
+ confluence of our center pivot with the CC. Now let's go over some tips and tricks.
+ It is very important that you use confluence with the pivots. For example the Bonacci tools.
+ It is also possible to use a combination of pivots from Asian and American or European exchanges.
+ Here is the take-home message for this module. Pivot points provide support and resistance levels
+ that can be used as price targets or even possible entries.
+ We recommend that you use the daily pivot timeframe for intraday trade setups and the weekly pivot
+ timeframe for swing trade setups. Price is drawn to the Chinese pivots.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

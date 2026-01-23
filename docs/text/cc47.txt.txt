@@ -1,0 +1,115 @@
+ Hello and welcome to this tools and charts module. Today we're going to be
+ covering chart types. Please pause this video and take a moment to read this
+ trade disclaimer as the information contained in this video is not financial
+ advice and is only for educational purposes. In this module we will cover
+ the utility of six different chart types, how to correctly implement them, and then
+ go over some examples and tips and tricks on how to best use them. In this
+ module we will cover six different chart types that will allow us to move
+ away from the classic time-based charts. These chart types can provide a clean
+ view of powerful data behind the scenes. It is possible to use them to read
+ order flow, which is ultimately the next level scalp and day trading method.
+ A range chart is a chart type where a new candle is created after price moves a
+ set amount of ticks. One tick equals 50 cents. This chart type is useful for
+ determining support and resistance levels such as the edges or midline of a
+ well-defined parallel channel. It is also possible to detect a momentum
+ change if the candles print in rapid succession and we can do this by adding
+ time per candle as a statistic. Now let's have a look at a practical example. Here
+ we have the Bitcoin USD pair on Bybit, on the one-minute time frame, on
+ trading view, on the right side of the screen. On the left side we have a range
+ 40 chart on the same pair on exocharts. The range 40 chart means that a new
+ candle will only be printed if price moves 40 ticks or 20 dollars. We can
+ already notice that with the range 40 chart we have a much cleaner view of
+ price action and candles are only printed if an actual significant price
+ movement occurs. With this chart it is easier to determine significant support
+ and resistance levels such as the edges or midline of a well-defined parallel
+ channel than with the traditional time-based chart. The range Y chart is a
+ modification of the range chart. Here a new candle is created after price moves a
+ set number of ticks away from the candle open. This chart type is even cleaner
+ than the range chart. Now let's have a look at a practical example of a range
+ Y chart. Following up on the previous example we have simply changed the chart
+ type to range Y 40. As we can observe the price action on the left side is
+ much cleaner than the price action time-based on the right side on trading view.
+ By adding the time statistic to the range and range Y charts it is possible to
+ detect a momentum change if for example the candles are suddenly printed in
+ rapid succession such as is the case here. We can observe that the time per candle
+ is reduced compared to the previous candles. The tick chart is a chart type
+ where one tick equals one transaction. This is not the same as tick size. Here a
+ new candle is created after a set number of transactions. It resembles a
+ visualization of the order book and the size of the orders being processed. Now
+ let's have a look at a practical example of a tick chart. In this case we have
+ selected the tick 233 chart on exocharts. On the right side we have once again the
+ one-minute time frame on trading view. This tick chart will only print a new
+ candle after 233 transactions have been concluded. As we can observe it provides
+ us an even cleaner depiction of price action removing unnecessary noise shown
+ by the time-based chart. If we then add the volume statistic to each candle we
+ can observe where larger market participants are getting involved when
+ there is a peak in volume per candle and a reduction of time needed to print a
+ candle. The trend reversal chart is a very powerful chart type and it combines a
+ range chart with vertical price movements or ticks. There are two candle types in
+ the trend reversal chart. The trending candles and the reversal candles. This
+ chart type is useful to identify when price action is trending, ranging and
+ when it has the potential to reverse. In the trend reversal chart a trending
+ candle is created when price moves a set number of ticks in the direction of the
+ trend. A reversal candle is created when price moves a set number of ticks
+ against the trend direction. On a trend reversal 44 26 chart type for example a
+ trending candle will be printed after a price movement 44 ticks in the
+ direction of the trend. A reversal candle will be printed after a price
+ movement of 26 ticks against the trend or against the previous candle. In the
+ trend reversal chart the shadows or wicks are not the same as the Japanese
+ candlestick wicks from the time-based charts. The shadow or wick is always
+ directed opposite to the candle direction which is very useful to see
+ where price attempted to go but failed to stay. A red candle will have an upper
+ shadow or wick and a green candle will have a lower shadow or wick. Now let's
+ have a look at a practical example of a trend reversal chart. Here we have
+ selected the trend reversal 44 26 chart type on exocharts. On the right side we
+ have once again the BTC USD pair on the one-minute time frame. Similar to the
+ previously covered charts the trend reversal chart offers a much cleaner
+ view of price action and removes unnecessary noise. However it also adds
+ very powerful elements as we can now see if prices trending, ranging or if a
+ possible reversal is beginning. It is possible to unlock the true power of the
+ trend reversal chart when using the beautiful CCTR template available on the
+ chart champions website. Here we have a very nice and clean depiction of price
+ action and we can observe very clearly how price behaves around key levels in
+ the chart such as the previous day point of control, the previous day open, the
+ daily open and the VWAP just to name a few. Similar to the other chart types when
+ the trend reversal chart is combined with cumulative volume delta, open interest
+ and also delta and volume statistics it becomes a very powerful weapon for
+ scalp trading and day trading. A volume chart is a chart type where a new candle
+ is created after a set amount of volume has been transacted. It is useful to see
+ momentum increasing or decreasing. This chart type also removes noise and is
+ very powerful combined with a time statistic. Now let's have a look at a
+ practical example of a volume chart. Here we have selected the volume 2 million
+ chart type on exocharts from the drop-down menu. On the right side we have the
+ one-minute time frame on trading view. On the left side the volume chart will
+ only print a new candle after 2 million in volume has been transacted. This
+ chart type also removes a lot of the noise provided by the time-based chart.
+ And if we combine it with other statistics such as delta and time we can then judge
+ a possible change in volatility and momentum. It is also possible to add
+ statistics such as trades count to then observe how many trades it took to
+ generate a 2 million volume candle. A lower trade count would imply that
+ larger position sizes were being processed. A delta chart is very similar to a
+ volume chart. However, here a new candle is created after a set amount of delta
+ has been reached. This chart type is excellent to monitor incoming market
+ orders. It is a very clean chart type and also very powerful combined with a
+ time statistic. Now let's have a look at a practical example of a delta chart. Here
+ we have selected a delta one million chart type on exocharts. On the right
+ side we continue to have the one-minute time frame on trading view. The delta
+ chart is arguably one of the cleanest chart types available. In this chart type
+ there will only be a new candle after a 1 million delta has occurred. This condenses
+ price action into only the most relevant movements and removes all of the
+ unnecessary noise provided by the time-based chart. Similar to the other chart
+ types, the delta chart becomes very powerful when combined with other
+ statistics such as volume, time and trades count. Now let's go over some tips and
+ tricks. There is no best chart type that can be recommended. It depends on your
+ trading strategy and your personal preference as well as trading style. All
+ chart types are powerful when combined with open interest, delta and cumulative
+ volume delta. These chart types offer a clear advantage in combination with
+ order flow reading for scalp and day trading. In order to master them you will
+ need screen time and meticulous observation. Here is the take-home message
+ for this module. The six different chart types covered in this module can
+ greatly expand your trading arsenal. They will allow you to reduce noise when
+ observing price action and you will be able to focus on the relevant data
+ behind the scenes. These chart types combined with open interest, delta and
+ CVD will offer a powerful weapon for scalp and day trading. This concludes
+ today's module. Thank you for watching and I'll see you on the next one. Happy
+ learning and happy trading.

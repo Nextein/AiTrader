@@ -1,0 +1,72 @@
+ Hello and welcome to this patterns module. Today we're going to cover the three
+ drives pattern. Please pause this video and take a moment to read this trade
+ disclaimer as the information contained in this video is not financial advice
+ and is only for educational purposes. In this module we're going to cover the
+ utility of the three drives and the three valleys patterns, how to correctly
+ implement them and then go over some examples and tips and tricks on how to
+ best use them. The three drives pattern is a Fibonacci-based powerful
+ reversal pattern. The three valleys or peaks pattern is not Fibonacci-based but
+ it is more common. These patterns are especially powerful with strong
+ confluence. The three drives pattern is defined by three attempts at an
+ important level before a reversal. Volume declines on each of the attempts and
+ then increases upon reversal. The symmetry for this pattern is very
+ important similar to the harmonics patterns. In the three drives pattern
+ drive 1 can be a move of any size. Point A is then the 618 retracement of
+ drive 1. Drive 2 should end between the 1.272 to 1.618 expansion of 1 to A.
+ Point B is then the 618 retracement of drive 2. Drive 3 should end between the
+ 1.272 to 1.618 expansion of 2 to B. Finally the targets for traits taken from B
+ are the drive 3 end point and from the reversal point a drive 3 the target is
+ the 618 retracement of the overall pattern. Now let's go over a visual
+ example of the three drives pattern. It is possible to draw this pattern on
+ trading view by using the dedicated tool from this drop-down menu. Once
+ completed the pattern should look like this. Let's check the Fib levels.
+ Drive 1 is an impulse move of any size and for the first retracement to point A
+ we are looking at approximately the 618. It is possible to have a retracement to
+ a different level. These are flexible. To determine where drive 2 should end we
+ can use an expansion from 1 to A and look in the region between the 1.272 and
+ the 1.618. For the second retracement to point B we also use the retracement of
+ the move from A to point 2 or simply drive 2. To then establish a target for
+ the third and last drive once again we use the expansion from 2 to B and look
+ for a target between the 1.272 and 1.618. Finally to establish price target for
+ this bearish three drives pattern we can simply use the Fibonacci retracement
+ tool and pull it from the beginning of drive 1 to the end of drive 3 and then
+ target the 618 retracement. The trade setup would look like this providing a
+ short entry at point 3 and targeting the 618. It is also possible to enter trades
+ at point B and target the end of drive 3. Once again to establish the target for
+ a long trade entered at B we use the Fibonacci expansion from 2 to B and look
+ for a target in the region between the 1.272 and the 1.618. The trade setup would
+ look like this with a long entry at B targeting this region. The symmetry for
+ the three drives pattern is very important. We can check this by using the
+ Fibonacci time tool and measuring the time that it took for drive 2 to complete
+ extended from point B and see if the time taken for the completion of the
+ third drive is the same. As we can see it is the 1 to 1 time extension so the
+ pattern is symmetrical. By simply inverting this pattern it is possible to
+ trade it bullishly looking for long entries at the end of drive 3 and
+ targeting the 618 retracement of the overall pattern or taking short entries
+ at point B targeting the end of drive 3. We recommend that you use market
+ structure for the correct stop loss placement. In the three valleys or peaks
+ pattern there are also three attempts at an important level. The volume gets
+ weaker on each attempt and divergence is built. Upon reversal volume increases
+ significantly. This pattern has no strict Fibonacci requirements and thus is seen
+ more often. Now let's have a look at a practical example of a three valleys
+ pattern. Here we see price action retracing to a strong support area. We can
+ see that the three valleys have already formed with the first one here, the
+ second one here and the third one here. Each of them taking the lows of the
+ previous attempt at this support area. Let's see what happens next. As we can
+ observe the three valleys pattern has followed through and price action moves
+ up. A possible entry for the three valleys pattern would be aggressively
+ upon seeing the third attempt at the support region and checking order flow
+ to confirm that there is a bullish buying reaction. Another option would be to
+ wait for a change in market structure and enter at the next available
+ retracement. Now let's go over some tips and tricks. We recommend that you use
+ confluence and pay attention to the context of the market when using the
+ three drives pattern as it greatly increases its chances of success. The
+ three drives pattern and also the three valleys pattern can be used on any
+ time frame. For the three drives pattern volume and symmetry are very
+ important. Here is the take-home message for this module. The three drives pattern
+ consists of three attempts at an important level followed by a powerful
+ reversal. Volume and symmetry are very important for this pattern similar to
+ harmonics. Context and confluence must be interpreted correctly as they are
+ necessary for this pattern to work successfully. This concludes today's
+ module. Thank you for watching and I'll see you on the next one. Happy learning
+ and happy trading!

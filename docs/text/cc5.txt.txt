@@ -1,0 +1,55 @@
+Market Structure
+ Hello and welcome to this basics module. Today, we're going to be covering market structure.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of identifying market structure,
+ how to correctly implement it, and then go over some examples and tips and tricks on how to best use it.
+ Market structure is fundamental to any type of technical analysis tool that you might use.
+ It is, so to speak, the anatomy of the chart.
+ It is a great way to build context and it can help provide a bias and determine where price action might be headed next.
+ In order to begin identifying market structure, ask yourself the question, where is price trying to go?
+ The answer will be up or down, in other words trending, or sideways, in other words consolidating.
+ This is applicable to all timeframes.
+ When the price of an asset is moving higher, it is said to be in an uptrend.
+ This is characterized by higher highs and higher lows.
+ Breaking the newly made high confirms the uptrend.
+ In this situation, longs are favorable, as a continuation of the trend is to be expected.
+ Now let's have a look at a practical example of an uptrend.
+ Here we have the Bitcoin chart on the weekly timeframe.
+ Beginning from this low, we can observe that price pushes higher and then retraces here to make a higher low.
+ Once these previous highs are broken, we confirm the uptrend and make a higher high followed by yet another higher low.
+ Here the trend is clearly bullish, uptrending and we expect continuation.
+ As we can observe, this is the case and very impulsively so, to make yet another higher high, another higher low, and this continues for these pivots here as well.
+ When the price of an asset is moving lower, it is said to be downtrending.
+ This is characterized by lower highs and lower lows.
+ Breaking the newly made low confirms the downtrend.
+ And in this constellation, shorts are favorable, as a continuation of the trend is to be expected.
+ Now let's zoom in to this section of the chart.
+ Now we have zoomed in and we have switched to the daily chart.
+ As you can observe, even though these pivots are part of the weekly uptrend, we have a downtrend face on the daily chart here.
+ We can mark it once again by taking this pivot high to this low and to the next high, which is now possibly a lower high.
+ The downtrend is confirmed once we take these previous lows and make a lower low.
+ This confirms that we have a daily downtrend.
+ Here we make yet another lower high, but here we do not make a lower low, and instead we enter a sideways consolidation phase or range.
+ When the price of an asset is moving sideways, it is said to be in a consolidation phase.
+ This is characterized by the lack of higher highs or lower lows.
+ It is an indecision phase and a sideways range is formed, which can be traded from the top to the bottom and vice versa.
+ A breakout on either side of the range can occur.
+ Now let's zoom into the consolidation phase of the chart here.
+ This is the zoomed-in view now on the four-hour timeframe.
+ To summarize, we still find ourselves in a very impulsive, weekly uptrend within a downtrend on the daily timeframe, and we have now reached a consolidation phase.
+ It is easier to visualize these consolidation phases by using the parallel channel tool, which can also be additional confluence for possible trades.
+ Here we see that we remain range bound with a few deviations or attempts to leave the range, which ultimately do not succeed.
+ Here there is a very large deviation to the upside, but ultimately we do end up falling back into the range before finally breaking out here.
+ Even though this impulsive attempt to leave the consolidation range does not initially succeed, it does set up the opportunity for the uptrend to resume.
+ We can use this low pivot here, this high pivot here, and then view this pivot as a possible higher low.
+ The uptrend is then confirmed once we take these highs and make yet another higher high followed by another higher low.
+ Then the uptrend is fully resumed, and once again long trades are favorable as price moves to the upside.
+ To summarize this section of the chart, we have an impulsive, weekly uptrend that does not change.
+ Within this section of the weekly uptrend, we have a daily downtrend, which ends with a consolidation phase and then resumes by making higher highs and higher lows, and is once again in line with the larger weekly time frame.
+ Now let's go over some tips and tricks. When attempting to identify a trend reversal, keep in mind that you need three pivots to identify a trend.
+ It can be difficult to identify a trend as there can be a trend within a trend on different time frames.
+ Here is the take-home message for this module. Market Structure is the fundamental building block for all your technical analysis tools.
+ It is important to identify whether price is in an uptrend, a downtrend, or in a sideways consolidation phase.
+ A trend reversal is based on market structure on multiple time frames.
+ This concludes today's module. Thank you for watching, and I'll see you on the next one. Happy learning and happy trading.

@@ -1,0 +1,143 @@
+ Hello and welcome to this footprint module, today we're going to be covering imbalances.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to cover the utility of looking at imbalances, how to implement
+ them and then go over some tips and tricks on how to best use them as well as cover the
+ special case swing failure pattern.
+ Imbalances appear when volume traded at a certain price level is no longer balanced.
+ When a level is out of balance there are proportionally more buyers or sellers at that level.
+ We should check for imbalances at key support and resistance levels to differentiate between
+ continuation and a possible price reversal.
+ In order to check for imbalances and implement them you will need footprint software such
+ as exocharts.
+ We recommend that you set the template settings between 400 and 618%.
+ The context in which imbalances appear and the following reactions can greatly enhance
+ your trading strategy and win rate.
+ Let's have a look at a practical representation of what imbalances look like on exocharts.
+ Here we have the chart champions template on bibit BTC USD pair on the 30 minute time
+ frame and we have activated the delta cluster as well as the imbalance text.
+ When we now zoom into the candles we will be able to see the selling imbalances in these
+ black boxes in red and the buying imbalances in these black boxes in green.
+ The settings for the imbalances are set to 618%.
+ When implementing imbalances you can check for absorption, in other words for limit orders
+ opposite to the imbalances.
+ Secondly, you can also look for swing failure patterns which can bring swift price reversals.
+ Lastly, you can also check for stacked imbalances which are 3 or more on top of each other showing
+ momentum in the move.
+ Let's go over some background information to better help us understand this topic.
+ The price of an asset will move up until new longs no longer want to open and/or longs
+ are overwhelmed by shorts.
+ Conversely the price of an asset will move down until new shorts no longer want to open
+ and/or shorts are overwhelmed by longs.
+ In this case overwhelmed means that imbalances will form.
+ Now let's go over some tips and tricks on how to best implement imbalances.
+ Imbalances are not horizontal to each other.
+ They should be viewed diagonally in steps.
+ The beginnings and ends of a trend are often marked by market imbalances caused by aggressive
+ market participants.
+ Absorption and CVD divergences can indicate a possible trend reversal.
+ On breaking an important level it is important to see imbalances with high volume in the
+ direction of the move.
+ For example heavy selling imbalances when losing a level and conversely heavy buying
+ imbalances when claiming a level.
+ If the market does not do what it is supposed to do at a key level then the contrary move
+ is likely to be magnified.
+ We recommend that you observe market behavior after imbalances occur.
+ Let's have a look at an example of absorption.
+ Here we have the chart champions template on Bybit BTC USD pair on the 30 minute time
+ frame with delta cluster activated and of course imbalances.
+ As you can see we have a price drop here that has a very nice bounce with a following retracement.
+ What we can now see is that as we approach this retracement and possible support area
+ which we have previously mapped out on trading view using our technical analysis tools we
+ see quite a lot of selling imbalances even stacked ones heading towards that support.
+ As we reach that support level however we have trouble going lower in price.
+ As we zoom out we see that the cumulative volume delta in this visual representation
+ here is making a lower low in price and this price action is making a higher low.
+ In other words the selling effort as shown by these imbalances and aggressive behavior
+ by the sellers is not being rewarded with a lower price.
+ Here we can see that the selling effort on the left was less than the selling effort
+ on this retracement here on the right.
+ Price however is higher.
+ This means that we have absorption in play by a larger trader with limit by orders.
+ This goes on for quite a while these are 30 minute candles and repeatedly the selling imbalances
+ that try to bring price lower fail to do so and we make higher lows.
+ The result of this situation as you can see is that we end up breaking out of this local
+ range and changing market structure to make a new high.
+ Now let's have a look at a special case the swing failure pattern.
+ The swing failure pattern or SFP can happen when upon breaking or losing a level imbalances
+ opposite to the direction of the move appear.
+ It is then possible to get a swift reversal in price.
+ First, stacked imbalances in the wick with large volume will appear followed by a candle
+ close below or above the reference level.
+ Secondly, the price reversal will continue with strong opposite imbalances to the initial
+ move.
+ A swing failure pattern is best traded when the reference level is taking with very high
+ volume but then price retraces with aggressive selling or buying in the opposite direction.
+ It is very important to also monitor open interest, volume and delta.
+ Let's have a look at an example on exochards of a swing failure pattern.
+ This is the chart champions template on bibit BTC USD pair on the 30 minute time frame.
+ This is the market structure that has developed after a significant drop in price.
+ We can see that this double bottom has formed at these lows at an approximate level of 53,550.
+ We will now use this as our key or reference level.
+ We can observe that price action remains range bound for a couple of days.
+ Finally, going below our key reference level here on the right.
+ Let's zoom into that.
+ As you can see, there are a lot of selling imbalances as price drops.
+ Here we have not yet reached our key reference level, the double bottom.
+ Around here 53,500 we finally take the lows of that double bottom with a lot of selling
+ and an overwhelming of the longs by the shorts as seen by these selling imbalances.
+ Volume has increased and delta is negative.
+ The selling is heavy around the lows of the week and now the question is does price continue
+ to go lower as it is supposed to since it is selling off or does it have trouble doing
+ so.
+ We can observe this for a while and in this case we noticed that price did not manage
+ to push lower than this and rather quickly, swiftly reversed above our reference level.
+ As soon as this happens, we can already see that stage one of a possible swing failure
+ pattern is happening.
+ We have heavy selling into the lows, taking the previous reference level and then a reversal
+ already happening.
+ This is happening because limit by orders have been absorbing the aggressive selling.
+ Now what we want to see are buying imbalances to give us continuation for this possible
+ reversal.
+ As we scroll up, we can see that the buying imbalances appear.
+ If we zoom out once again, we will see that we are back inside of the range that we had
+ been trading within for a couple of days.
+ A swing failure pattern is now active.
+ It is very easy to participate in a trade like this because the invalidation is simply
+ the low of this week.
+ These traders are trapped as long as price remains up here.
+ If price were to drop again below this level, then all of these traders that shorted at the
+ low are not trapped anymore and could get out of their positions at break even.
+ Let's see what happens next.
+ The buying imbalances continue on the next 30-minute candle, as we can see by zooming
+ in here.
+ Now we even have stacked buying imbalances.
+ Volume is a bit lower than on the drop, but delta has now turned positive.
+ And we are now even approaching the top of the range.
+ A possible change in market structure would be confirmed by taking these highs.
+ As you can see, this happens a couple hours later, and the buying imbalances continue
+ without any real resistance by the shorts.
+ We can see now that the shorts or the selling side of the market is being overwhelmed by
+ very impulsive longs, and shorts are even forced to get out of their positions, also
+ by buying, adding fuel to the fire.
+ This chain reaction takes us all the way up to this level here.
+ This is a very nice example of price ranging after a relatively dramatic price movement,
+ ending a stable range and then failing to swing past the lows of this range with a very aggressive
+ turnaround in price that leads to a very significant move to the upside changing market structure.
+ Using what you've learned about imbalances, you can now check for evidence before entering
+ a trade.
+ First, you can check for aggressive selling or buying at the key level, but price action
+ not moving past it, indicating absorption.
+ Secondly, you can check for trap traders and a change in market structure.
+ Thirdly, you can check for aggressive participants entering the market with an increase in volume
+ upon reaching the key level.
+ If you find no such evidence, there is no high probability trade to take.
+ Here is the take-home message for this module.
+ Imbalances show one side of the market participants being overwhelmed by the other side, either
+ longs being overwhelmed by shorts or shorts being overwhelmed by longs.
+ You should check for absorption, a possible swing failure pattern and stacked imbalances
+ to increase your win rate.
+ We recommend that you wait for evidence before participating.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

@@ -1,0 +1,53 @@
+ Hello and welcome to this indicators module. Today we're going to be covering the VWAP.
+ Please pause this video and take a moment to read this trade disclaimer as the
+ information contained in this video is not financial advice and is only for
+ educational purposes. In this module we will cover the utility of the VWAP
+ indicator, how to correctly implement it and then go over some examples and
+ tips and tricks on how to best use it. The volume weighted average price or VWAP
+ indicator combines price and volume. It acts as a dynamic support and resistance
+ line. It can be used on all time frames and the session VWAP is especially
+ useful for scalping. To implement the VWAP simply activate the tool on trading
+ view and then select the anchor period that you would like to use, for example
+ session, weekly or yearly etc. We recommend that you always use the VWAP
+ with confluence, for example Fibonacci levels, a point of control, a value area
+ high or a value area low. The anchored VWAP offers the possibility to measure
+ flexible time periods using significant pivots. Now let's have a look at a
+ practical example. To activate the VWAP indicator on trading view simply click
+ on indicators and then type VWAP in the search box and select the first
+ indicator listed. Once activated you can go to the settings and choose the anchor
+ period that you would like to look at beginning with session and ending with
+ century and even earnings, dividends and splits. For this example we have
+ activated the yearly VWAP and have changed the style to make it a yellow
+ line with slightly increased thickness. Let's have a look at how the yearly VWAP
+ is respected for this time period. As we can observe it offers a very strong
+ level of support which then flips to resistance here and once again offers
+ resistance and support and here again support resistance and resistance. Now
+ let's have a look at an example on a lower time frame. For this we have
+ activated the anchored period session and we are looking at a 15 minute time
+ frame. As we can observe in this downtrend we can use rejections of the VWAP as
+ possible short entries that offer nice reactions to the downside. We recommend
+ that you always use confluence when searching for entries at the VWAP such
+ as Fibonacci levels or the point of control, a value area high or a value
+ area low. Now let's have a look at a practical example on how to use the
+ anchored VWAP. First we can activate the tool from this drop-down menu on
+ trading view. Once activated we can now flexibly select a
+ significant pivot on the chart to calculate the VWAP from that point to
+ the present. Let's try it with this high pivot here. We can see that the
+ indicator then calculates the VWAP from that point to the present. Let's try a
+ few more pivots. From this pivot low this is the calculation of the volume
+ weighted average price. From this high pivot here it offers us this
+ calculation. We can also do one for the entire range on this chart. Now you can
+ see that we have four different VWAPs and we can use them as possible support
+ and resistance lines especially useful with additional confluence. Now let's
+ go over some tips and tricks on how to best use the VWAP indicator. A high
+ time frame VWAP is a strong support resistance line and we can expect a
+ strong reaction on the first touch. Some examples of good confluence with the
+ session VWAP are the VWAP plus the champions channel or the VWAP and a
+ point of control or valley area high or valley area low of the local range. It is
+ also possible to check the VWAP on software such as exochards or ATAS.
+ Here is the take-home message for this module. The volume weighted average price
+ or VWAP indicator offers a dynamic support and resistance line. It can be
+ used on all time frames and the session VWAP is especially useful for scalping
+ confluence. Confluence is always needed when using the VWAP to find possible
+ entries or as a price target. This concludes today's module. Thank you for
+ watching and I'll see you on the next one. Happy learning and happy trading!

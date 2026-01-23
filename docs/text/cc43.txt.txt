@@ -1,0 +1,55 @@
+ Hello and welcome to this footprint module. Today we're going to be covering cumulative volume delta.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to cover the utility of cumulative volume delta, how to best implement it,
+ and then we will go over some tips and tricks and background information on how to best use it.
+ Cumulative volume delta is the running total of delta, calculated by adding and removing the ongoing delta.
+ It is important to look at delta alone as well as CVD to look for divergences.
+ CVD divergences are very powerful as you can see where the bigger traders are.
+ In order to look at cumulative volume delta you will need footprint software such as exocharts.
+ You look for divergences using the whole candle as cumulative volume delta is calculated from the entire candle.
+ The full data setting is recommended, not the session data setting.
+ Let's have a look at a practical example.
+ Here we have the data shown on a simple template on exocharts on the 30 minute time frame for the Bybit BTC USD pair.
+ At the bottom of the screen you will see your footprint bar statistics where we can see the volume, the delta and the cumulative volume delta for each candle.
+ Here are the labels on the right side.
+ As you can see the running tally of the delta or the cumulative volume delta is shown at the bottom and changes as we add or subtract the delta from each ongoing candle.
+ At the bottom left by clicking on the cog wheel you will get a pop-up menu showing you the settings for each of the different values shown.
+ By clicking on CVD we can now see that the type is set to full data.
+ Here is some background information to help us understand this topic better.
+ Passive orders at limit provide liquidity to the market.
+ Limit orders are generally used by bigger traders.
+ You can get paid for using limit orders as opposed to using more expensive market orders.
+ Let's go over some tips and tricks on how to best implement cumulative volume delta.
+ Quick, quick divergences from one candle are not as reliable.
+ Instead, divergences formed over a longer period of time indicate absorption.
+ CVD divergences have two stages.
+ Stage one is the stage where the possible divergences form.
+ Stage two is the confirmation stage where price moves away leaving trapped traders behind and market structure changes.
+ Let's look at an example of a bullish CVD divergence that actually plays out.
+ Here you can see that price action initially retraces and bounces back up to finally retrace again and settle down around this area.
+ Over the course of several hours, price remains range bound in this area making a higher low as compared to the previous week.
+ However, on the CVD line we can see that during this period of several hours, the line is making lower lows as compared to the previous action.
+ Price action once again making a higher low over a longer period of time and the cumulative volume delta showing an increase in selling pressure through market orders over this same period of time.
+ This shows that a larger trader or traders are absorbing the selling during this period of time with limit by orders preventing price from also making a lower low as the market activity is showing on the CVD line.
+ This is step one of the CVD divergences where they are initially forming.
+ Step two is the ultimate confirmation when we see that price moves away from the area changing market structure, breaking the highs that were previously made and leaving traders in this area possibly trapped.
+ If we zoom in, we can see that a lot of negative delta accumulated in this lower part of the price action on the retracement showing that aggressive short selling took place over several hours but was unable to effectively push price lower than before.
+ As soon as price begins to move away from this area, the sellers at this level are underwater and are forced at some point to close their position through buying, also known as short covering.
+ Let's have a look at an example of bearish CVD divergences.
+ As you can see, after this initial push up in price, we remain range bound for a few hours, unable to make higher highs.
+ However, when we look at the visual representation of cumulative volume delta through this CVD line, we see that it even makes a higher high towards the end of this time period.
+ You can also see that the volume is relatively low during this time period per candle and even some negative delta is seen.
+ All of the positive delta indicates that the aggressive market buying is possibly going to get trapped if we leave the range to the downside.
+ This is an actual confirmation by leaving the range and changing market structure by losing the support of the range.
+ As this happens, you can observe that volume increases and delta becomes more negative, also increasing, confirming that all of the traders that market bought at these levels were absorbed by a larger trader with a limit cell order and now are trapped as price moves down,
+ which will eventually force them to close their positions by selling.
+ Another factor to consider is that delta can lead price.
+ This means that initial CVD divergences do not materialize and price action catches up or follows delta.
+ In order to judge this correctly, context is key. You should monitor delta, volume, rotation times of the range, as well as use other technical tools to assist you in evaluating the situation.
+ Training and experience are needed to identify CVD divergences correctly. They can be used on any time frame, though low time frames up to one hour are recommended.
+ There are no hidden CVD divergences, simply bullish or bearish CVD divergences.
+ Here is the take-home message for this module. Cumulative volume delta is the running total of delta.
+ Divergences in CVD can be caused by bigger traders with limit orders.
+ There are two steps for divergences to confirm.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

@@ -1,0 +1,56 @@
+ Hello and welcome to this Strategies module, today we're going to be covering the Chart
+ Champions Wizardry setup.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the CCW setup, how to correctly implement
+ it and then go over some examples and tips and tricks on how to best use it.
+ The CCW setup is a mechanical trading method which removes the emotional component from
+ the trade.
+ It is a good system to get started in trading and we recommend that you use confluence
+ with the levels.
+ It will allow you to ladder entries and take profits regularly as well as have a defined
+ stop loss.
+ To correctly implement the CCW setup you will need to choose two significant pivots on the
+ chart and apply the Fibonacci retracement tool.
+ You can then activate the CCW template with the following levels.
+ With the red color, the 1.0172.
+ With the golden color, the 0.616, the 0.66, the 0.706 and the 0.796.
+ With the green color, the 0.28, the -0.234, the -0.616, the -0.99 and the -1.616.
+ Once the Fibonacci retracement tool has been correctly applied, you can then follow these
+ three simple steps.
+ Step 1, ladder entries at the golden levels.
+ For example, 25% of your total position size at each level.
+ Step 2, place your stop loss at the red line.
+ Step 3, take profits at each of the green levels.
+ Then you can move your stop loss to break even after take profit 1 or take profit 2 has
+ been reached, depending on your strategy.
+ Now let's have a look at a practical example.
+ Let us assume that we are looking for a possible short entry after the move from this side
+ pivot to this low pivot.
+ First, we select the Fibonacci retracement tool and pull from the high to the low.
+ Now we can see the standard Fibonacci levels.
+ We then activate the CCW template and the special levels appear.
+ We now have a red level which is used for our stop loss or invalidation, as well as four
+ golden levels where we can ladder our entries.
+ Then we have 5 green take profit levels.
+ Now let's observe if this trade setup actually played out.
+ As we can observe of the 4 ladder entries at the golden levels, the first 3 were filled.
+ We reached take profit 1, take profit 2, take profit 3, and a bit later even take profit
+ 4 of the possible 5 levels.
+ Keep in mind that it is very important to use confluence and other technical analysis
+ tools as well as volume analysis to fine tune the entry levels and the take profit targets.
+ Now let's go over some tips and tricks on how to best use the CCW setup.
+ We recommend that you always use stop losses and that you preferably use market structure
+ for stop loss placement.
+ We also recommend that you take profits regularly and do not let a winning trade reverse into
+ a losing trade.
+ Finally, we recommend that you use confluence and that you always check market context.
+ Here is the take-home message for this module.
+ The chart champions wizardry setup is a mechanical trading method that eliminates the emotional
+ component from the trade.
+ With it you can ladder entries and take profits regularly as well as have a defined stop loss.
+ We recommend that you use confluence to fine tune the entries and the take profit levels
+ as well as using market structure for the correct stop loss placement.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

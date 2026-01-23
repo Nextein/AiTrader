@@ -1,0 +1,46 @@
+ Hello and welcome to this patterns module. Today we're going to be covering flags and
+ the importance of the 382 and the 786 retracements. Please pause this video and take a moment
+ to read this trade disclaimer. As the information contained in this video is not financial advice
+ and is only for educational purposes. In this module we're going to be covering the utility
+ of bull and bear flags, the 382 and the 786 retracements, how to implement them and then
+ go over some tips and tricks on how to best use them. Flags are patterns that present
+ as consolidation before trend continuation once price action hits a resistance or support
+ level. It is possible to trade a flag internally and also to use it to aim for external price
+ targets. The 382 is a powerful retracement level for strong uptrends. The 786 is a very
+ interesting retracement level for altcoins after they have had large moves to the upside.
+ To trade a flag we simply apply a parallel channel tool using the pivots formed after
+ an impulsive move. The impulsive move is called the pole. We can then use the flag for internal
+ trades as well as use it to target possible external price targets. We can apply the Fibonacci
+ retracement tool to the pole of the flag to establish our 382 level. Let's have a look
+ at a practical example. Here we have an impulsive price move to the upside which begins to retrace
+ upon reaching this level of resistance. We can now describe the impulse move as our pole
+ and this as the possible bull flag being formed. Let's zoom in to the 4 hour time frame. Then
+ we will activate our parallel channel tool and use the pivots available to determine
+ where price action might remain in within this bull flag. We now have the possibility
+ of using the channel itself to take possible long and short trades as long as price action
+ remains confined in this bull flag. If we zoom out a little bit once again we can use
+ the Fibonacci retracement tool to take the two pivots from low to high and establish
+ our 382 level. This level is very strong and very important for uptrends. A possible trade
+ setup within this bull flag would be a long trade taken from the 382 of the entire pole
+ and looking for a possible continuation to the upside. Let's see what happened next.
+ As we can see price action remained confined within the bull flag reaching the 382 level
+ and proceeding to break out of the bull flag. In this case we even got a retracement to
+ the 382 level and then further continuation to the upside. It is also possible to use
+ the amplitude of the pole to estimate a price target after breaking out of the bull flag.
+ It is best to estimate these price targets with additional confidence and technical tools.
+ Generally volume should decline during the flag or consolidation phase. Preferably the
+ 382 of the pole should be respected. The flag consolidation time should be short compared
+ to the pole. Flags can form on any time frame. They can be sideways and sloping channels.
+ We recommend that you use confluence for measured move breakout price targets to have
+ the best probabilities for your trades. The 382 is a key Fibonacci retracement level
+ for strong uptrends. The 786 is an interesting retracement target after very large upside
+ moves on altcoins as they usually retrace beyond the CC and all the way down to the 786.
+ Let's have a look at another practical example. Here we have a strong upwards price move on
+ this altcoin of over 180%. We can now use our Fibonacci retracement tool to determine that
+ the price retracement goes beyond the Champions channel and finds support around the 786.
+ Here is the take-home message for today's module. Flags are phases of consolidation which
+ can provide retracement entries and possible breakout price targets.
+ We recommend that you combine them with the 382 in very strong uptrends to find additional
+ confluence for entries. Deep altcoin retracement targets are often around the 786 of the move.
+ This concludes today's module. Thank you for watching and I'll see you on the next
+ one. Happy learning and happy trading!

@@ -1,0 +1,62 @@
+ Hello and welcome to this module. Today we're going to be covering Paralle channels part three.
+ Please pause this video and take a moment to read this trade disclaimer. As the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to be covering how to implement parallel channels with more advanced
+ techniques and then go over some examples and tips and tricks on how to best use them.
+ When price action breaks out of a parallel channel it is possible to use a duplicate of
+ the channel to find possible price targets. However it is very important to find confluence.
+ It is also possible to use the internal 0.25 levels to trade the range or parallel channel.
+ Furthermore it is also possible to take advantage of the very common
+ bearish or bullish over and under price movement. Let's have a look at a practical example.
+ Here we have a well respected sideways or horizontal parallel channel.
+ Now we can right click on it, select clone and then drag the duplicate channel
+ on top of this original parallel channel. This would give us a possible target for a long trade
+ here at the top of the copy of the parallel channel. Let's see if that actually plays out.
+ As we can see once price manages to break out of the channel it reaches the top of the duplicate
+ and initially finds resistance providing us with a very nice take profit area for a possible long.
+ Keep in mind that this works best if there is additional confluence with other technical tools.
+ Let's have a look at a practical example. Here we're going to activate our parallel channel too
+ and build a horizontal or sideways channel using the candle body closes. Now we have a well-defined
+ and respected range. Next we're going to activate our Fibonacci retracement tool
+ and use the same pivots to produce a channel that is now divided in 0.25 levels.
+ This is done by simply introducing the levels in the Fibonacci retracement tool template.
+ As you can see the 0, the 1, the 0.25, the 0.5 and the 0.75. We can now use these levels
+ internally to trade from and take possible longs and shorts and use the levels as take profits
+ on the way from the bottom to the top of the channel or from the top of the range to the bottom
+ of the range. This works best on higher time frames above four hours. Now let's have a look
+ at the bearish over and under concept regarding a horizontal range or parallel channel.
+ Let's assume that price action moves downward and finds support at the bottom of this channel
+ and at the top. Now we have a well-respected parallel channel with clear support and resistance.
+ On the following rotation there is an attempt of a breakout that ultimately fails and price
+ falls back into the range and rotates towards the lows where it can find support here or
+ also deviate from the channel and come back into it.
+ Now we have taken the liquidity at the top of the range and at the bottom of the range.
+ This means that any stop losses that were placed above the range or below the range have now been
+ taken out. Now we can make use of this over and under formation and plan to enter a possible short
+ trade in the upper half of the channel. The plan would be to ladder in to a short position
+ and shorting towards the bottom of the channel and since in this case we enter the channel
+ from a downtrend expect continuation and a breakdown to the downside.
+ For this setup our stop loss would be placed above the highest week on the previous rotation
+ with the failed breakout towards the upside. The target can simply be a measured move
+ of the length of the channel simply copied and extended to the downside.
+ It is best of course to use confluence with other technical tools to find the optimal price targets.
+ Now let's go over some tips and tricks. Liquidity runs such as the ones covered in the previous
+ example with the bearish over and under concept are engineered to fill bigger limit orders and
+ they occur in every market. It is wise to use a wider stop loss based on market structure to avoid
+ liquidity runs. It is important to be aware of two likely scenarios upon breaking out of a range.
+ First there can be a front run of the channel retest leaving market participants waiting for
+ that retest out of the move. Second the retest can go deep into the channel to hit the stop losses
+ of the market participants entering the breakout. After this the move follows.
+ Let's have a look of an example of these two possible scenarios. Let's assume that price
+ breaks out to the upside and in scenario one does not retest the channel and continues on.
+ Any market participants that were waiting to enter the back test of the channel miss the move.
+ Now let's look at the second scenario. Price attempts to break out
+ and instead of back testing the channel perfectly falls deeper into the channel stopping out the
+ traders that entered here and place their stop loss right under the top of the channel.
+ After this the move actually happens and the true breakout begins. Here is the take-home message
+ for this module. It is possible to duplicate channels to find possible price targets once
+ price breaks out of the channel. This works best with additional confluence.
+ Using the internal .25 levels for higher time frame channels can provide useful take profit
+ or entry areas. It is important to expect liquidity runs such as the over and under price action
+ concept in every market. This concludes today's module. Thank you for watching
+ and I'll see you on the next one. Happy learning and happy trading.

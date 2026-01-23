@@ -1,0 +1,38 @@
+ Hello and welcome to this strategies module. Today we're going to be covering altcoin trading.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will be covering the utility of the altcoin trading strategy,
+ how to correctly implement it and then go over some examples and tips and tricks on how to best
+ use it. By using this altcoin trading strategy you will understand why it is paramount to chart
+ the altcoin BTC pair and then determine whether the altcoin can outperform BTC.
+ You will be able to focus on fewer altcoins but trade them well. To correctly implement
+ the altcoin trading strategy you will need to track and chart the altcoin BTC pair.
+ Once this analysis is completed you can then move on to the altcoin USD or USDT pair.
+ We recommend that you trade no more than five altcoins as you will need two charts per altcoin.
+ Now let's have a look at a practical example. Here we have the link USDT pair on Bybit and we are on
+ the weekly time frame. Let's have a look at what the asset did from the end of the week of January
+ 24th to the end of the week of March 21st. As we can observe over a period of 56 days
+ the asset lost 5% and USD value. Now let's check what Bitcoin did in the same time period.
+ For this we will use the BTC USD pair on Bybit also on the weekly time frame.
+ Here we can see that from the end of the week of January 24th to the end of the week of the 21st
+ of March over a period of 56 days Bitcoin had a price increase of approximately 24%.
+ Now let's check the link BTC pair. For this we will use the chart on
+ Binance also on the weekly time frame. Here we will mark once again the end of the week of January
+ 24th to the end of the week of March 21st and we can observe that in the same 56 day period
+ link lost 23% compared to Bitcoin. In other words it underperformed Bitcoin by 23%. This shows
+ that it is very important to check the altcoin BTC pair to see if it can outperform Bitcoin
+ and produce higher USD returns. In this case we should focus on parts of the chart where
+ support is found and the asset has a good chance of bouncing and outperforming Bitcoin
+ for a longer time period. In these situations there is a possibility of producing higher USD
+ returns than by trading Bitcoin long from here. Conversely when reaching strong areas of resistance
+ on the altcoin BTC pair it is better to trade Bitcoin as it will outperform the altcoin
+ for the following time period if there is a retracement. Now let's go over some tips and tricks.
+ It makes little sense to trade the altcoin USD or USDT pair without tracking
+ the altcoin BTC pair. If the altcoin is not outperforming Bitcoin then it is just better to trade BTC
+ instead. You can trade the altcoin USDT pair on Bybit but used the altcoin BTC analysis from the
+ Binance chart. Here is the take-home message for this module. The altcoin BTC pair is a must
+ to chart when trading altcoins as it will allow you to determine whether the altcoin can outperform
+ Bitcoin and produce higher USD returns. We recommend that you trade less altcoins
+ a maximum of 5 but that you trade altcoins better.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading!

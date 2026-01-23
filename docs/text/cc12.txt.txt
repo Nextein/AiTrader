@@ -1,0 +1,97 @@
+ Welcome to this Fibonacci module. Today we're going to be talking about the Fibonacci
+ retracement tool. Please pause to read this straight disclaimer. All of the information
+ on this module is solely for educational purposes. No financial advice in any shape of form is
+ being given. The Fibonacci retracement tool is a fantastic tool to add to your arsenal
+ of technical analysis tools. Today we're going to talk about its utility. We're going to
+ cover how to implement it with practical examples. And then we're going to go over some very
+ useful tips and tricks, which you will not find in textbooks, but can make the application
+ of your Fibonacci retracement tool very powerful and effective. Let's get started with the utility
+ of the Fibonacci retracement tool. It is one of the primary trading tools that we recommend
+ and it is extremely powerful. With this tool, it is actually possible to predict future
+ levels for likely targets and reversals. In other words, you could almost call it a leading
+ indicator. It is also the building block to find confluence with your other technical
+ analysis tools and even with itself. Let's now cover the implementation of the Fibonacci
+ retracement tool. You should always pull your Fib retracement from left to right. The important
+ levels in the Fib retracement tool are the 236, the 382, the 0.5, the 0.618, the 0.66, the 0.76,
+ and sometimes even the 0.886. These are basically percentages of the retracement of the move.
+ In order to find an area of resistance using the Fibonacci retracement tool, you should
+ pull from a high left pivot to a low right pivot. On the other hand, if you are trying
+ to find a support area, you should pull from the low left pivot to the high right pivot.
+ Here are some practical examples on how to implement the Fibonacci retracement tool. You
+ will find this retracement tool on the left side of your trading view window in this third
+ dropdown menu. Once you click on the tool, it will become active. If you would like to
+ edit to your favorites toolbar, just click on the star. Let's give it a try. I am now
+ going to try to find support for an impulsive move that arguably began at this low pivot
+ and continued all the way to this very high pivot here. This is what the standard trading
+ view template for the Fibonacci retracement tool looks like. We have modified it to make
+ it a bit friendlier so that it now looks like this. You can do this as well by going
+ to your settings on the tool and simply turning numbers on and off depending on what you would
+ like to use. We have also removed the background so that the chart is a bit cleaner. You can
+ also save different templates depending on which Fibonacci level you would like to focus
+ on. The Fibonacci levels are simply percentages of the retracement of this move. If this move
+ is the entirety from this bottom pivot to this top pivot, I am now trying to find support
+ by pulling from bottom left to top right. It is imperative that you always pull from
+ left to right. Here we can see that the 618 or 61.8% retracement and the 6.6 provided support
+ for this very impulsive move. Now let's try a pull with the Fibonacci retracement tool
+ to find possible resistance. I am going to once again activate my Fibonacci retracement
+ tool, but this time I am going to pull it from top left to bottom right. This is what
+ you want to do if you want to find a possible resistance level once this move begins to
+ retrace. In this case you can see that the impulse from up here to down here retraced
+ all the way to the 618 and 66 Fibonacci area. It even provided a nice place for a reversal.
+ This means not only did you have an idea of where this impulse that began here might
+ have to, but also to where it could eventually reverse. Let's move on to some tips and tricks.
+ The Champions channel is one of the most important parts of the Fibonacci retracement tool. This
+ is the space between the 0.618 and the 0.66 of the retracement tool. We also call it the
+ CC. You can use different Superimpose Fibples to find Confluence. You can also build Confluence
+ with other tools like horizontal levels. This is very much recommended as you will have
+ a much stronger case for a possible trade setup. Let's put that knowledge into practice. Continuing
+ with our previous example, we have a Fib Pool from this pivot high to this pivot low. We
+ can perform this pool weeks in advance before price actually starts moving and we can already
+ start making plans for what could happen if we reach that area. I am of course talking
+ about the Champions channel. As you can see here, price retraced completely to the 61.8
+ and 66% levels. Not only did it reach this area, but it also rejected off of this area.
+ This is only using the Fib Retracement tool alone. If you can combine this with other
+ Fibples and other tools, you will then have a very, very powerful setup to help you find
+ good profitable trade setups. Let's do that. Here is the previous Fib Pool that we had
+ from this low here in August to this high here. We bounced off of the 61866 area or the Champions
+ channel or just CC and have now found resistance at the opposite pool and also coinciding with
+ the 236 from the initial pool. These are two Fib levels lining up very nicely and providing
+ us with an extra layer of confluence for this move. To make it even more interesting, let's
+ try to find confluence with another tool. I'm going to turn off these retracements and
+ I'm going to focus on this upper part of the chart. First, I'm going to draw a monthly
+ level here, which is a very strong horizontal level. Then I'm going to focus on exactly
+ this part of the price action and I am going to do on this daily chart a Fib Retracement
+ Pool to find possible resistance areas by taking this high pivot and pulling it all the
+ way down to this following pivot. I'm going to extend it a little bit to the right so
+ that you can see that the Champions channel, in this case the 666, lines up perfectly with
+ the monthly level. Just with these two tools together, you already have a very strong case
+ for this being a resistance area. As you can see from the following price action, this
+ was not only a resistance area with a pullback but with a complete reversal of the uptrend.
+ The 302 Fib level is generally a support level in a strong uptrend. If the 302 level is lost,
+ you should expect a Retracement to the 618 and 666 area or the Champions channel. If however,
+ the Champions channel is also lost, the uptrend is possibly over and perhaps alternatively
+ an extended sideways consolidation is to be expected. Reclaiming the 0.236 Fib level
+ after a strong downtrend gives you more confidence that a potential bottom has been established.
+ We do not recommend that you use the Fib levels to set your stop losses. For this, you should
+ use market structure. A nice possible setup as an example is a Champions channel together
+ in confidence with a weekly level or as shown in our example with a monthly level.
+ Let's have a look at this with a practical example. We will use the same Fib pull as
+ in the previous examples from that high pivot top left to this low pivot bottom right. We
+ can now use the 236 to have an estimate of whether this is the bottom or not. As we can
+ see here, it is claimed and back tested a support pretty much to the dollar. This gives
+ us more confidence that the potential bottom is in and the trend that has started down
+ here will continue. We then can expect a further retracement of the entire move towards the
+ Champions channel. Let's see if we can superimpose any other Fibs with this pull to make our
+ case even stronger. I am now going to the daily timeframe and I'm going to use another
+ Fib pull from the exact begin of the impulse here. So not that previous pivot but actually
+ this one and I'm going to pull it to the next highest impulse up there. I then get a
+ Fib pull that looks like this and as you can see, I'm going to switch on my other template
+ so that it's easier to see. The 382 of this pull lines up pretty much perfectly with the
+ 236 from the other pull. Now we have two superimposed Fibs giving us even more confidence
+ that a possible trend reversal is in place and that this bottom is actually valid. Summarizing
+ today's module, here's the take-home message. The Fibonacci retracement tool should be used
+ as a building block in your technical analysis to begin finding confluence for good trade
+ setups. You should always pull the fib retracement from left to right. The most important part
+ of the Fibonacci retracement is the Champions channel or CC, the space between the 618 and
+ the 666. This concludes today's module. Thank you for watching and I'll catch you on the
+ next one.

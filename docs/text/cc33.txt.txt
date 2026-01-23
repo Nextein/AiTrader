@@ -1,0 +1,95 @@
+ Hello and welcome to this patterns module. Today we're gonna cover harmonics part
+ two. Please pause this video and take a moment to read this trade disclaimer as
+ the information contained in this video is not financial advice and is only for
+ educational purposes. In this module we're gonna cover the implementation of
+ advanced harmonic patterns and then go over some visual examples and tips
+ and tricks on how to best use them. The cipher pattern is an advanced harmonic
+ pattern that requires the use of the Fibonacci extension for its correct
+ implementation. The shark and the 5.0 pattern begin with a flexible start at
+ point B and can provide a powerful finish. These patterns also work best on
+ higher timeframes at least four hours and above. In the cipher harmonic pattern
+ X to A can be an impulse of any size. Point B is then a retracement between the
+ 382 to the 618 of XA. Point C is then between the 1.133 to 1.414
+ extension of XA from X. Point D should be at the 786 retracement of X to C and
+ between the 1.272 to 2 expansion of B to C. Finally for traits taken from D the
+ targets are the 618 of CD point A and possibly point B. Now let's have a look
+ at a visual example of the cipher harmonic pattern. We can draw this
+ pattern on trading view using the dedicated tool. Once completed the
+ pattern should look like this. Let's check the fib levels. For point B we are
+ looking for a retracement between the 382 and the 618 of the impulse from X to A.
+ For point C we need to use the Fibonacci extension tool and look for the region
+ between the 1.133 and 1.414 or C. The extension is the move X to A
+ extended from X. For point D we are looking for the 786 retracement of the
+ move from X to C and also for the region between the 1.272 and the 2 of the
+ expansion from B to C. By using both of these tools we can find confluence for
+ point D. Finally to establish price targets for long traits taken from D for
+ this bullish cipher harmonic pattern we can use the 618 retracement of the move
+ from C to D and also point A. Possibly we can also use point B as a target. The
+ setup would then look like this. The stop loss can be placed somewhere
+ below X. However be aware that point D can also retrace lower than X. It is in
+ this case and in most cases better to use market structure for stop loss
+ placement. It is also possible to trade this pattern bearishly by simply
+ inverting it and looking for short trade entries at D using the same criteria.
+ Once again the symmetry of the pattern is important and we can use the Fibonacci
+ time tool to measure it. Here we can see that point B is between the 618 and
+ 1 to 1 time extension of the move from X to A.
+ For point D we simply measure the move from A to B and extend it from C and
+ look for the 1 to 1 time extension. In the shark harmonic pattern the
+ impulse X to A can be of any size. Point B is very flexible and can be between the
+ 382 to 886 retracement of X to A. The 382 however is common. Point C should be
+ between the 1.133 to 1.618 expansion of AB and it is nice if it is combined with
+ the swing failure pattern of A. Point D should be between the 1.618 to 2.24
+ expansion of B to C and between the 886 to 1.133 expansion of X to A. Finally
+ for trades taken from D the biggest target is the 0.5 retracement of C to D
+ which can lead to the 5.0 pattern. If however the 0.5 retracement of C to D is
+ lost then the target becomes C. Let's have a look at a visual example of the
+ shark harmonic pattern. We can draw this pattern using the X A B C D tool on
+ trading view. Once completed the pattern should look like this. Let's check the
+ fib levels. For point B we are looking for a retracement between the 382 to the
+ 886 of the move from X to A. Point B is very flexible for the shark. However the
+ 382 is common. For point C we are looking at the region between the 1.133 and the
+ 1.618 expansion of the move from A to B. The 1.618 expansion is preferred and it
+ is also very nice to see point C be a swing failure pattern of A to then
+ begin a very impulsive move towards D. For point D we are looking for the
+ region between the 1.618 and 2.24 expansion of the move from B to C. We can
+ also look for the region between the 886 and 1.133 of the expansion of the
+ move from X to A. If we turn on both tools we can establish confluence for the
+ point at D. Finally to establish price targets for a short trade taken from D
+ for this bearish shark pattern we can use the retracement from C to D and aim
+ for the point 5. This is the most important target for the shark pattern as
+ here a 5.0 pattern can follow. If however the point 5 level is lost the
+ secondary target becomes C. It is also possible to trade a bullish shark
+ harmonic pattern by simply inverting the pattern and taking long trades from D
+ using the same criteria. The stop loss should be beyond D using market
+ structure. It is important to pay attention to the symmetry of the pattern
+ by using the Fibonacci time tool to measure the different waves. In this
+ example we have B at a one-to-one time extension of the move from X to A.
+ If we measure the move from A to B and extend it from C we have a time
+ extension of one to two. The 5.0 harmonic pattern begins as a shark
+ harmonic pattern. However it has an additional wave E. Point E is the point
+ 5 Fibonacci retracement of C to D and it is important that B to C have the same
+ time duration as D to E. For trades then taken from E the target becomes the
+ one-to-one extension of C to D from E. Now let's have a look at a visual
+ example of the 5.0 pattern. This pattern begins like the shark pattern and turns
+ into the 5.0 pattern if the move from D towards C stops at the point 5
+ retracement from C to D. This now becomes point E and it is possible to enter a
+ long trade setup for this bullish 5.0 pattern and target the one-to-one
+ Fibonacci extension of the move from C to D extend it from E. For the 5.0 pattern
+ it is very important to see point E begin at the one-to-one time extension
+ of the move from C to D. It is also possible to trade the 5.0 pattern
+ bearishly and take short entries from E to target the one-to-one extension of
+ the move from C to D extended from E. The stop loss can be placed beyond the
+ 886 retracement of the move from C to D. However we recommend that you use
+ market structure for stop loss placement. Now let's go over some tips and tricks.
+ For the shark harmonic pattern volume profile it is important to see that the
+ volume from B to C is less than the volume from X to A. For the cipher
+ harmonic pattern point B should not reach the 786 Fibonacci retracement of
+ X to C. Once again the official trade entry for these harmonic patterns begins
+ at point D. We recommend that you never trade a harmonic pattern alone and that
+ you always look for additional confluence. It is also best to use market structure
+ for stop loss placement and for price targets. Here is the take-home message
+ for this module. In this module we have covered the advanced harmonic patterns
+ which are the cipher the shark and the 5.0. These patterns work best on higher
+ timeframes with additional confluence and can provide you powerful entries and
+ price targets. This concludes today's module. Thank you for watching and I'll
+ see you on the next one. Happy learning and happy trading!

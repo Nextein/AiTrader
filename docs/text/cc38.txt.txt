@@ -1,0 +1,73 @@
+ Hello and welcome to this volume module. Today we're going to be covering the
+ fix range tool. Please pause this video and take a moment to read this trade
+ disclaimer as the information contained in this video is not financial advice
+ and is only for educational purposes. In this module we will cover the utility
+ of the fix range tool, how to correctly implement it, and then go over some
+ examples and tips and tricks on how to best use it. The fix range tool is useful
+ to identify volume transacted horizontally at each price level, similar
+ to the visible range tool. However, with the fix range tool it is possible to do
+ this for specific areas of the chart. Once again the tool can help us confirm
+ ranges with volume and also define boundaries for the auctioning process. As
+ a special bonus the fix range tool can help us find untested or naked points of
+ control in past price history that might become relevant once revisited. The
+ recommended settings for the fix range tool on trading view are row size 148 and a
+ value area volume of 68 or 70. Once again the fix range tool will show us three
+ key components - the value area high, the value area low, and the point of
+ control. These areas can be treated as support and resistance levels. The value
+ area high is the upper boundary of the area with the highest transaction
+ interest in the range and it is considered above fair value. Thus it is
+ generally an area to look for short entries. Conversely the value area low
+ is considered below fair value and is the lower boundary of our area of
+ interest in the range. Thus this is an area to look for long entries. The point
+ of control is the area with the highest amount of volume horizontally and it
+ is considered fair value where generally no new trading positions should be
+ opened. Now let's go over a practical example on how to implement the fix range
+ volume profile tool on trading view. First we select the tool from this dropdown
+ menu. Then we select two pivots in this macro range on the daily time frame to
+ establish our key areas. In this case the selection of the beginning and ending
+ pivot for this fix range pull is to attempt to capture the volume within the
+ range without counting the volume necessary to enter and to later exit the
+ range. Now we can proceed to mark the key areas that define the value area with
+ the most transaction interest in this range. First the value area high then the
+ point of control and then the value area low. All of these three areas can act as
+ support and resistance levels and generally we will look for short
+ positions at the value area high to rotate down through the point of control
+ to the value area low where we can then look for long positions to once again
+ rotate up to the value area high. The advantage of the fix range tool is that
+ we can choose different areas on the chart and also establish what the
+ volume distribution looked like in that area and establish once again a value
+ area high a point of control and a value area low. As we can observe here price
+ action leaves the range and flips the previous resistance area of the value
+ area high into a support area. To ultimately break out of the new range
+ formed here first by almost revisiting the point of control area and then
+ finding continuation to the upside. In theory if price action were to re-enter
+ this range we would expect the point of control to provide a significant
+ reaction if revisited. Let's see if that actually happened. We can zoom out and
+ observe that price action did re-enter the range and rejected or in this case
+ bounced off of the point of control for quite a significant move to the
+ upside. We can also observe that the smaller range formed after leaving the
+ original larger high time frame range here was also relevant when price action
+ revisited the area. Here we can see that this point of control was even untested
+ or naked and upon revisiting it provided on the first touch a very strong
+ reaction to the upside. Now let's go over some tips and tricks on how to best
+ use the fixed range tool. This tool is very powerful advanced and arguably
+ better than the visible range tool as it allows us to select specific areas of
+ the chart to define individual ranges. It can also help define untested ranges
+ from previous price history and untested or naked points of control which can
+ provide strong reactions when revisited. Price will often reject or bounce at the
+ point of control upon re-entering a range and the point of control is then the
+ most likely support resistance area based of course on market context. When
+ using the fixed range tool to find possible entries and price targets it is
+ of course very important to look at market context and search for
+ confluence. The tool is useful for all time frames but it is easier to implement
+ on higher time frames such as the four hour and higher. There are no hard rules
+ for the start and the end of a fixed range pool. This is based on market
+ structure, intuition and experience. Here is the take-home message for this
+ module. The fixed range tool is a very powerful tool that helps identify
+ individual ranges in different sections of the chart and can also help find
+ untested or naked points of control. The value area high, value area low and
+ point of control can act as support and resistance levels and are thus key
+ areas. Market context and order flow are very important when using the fixed
+ range tool to find possible entries and price targets. This concludes today's
+ module. Thank you for watching and I'll see you on the next one. Happy learning
+ and happy trading.

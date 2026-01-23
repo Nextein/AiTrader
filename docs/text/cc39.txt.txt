@@ -1,0 +1,57 @@
+ Hello and welcome to this volume module.
+ Today we're going to be covering the Session Volume Tool and Naked Points of Control.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the Session Volume Tool and the Naked Points of Control.
+ Then we will go over how to correctly implement them and then over some tips and tricks and examples on how to best use them.
+ The Volume Profile Session Volume Tool can help us determine key areas of each 24-hour session.
+ And also of the previous week.
+ The Value Area Low, Value Area High and Point of Control are important support resistance levels for day traders,
+ and they should be mapped out as part of the daily routine.
+ Naked Points of Control are the main focus for swing traders.
+ The recommended settings for the Session Volume Tool on Trading View are Row Size 148 and Value Area Volume 70.
+ We also recommend that you check the Extend POC to the right checkbox to easily see Naked Points of Control.
+ The Naked Points of Control are simply untapped points of control from a previous session.
+ Generally, we expect a strong reaction when a Naked Point of Control is first approached.
+ Confluence is key.
+ The Value Area High is the upper boundary of the area with the highest transaction interest in the range,
+ and it is considered above fair value.
+ Thus, it is generally an area to look for short entries.
+ Conversely, the Value Area Low is considered below fair value and is the lower boundary of our area of interest in the range.
+ Thus, this is an area to look for long entries.
+ The Point of Control is the area with the highest amount of volume horizontally,
+ and it is considered fair value, where generally no new trading positions should be opened.
+ Now, let's have a look at a practical example.
+ To activate the Volume Profile Session Volume tool on Trading View, simply search for it under Indicators, and type Session Volume in the search box.
+ You can then select the first tool listed.
+ Once activated, it should look like this.
+ Each box represents a 24-hour period or a trading session.
+ The settings for the Session Volume tool are Row Size 148 and Value Area Volume 70.
+ These are the Style Settings.
+ Now, let's have a look at how this tool can be used to find possible trade setups.
+ Initially, we can see that price moves downward after losing the Value Area Low of this session's range.
+ It also leaves behind an untapped Point of Control.
+ Then, it finds Stability for two sessions around these price levels, once again respecting the Value Area High and the Value Area Low.
+ These levels can be used for intradate trade setups with proper confluence.
+ On the following session, we see that price moves down once again and has a very violent reaction to the upside, going beyond the previous session's value areas.
+ In this case, we can even see that the Value Area High of these two previous sessions is flipped from resistance to support during this very impulsive session.
+ And it continues to hold a support in the following session.
+ Price continues to work up with bullish market structure and leaves yet another Naked Point of Control behind.
+ Finally, we see a strong rejection from the initial Naked Point of Control and an impulsive move that loses the Value Area Low of the last session here and finds support at yet another Naked Point of Control of a previous session.
+ In both of these cases, it is possible to enter a trade if confluence is also there, providing a possible short setup and a possible long setup at the very least for a scalp trade and possibly for a day trade.
+ In certain cases, even a swing trade might begin from such a Naked Point of Control with a strong reaction.
+ Now, let's go over some tips and tricks on how to best use the Session Volume and the Naked Point of Control.
+ In that Value Area High of support, then there is an 80% chance of a full rotation to the Value Area Low of the range.
+ This can also be applied vice versa from the Value Area Low to the Value Area High.
+ Context, as usual, is very important. Naked Points of Control represent horizontal levels where the most volume in a range was transacted.
+ Naked simply means that these levels are untapped once price breaks away from that point of control.
+ Then, the great majority of traders who did enter positions at the point of control but guessed the breakaway direction wrong would like to exit their position at break even if possible.
+ Thus, when revisiting an untapped point of control, on the first touch, many traders like to exit their positions at break even and others enter expecting such a reaction,
+ doubling the strength of the bounce or rejection from that untapped point of control.
+ In Naked Point of Control, end the CC from a Fibonacci retracement. It is possible to preset limit orders at these levels.
+ However, we recommend that you instead set an alert at the level and check the reaction, including volume, delta and open interest, and only enter at market if the criteria for a proper reaction are met,
+ thus avoiding pre-setting limit orders. Here is the take-home message for this module.
+ The value area high, value area low, and point of control of a range are important support resistance levels, especially useful for intraday trading.
+ A range rotation has an 80% statistical probability upon leaving a range and then re-entering it from the value area high or from the value area low.
+ We recommend that you set alerts and wait for a reaction at important confluence levels, such as a Naked Point of Control and a CC Fib retracement confluence.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

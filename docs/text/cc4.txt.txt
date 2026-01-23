@@ -1,0 +1,73 @@
+support & resistance
+ Hello and welcome to this basics module, today we're going to be covering support and resistance.
+ Please pause this video and take a moment to read this trade disclaimer as the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of identifying support and resistance areas and drawing horizontal levels.
+ Then we will cover how to implement them and go over some examples and tips and tricks on how to best use them.
+ Identifying support and resistance levels is key as it is a building blog to establishing confluence and increase the probabilities for your trades.
+ Marking out levels incorrectly will likely lead to losses.
+ In trading, basics are more pivotal than advanced theory.
+ To draw horizontal levels, we recommend that you start on high time frame and move down to the lower time frames.
+ For example, begin with the monthly time frame and move down to the weekly and then the daily time frame.
+ Sometimes, for certain assets such as stocks or assets with a very long price history, yearly levels can also be useful.
+ We recommend that you color code and label your levels.
+ Monthly purple, weekly yellow and daily blue so that you can always quickly identify what your horizontal line means even if you are in a different time frame.
+ The higher the time frame, the stronger the level.
+ Now let's have a look at a practical example.
+ To mark your horizontal levels, simply select the horizontal line or horizontal rate tool from the drop-down menu in Trading View.
+ Then, search for a momentum change from green to red or from red to green.
+ You will use the candle closes and opens to mark your levels, not the wicks.
+ By activating the magnet tool, when you place the line, it will stick exactly on those levels.
+ You can then right click, go to settings and set up templates to adjust the color and even add text to your horizontal line.
+ For example, in this case, the monthly level template.
+ Now your horizontal line will look like this.
+ It is important to always start with the higher time frame levels and work your way down.
+ For example, monthly, weekly and daily.
+ Sometimes, for example, for stocks or assets with a very long term price history, you can also use yearly levels.
+ Let's continue by marking more monthly levels.
+ Here, we have once again a momentum change from a red candle to a green candle and this level can now be marked as a monthly level.
+ It is also important to note that you can only officially classify this as a level once the second candle is complete.
+ Here, we can not only see that this monthly level has not been revisited since it was created,
+ but that it also in the past has been a very strong level of resistance, which was flipped to support here.
+ We can also observe that after this monthly level was created at 58,822, it was back tested as resistance the following month and then a strong rejection followed.
+ Now let's switch to the weekly time frame and mark some weekly levels.
+ Once again, using the horizontal line tool and selecting the correct template, we can now mark this level differently than the monthly level.
+ So that every time we see these colors, we immediately know that these levels belong to the monthly or the weekly time frame, even if we are zoomed in and lower time frames.
+ Once again, we can clearly see that this weekly level created here establishes a strong area of support, which is back tested the following week and we have a bounce from this support level.
+ It is important to identify and mark only the most important levels on the chart so that it does not become cluttered.
+ Here, I'm going to go ahead and mark some more weekly levels that are close to this price action.
+ Here, I am going back to this weekly level as it has played an important resistance and support role, which has also repeated itself here.
+ We can do the same thing for this lower weekly level here, which has also acted as support.
+ Now, let's move to the daily time frame and find more horizontal levels in the local price action here.
+ Once again, using the horizontal line tool, we can begin to mark the levels.
+ We apply the correct template for this time frame, in this case, the daily level, and we try to choose the most significant levels that can help us with our technical analysis.
+ We can already determine here that this daily level at 462.5 acts as resistance here.
+ This horizontal level was created later and might also act as resistance if price moves up to here.
+ We can also mark a daily level to the downside here. As we can observe, these two levels are very close to each other, and the rule of thumb is to only keep the higher time frame 1 so that the chart does not become cluttered.
+ Now, let's go over some tips and tricks. To determine strong support and resistance areas, you should look for multiple touches on higher time frames.
+ The process for identifying these areas and for drawing horizontal levels is the same for every chart on every asset.
+ Horizontal levels are a skill you must master first before moving to more advanced tools and theories.
+ Now, let's have a look at a practical example of a support resistance flip of a key area on a chart.
+ In this case, we are looking at the Coinbase chart on the weekly time frame.
+ Here, we can observe that price finds support at this 208 level and this holds for several months until it finally moves away to higher prices.
+ However, once price retraces to it, this key area is lost as support, and as you can see in the following weeks, flipped to resistance with multiple touches of this area,
+ confirming its importance.
+ Based on this, we can argue that initially buyers were very interested in purchasing this asset at this price level.
+ However, here, the buyers were no longer as interested in purchasing the asset, so that price moved lower to find interested buyers.
+ These appeared here and there was a bounce up to that key level, however, there was not enough purchasing power to flip this level once again to support and continue upwards.
+ Here we can see that a very strong support area is flipped to resistance and that the sellers are stronger as price approaches this area from below.
+ Ultimately, there is a final rejection that brings us to all time low prices and price discovery mode to the downside.
+ Now let's have a look at another practical example. Here we have the Bitcoin chart on the daily time frame.
+ It is also possible to view support and resistance areas as wider ranges.
+ Here we can observe that this area in the green box is initially resistance then flipped to support and it continues to hold as support for months until it is finally lost and back tested as resistance.
+ After that, price continues to move down to find interested buyers. Once it recovers, it initially tests this area once again as resistance, then attempts to claim it as support,
+ ultimately failing, flipping it to resistance again and moving much lower.
+ After this recovery in price, once again this area plays an important role as resistance.
+ Here there is finally a bullish breakout to the upside and a retracement to this key area where support is confirmed over a period of several days.
+ After that, prices continue to move much higher, highlighting the importance of being patient and examining these areas of support and resistance carefully.
+ Trendlines use a similar theory to support and resistance areas where at least two touches are required to have a valid trendline. The third touch of the trendline can be used as an aggressive entry.
+ Now let's go over a practical example. Here I have drawn a trendline using these two pivots and I can use the third pivot as an aggressive long entry, with the invalidation being the loss of this trendline and flipping it to resistance, thus giving me a nice possible risk reward ratio.
+ We recommend that you always try to look for confluence and that you never use one technical analysis tool on its own.
+ In this case, we can add a horizontal support level on the daily timeframe, which, after being created here, proves to be very nice support the following days. Finally, here we have a confluence of the horizontal daily level and the trendline, giving us higher probabilities for a possible successful trade from this area.
+ Here is the take-home message for this module. It is very important to identify horizontal levels correctly as they are the building blocks for confluence.
+ We recommend that you start on high timeframes and move to the lower timeframes. It is important to master Horizantos first before moving to other tools and theories.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

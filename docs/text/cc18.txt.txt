@@ -1,0 +1,49 @@
+ Hello and welcome to this Fibonacci module. Today we're going to be covering the Fibonacci
+ time tool. Please pause this video and take a moment to read this trade disclaimer as
+ the information contained in this video is not financial advice and is only for educational
+ purposes. In this module we will be covering the utility of the Fibonacci time tool, how
+ to implement it and then we're going to go over some tips and tricks on how to best use
+ it. Time plays a crucial role in determining which waves of a move are linked together.
+ With the Fibonacci time tool we can determine when a corrective or impulsive price action
+ structure may end. This tool is helpful to time your entry, which is often harder than
+ determining the direction price might go next. To use the Fibonacci time tool you need to
+ click on three pivots or you can double click the second pivot. You need to choose significant
+ pivots based on market structure. You can use the Fibonacci numbers or you can use multiples
+ of the 0.5 level. The Fibonacci levels that we recommend using are the 0.618, the 1, the
+ 1.618, the 2 and the 2.618. These levels are needed for harmonic patterns as well. The
+ 0.5 multiple levels can be useful for the stock market. We recommend that you use the
+ Fibonacci time tool on the 4 hour or higher time frame as it is more reliable. Let's
+ have a look at an example where we can use the Fibonacci time tool to help us estimate
+ how long an impulse move may need to correct. We are going to select the trend based fib
+ time tool on trading view and then we are going to pick this pivot low here and extend
+ it with our second click to the pivot high here and also click another time to also leave
+ the third pivot at this second pivot. What we can now see are the Fibonacci levels that
+ we introduced into the tool previously like this. We have the 0, the 1, the 0.618, the
+ 1.618, the 2 and the 2.618. Here are the Fibonacci time levels shown on the chart. As you can
+ see, it took not only a one to one time extension but actually a one to two time extension from
+ this initial impulse for the correction afterwards to be over and for the following impulse to
+ get started. This can help you estimate how long it may take for the next impulsive move
+ to begin. Let's have a look at an example where we can use the Fibonacci time tool to
+ help us estimate when pivot D of this harmonic pattern might be reached. First, we are going
+ to activate our trend based fib time tool on trading view and then select three pivots.
+ The first pivot will be A, the second one will be B, right there and the third one is going
+ to be pivot C. What we now have are of course the Fibonacci levels on the chart and a one
+ to one time extension of the time that it took for price to get from A to B extended from
+ our third pivot C. Let's see what actually happened. As we can observe, it took exactly
+ a one to one time extension of the time between A and B extended from pivot C for price to
+ make its way to the last pivot D. With this information, we can not only map out using
+ different Fibonacci tools and horizontals, a possible area of support, but actually wait
+ for the correct time to enter that possible trade. Now let's go over some tips and tricks
+ on how to best use the Fibonacci time tool. It is useful that you know that a correction
+ can take two to three times the length of an impulse and at least a one to one time extension.
+ A quick correction compared to the preceding impulse likely indicates that more corrective
+ price action will follow. Generally, Bitcoin corrects sooner than the stock market. The
+ Fibonacci time tool can be used to measure corrections as well, not just impulses. When
+ you use the Fibonacci time tool in combination with harmonic patterns and allured waves,
+ it is a very powerful tool. The preferred fibtime extensions for harmonic patterns are
+ the one and the 1.618. Here is the take-home message for today's module. The Fibonacci
+ time tool can help you time your entry. You use it by selecting three pivots or double
+ clicking the second pivot. The one and the 1.618 are the preferred time extensions, especially
+ for harmonic patterns. When combined with harmonic patterns and
+ allured waves, Fibonacci time is a very powerful tool. This concludes today's module. Thank
+ you for watching and I'll see you on the next one. Happy learning and happy trading.

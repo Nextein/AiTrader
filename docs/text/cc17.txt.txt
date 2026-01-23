@@ -1,0 +1,38 @@
+ Hello and welcome to this Fibonacci module. Today we're going to be covering the GAN
+ retracement levels. Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational
+ purposes. In this module we're going to cover the utility of the GAN retracement levels,
+ how to implement them, and then go over some tips and tricks on how to best use them as
+ well as some background information. GAN's retracement levels are based on eighths
+ and thirds. The focus is on the time and angle aspect of the price rise or price decline.
+ They work the same way as the Fibonacci retracement levels, but they are different numbers.
+ To implement the GAN retracement levels, you choose two pivots using the Fibonacci retracement
+ tool. Choose significant pivots based on market structure, and we also recommend that you
+ try different pulls. The levels to input based on eighths are the 0.125, the 0.375, the 0.625,
+ the 0.625, the 0.875, and the 0.875, as well as 0 and 1. The levels based on thirds are
+ the 0.33 and the 0.66. Let's have a look at an example on the charts. First we're going
+ to activate our Fibonacci retracement tool, and then we're going to select two pivots,
+ in this case, from top left to bottom right, and then we are going to see how much respect
+ the GAN levels could offer us. First we see the standard Fibonacci levels, and we can
+ already see that some of these are offering quite a bit of respect. We are then going to switch our
+ template to the GAN template so that we can see the GAN numbers. The settings for these are the
+ zero, the 0.125, the 0.25, the 0.375, the 0.625, the 0.625, the 0.625, and the 1. These are the
+ numbers based on eighths. Then the 0.33 and the 066 are the ones based on thirds.
+ Now, using the same fit pool, we can check to see if these GAN numbers offer us more respect than
+ the Fibonacci levels. Here we can see of the 0.75, we have some respect of the 33 and 375 as well,
+ the 0.125, also offer some respect, and based on confluence with other Fibonacci tools and horizontal
+ levels, we can then make a decision whether to use this template or the standard Fibonacci template.
+ Now, let's go over some tips and tricks on how to best use the GAN retracement levels.
+ We recommend that you compare the Fibonacci numbers and the GAN retracement levels in the same pool.
+ We recommend that you then choose the levels that offer the most respect. As usual, try to
+ build confluence with other tools and horizontal levels to have the best traits that are possible.
+ Here are some background information about the GAN retracement levels. The 50% was the most
+ important level to GAN, as he focused on halves. In a $100 price move, for example, GAN was interested
+ in the 33%, the 50%, the 66% and so on retracement. The inspiration for the 0.66 in the Champions
+ channel comes from the GAN retracement levels. Here is the take-home message for today's module.
+ The GAN retracement levels are alternative levels to the Fibonacci retracement numbers.
+ You implement them by choosing two pivots with a Fibonacci retracement tool.
+ We recommend that you compare the Fibonacci levels and the GAN retracement levels
+ and choose the ones that are respected the most, especially in conjunction with other tools
+ and horizontal levels to build the best confluence. This concludes today's module.
+ Thank you for watching and I'll see you on the next one. Happy learning and happy trading!

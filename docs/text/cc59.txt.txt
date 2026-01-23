@@ -1,0 +1,49 @@
+ Hello and welcome to this strategies module. Today, we're going to be covering the all-time high trading strategy.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of the all-time high trading strategy,
+ how to correctly implement it, and then go over some examples and tips and tricks on how to best use it.
+ By using the all-time high trading strategy, you will be able to maximize profits by letting your winning trades run.
+ You will also be able to establish reliable price targets to take profits.
+ Also, you will avoid losing money by prematurely trying to short an all-time high.
+ To implement the all-time high trading strategy, you will be using a manual trailing stop-loss technique
+ by using market structure and setting your stop-loss to higher lows back.
+ Then, implement Fibonacci expansion, negative and extension-level targets to take profits.
+ We recommend that you do not look for swing short trades in an asset at an all-time high breakout mode.
+ Now, let's have a look at a practical example. Here, we have Apple as one of the largest stocks in the world on the weekly time frame.
+ As we can observe, this asset continues to push for new highs over the years.
+ Thus, we can implement on a long-term time frame the all-time high breakout strategy mode.
+ Once we have entered a long position, we can then begin to manually trail our stop-losses.
+ As soon as a new higher high is made, we can then set our stop-loss to higher lows back, in this case, for example, here.
+ The asset continues to move up in price and eventually retraces, but does not lose market structure, and once again becomes very impulsive.
+ When it takes the new highs, we can then once again move our stop-loss up and keep a safe distance from the current price.
+ In this fashion, we can continue to accompany the asset as it explores undiscovered price territory and continues to make new all-time highs.
+ Then, we can use our Fibonacci negative extension and expansion tools to determine possible price targets.
+ For example, by pulling a Fibonacci retracement from this low to this high, we can see that price retraces perfectly to the 618,
+ and then has a very nice reaction and bounce, and then makes new all-time highs.
+ If we turn on our negative Fibonacci levels, we see that the negative 236 provides a slight reaction here, the negative 618, yet another nice price target,
+ and finally, the negative one, another wonderful price target for our long trade from here.
+ We can also use the Fibonacci extension tool, for example, from this pivot to this pivot, and then extend it from this pivot
+ to establish the one-to-one, the one-six-one-eight, and the one-to-two extension levels.
+ As you can see, also very nice price target levels with a retracement.
+ Finally, we can use the Fibonacci expansion levels, for example, by pulling a Fibonacci retracement from this high to this low,
+ and after seeing initial local resistance at the 618, using then the expansion levels as soon as we go external from the initial pull.
+ Once again, the 1.618 and the 2.618 offer us very nice take-profit levels.
+ We recommend that you use these tools together to establish confluence.
+ For example, here we can see that the negative one, the 1.618 extension, and the 2.618 expansion line up perfectly to give us a very strong take-profit level.
+ We can also observe that after this level was reached, we had a nice rejection and a following consolidation range before making new all-time highs.
+ Now, let's go over some tips and tricks.
+ The manual trailing stop loss technique is the preferred strategy for all-time high moves.
+ The timeframes can be adjusted, and they depend on your trade goal, swing trade, or day trade.
+ The 4-hour timeframe is suitable for most people, especially in the stock market.
+ For day trading, we recommend that you use the 15-minute timeframe.
+ The Fibonacci extension levels can be used extremely well with Elliot waves.
+ For example, a target for a wave 3 impulse is at the 1.618 Fibonacci extension.
+ The confluence of Fibonacci expansion, negative, and extension levels is very strong.
+ When price hits such a Fibonacci level, a possible day trade range can form.
+ Here is the take-home message for this module.
+ Using the trailing stop loss technique means that you let your winning trades run, and thus can maximize profits.
+ Fibonacci offers targets for taking profits, attempting to swing trade short an all-time high is not recommended.
+ This concludes today's module.
+ Thank you for watching, and I'll see you on the next one.
+ Happy learning and happy trading!

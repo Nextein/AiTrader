@@ -1,0 +1,66 @@
+ Hello and welcome to this strategies module, today we're going to cover volume specifics.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of being aware of the volume and liquidity in
+ a trading environment, how to correctly implement important volume statistics, and then go over
+ some examples and tips and tricks on how to best use them.
+ When trading it is important to recognize high and low liquidity environments, and then
+ adapt the technical analysis and tools used to the specific volume environment.
+ This makes trading easier by following the volume.
+ To accurately recognize the liquidity and volume in a certain trading environment, we
+ recommend that you use footprint statistics software such as exocharts and ATAS.
+ We then recommend that you use a volume chart and that you activate the high-low and trade
+ count statistic.
+ The next step is to then observe the high-low statistic and volume candle size.
+ Large high-low candles represent low liquidity, while many small high-low candles represent
+ high liquidity.
+ Generally, look to fade or counter trade low liquidity moves.
+ When you use CVD divergences, it is best to do so in high liquidity environments.
+ Now let's have a look at a practical example on exocharts.
+ Here we have the Bybit BTC USD pair set to a 20 million volume chart with CVD activated,
+ as well as open interest and some footprint bar statistics, including the high-low, time
+ and trades count.
+ You can add these statistics by clicking on the cogwheel here and then adding the row
+ that you would like to have.
+ Let's have a closer look at the volume candles from the move at this support level up to this
+ resistance area.
+ Initially, there are a couple of volume candles that are a bit larger than average.
+ We can then observe that mostly the candles are compact, signaling higher liquidity.
+ Also, we can see that open interest is accompanying this move.
+ Starting here, we can observe that the volume candles become larger and open interest begins
+ to decline.
+ This signals that this last part of the move is in a low liquidity setting, and thus we
+ would generally look to fade the move or counter trade it.
+ This is of course heavily dependent on the confluence at this resistance area and of
+ course the general market context.
+ If we determine that this is indeed a good area for a possible short trade due to the
+ high confluence and resistance that it represents, then once we see a low liquidity end of the
+ move up to that resistance level, we can begin to consider a counter trade.
+ As we can observe, price action reverses the last part of the upwards move with low liquidity
+ and find support at the VWAP where the volume candles show higher liquidity as they are
+ smaller and more compact.
+ We can now then conclude that at this price level the liquidity is higher.
+ We can then also observe that CVD is making a lower low compared to this area and yet
+ price action is making a higher low, thus showing possible bullish CVD divergences and
+ step one.
+ It is important to be aware of the liquidity at certain price levels when observing possible
+ CVD divergences forming as these divergences work best in high volume environments.
+ By zooming in, we can then observe the exact values for the high low of each 20 million
+ volume candle as well as the trades count within each of these candles.
+ Now let's go over some tips and tricks.
+ If price action breaks through a key level but the high low are larger than average, then
+ the move is likely a fake out and we would look to fade the move or counter trade it.
+ If price action reaches a key level and the high low of the candles are smaller than average
+ while CVD breaks up or down depending on the direction of the move, this signifies that
+ larger traders are absorbing the smaller market orders.
+ When price moves quickly on a low trade count, it indicates that a high volume trader is
+ participating in the move.
+ We recommend that you follow the footprints of the larger traders and trade with the volume
+ and join the move as it will make your trading easier.
+ Here is the take-home message for this module.
+ Volume candle size shows the liquidity in the current market environment.
+ CVD divergences work best with high liquidity.
+ In general, look to fade or counter trade low liquidity moves and follow the volume.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

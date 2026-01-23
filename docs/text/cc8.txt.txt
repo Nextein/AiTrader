@@ -1,0 +1,58 @@
+ Hello and welcome to this Entering Trades module. Today we're going to be covering Confluence.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility and importance of confluence, how to correctly
+ implement it and then go over some examples and tips and tricks on how to best use it.
+ Finding confluence is key to increasing probabilities and providing you with an edge in trading.
+ Confluence is useful for scalp, intraday and swing trades. It is important to build a bullish
+ and a bearish case and determine the strongest confluence.
+ In order to find the strongest confluence possible, we recommend that you start your
+ technical analysis from the high timeframes and move down to the lower timeframes as the
+ higher timeframes provide stronger confluence. You should then use different technical analysis
+ tools together to see if they intersect or coincide at the same level or area.
+ Market Structure and Market Context should support the hypotheses.
+ Now let's have a look at a practical example. Here we have a freshly created monthly level
+ on the Bitcoin chart. We can then zoom in and begin to add additional confluences.
+ We have now swapped to the daily timeframe and we can already observe interesting market
+ structure. If we add a Fibonacci retracement from the high to the low, we can see that
+ the 0.66 level lines up perfectly with this monthly level as resistance.
+ Additionally, we can add a fixed range pool, including the entire data from the moment
+ that we reach this level here in February, all the way up to here in April, comprising
+ over two months of data. As you can observe, the point of control is also perfectly lining
+ up with this level. These are very strong confluences on the higher timeframe, giving
+ us a good edge and probabilities for a possible short position.
+ In addition to these confluences, we have to pay attention to market structure. We have
+ a very strong and bullish uptrend, making higher highs and higher lows. However, here
+ we have a possible lower low and this has the potential of becoming a lower high. If
+ that's the case, price could reject from this strong resistance area and move down
+ to continue making lower lows and lower highs and reverse the trend.
+ Let's see what actually happened next. As we can observe, price action struggled for
+ several days around this resistance area, but was not able to claim it successfully,
+ ultimately leading to the formation of a lower high and a strong retracement to the downside.
+ Let's have a look at another practical example. Here we have the Bitcoin chart on the monthly
+ timeframe. We are going to draw the monthly level here as it represents a strong area
+ of interest with multiple resistance and support touches.
+ Now we have zoomed in to the daily timeframe and we can see that our monthly level is very
+ well respected in great detail. Now we are back testing it possibly as resistance once
+ again. If we add a Fibonacci retracement by pulling from this high to this pivot low,
+ we can see that the 786 is very close to this area of support and resistance. We can also
+ add a fixed range pool that comprises the volume for nearly 15 months. We can see that
+ the point of control is lining up exactly with this area as well, providing a very strong
+ confluence. Now we are going to add additional confluence by drawing a harmonic pattern.
+ In this case, a bearish Gartley pattern. These patterns are powerful sequences of Fibonacci
+ retracement that can add very nice confluence to possible trade setups. Now we have a high
+ probability that price will reject from this area providing us with a very nice possible
+ short entry with a very simple invalidation. Now let's observe what actually happened next.
+ As we can see, price action ended up rejecting from this strong area of resistance with high
+ confluence and provided a high probability short trade that played out with follow through
+ all the way down to the lows of this macro range. Now let's go over some tips and tricks.
+ In high time frame analysis, strong confluence with several technical analysis tools provides
+ higher probabilities for trade setups. In low time frame analysis, such as needed for scalping
+ and day trading, less technical analysis tools are recommended and it is also important to
+ use order flow and volume information. High time frame confluence is stronger and provides
+ better probabilities than low time frame confluence. Here is the take home message for this module.
+ You can greatly increase your probabilities in trading by establishing strong confluence
+ with several technical analysis tools. High time frame confluence is stronger than low
+ time frame confluence. Market structure and context are an integral part of the analysis
+ and they should support your hypothesis. This concludes today's module. Thank you for
+ watching and I'll see you on the next one. Happy learning and happy trading!

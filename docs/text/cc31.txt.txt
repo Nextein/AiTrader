@@ -1,0 +1,52 @@
+ Hello and welcome to this patterns module. Today we're going to be covering the
+ bump and run pattern. Please pause this video and take a moment to read this
+ trade disclaimer as the information contained in this video is not financial
+ advice and is only for educational purposes. In this module we will cover
+ the utility of the bump and run pattern, how to correctly implement it, and then
+ go over some examples and tips and tricks on how to best use it. The bump and run
+ pattern is a powerful reversal bottom pattern. It has a high win rate on higher
+ timeframes. It is also possible to use it inversely for a top reversal. To
+ correctly implement and trade the bump and run pattern it is important to pay
+ attention to the three phases that it consists of. Phase one is the lead in
+ phase, which is a high followed by a downtrend, which is then followed by a
+ large sell-off. This leads us to phase two, the bump phase. After the large
+ sell-off, a bottoming pattern forms, for example an inverse head and shoulders, an
+ adamant eave, or a cup and handle pattern. Then the decisive moment comes in phase
+ three. Once price breaks the resistance trend line, the uphill run begins. It is
+ important that the breakout is on high volume. Now let's have a look at a
+ practical example. Here we have a possible bump and run pattern with phase one or
+ the lead in phase beginning at this high, followed by a downtrend. This
+ secondary push-up is also a lower high followed by lower lows and lower highs.
+ Ultimately at this third attempt of the trend line we have a large sell-off, now
+ concluding phase one. Now we enter phase two or the bump phase. Here we expect a
+ reversal pattern to form, in this case an inverse head and shoulders. Now price
+ action makes its way towards the resistance trend line again. To enter
+ phase three, the uphill run phase, it is important to see high volume upon the
+ breakout. Let's see what happened next. As we can observe the breakout is quite
+ explosive and has a lot of bullish follow-through. Let's turn on the volume
+ profile and check if the volume increased upon breakout. As we can
+ observe, there was a massive increase in bullish buying volume upon breaking out
+ from the trend line. There was also a significant increase in volume on this
+ large sell-off. This high volume breakout confirms not only the inverse head and
+ shoulders bottoming pattern but the entire bump and run pattern as well. To
+ establish a target, we can simply use the high of the lead-in phase as a final
+ target for the bump and run pattern. In this case we see that not only is the
+ target reach but also exceeded, making this a very successful bump and run
+ pattern if we entered a long trade upon breakout from the resistance
+ trend line. Now let's go over some tips and tricks on how to best use the bump
+ and run pattern. Volume is very important on the breakout of the
+ resistance trend line. It is also preferred to have high volume at the
+ formation start or the bump start phase even though this is not our requirement.
+ The target of the uphill run phase or phase 3 is the high of the first phase,
+ the lead-in phase. The entry for a long trade from a bottom reversal bump and
+ run pattern is the breakout on high volume of the resistance trend line. This is
+ very important as otherwise a dual bump and run pattern is possible with a
+ repeat of a lead-in phase, the formation of another bump phase and
+ ultimately another attempt at the trend line. The best results for the bump and
+ run pattern are on daily and higher time frames. Here is the take-home message
+ for this module. The bump and run pattern is a powerful three-phase
+ reversal pattern. The breakout target from the resistance trend line is the
+ high of the first phase or the lead-in phase. Volume upon breakout from the
+ resistance trend line is important as otherwise a dual bump and run pattern is
+ possible. This concludes today's module. Thank you for watching and I'll see you
+ on the next one. Happy learning and happy trading!

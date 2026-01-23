@@ -1,0 +1,65 @@
+ Hello and welcome to this Fibonacci module. Today we're going to be covering the Fibonacci
+ 0.5 levels. Please pause this video and take a moment to read the trade disclaimer.
+ All of the information contained here is for educational purposes and does not contain
+ any financial advice. In this module we're going to cover the utility of the Fibonacci 0.5 levels,
+ how to implement them, and then go over some tips and tricks on how to best use them.
+ The majority of bots or algorithms work of Fibonacci. They can be programmed with an entry,
+ exit, and a stop loss. And additional filters can be added as well.
+ It is possible to trade alongside the bots by finding the fitting Fibonacci levels.
+ This method works well on smaller cap altcoins.
+ To implement this method successfully, first you need to find out which Fib level the algorithm
+ or the bot is working with, for example the 0.5 internal Fibonacci level.
+ You pull from two significant pivots using the Fibonacci retracement tool, from left to right.
+ If the internal 0.5 Fib level acts as a resistance, then we can begin using the other 0.5 levels as targets.
+ The levels that we recommend for this method are your initial 0 and 1 pivots,
+ and the internal 0.5. Then the negative 0.5, the negative 1, the negative 1.5, the negative 2,
+ the negative 2.5, the negative 3, and the negative 3.5, and so on. It is also possible to use
+ the positive 0.5 expansion levels. Let's have a look at an example with basic
+ attention token on its BTC pair. First we activate the Fibonacci retracement tool.
+ Then we're going to pick a swing high pivot and pull from left to right down to a swing low pivot.
+ For the purposes of this example, I'm going to extend the Fib pull to the right so that we can
+ observe whether future price action matches our intended levels. Here we can see that price action
+ finds resistance at the internal 0.5 Fibonacci level. Now we can switch our template to the
+ negative 0.5 FABed levels so that we can see them to the downside. To introduce these levels,
+ simply go to the settings in your Fibonacci retracement tool and then you can enter them here
+ manually. The negative 0.5, the negative 1, the negative 1.5, the negative 2, the negative 2.5,
+ and so on. Let's have a look at how further price action reacts to these levels.
+ We already find that the negative 0.5 provides support. We come back into our initial range
+ and find resistance around the 0.5 with a slight deviation. As we continue further down, once again
+ the negative 0.5 proves to be support. Further on, we see that the negative 1 and the negative 0.5
+ begin to play a role as well. Ultimately, we can see that the negative 1.5 also
+ becomes a support level. Price pushes between these levels and continuously and repeatedly
+ finds support and resistance as it's moving between them.
+ If you are able to combine these levels with other Fibonacci tools, with horizontal levels,
+ or with channels, then you can build very strong confidence to establish high probability trade
+ possibilities. Let's have a look at an example with link BTC. First, we're going to activate
+ our Fibonacci retracement tool. We are then going to select this swing low pivot and pull it from
+ left to right to this swing high pivot. For the purposes of this example, I'm going to extend the
+ pull towards the right so that we can see if future price action respects the levels as we
+ might think. Here, we can see that the asset found support at the 0.5 internal Fib level.
+ We then switch our template containing our negative Fib levels and then let's have a look
+ if they are helpful for future trades. As we can see, as further price action develops,
+ the negative 0.5 levels are respected several times and at several stages.
+ Let's have a closer look. Here we can see that the negative 0.5 already provided a resistance level.
+ Price then pulled back to our second pivot, dancing around it for a while before pushing
+ once again back up to the negative 0.5 where it found resistance. The next move took us to the
+ negative 1 level with a slight rejection and the following move to the negative 1.5.
+ As you can see, after reaching the negative 1.5, price retraced all the way down to the negative
+ 0.5 again, found resistance at the negative 1 and once again came back down to the negative 0.5.
+ In this case, there was some deviation of the level. Ultimately, price came up to the negative 1
+ and found resistance there before pushing on all the way to the negative 2.
+ The rejection from this level took us back down to the negative 1.5 before yet another push ultimately
+ to the negative 2.5 and even to the negative 3.5. We can now see that from the initial 0.5 internal
+ fib level reaction, we were actually able to build a roadmap for the future price development.
+ In order to use these levels or successful trades, we advise that you find additional
+ confluence with other fib tools, horizontals or channels.
+ The 0.5 template is simply a blueprint and modifications are allowed.
+ We recommend that you use this in confluence with other tools for best results such as channels,
+ horizontal levels or other Fibonacci tools. The ideal time frame for this method
+ is the 15 minute to one hour time frame or basically your day trading time frame.
+ Assets such as ZRX, BAT and LINK are very Fibonacci driven coins and have provided good results in
+ the past. Here is the take home message for today's module. The 0.5 Fibonacci level
+ method is useful to trade alongside bots or algorithms. First, you should check the internal 0.5 Fibonacci
+ level for a reaction. This method is especially useful for smaller cap altcoins.
+ This concludes today's module. Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

@@ -1,0 +1,89 @@
+ Hello and welcome to this strategies module today. We're going to be covering the day trading strategy
+ Please pause this video and take a moment to read this trade disclaimer as the information contained in this video is
+ Not financial advice and is only for educational purposes
+ In this module. We will cover the utility of this day trading strategy
+ How to correctly implement it and then go over some examples and tips and tricks on how to best use it
+ The day trading strategy is an advanced strategy producing generally one to four trades per day
+ It combines momentum volume and confluence
+ This day trading strategy is less time-consuming than the chart champions scalping strategy
+ In order to implement the day trading strategy, you will need footprint statistics software such as exochards or ATAS
+ The key components of the strategy are TPO charts open interest
+ volume and momentum and
+ Fibonacci
+ The first step of the day trading strategy is to check the momentum
+ For this you can use the 15-minute time frame market structure, which will show you the trend
+ Volume will show the strength of the move and
+ Open interest will show the aggressiveness of the move
+ The second step of the day trading strategy is to establish
+ confluence by using Fibonacci tools
+ Fibonacci is the primary tool for confluence, especially the champions channel
+ between the 618 and the 666 Fibonacci levels
+ The 796 is a Fibonacci level that can be used in low-volume environments
+ And the point to eight can be used in high momentum environments such as trending days
+ The third step of the day trading strategy is to use volume tools and TPO charts to establish the entries
+ The volume tools are value areas
+ Points of control and the session VWAP, which can give us the entries
+ TPO charts offer us single prints and high time notes, which are highly favorable
+ Now let's have a look at a practical example
+ First we can have a look on trading view at the 15-minute chart to establish what the market structure for today is
+ Here we can see that we are making lower highs and
+ ranging initially
+ To then begin to make lower lows lower highs and lower lows
+ Thus giving us a local downtrend for the day
+ Our trade idea will revolve around a possible bounce
+ through the VWAP to the CC or even the 786
+ We will now attempt to find the strongest confluence at each of these levels and then use
+ momentum, volume, TPO and open interest to judge the right time to enter a possible short trade
+ Now let's have a look at the chart champions scalping template on exocharts
+ We have said the chart type to five million volume and we are on the buybit BTC USD pair
+ We can observe that the VWAP is lining up with today's point of control as well as the previous day value area low
+ For the specific move in question. We are looking at a possible bounce up to these resistance levels
+ Based on the Fibonacci pool done on trading view
+ We know that the champions channel
+ lines up with the daily open and
+ the weekly point of control as well as today's value area high offering yet another
+ interesting area of resistance for a possible short entry
+ Now we can use the power of this template to judge
+ momentum, volume in
+ combination with open interest to decide where our trade entry should be
+ Initially we have a move towards the VWAP on increasing open interest and
+ increasing longs with shorts closing
+ This section of the move is thus
+ strong or healthy and not necessarily a trigger for an immediate short trade at this resistance level
+ Thus we do not enter and wait for further data
+ As we wait for more confirmation to take the trade
+ We see that price action begins to dance around the VWAP point of control and previous day value area low
+ Finally we have a decisive move to the upside with larger
+ volume candles
+ showing lower liquidity in the move and
+ also
+ decreasing open interest
+ This tells us this this move heading towards our next area of resistance is not a strong move
+ Based on this volume momentum open interest TPO and
+ Confluence information of the daily open the weekly point of control the value area high and the Fibonacci
+ 96 level we decide to enter our short trade position
+ Now let's have a look at how the trade plays out on trading view as
+ We already saw on the exo charts template. We have a move up through the VWAP
+ rejecting initially from the CC with a subsequent dancing around the VWAP and one last push
+ All the way up to the 786
+ To then finally begin rejecting and moving lower
+ Thus giving our short entry trigger at the confluence area here a
+ very nice day trade short opportunity
+ We can even activate the CCW template
+ To see that price rejected exactly off the 0.796 level and
+ We can use the VWAP area of confluence as a take profit for our short trade as well as the 0.28
+ Now let's go over some tips and tricks
+ Reading momentum and market context is extremely crucial
+ You should ask questions such as are longs or shorts getting aggressive is
+ Open interest following the aggression
+ For this day trading strategy we recommend that you use the 5 million volume chart
+ An example of strong confluence for this strategy is the session VWAP
+ lining up with a point of control and a Fibonacci level a
+ Perfect trading strategy does not exist and you can customize this day trading strategy to fit your personal style
+ The final piece of the puzzle is found with experience
+ Patience is very important if there is no trade setup. You simply do not take a trade
+ Here is the take-home message for this module in the day trading strategy
+ Momentum gives us the trade direction long or short
+ Volume gives us the entries
+ Finally Fibonacci tools give us the confluence
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading

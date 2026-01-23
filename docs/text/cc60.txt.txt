@@ -1,0 +1,70 @@
+ Hello and welcome to this TPO series module.
+ Today, we're going to be covering Introduction to Time Price Opportunity.
+ Please pause this video and take a moment to read this trade disclaimer, as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of TPO or Time Price Opportunity Charts, how
+ to correctly implement them as well as some background information, and then go over some
+ examples and tips and tricks on how to best use them.
+ A TPO chart is a unique way of organizing market data.
+ It is extremely useful to determine the difference between time, price, and volume, offering
+ a great advantage when reading market movements.
+ It is useful for scalp, day, and swing trading.
+ In order to use TPO charts, you will need specialized software such as exocharts or ATAS.
+ We recommend that you use the standard 30 minute time frame and a tick size of 50.
+ You will be able to analyze time, price, and volume together to then make an informed
+ trading decision.
+ Now let's go over some important background information.
+ Each letter in the TPO profile represents a 30 minute candle or column.
+ 48 letters are used, capital A to capital X to cover the first 12 hours of the day, and
+ then lower case A to lower case X to cover the last 12 hours of the day.
+ The TPO chart shows value areas and points of control, both time and volume based.
+ Now let's have a look at a practical example.
+ Here we have the specialized software exocharts web.
+ This is a daily session TPO template available on the chart champions website, and it is
+ set to 30 minutes with tick size 50 on the Bybit BTC USD pair.
+ Now let's dissect the components of this TPO chart.
+ On the left here we can see the time price opportunity or TPO profile with a value area
+ high, value area low, and a time based point of control.
+ Here in the middle we see the volume profile, in this case set to show delta at each horizontal
+ level.
+ The largest horizontal bar on this profile with a slight pink color is the volume based
+ point of control.
+ The difference between the time and volume based point of control is important to note,
+ as large discrepancies might give a heads up to possible future market movements.
+ The third main component of the TPO chart is price.
+ In this template shown with grey candles that represent the price movement during the session.
+ We can also observe that the TPO profile itself contains many different letters seemingly
+ out of order.
+ This is due to the fact that this is the compressed view of the TPO profile.
+ It is however possible to expand the profile as well as the text to then follow the 30
+ minute columns with the evolving price action, as we can observe the letters change as we
+ change columns and they are in order, also following the price movement itself.
+ In order to get the most out of TPO charts, it is important to understand concepts in
+ auctioning and ranging theory.
+ The market moves from range to range, switching between balance and imbalance.
+ Their value in the range is considered balance, where sellers appear at the highs of the range
+ along with a lack of aggressive buyers.
+ On the opposite side, buyers appear at the lows of the range and there is a lack of aggressive
+ sellers.
+ When a range breaks with an increase in volume, it is considered a state of imbalance.
+ The market will then auction higher or lower until price is considered overvalued or undervalued
+ depending on the direction of the break.
+ Then a new trading range is created where once again balance is established.
+ Market participants will attempt to buy or sell at what is perceived to be good value.
+ Now let's go over some tips and tricks.
+ It is key to see acceptance between time, volume and price.
+ The TPO chart helps to trade in a defined range and recognize when price is breaking
+ balance and leaving the range.
+ A lot of time spent at a level without volume is considered weak, as there is no acceptance.
+ Even though TPO in itself is not a strategy, it is possible to create trading strategies
+ involving TPO and volume profiles.
+ A great example are the eager sessions and time.
+ These will be covered in a separate module.
+ Here is the take-home message for this module.
+ The TPO or Time Price Opportunity chart is set at 30 minute intervals with 48 letters
+ to help organize the available market data.
+ TPO charts are very helpful to decipher between balance and imbalance in the market.
+ You can use time, price and volume to then make an informed trading decision.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading!

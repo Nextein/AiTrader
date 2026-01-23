@@ -1,0 +1,96 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering
+ ledges and the double distribution setup. Please pause this video and take a
+ moment to read this trade disclaimer. As the information contained in this
+ video is not financial advice and is only for educational purposes. In this
+ module we will cover the utility of ledges and the double distribution setup.
+ How to correctly implement them and then go over some examples and tips and
+ tricks on how to best use them. Ledges can be very useful as intraday support or
+ resistance levels. Gaining acceptance into the corresponding single print block
+ activates a double distribution setup. You can use this to establish or adjust a
+ trade setup accordingly ahead of time. In order to view ledges and double
+ distribution setups you will need specialized software such as exochards
+ or ATAS. You can then load the standard CC TPO template for example on exochards
+ web. Then you can determine the ledges visually and be aware of double
+ distribution day TPO profiles. Ledges are the same as poor highs or poor lows but
+ they are formed inside of the TPO profile. Two or more TPO blocks or columns at the
+ same price create a ledge. Ledges are used then as intraday support or
+ resistance levels in the TPO profiles. Now let's have a look at a practical
+ example of ledge formation and price reacting to it upon revisiting the ledge.
+ We are using the standard chart champions template on exochards web on the Bybit
+ BTC USD pair. The clusters and text has been expanded for this daily TPO
+ profile in order to see the ledges. Here we have two blocks or columns forming
+ one ledge and here we can also consider this another ledge formation. So
+ together we can regard this area as a nice intraday resistance level as
+ price moves away from it. Upon revisiting the level we can see that price goes
+ above our ledge formation and rejects much like a swing failure pattern type
+ of trade providing a possible intraday trade setup as a short with nice
+ follow-through to the downside and full range rotation for the day. Another
+ possible trade setup with such ledge formations would be the flipping of
+ this resistance level to support. Not the breakout itself beyond the level but
+ the actual retest of the level and confirmation of this previous resistance
+ as support. It is best to confirm this using order flow including volume,
+ delta, open interest and CVD divergences. A double distribution setup occurs when
+ price gains acceptance into a large row of single prints between two
+ distribution profiles. You then look to trade to the opposite side of the single
+ print row. The activation should occur preferably on the following day but can
+ occur up to one week later. There is however no hard rule for this. The
+ double distribution setup can also occur on the same day as the double
+ distribution. Now let's have a look at a practical example of a double
+ distribution setup. Here we have the standard chart champions TPO template on
+ exochards web. It is said to the Bybit BTC USD pair with the standard settings.
+ As we can observe this trading session began with meandering price action around
+ this level for about eight hours creating a small distribution profile. Then an
+ impulsive move to the upside occurred where we then established a range up here
+ for the remainder of the trading session creating approximately another
+ distribution setup with a row of single prints in between. Even though this row
+ of single prints is not very large we still technically have two distribution
+ profiles and a possible double distribution setup that can activate
+ preferably on the following day. Let's have a look at what happened the
+ following day. Initially price meandered around this level. As we can observe it
+ found support at the top of our single print row formed on the previous day.
+ Then an impulsive move to the downside occurred and the entire row of single
+ prints was filled. Since we were expecting a possible double distribution setup we
+ know not to try to counter trade this move. Ultimately the move in price went
+ all the way down to this naked point of control and settled at this area for
+ the remainder of the trading session. The double distribution setup was thus
+ successfully activated and had very nice follow-through to the downside. It also
+ created yet another double distribution profile for this daily trading session.
+ The row of single prints left behind is very small. Ideally it should be larger.
+ However we can apply the same technique for yet another trading session on the
+ following day. Now let's have a look at what happened in the following trading
+ session. Here we can observe that there was an impulsive move to the downside
+ during the initial balance of the session. The lows of the previous day were taken
+ out and a buying tail was created showing buying interest at this level. At this
+ point in time we then have a swing failure type of move with a nice buying
+ tail and a possible double distribution setup from the previous trading session
+ that can be activated if we can travel through the very small row of single
+ prints. This gives us a nice heads-up for a possible move to the upside. This
+ occurred here and as we can observe it was very impulsive and reached these two
+ naked points of control where then price action settled in an upper range for
+ the remainder of the session. This is a good example of why it's important to
+ recognize these double distribution profiles and not counter trade or fade
+ a move once it is activated as it can be very impulsive and have very nice
+ follow-through. The price action in this daily trading session creates once again
+ another double distribution profile. One at the top and one at the bottom with a
+ nice row of single prints in between. Now let's go over some tips and tricks. If a
+ ledge is formed intraday with more than four TPO blocks or columns at the high
+ or low and price rejects from it then we can expect price to break through the
+ ledge upon revisiting it. This is context dependent. We recommend that you monitor
+ volume, delta, open interest and CVD divergences on the retest. Above or below
+ ledges there is generally resting liquidity in the form of stop/loss orders.
+ If price breaks through the ledge it can be flipped to support or resistance. The
+ first idea however would be to expect a swing failure pattern.
+ Trading the breakout of a ledge is not recommended unless there is a clear
+ support resistance flip with order flow confirmation. When price gains acceptance
+ into a single print block or row as part of a double distribution setup baiting
+ or counter trading the move is not recommended. The most useful part of the
+ double distribution setup is knowing when not to trade. It will help you avoid
+ getting caught up in a squeeze through the single print as no support or
+ resistance levels are built during its creation. Here is the take-home message
+ for this module. Leges are very useful intraday support or resistance levels.
+ Gaining acceptance into the corresponding single print block or row of a double
+ distribution profile activates the double distribution setup. This is very
+ useful to know when not to trade and to avoid counter trading the activated
+ double distribution setup. This concludes today's module. Thank you for
+ watching and I'll see you on the next one. Happy learning and happy trading!
+ (soft music)

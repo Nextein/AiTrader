@@ -1,0 +1,65 @@
+Entering trades - Consolidation
+ Hello and welcome to this entering trades module. Today we're going to be covering consolidation.
+ Please pause this video and take a moment to read this trade disclaimer. As the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module we're going to cover why it is useful to track consolidation patterns,
+ how to correctly implement them and then go over some examples and tips and tricks on how to
+ best use them. Consolidation can be defined as a range bound price action after an impulse
+ and it can be used with market context to decipher the next possible move.
+ There are three types of consolidation which can offer clues as to what might happen next.
+ It is very useful to consider a counter argument to the textbook definition. In other words,
+ to think outside the box when regarding consolidation. In order to begin implementing
+ the concept of consolidation, let's have a look at some definitions. In general,
+ consolidation above support is considered bearish and consolidation below resistance is considered
+ bullish. The core definition of consolidation is price moving in an extended sideways range.
+ Generally this is considered a neutral pattern as it can be accumulation, distribution,
+ reaccumulation etc and has the potential to break to the upside or downside.
+ Now let's go over the three types of consolidation. First we have the bull flag or bear flag type
+ which is considered the most bullish or bearish form after an impulse. Secondly, we have the
+ sideways consolidation type which is considered a neutral pattern. However, it does favor the
+ continuation of the macro trend. Finally, we have the upward sloping for uptrends
+ or downward sloping for downtrends consolidation which is generally considered unhealthy and can
+ lead to a trend reversal. Now let's go over some theoretical examples of the three types of
+ consolidation. First, we have a flag formation after an impulse. In this case, a bullish impulse
+ followed by a bull flag and then continuation to the upside. This is the most bullish type of
+ consolidation and for a downtrend, the most bearish type. Second, we have the sideways consolidation.
+ Once again, a strong impulse followed by range bound action, in this case, forming a parallel
+ channel. Then, continuation to the upside with a backtest of the top of the channel
+ and another impulse upwards. The sideways consolidation type is considered a neutral pattern
+ as this can also break to the downside. Generally, however, a continuation of the macro trend
+ is expected in this case to the upside. The third type of consolidation is the upwards sloping
+ consolidation, in this case for an uptrend. Here, after the initial impulse, price action is range
+ bound within this ascending parallel channel and eventually leads to higher prices before
+ strongly reversing the trend. The upwards sloping or downwards sloping consolidation type is considered
+ the most unhealthy type of consolidation as it can often signal a possible upcoming trend reversal.
+ The three consolidation types can be applied not only for uptrends but also for downtrends
+ and have the same significance. After a downward impulse, a bear flag formation is considered
+ the most bearish type of consolidation. The sideways consolidation would still
+ favor continuation to the downside even though it is generally a neutral pattern.
+ Finally, the downwards sloping consolidation after the initial downwards bearish impulse
+ is actually considered unhealthy and can also lead to a possible reversal of the trend.
+ Now, let's have a look at a practical example. Here, we have a strong upwards bullish impulse
+ that begins to consolidate sideways in this parallel channel.
+ Ultimately, it offers continuation to the upside and follows the macro trend.
+ If we zoom in and look closely, we can see another type of consolidation pattern.
+ Here, we have a strong impulse up with a bull flag formation with a descending channel
+ and then continuation to the upside. In this example, if we were simply to apply the standard
+ textbook definition of consolidation under resistance as being bullish and consolidation
+ above support as being bearish, it would have been very difficult to trade this sideways
+ consolidation successfully. It is thus important to think outside of the box, look at market context
+ and instead realize that after a strong upwards impulse, this sideways consolidation range
+ can be traded as such from top to bottom and once again to top until a possible continuation
+ appears. Now, let's go over some tips and tricks.
+ Consolidation under resistance is usually considered bullish. However, in certain market situations,
+ this can also be a low risk short trade. For consolidation above support,
+ which is usually considered bearish, there is also the counter argument that it could be
+ a possibility for a low risk long position, also with a very simple invalidation.
+ In these situations, it is very important to have a look at market context.
+ In order to decipher consolidation correctly, we recommend that you follow these steps.
+ First, zoom out and check the macro trend. Second, view support and resistance as zones and not
+ as levels. Third, we recommend that you always search for confluence to build the strongest case
+ for your trade setup. Here is the take-home message for this module. Consolidation can be defined
+ as range bound price action after an impulse. The three types of consolidation can help decipher
+ the next impulse. Market context and confluence are needed to build the strongest case possible
+ for any trade setup. This concludes today's module. Thank you for watching and I'll see you
+ on the next one. Happy learning and happy trading!

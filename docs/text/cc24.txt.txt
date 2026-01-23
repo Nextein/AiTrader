@@ -1,0 +1,50 @@
+ Hello and welcome to this indicators module. Today we're going to be covering open interest and funding.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of open interest and funding, how to correctly implement these metrics,
+ and then go over some examples and tips and tricks on how to best use them.
+ Open interest is a great metric to track when trading a macro trend,
+ and it is very useful to monitor the health of the trend and detect a possible loss in momentum,
+ as well as an upcoming trend reversal.
+ It is also possible to look for patterns in open interest itself, even though this is not recommended.
+ As a past example, when reaching the 1 billion open interest mark on the Bitcoin USD trading pair,
+ there used to be a significant drop in open interest.
+ Funding can influence the price of an asset, and it is thus important to track it and to understand its function.
+ Now let's go over the implementation of open interest.
+ Open interest is per definition the total number of outstanding contracts in a derivatives pair.
+ It is useful to monitor an increase and a decrease in open interest,
+ as it shows money entering or leaving the market or asset.
+ Open interest can be tracked on all timeframes, and it is especially useful for higher timeframes.
+ It is possible to use software such as exocharts and attas to track open interest.
+ Now let's have a look at a practical example using the footprint software exocharts.
+ Here we have the Bybit BTC USD pair on the 30 minute timeframe.
+ We can observe that price action is in a bullish market structure and uptrend.
+ Open interest has been accompanying the uptrend and also increasing together with the increase in price.
+ Generally this signifies that this uptrend here is healthy.
+ It is very important to keep the market context in mind and also look at additional metrics such as volume, delta and possible CVD divergences.
+ Now let's go over the implementation of funding. Funding helps maintain the perpetual derivatives price of an asset close to the spot price.
+ Positive funding means that longs pay shorts.
+ Negative funding means that shorts pay longs.
+ Funding can be helpful to identify a crowded trade.
+ For this context is key.
+ Now let's have a look at a practical example on how to check the funding rate on Bybit.
+ Here we have selected the BTC USD inverse perpetual pair.
+ In the middle at the top here we can see that the funding rate is 0.0025%.
+ By hovering over this funding rate with a mouse it is possible to see the upcoming or predicted funding rate for the following period.
+ The funding fee is exchanged directly between the buyers and the sellers or longs and shorts every 8 hours.
+ A positive funding rate means that the longs will pay the shorts every 8 hours and a negative funding rate means that the shorts will pay the longs every 8 hours.
+ An extreme funding rate, whether positive or negative, can indicate a significant mismatch in the amount of market participants in terms of longs versus shorts.
+ Now let's go over some tips and tricks on how to best use open interest.
+ When price is rising and volume and open interest are also increasing this signifies a strong uptrend and it is considered bullish.
+ When price is rising but volume and open interest are decreasing this implies a weak uptrend and is considered bearish.
+ When price is then declining and volume and open interest are increasing this implies a strong downtrend and is considered bearish.
+ When price is declining but volume and open interest are decreasing it implies a weak downtrend and is considered bullish.
+ Now let's go over some tips and tricks on how to best use funding.
+ Funding is used to encourage traders to open or close derivatives positions when extreme differences between spot and future prices occur.
+ It is possible to close a position 1 minute before funding and avoid paying the fee.
+ Funding rate is 0.01% and it becomes extreme when it is greater than 0.075% or below -0.075% as it then starts becoming more expensive than the market fees.
+ Here is the take-home message for this module. Open interest is a powerful metric that can be used to monitor the health of a trend on all timeframes
+ and it indicates whether money is entering or leaving the market.
+ Funding can influence the price of an asset as it attempts to eliminate the possible price difference between spot and the futures price of the asset.
+ Context is very crucial when using these metrics.
+ This concludes today's module. Thank you for watching and I'll see you on the next one. Happy learning and happy trading.

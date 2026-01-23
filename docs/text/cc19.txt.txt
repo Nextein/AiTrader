@@ -1,0 +1,71 @@
+ Hello and welcome to this Fibonacci module. Today we're going to be covering the Fibonacci Fan.
+ Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is only for educational purposes.
+ In this module we will cover the utility of the Fibonacci Fan, how to correctly implement it,
+ and then go over some examples and tips and tricks on how to best use it.
+ The Fibonacci Fan is useful in determining when the slope of a move has become overextended,
+ and thus include a time aspect into the analysis.
+ It is useful for finding then a good time taken and an angle for a retracement.
+ The speed fan is very powerful in combination with Fibonacci time and Fibonacci retracement.
+ To implement the Fibonacci Fan you will need two clicks on two significant pivots,
+ from high to low or low to high, much like the Fibonacci retracement.
+ The levels of the fan can act as support and resistance levels.
+ We recommend that you use the Fibonacci Fan on the 4 hour and higher timeframes.
+ Now let's go over a practical example.
+ Here we have the Bitcoin chart on the weekly time frame.
+ We can now select the Fibonacci Speed Resistance Fan Tool, as it's called on Trading View,
+ from this drop down menu, and then we are going to select two significant pivots in this case,
+ from this low to this high.
+ We recommend that you use these settings for the Fibonacci Speed Fan
+ with these price levels activated and the time levels turned off.
+ As we can observe, the 618 fan line provides us a very nice angle for the retracement
+ and also a nice and strong support level.
+ It forces us to take into consideration the time that it took for this impulse to reach its high
+ and to be patient enough to wait for this angle to be reached.
+ We can also observe that the 0.5 line and the 382 are well respected,
+ and here the 0.5 line is flipped into resistance and back into support,
+ back into resistance, and once again back into support here.
+ Let's observe what actually happened next.
+ As we can see, the 382 continues to play a strong role as a support and resistance level,
+ much like the other fan lines.
+ The 618 really excels and proves to be fantastic resistance once it is lost as support here.
+ Now let's have a look at another practical example.
+ Here we have the daily Bitcoin chart and we have pulled a Fibonacci Speed Fan
+ from this pivot high to this pivot low.
+ As we can observe, once again the 382 and the 0.5 lines are very well respected,
+ and we also get a nice rejection from the 618 line.
+ Now let's observe what actually happened next.
+ As we can see, the lines of the Speed Fan continue to play a role as support and resistance.
+ After the rejection from the 618, we find support once again at the 0.5,
+ go back to the 618 line which is initially resistance, but ultimately is flipped to support,
+ and finally move up to the 0.75 line where we once again have a flip from resistance to support.
+ Let's have a look at another practical example.
+ This time we will use the gold chart on the weekly timeframe.
+ The Fib Speed Fan Pull is from this low in 2018 to the new all-time high in 2020.
+ As you can observe, the lines of the Speed Fan are respected very well,
+ and the 618 is once again the superstar.
+ Now we're going to add some confluence so that you can see the power of the Fibonacci Speed Fan
+ with other technical analysis tools.
+ Here we have a yearly level that already provides very nice support on these two touches.
+ We can also add a Fib retracement from this pivot low to this pivot high,
+ and now we have fantastic confluence on a horizontal level,
+ and here specifically also on a diagonal level with the 618 of the Speed Fan.
+ As you can see, this provided a fantastic possible long entry
+ with very nice follow-through all the way up to nearly the all-time highs.
+ Ultimately, the move ended in a rejection from the 0.5 line,
+ and a pullback all the way to the 618 Speed Fan once again.
+ Now let's go over some tips and tricks.
+ We recommend that you focus on the Fan Lines as support and resistance levels.
+ The 618 Fan Line is usually stronger,
+ and it provides a good angle and time aspect for a retracement.
+ You can use the Speed Fan on every macro chart,
+ especially in combination with other tools,
+ in order to build very strong confluence.
+ Here is the take-home message for this module.
+ The Fibonacci Fan is very useful to include the time aspect into your technical analysis.
+ It can be implemented with two clicks on significant pivots,
+ from high to low or from low to high.
+ It is also a very powerful tool to build high time frame confluence.
+ This concludes today's module.
+ Thank you for watching, and I'll see you on the next one.
+ Happy learning and happy trading.

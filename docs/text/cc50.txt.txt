@@ -1,0 +1,63 @@
+ Hello and welcome to this strategies module. Today we're going to be covering
+ the exponential moving average strategy. Please pause this video and take a
+ moment to read this trade disclaimer as the information contained in this
+ video is not financial advice and is only for educational purposes. In this
+ module we will cover the utility of the exponential moving average strategy, how
+ to correctly implement it and then go over some examples and tips and tricks
+ on how to best use it. The exponential moving average strategy has the
+ advantage that it is a simple strategy. It prevents you from attempting to
+ outsmart the market and it helps you maximize profits by following the trend.
+ To implement this exponential moving average strategy you will need to
+ activate EMA 26 and set the color to orange, 55 and set the color to yellow,
+ 100, set the color to blue and the 200, setting the color to green on
+ trading view. Then you wait for the crossover of the 55 and the 26 exponential
+ moving averages and the subsequent fanning out. This strategy works best on the
+ daily timeframe but it is also possible to use it on the 4 hour. Now let's have a
+ look at a practical example. To add the 4 exponential moving average indicators
+ on trading view simply click on indicators and search for EMA selecting
+ the top result. Once activated you can then change the settings on each of the
+ indicators and input the desired length. For this strategy we will be using the
+ 26, the 55, the 100 and the 200 EMA's. Under style we can change the color and
+ also the thickness of the line. In this example we can see four pivotal crossings
+ of the 26 and the 55 EMA's. The 26 EMA is the orange line and the 55 EMA is the
+ yellow line. Here we can see that the 55 EMA crosses below the 26 EMA and then
+ the two begin to spread or fan out. This would be the entry trigger for a long
+ position. As the trend then develops we can see that the retracements to the 26
+ EMA can be used as by the dip opportunities and provide further long
+ entry positions. Here we have a deeper retracement to the 55 EMA also offering
+ two very nice opportunities to buy the dip. It is also possible when following a
+ trend to simply trail stop losses. As this strong uptrend begins to reverse we
+ notice a second crossover on this daily timeframe. Here the 55 EMA in yellow
+ crosses above the 26 EMA in orange and once they begin fanning out provides us
+ a short entry signal. It can also give us a heads up to close any long positions
+ that we had opened from below with trailing stop losses to maximize profits.
+ The next crossover occurs then here where the 55 EMA crosses below the 26 EMA and
+ the two begin to fan out giving us another long entry signal. Here we can
+ observe that there is almost a bearish crossing of the two EMA's however it
+ does not complete. This is why it is very important to wait for the two moving
+ averages to begin fanning out. Here they begin to fan out once again and offer
+ yet another long entry signal for more potential upside. The final EMA crossover
+ on this chart occurs after the trend begins to reverse. Here we can see that
+ once again the 55 EMA crosses above the 26 EMA and then the two begin to fan out
+ giving us yet another short entry signal. If we turn on the 100 and 200 EMA's we
+ can see that they also provide by the dip opportunities here on the 100 and
+ also very nice support resistance flips for further entries. Here the 200 EMA is
+ flipped to resistance and provides two nice short entry trade setups. Once the
+ EMA's are flipped to support the 100 EMA and the 200 EMA provide a nice area of
+ support for possible long entries. Here we can see that once they are flipped to
+ resistance they also offer possibilities for short entries. Now let's go over some
+ tips and tricks on how to best use the exponential moving average strategy. In a
+ bullish uptrend you can buy the dip at the 55 100 and 200 EMA's. The invalidation
+ or stop loss can be placed below the 200 EMA. We recommend that you use
+ confluence and that you check market context to fine-tune your entries and
+ take profit levels. Keep in mind that a trend can continue even with divergence
+ is present. It is also possible to trail stop losses and simply wait for the
+ crossover indicating a possible trend reversal. Ultimately we recommend that
+ you use market structure for stop loss placement. Here is the take-home message
+ for this module. The exponential moving average strategy is a simple strategy
+ and it requires patience. It is important to wait for the 55 and 26 EMA
+ crossover. We recommend that you use confluence to fine-tune your entries
+ and take profit levels and that you use market structure for stop loss placement.
+ It is also possible to trail your stop losses as you follow the trend. This
+ concludes today's module. Thank you for watching and I'll see you on the next
+ one. Happy learning and happy trading!

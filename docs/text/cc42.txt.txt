@@ -1,0 +1,60 @@
+ Hello and welcome to this footprint module. Today we're going to be covering
+ Delta. Please pause this video and take a moment to read this trade disclaimer as
+ the information contained in this video is not financial advice and is only for
+ educational purposes. In this module we're going to be covering the utility of
+ Delta, how to implement it, and then we're going to go over some examples and
+ tips and tricks on how to best use it. Delta is the sum of aggressive market
+ orders. In other words, buys minus sells. It shows whether buyers or sellers are
+ in control of the current candle. Delta is useful to determine possible
+ breakouts of a range and reversals at key levels. To implement Delta you will
+ need footprint software such as exocharts. It is useful to monitor Delta to help
+ determine whether a price movement is healthy. We recommend that you use Delta
+ in conjunction with open interest, volume, and cumulative volume Delta. Now let's
+ go over some background information to better help us understand this topic.
+ Let's go over passive versus active order flow. Passive order flow is
+ characterized by limit orders. Active order flow on the other hand is
+ characterized by aggressive market orders. In order for a passive order to get
+ filled an active market order is needed. Price can only move when market orders
+ are placed. Let's have a look at a practical example on exocharts. Here we
+ have the standard chart champions template with the Bybit BTC USD pair
+ selected on the 30-minute time frame with Delta clusters activated. As we can
+ see price has moved down into this area with increasing volume and increasing
+ negative Delta. This shows that the downward move was healthy and strong. As
+ we reach this support area however, we notice that volume decreases and also
+ Delta decreases. In other words, the momentum decreases. We then begin to range
+ within this price area. As we approach the lows of the range, the selling
+ activity decreases and the negative Delta flips to positive Delta showing
+ aggressive buying interest. Conversely, as we approach the highs of the range, the
+ buying interest shown here by positive Delta and a slight increase in volume
+ disappears and the selling activity increases. This is a balanced and range
+ bound environment. Now let's go over some tips and tricks. A healthy price move is
+ characterized by an increase in aggressive market orders or volume and
+ positive Delta for an uptrend or negative Delta for a downtrend. If volume and
+ Delta are decreasing on a move, price is likely to reverse. It is possible to have
+ a green candle with negative Delta and also to have a red candle with positive
+ Delta. In range trading, we can expect a decrease in Delta as the edges of the
+ range are approached. Range bound price action means that we can observe active
+ selling at the top of the range and active buying at the bottom of the range. A
+ healthy and strong breakout of a range, whether up or down, is accompanied by
+ strong volume and an increasing Delta. Decreasing volume and Delta on the
+ breakout or breakdown, signal weakness however and are likely reversal into the
+ range. Now let's have a look at a false breakout of a range and a true breakout
+ of a range. This is the local range that we were observing on the previous example.
+ Here we see that the lows of the range are taken and volume and negative Delta
+ increase. However, this does not last for long and the next candle shows us that
+ Delta has shifted to positive. As a result, we have moved back into the range and
+ have failed to lose the lows of the range. Let's check what happens on the other
+ side. As you can see, the highs of the range are around 55,300. As we zoom in, we
+ can see the opposite case of what we saw before. Now the positive Delta remains
+ volume increases and we break out of the range. There is no heavy selling to stop
+ us and we move way beyond the highs of the range. Here we can see that by looking
+ at the increasing positive Delta and volume, we can differentiate between a
+ true breakout from the range and a false breakdown. Delta clusters can be helpful
+ as they show areas on the chart with high Delta in darker shading. An area with
+ high Delta can offer a reversal point if revisited. For this we recommend that you
+ use additional confluence. Here is the take-home message for today's module.
+ Delta shows market sales minus buys and can be positive or negative. It is very
+ helpful to identify breakouts and possible reversals. We recommend that you
+ combine Delta with volume and open interest when monitoring reactions at
+ key levels. This concludes today's module. Thank you for watching and I'll see you
+ on the next one. Happy learning and happy trading.

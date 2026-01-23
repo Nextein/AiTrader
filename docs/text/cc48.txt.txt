@@ -1,0 +1,45 @@
+ Hello and welcome to this tools and charts module. Today we're going to be
+ covering logarithmic scale charts. Please pause this video and take a moment to
+ read this trade disclaimer as the information contained in this video is
+ not financial advice and is only for educational purposes. In this module we
+ will cover the utility of log-scale charts, how to correctly implement them, and then
+ go over some examples and tips and tricks on how to base use them. The log
+ scale chart is very useful to analyze data on extremely volatile assets with
+ high percentage price moves. It is also useful to analyze old price data ranging
+ years. Additionally it allows you to acquire a high time frame perspective
+ especially on volatile assets. To correctly implement a log scale chart we
+ recommend that you zoom out to a high time frame chart on a trading view, for
+ example weekly or monthly time frame, and that you then click on the log button on
+ trading view. It is also important to click the box VIB levels based on log
+ scale or tools such as the Fibonacci retracement as you otherwise will get
+ incorrect levels. Now let's have a look at a practical example. Here we have
+ the BTC USD chart on coinbase on the weekly time frame. The data ranges back to
+ 2014 all the way up to 2022 so we have a multi-year price data analysis. Now we
+ click on the log button here on the lower right part on trading view and the
+ scale changes to logarithmic. As we can observe the asset is very volatile and
+ it includes many price movements with high percentage moves. This already
+ fulfills the two requirements to use the log scale chart, multi-year price data
+ analysis and high volatility. Additionally now we have a very nice high time frame
+ perspective for the asset. Now we can use this high time frame perspective to do
+ our technical analysis and for example construct a parallel channel using
+ significant pivots such as this low pivot, this high pivot, and this low pivot
+ here. As we can observe the channel is well respected on log scale however it is
+ not respected or useful in the normal scale. Now we can add additional technical
+ analysis tools such as the Fibonacci retracement. Here we have pulled a Fibonacci
+ retracement using this low pivot to this high pivot here. It is very important to
+ check the settings on the Fibonacci retracement tool and make sure that this
+ box fib levels based on log scale is activated otherwise you will get
+ incorrect levels for the Fibonacci pull on log scale. It is important to note
+ that our horizontal levels will not be affected by the log scale change and
+ they can be used just as always to find confluence with other technical
+ analysis tools. Now let's go over some tips and tricks. Log scale is not
+ recommended for day trading. Looking at an asset with a better
+ perspective especially a high time frame perspective can provide you with a
+ better trade. Checking log scale versus the normal scale can be helpful. Here is
+ the take-home message for this module. The log scale chart is very useful to
+ examine historic data ranging back years. It is also useful to check the price
+ data on extremely volatile assets with high percentage moves. The log scale chart
+ will also allow you to acquire a high time frame perspective for the asset
+ allowing you to potentially find a better trade setup. This concludes today's
+ module. Thank you for watching and I'll see you on the next one. Happy learning
+ and happy trading!

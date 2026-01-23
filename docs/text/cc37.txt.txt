@@ -1,0 +1,75 @@
+ Hello and welcome to this volume module. Today we're going to be covering the
+ volume profile visible range tool. Please pause this video and take a moment to
+ read this trade disclaimer. As the information contained in this video is
+ not financial advice and is only for educational purposes. In this module we
+ will cover the utility of the VP VR tool, how to implement it correctly, and then
+ go over some examples and tips and tricks on how to best use it. The visible range
+ tool is useful to identify volume transacted horizontally at each price
+ level. This tool can help us confirm ranges with volume. It is also very useful to
+ define the boundaries for the continuous auctioning process in the markets. To
+ implement the visible range tool or VP VR on trading view we recommend that you
+ use row size 188 and a value area volume of 68 or 70. There are three key
+ components in the VP VR tool that will become visible. The value area high, the
+ value area low, and the point of control. These areas can be treated as support
+ and resistance areas. The value area high is the upper boundary of the area with
+ the highest transaction interest in the range and it is considered above fair
+ value. Thus it is generally an area to look for short entries. Conversely the
+ value area low is considered below fair value and is the lower boundary of our
+ area of interest in the range. Thus this is an area to look for long
+ entries. The point of control is the area with the highest amount of volume
+ horizontally and it is considered fair value where generally no new trading
+ positions should be opened. Now let's have a look at a practical example of how
+ to implement the volume profile visible range tool on trading view. By clicking
+ on the drop-down menu indicators metrics and strategies and typing VP VR in the
+ search box it is possible to select the tool here. Once active on the chart we
+ can then use the tool to determine how and where the volume is distributed in
+ this range. We recommend that you use the following settings for the tool, row size
+ 188 and value area volume 68 or 70. These are the style settings for the tool. As we
+ can observe the visible range tool now calculates all of the volume of the
+ price action present in the chart. As we can see the lighter area is our value
+ area and it has an upper boundary a point of control where most of the volume was
+ transacted horizontally and a value area low. It is possible to mark these areas
+ for future reference. This structure now looks very similar to a parallel channel
+ and we can use the volume information to take possible trades at the key areas.
+ For example we can look for possible short entries as we approach the upper
+ boundary or value area high of the range. Once we approach the lows of the range
+ we can look for possible long entries to rotate back to the top of the range. As
+ we can see the key areas of this volume profile are well respected and help us
+ establish a nice range to trade. However it is important to take into account
+ the deviations are possible and it is very important to always check market
+ context and order flow when approaching the key areas. The point of control can
+ be used as a take profit area or short trades taken from the top of the range
+ or long trades taken from the bottom of the range. As it is possible that price
+ action reaches the point of control and reverses to entry before actually
+ rotating to the value area low. Finally we recommend that you also monitor
+ the speed and time taken for rotations from the top to the bottom of the range
+ and vice versa. If there is a change in the speed and momentum of a rotation
+ within the range this could indicate that it might have follow-through. It is
+ also important to check order flow as we approach these key areas to see if any
+ possible deviations outside of them are actually genuine breakouts or simply a
+ fakeout. The key volume areas of a higher time frame range such as this one are
+ usually well respected and it is also possible to use the point of control as
+ a full take profit area. Now let's go over some tips and tricks on how to
+ best use the visible range tool. It is important to differentiate the two types
+ of the auctioning process. In the first type the ranging type we see sideways
+ price action contained in a horizontal range. This happens 80% of the time. In a
+ trending auctioning process there is a series of ranges that are breaking
+ upwards or downwards continuously. This happens 20% of the time. It is very
+ important to realize profits especially when trading ranges as price can simply
+ rotate from the top to the bottom of the range and back to the top. When trading
+ ranges context is very important and we recommend that you do not simply trade
+ ranges robotically from high to low and low to high. Large higher time frame
+ ranges are usually stronger. Traders that are caught offside often exit at break
+ even prices if possible causing reactions at the key levels of the range. It is
+ important to monitor order flow including volume, open interest and delta as the
+ range progresses especially at the key areas. We recommend that you measure the
+ speed of the rotations within the range, to gauge momentum and to check for
+ divergences as the range goes on. It is also possible to merge similar ranges
+ into a composite profile. This is however advanced theory. Here is the take-home
+ message for this module. The volume profile visible range tool is helpful to
+ identify ranges by showing volume transacted horizontally at each price
+ level. The value area high, value area low and point of control are key areas
+ that can provide entries and price targets. It is important to monitor the
+ context of the market and check order flow as the range progresses. This concludes
+ today's module. Thank you for watching and I'll see you on the next one. Happy
+ learning and happy trading!

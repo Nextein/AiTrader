@@ -1,0 +1,68 @@
+ Hello and welcome to this module. Today we're going to be covering parallel channels part
+ one. Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes. In this
+ module we're going to cover the utility of parallel channels, how to implement them and
+ then go over some tips and tricks on how to best use them. Parallel channels can help
+ you define tradable ranges early on. Also they can add strong confluence to trading
+ setups. They are also useful for day trading and swing trading. Now let's go over how
+ to implement a parallel channel. A parallel channel needs four touches to confirm. Two
+ on the top and two on the bottom edge. However it is possible to start a parallel channel
+ with three touches or pivots and then use the midline as a take profit area and the edges
+ as possible entries. Keep in mind that a parallel channel is technically a neutral pattern.
+ The ultimate purpose of a parallel channel is to help us define a range that we can trade
+ profitably. We want to find an area of support where we can take a possible long trade, use
+ the midline as a take profit area for example 50% of our position and then use the top as
+ the final take profit. If order flow fits and the selling activity increases at the top
+ of the channel then we can enter a short position and repeat the process the other way around
+ taking 50% profit at the middle and closing our short at the bottom. We can continue this
+ process as long as this range holds. We recommend that you use parallel channels in confluence
+ with other technical tools to give you the best possible trade setups and highest probabilities
+ for the outcomes of your trades. Also it is vital to monitor order flow at the edges of
+ the channel to see if there is a possibility of a breakout outside of the channel or if
+ it's just a possible deviation with a failure to break out and simply a continuation of
+ the range. Let's go over a practical example. First we're going to select the parallel channel
+ tool from the drop down menu and then we're going to choose two pivots at the top and
+ one pivot at the bottom to help us determine a range for this downtrend. In this case we
+ have a downwards sloping channel. We can see that the midline is being respected nicely
+ and if we scroll back we can also see that in the past the edges were respected very nicely
+ and the midline also offered support and resistance. Even on this breakout here it offered support
+ as it was back tested and once price action fell back into the channel it was once again
+ back tested as resistance at the top, support at the middle, resistance at the top and once
+ again support at the bottom. Let's see what happened next. As we can see price action
+ continued to respect the channel offering us another rotation to the bottom of the channel
+ with slight deviations and ultimately a full rotation to the top of the channel only to
+ fake out, fall back into it, back test the edge as resistance and swiftly move all the
+ way down to the support at the bottom. In this move we closed outside of the channel,
+ back tested it as resistance and continued the downtrend. Let's have a look at a practical
+ example of a horizontal parallel channel. After activating our parallel channel tool we click
+ on two pivots of an area of resistance and with a third click we pick an area of support.
+ In this case we are using the candle body closes as our resistance and support pivots.
+ The channel is respected at the top and at the bottom as well as the mid line with a
+ small deviation here. Let's see what happened next. As we can see price action respected
+ the top of the channel and the middle attempted to break out, fell back in, found supported
+ the middle again and ultimately did break out. However, a few hours later it fell back into
+ the channel and went all the way to the bottom where it found perfect support for a very
+ nice bounce and once again a push outside of it. Let's see what happened after that.
+ As we can see on this retracement price action found support at the middle of the channel
+ before ultimately breaking out once again. Here we can also use the amplitude of the
+ channel from the bottom to the top as an approximate measure of where we can take profits if there
+ is a breakout in price. In this case we could hit a take profit one after this true breakout
+ of the channel. In order to determine the nature of a breakout and to see whether it
+ is a true breakout or a false breakout and turns into a failed auction process and a deviation
+ with price action falling back into the channel it is important to monitor order flow including
+ volume, delta and open interest. Now let's go over some tips and tricks on how to best
+ use parallel channels. In general trading the break of a parallel channel in the overall
+ trend direction yields better results. You should be aware that partial rises or declines
+ that do not complete a full rotation within the channel are a sign of weakness. Sloping
+ channels are expected to provide continuation of the initial trend. Day trading channels
+ based on lower timeframes can be traded bottom to top with a 50% take profit at the midline
+ and vice versa. Swing or long term channels are used differently and the midline is generally
+ a full take profit. Channels are regularly formed on bull and bare flags. It is important
+ to be aware that volume can decrease as the channel continues. It is important to then
+ look for an increase in volume upon breakout and monitor order flow for possible deviations.
+ We recommend that you use market structure for stop losses. Take profit levels will depend
+ on context. Here is the take on message for this module. Parallel channels help us define
+ tradable ranges early on. They can offer strong additional confluence for our technical analysis.
+ It is important to monitor order flow on possible breakouts to differentiate true breakouts
+ from false breakouts. This concludes today's module. Thank you
+ for watching and I'll see you on the next one. Happy learning and happy trading.

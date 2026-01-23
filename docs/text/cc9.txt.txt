@@ -1,0 +1,85 @@
+ Hello and welcome to this entering trades module. Today we're gonna be
+ covering compounding, averaging down and latering. Please pause this video and
+ take a moment to read this trade disclaimer. As the information contained
+ in this video is not financial advice and is only for educational purposes. In
+ this module we will cover the utility of these three advanced trading techniques,
+ how to correctly implement them and then go over some tips and tricks on how to
+ best use them. Now let's cover the utility of these trading techniques. When
+ compounding a trade it is possible to maximize returns by entering a trade
+ within a trade. When averaging down a position it is possible to navigate out
+ of a losing position that still has technical merit or validity. Finally when
+ latering into and out of trades it is possible to spread out entries and take
+ profits at different target levels. To correctly implement the compounding
+ technique we recommend that you follow these three steps. In step one you enter
+ a trade setup as you normally would, meeting your strict criteria for
+ confluence and market contacts. Once this trade develops in your favor you can
+ proceed to step two where perhaps another same direction opportunity
+ presents itself. In step three the new opportunity is implemented by adding to
+ the original position in step one. The prerequisite for this is that this new
+ opportunity should have the merits of a trade with a good risk reward ratio on
+ its own. Let's have a look at a practical example. Let us assume that we have been
+ taking long positions at the bottom of this range and short positions at the
+ top of this range. Once price approaches this area again here we enter another
+ long trade. This time the move upwards is very swift and very favorable. Then comes
+ an initial retracement that finds support at this area. If we determine that this
+ area has strong confluence for a possible bounce and we could enter a
+ completely new position on its own merit from this area then it is possible to
+ simply add to the original position from here and enter an additional long
+ within the initial trade. Price continues to move up and finally retraces again to
+ yet another strong level of support. Here we have yet another opportunity to
+ compound our long trade from down here after we already increased the position
+ size here. Now we have a third chance to compound the trade within very strict
+ risk management and following the rules as if this were a new trade on its own.
+ If this is the case it is then possible to simply add to the original position
+ and as the move continues now have a long position based on three different
+ trade entries. In this case we have two additional trades within the original
+ long position. To implement the averaging down technique you are in essence
+ attempting to save a losing position that still has a chance from a technical
+ perspective. The ultimate goal is to close the trade at break even and then
+ reevaluate the situation. This technique requires advanced trading
+ execution, very good risk management, strict rules and emotional stability. We
+ recommend that you use this technique only in exceptional cases and we do not
+ recommend it for newer traders. Now let's have a look at a practical example of
+ the averaging down technique. Let's assume that we have entered a long
+ position here. Our initial thought process was that this was a good level of
+ support and upon reaching it again it is worth a long position. However price
+ drops lower and our long position turns into a losing position. If we still have
+ conviction that there is a good technical reason for a possible bounce
+ from this lower area it is possible to average down the position by entering
+ an additional long trade down here and then as price bounces from there closing
+ the overall trade at break even. Generally the average entry price will be
+ between the two original entry prices. However it is also possible to enter a
+ larger position down here to move the average price lower and allow for a
+ quicker exit from the trade at break even. We recommend that only advanced
+ traders use this technique in rare occasions as it can lead to much larger
+ losses than initially expected. For newer traders we recommend simply using
+ stop losses and closing the initial trade as soon as it is invalidated. Now
+ let's go over the implementation of the laddering technique. This technique is an
+ excellent one to gradually enter an exit positions. With careful planning it is
+ possible to spread out entries over a range or area of interest. Laddering out
+ of the position with different take profit targets at different levels or
+ areas is also recommended. Now let's have a look at a practical example of
+ laddering into and out of a position. In this case we have established that we
+ have a strong confluence around this monthly level and CC retracement. We
+ then decide that we would like to short this resistance area. Instead of just
+ entering one order at the exact confluence level we can spread out our
+ entries over this area. This is shown in the CCW template where we have four
+ different possible entry levels and we can take our planned position and
+ divide it into four smaller positions. In this case three of the positions are
+ filled and the last one does not get filled. However it is possible to add
+ the remaining part of the position later on with strength. This would
+ comprise the laddering part into the trade. To then also exit the trade. With
+ the laddering technique we simply choose different price target levels as our
+ take profit areas. In this example we can see that all of these four price
+ target levels are hit offering us a very nice possibility to gradually enter
+ into the trade and also to gradually exit the trade as it develops in our
+ favor. Now let's go over some tips and tricks. These three trading techniques are
+ advanced and they might not suit your style of trading. Laddering in and out
+ of positions is the safest of the three techniques and it offers flexibility.
+ Compounding and averaging down are techniques that are not recommended for
+ beginners. Here is the take-home message for this module. Compounding a position
+ allows for a trade within a trade and it can help maximize results.
+ Averaging down is useful to navigate out of losing positions in rare occasions.
+ Laddering provides flexible entering into and exiting out of positions. This
+ concludes today's module. Thank you for watching and I'll see you on the next
+ one. Happy learning and happy trading!

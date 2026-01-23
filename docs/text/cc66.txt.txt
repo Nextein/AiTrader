@@ -1,0 +1,85 @@
+ Hello and welcome to this TPO series module.
+ Today, we're going to be covering merging profiles.
+ Please pause this video and take a moment to read this trade disclaimer as the information
+ contained in this video is not financial advice and is only for educational purposes.
+ In this module, we will cover the utility of merging profiles, how to correctly implement
+ the merging profile technique and then go over some examples and tips and tricks on how to
+ best use it.
+ Merging profiles is a very helpful technique to get a better idea of where time was spent
+ and where volume was transacted in a range.
+ By merging profiles from each trading range, you consolidate data.
+ Merged high time frame profiles levels are stronger than the daily volume levels.
+ In order to be able to merge TPO profiles, you will need specialized software such as
+ exochards or ATAS.
+ Then load the standard chart champions TPO template, for example on exochards web.
+ You can then double click on the daily TPO profile to activate the merge option.
+ We recommend that you merge high time frame daily profiles within a larger range to form
+ one set of data.
+ You should also merge the inside days together.
+ We also recommend that you merge profiles of smaller ranges, including small deviations
+ outside of the range.
+ Inside days are days where the price action is contained within the previous day's price
+ action.
+ We recommend that you merge inside days to form an average of the time and volume data.
+ Now let's have a look at a practical example using the chart champions TPO template on
+ exochards web.
+ This is set to the Bybit BTC USD pair with the standard settings.
+ As we can observe within these 7 trading sessions, price action was contained in this range.
+ We can see that the value areas of each daily profile are very similar to each other.
+ Here we have a good example of an inside day, where this day's price action is fully contained
+ within the previous day's price action.
+ Now we can proceed to merge these profiles to establish a larger set of data that is easier
+ to look at with stronger levels than the individual value area and point of control levels.
+ Let's zoom in to the first day that we want to merge and double click on the profile.
+ Then we can click merge once to merge this sessions data with the previous day's data.
+ We can repeat the step to include the following days until we have all of the days merged
+ together that we wish to see as one consolidated range.
+ Now we have merged the 7 sessions and have an overall value area high, an overall value
+ area low, and time as well as volume points of control lining up right here.
+ If we determine that we would like to merge more daily profiles into this range for our
+ analysis, we can do so by clicking on those individual profiles as well.
+ In this case we could argue that we have a deviation outside of the larger range down
+ here on this profile and a return to the range on this one.
+ The following day we also spend quite an amount of time and volume within the lower range
+ and attempt to break out again.
+ The final breakout occurs here.
+ Thus we could try to include these three profiles into our merge as well as these previous ones
+ and this one here to have a larger range.
+ Let's zoom in and merge the profiles.
+ Double click, merge, merge and merge again.
+ Now we have combined these three additional profiles into our cumulative range.
+ We can do the same thing for these profiles here, merge, merge and merge again.
+ We can also include this profile here which is now inside of the larger profile.
+ Now we have a larger set of data giving us even stronger levels.
+ With a new value area high, a point of control in time, a point of control with volume and
+ a value area low.
+ It is also possible to turn off the session grid lines by clicking on session on the lower
+ left corner giving us a much cleaner view of our newly merged profile.
+ Also we can compare the calculation of the profile based on time or based on volume by
+ clicking on this checkbox.
+ Here we can then easily see if there are large discrepancies between the value areas and
+ the points of control.
+ In this case, the value areas are almost identical making them very strong levels.
+ The points of control are close to each other and only have a slight discrepancy.
+ The objective of merging profiles is to establish the value area high, value area low and point
+ of control of the merged range.
+ You should still be aware of the daily value area and point of control but place more emphasis
+ on the merged profile range data.
+ More volume, time and transactions accumulated over the entire range means more data which
+ implies stronger levels.
+ Now let's go over some tips and tricks. Knowing how many profiles to merge can only be learned
+ through practice and accumulating experience.
+ There are no hard rules on how many profiles to merge.
+ The goal is to visually recognize a range and merge the corresponding profiles together.
+ In predicting a range before it forms, you should merge the initial profiles together
+ of the potential new range.
+ It is very helpful to have an idea of the range levels to trade ahead of your competition
+ as this will provide you with an edge.
+ Once the range is complete and confirmed, the levels and profiles to merge become clearer.
+ Here is the take on message for this module.
+ You can merge the profiles within a range to see the bigger picture.
+ We recommend that you also merge the profiles of potential new ranges.
+ A larger dataset equals stronger levels and should equal better trades.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

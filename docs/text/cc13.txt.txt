@@ -1,0 +1,80 @@
+ Hello, and welcome to this Fibonacci module.
+ Today, we're going to be covering the negative Fibonacci levels.
+ Please pause and read this trade disclaimer, as none of the information contained in this
+ video is meant as financial advice, and it is only for educational purposes.
+ We're going to be talking about the negative Fibonacci levels and their utility.
+ We're going to cover how to implement them, and then we're going to go over some tips
+ and tricks.
+ The Fibonacci negative tool, or the negative levels, are used for moves which go external
+ from the Fibonacci poll range that you are trading.
+ It is a very helpful tool to add in another level of confluence for entries and price
+ targets.
+ To implement the Fibonacci negative levels, you simply use the Fibonacci retracement tool
+ from two significant pivots, always pulling from left to right.
+ If price then goes external from these pivots, you use the negative Fibonacci levels, or possible
+ entries or targets.
+ The levels we recommend using are the negative 0.236, the negative 0.618, the negative 1,
+ and the negative 1.618.
+ For stocks specifically, the negative 0.272 has also proven to be very useful.
+ Let's have a look at a practical example.
+ First, we activate our Fibonacci retracement tool.
+ We are then going to pick two pivots in this uptrend.
+ We're going to pull from left to right, from the low pivot to this upper high pivot here.
+ Now our Fibonacci retracement pool is complete, and we can see that this asset found support
+ around the Champions channel, between the 618 and the 66.
+ To now find possible price targets for the further upward continuation of this asset,
+ we can change our template to our negative Fib levels, and we will now see the negative
+ 0.236, the negative 0.618, the negative 1, and up here the negative 1.618.
+ As you can see, all of these levels are now external to the initial move.
+ First we had an internal retracement to the CC, and then we moved external from those
+ to initial pivots.
+ Here we can see an initial reaction from the negative 2.36, and price reaches the negative
+ 0.618.
+ This can be used now as a possible take profit level, or depending on other confluence found,
+ a possible entry.
+ To set up your negative Fib levels, you simply go to the settings in your Fibonacci retracement
+ tool, and then you can manually introduce the levels that you need.
+ In this case, I have removed all of the internal Fibonacci levels from the Fib retracement tool,
+ and have simply added the negative Fib levels, as you can see here.
+ The negative 0.236, the negative 0.618, the negative 1, and the negative 1.618.
+ Let's have a look at an example using real chart data.
+ First, we are going to activate our Fibonacci retracement tool.
+ We are now going to pull from this high pivot here to the next lowest possible pivot.
+ We are now capturing this impulsive downwards move, where the asset now seems to have found
+ support at this level, and is now retracing upwards towards the next possible resistance
+ level.
+ In this case, the champions channel between the 618 and the 666.
+ Let's see what actually happens next.
+ As we can see, the asset is having trouble getting past this resistance area.
+ Ultimately, it goes external from our initial Fibonacci pull.
+ At this point, we can now switch to our negative Fibs and see if we can use the negative Fib
+ levels as possible take profit areas for a short position that we might have entered
+ at this level.
+ As you can see, the negative 0.236 has already been hit and offers us a very nice take profit
+ level.
+ Let's see if the other levels are also hit.
+ Now we can see that the negative 618 has also been reached and another take profit level
+ for our short position has now been taken.
+ Let's see if the negative 1 can also become a take profit level.
+ There it is.
+ The negative 1 is also reached still from this original Fibonacci pull that was so well respected
+ internally.
+ We have now 1, 2 and 3 very nice take profit levels for this downwards move using simply
+ the negative Fibonacci levels.
+ If you can combine this with additional confluence using other Fibonacci tools or horizontals,
+ you will have a high probability of finding very respected areas.
+ Now let's go over some tips and tricks.
+ The Fibonacci negative levels can be combined with other Fibonacci tools such as the Fibonacci
+ extension or horizontal levels.
+ The Fib level with the strongest confluence can give you the best probability traits.
+ The negative 0.618 is especially useful for crypto.
+ Here is the take-home message for today's module.
+ The negative Fibonacci tool is very useful for external moves that have left the initial
+ range that you were trading.
+ It is a very strong confluence builder, especially when used with other Fibonacci tools such
+ as the Fibonacci extension or horizontal levels.
+ The negative Fib levels are especially useful in finding future price targets after that
+ move has gone external from your initial trading range.
+ This concludes today's module.
+ Thank you for watching and I'll see you on the next one.
+ Happy learning and happy trading.

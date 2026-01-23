@@ -1,0 +1,98 @@
+ Hello and welcome to this TPO series module. Today we're going to be covering
+ time versus volume and one time framing. Please pause this video and take a
+ moment to read this trade disclaimer. As the information contained in this
+ video is not financial advice and is only for educational purposes. In this
+ module we will cover the utility of noting discrepancies between time and
+ volume as well as recognizing one time framing, how to correctly implement them
+ and then go over some examples and tips and tricks on how to base use them. By
+ identifying discrepancies between time and volume it is possible to gain an
+ edge for possible trade setups. We recommend that you use the furthest out
+ levels to identify the complete range for swing trades using merged profiles.
+ Recognize one time framing to avoid fading the price move. In order to
+ identify discrepancies between time and volume you will need specialized
+ software such as exochards or ATAS. You can then load the standard chart
+ champions TPO template on exo web where time and volume points of control are
+ shown. You can also then activate a special checkbox to show the volume based
+ value area and calculations and compare them to the time based calculations.
+ Generally time and volume points of control line up. This is the normal case.
+ A discrepancy between time and volume means that the points of control are not
+ at the same value. This can indicate weakness in the price move or
+ consolidation area. When day trading we recommend that you use the daily TPO
+ profile to search for discrepancies between time and volume. When swing
+ trading we recommend that you use a large merge set of data. Always consider
+ market context and check volume, delta, open interest and CVD divergences as well.
+ It is important to look for trap traders at the volume point of control when
+ there is a discrepancy with time. Now let's have a look at a practical
+ example of a discrepancy between time and volume using the standard chart
+ champions TPO template for exo charts web. Here we have a daily TPO profile with a
+ discrepancy between the time point of control at the lows of the profile and a
+ volume point of control at the high of the profile. We can also expect that the
+ value areas for this daily profile will be different. To check this we can
+ simply go to TPO settings, click on POC and value area and then use this
+ special checkbox to activate the volume-based calculations. Now we can see that
+ the volume point of control is highlighted and the value area high is
+ higher than what was shown previously as well as the value area low. Now we can
+ compare both and we have a perfect example of the furthest out levels for
+ this daily profile. In this case we would use the value area low from the time
+ based calculations and then the value area high from the volume based
+ calculations to give us a complete range for the entire day. Using the
+ furthest out levels is especially useful for swing trading where you merge many
+ daily profiles together and then pick the highest or furthest out value area
+ level as well as the lowest or furthest out value area low level. In this
+ specific example the move-up in price was backed by volume as seen by the
+ volume point of control established at the highs of the profile. However we
+ still have a discrepancy between the time and volume point of controls and it is
+ important to make a note of this.
+ The trading session then ends with price at the highs of the profile leaving this
+ time point of control alone and untapped at the lows. Thus this becomes a naked
+ time point of control for the future sessions. This should be noted as a
+ retracement to tap this naked point of control could be likely. Let's have a
+ look and see if this discrepancy between time and volume was fixed so to speak
+ in future sessions. By zooming out we can see that one two three four sessions
+ later price did return to tap this naked time point of control. In summary we were
+ able to use the discrepancy between time and volume in this session here to add
+ an additional factor of confluence for a possible short entry during the
+ following sessions to travel back to the naked time point of control. Now let's
+ have a look at an example of a large set of data of many daily profiles in this
+ case 30 merged together to create one set of data. We can notice right away that
+ there is a discrepancy between the time point of control and the volume point of
+ control. We can also double check this by going to the settings and activating
+ the volume-based calculations once again to see very clearly that there is a
+ large discrepancy between the two points of control. In this case the value areas
+ are nearly identical. The volume value area low is slightly lower so we could
+ use this one to mark out the furthest out level to the downside. By combining this
+ discrepancy between the time and the volume points of control with order flow, in
+ other words delta, open interest and CVD divergences, it is possible to establish
+ whether there are trap traders around the volume point of control area. In this
+ case long breakout traders that had to endure a long underwater period of time
+ for their positions. When price revisits the area they get out of their positions
+ at break even causing once again downwards selling pressure. If price is
+ spending a lot of time at the high of a move, creating a time point of control
+ but the volume point of control is lower, it indicates that the volume is not
+ matching the price move. Generally in such a case you would look to short the
+ next rise. For example a swing failure pattern of the consolidation area at the
+ high. It is important to confirm the idea by checking order flow. One time
+ framing is a sequence of candles or TPO columns where the previous candle low or
+ high is not broken during an impulsive move. It can occur on any time frame. For
+ TPO columns the 30-minute time frame. One time framing is very often backed by
+ large volume often in the context of a short squeeze or long squeeze.
+ Counter-trading one time framing is not recommended. Now let's have a look at a
+ practical example of one time framing on the TPO profile. Here we have a
+ daily TPO profile session where most of the trading session is spent around this
+ lower price level. Then an impulsive move begins here and we can observe that none
+ of these candles break the low of the previous candle. Also on the left we can
+ see rows of single prints being created. This clearly shows an impulsive move to
+ the upside which should not be faded or counter-traded. Now let's go over some
+ tips and tricks. When using time versus volume discrepancies and day trading we
+ recommend that you use the session VWAP in other words the mean volume of the
+ day as a take profit target. It is important to check the volume POC area for
+ trapped traders. This includes looking for high delta, increasing open interest and
+ CVD divergences. Trapped traders could lead to more pressure against them instead
+ of a retest of the volume point of control which they could use to exit
+ their positions at break even. Here is the take-home message for this module.
+ You should consider fading or counter-trading the price move when the time
+ point of control does not follow the volume point of control. We recommend
+ that you mark out levels using the furthest out price. We also recommend that
+ you do not fade a one-time framing price move. This concludes today's module.
+ Thank you for watching and I'll see you on the next one. Happy learning and happy
+ trading.

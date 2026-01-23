@@ -1,0 +1,81 @@
+ Hello and welcome to this patterns module. Today we're going to be covering
+ triangles. Please pause this video and take a moment to read this trade disclaimer.
+ As the information contained in this video is not financial advice and is
+ only for educational purposes. In this module we're going to cover the utility
+ of triangles, how to implement them, and then go over some examples and tips and
+ tricks on how to best use them. There are three main types of triangles, ascending,
+ descending, and symmetrical triangles. Generally triangles are continuation
+ patterns. It is possible to create price targets based on the height of the
+ triangle from the point of a possible breakout. Now let's go over how to
+ correctly implement triangles. It is important that price action has several
+ touches on the top and bottom edges of the triangle and that there is little to
+ know wide space or empty space. Also it is important that volume declines up to
+ the apex of the triangle and then increases on the breakout or breakdown
+ from the triangle. To calculate the price target it is possible to measure the
+ height of the triangle from low to high and extend it from the point of the
+ breakout or breakdown. Now let's go over the recommended approaches to trade a
+ triangle. Possibility number 1 is an aggressive entry within the triangle with
+ a higher risk as it may break out in the opposite direction but also a high reward.
+ The second possibility is to wait for the breakout or breakdown from the
+ trend line of the triangle with increasing volume and enter at market. The third
+ option is to wait for the breakout or breakdown and then a backtest. Now let's
+ have a look at a practical example of a descending triangle. First we activate
+ our triangle tool from the drop-down menu and now we can draw using this
+ section of the price action to approximate our descending triangle. As we can see
+ price action is making lower highs and volume is very low and decreasing as
+ the triangle formation continues and is approaching the apex. As this is a
+ downtrend we would expect this descending triangle to break to the
+ downside. The aggressive possible entry would be shorts from the highs or the
+ ones that touch the descending slope of the triangle. The other possibility is to
+ enter at market once there is a breakdown with an increase of volume. A third
+ possibility would be to wait for the breakdown and then a backtest of the
+ horizontal slope of the descending triangle. Let's see what actually happens
+ next. As we can observe there was a breakdown from the triangle and volume
+ increased dramatically upon the breakdown. The aggressive entry of
+ shorting this last high close to the apex would have given us a very nice
+ reward. The second option of entering at market upon breakdown would have also
+ provided for a very nice trade. The third option did not really occur as there
+ wasn't a proper backtest of the horizontal of the triangle. It is
+ possible to use the height of the triangle from the top to the baseline or
+ horizontal support in this case and then extend it from the breakdown point to
+ establish our price target region. Now let's have a look at an example of an
+ ascending triangle formation. Here we have constructed an ascending triangle
+ with this price action as higher lows are being formed against a horizontal
+ resistance. The possibilities to take trades in this triangle are aggressive
+ longs at the touches of the sloping ascending trend line or to wait for a
+ possible breakout to the upside as we expect continuation and enter at
+ market. Let's see what happens next. As we can observe price action breaks out to
+ the upside after one final touch of the ascending trend line. We can also use the
+ height of the triangle to approximate a price target from the breakout point.
+ As we can see this price target is reached and even exceeded. It is important
+ to pay attention to the volume as a triangle formation develops. In this case
+ we can see that volume decreases as the triangle approaches the apex and then
+ increases here as we break out from the triangle. If this were not the case and
+ volume were not to increase significantly we could expect a possible fakeout for
+ example a swing failure pattern of these highs and a return into the triangle or
+ even a complete reversal and breakdown. Now let's go over some tips and tricks on
+ how to best use triangles. Volume is very important on the breakout or
+ breakdown from a triangle. A low volume breakout or breakdown means that a
+ fakeout is possible. Generally we can expect a continuation of the previous
+ trend before entering the triangle when we break out of it. In Elliot Way theory
+ the touches of the edges of the triangle are labeled as A, B, C, D, E. It is
+ possible to take trades from these edges using the Fibonacci retracement tool
+ and targeting the 618 as a rejection or bounce level on the edge. Now let's have
+ a look at a theoretical example of a symmetrical triangle. Let's assume that
+ we are in an uptrend and price action begins to form a symmetrical triangle
+ like this. We now have a series of higher lows but also lower highs and price
+ action is constricting towards the apex. It is important that the volume decreases
+ as the triangle forms and then upon the breakout increases. In this case we would
+ expect the uptrend to continue after this pattern. Once again we can use the
+ height of the triangle to estimate a price target from the breakout point of
+ the symmetrical triangle. Once again if we are assuming a continuation of the
+ uptrend after the pattern we can position ourselves in long trades from
+ the bottom ascending trend line of the triangle or wait for the actual breakout
+ with volume and enter at market. Here is the take-home message for this module.
+ Ascending, descending and symmetrical triangles are generally continuation
+ patterns and we expect the previous trend before entering the triangle to
+ continue upon breakout or breakdown. It is possible to establish price targets
+ from the breakout point by using the height of the triangle. Volume is very
+ important in the triangle formation and upon breaking out or breaking down from
+ it. This concludes today's module. Thank you for watching and I'll see you on the
+ next one. Happy learning and happy trading!
