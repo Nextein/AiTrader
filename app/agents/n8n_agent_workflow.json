@@ -1,0 +1,270 @@
+{
+  "name": "AiTrader Agent Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Governor Agent\n// Role: Orchestrator\n// Responsibilities: Scheduling, Permissions, Capital Allocation, Global Constraints\n\nreturn {status: 'Cycle Started', timestamp: new Date().toISOString()};"
+      },
+      "name": "Governor Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        200,
+        0
+      ],
+      "id": "governor"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Market Data Agent\n// Role: Data Provider\n// Responsibilities: Price Feeds, Order Books, On-chain data\n\nreturn {prices: {BTC: 50000, ETH: 3000}};"
+      },
+      "name": "Market Data Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        0
+      ],
+      "id": "market_data"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Regime Detection Agent\n// Role: Feature Engineering\n// Responsibilities: Detect Volatility Regimes (Bull/Bear/Range)\n\nreturn {regime: 'BULLISH_VOLATILE'};"
+      },
+      "name": "Regime Detection Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        -100
+      ],
+      "id": "regime"
+    },
+    {
+      "parameters": {
+        "jsCode": "// EMA Cross Strategy Agent\n// Role: Strategy\n// Responsibilities: Generate signals based on EMA crossovers\n\nreturn {signal: 'LONG', confidence: 0.8};"
+      },
+      "name": "EMA Cross Strategy Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        100
+      ],
+      "id": "strategy_ema"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Dummy Strategy Agent\n// Role: Strategy\n// Responsibilities: Baseline strategy for testing\n\nreturn {signal: 'NEUTRAL', confidence: 0.0};"
+      },
+      "name": "Dummy Strategy Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        250
+      ],
+      "id": "strategy_dummy"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Aggregator Agent\n// Role: Consensus / Signal Aggregator\n// Responsibilities: Voting, Confidence Weighting, Conflict Resolution\n\nreturn {final_decision: 'LONG', net_confidence: 0.75};"
+      },
+      "name": "Aggregator Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        0
+      ],
+      "id": "aggregator"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Risk Agent\n// Role: Risk Management\n// Responsibilities: Position Sizing, Exposure Limits, Drawdown Checks\n\nreturn {approved: true, size: 1.5, leverage: 5};"
+      },
+      "name": "Risk Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "risk"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Anomaly Detection Agent\n// Role: Verification & QA\n// Responsibilities: Sanity Checks, Detect Hallucinations, Anomalous Behavior\n\nreturn {anomaly_detected: false};"
+      },
+      "name": "Anomaly Detection Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ],
+      "id": "anomaly"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Execution Agent\n// Role: Execution\n// Responsibilities: Smart Routing, Slippage Control, Order Placement\n\nreturn {order_id: 'ord_12345', status: 'FILLED', price: 50005};"
+      },
+      "name": "Execution Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        0
+      ],
+      "id": "execution"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Audit Log Agent\n// Role: Monitoring & Audit\n// Responsibilities: Logging, Metrics, Alerts, Post-Trade Review\n\nreturn {log_id: 'log_9876', logged: true};"
+      },
+      "name": "Audit Log Agent",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        0
+      ],
+      "id": "audit"
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Governor Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Governor Agent": {
+      "main": [
+        [
+          {
+            "node": "Market Data Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Market Data Agent": {
+      "main": [
+        [
+          {
+            "node": "Regime Detection Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "EMA Cross Strategy Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Dummy Strategy Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Regime Detection Agent": {
+      "main": [
+        [
+          {
+            "node": "Aggregator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EMA Cross Strategy Agent": {
+      "main": [
+        [
+          {
+            "node": "Aggregator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dummy Strategy Agent": {
+      "main": [
+        [
+          {
+            "node": "Aggregator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregator Agent": {
+      "main": [
+        [
+          {
+            "node": "Risk Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Risk Agent": {
+      "main": [
+        [
+          {
+            "node": "Anomaly Detection Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anomaly Detection Agent": {
+      "main": [
+        [
+          {
+            "node": "Execution Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Agent": {
+      "main": [
+        [
+          {
+            "node": "Audit Log Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null
+}
