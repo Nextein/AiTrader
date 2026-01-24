@@ -35,5 +35,8 @@ class Settings(BaseModel):
     # Demo Mode
     DEMO_MODE: bool = os.getenv("DEMO_MODE", "False").lower() == "true"
     INITIAL_DEMO_BALANCE: float = float(os.getenv("INITIAL_DEMO_BALANCE", "1000.0"))
+    
+    # Logging
+    LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
 
 settings = Settings()

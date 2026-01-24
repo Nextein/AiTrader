@@ -1,4 +1,5 @@
-from fastapi import FastAPI, BackgroundTasks, HTTPException
+from fastapi import FastAPI, BackgroundTasks, HTTPException, Request
+from app.core.logger import logger
 from fastapi.staticfiles import StaticFiles
 from app.agents.governor_agent import governor
 from app.core.config import settings
@@ -7,8 +8,19 @@ from app.models.models import AuditLogModel, EquityModel, OrderModel, Base
 from app.core.event_bus import event_bus
 import asyncio
 import uvicorn
+import time
 
-app = FastAPI(title="ChartChampion AI - Multi-Agent Trading System")
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup logic
+    logger.info("Application starting up... DB tables created.")
+    yield
+    # Shutdown logic
+    logger.info("Application shutting down...")
+
+app = FastAPI(title="ChartChampion AI - Multi-Agent Trading System", lifespan=lifespan)
 
 # Ensure database tables are created
 Base.metadata.create_all(bind=engine)
@@ -16,28 +28,44 @@ Base.metadata.create_all(bind=engine)
 # Serve static files
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    logger.info(f"{request.method} {request.url.path} - Status: {response.status_code} - Time: {process_time:.4f}s")
+    return response
+
 @app.get("/")
 async def root():
+    logger.debug("Health check endpoint called")
     return {"message": "ChartChampion AI API is running", "status": "active"}
 
 @app.post("/start")
 async def start_trading(background_tasks: BackgroundTasks):
+    logger.info("Received request to START trading system")
     if governor.is_running:
+        logger.warning("Attempted to start trading but it is already running")
         return {"message": "Trading is already running"}
     
     background_tasks.add_task(governor.start)
+    logger.info("Governor agent start task added to background")
     return {"message": "Trading system start command issued"}
 
 @app.post("/stop")
 async def stop_trading():
+    logger.info("Received request to STOP trading system")
     if not governor.is_running:
+        logger.warning("Attempted to stop trading but it is not running")
         return {"message": "Trading is not running"}
     
     await governor.stop()
+    logger.info("Governor agent stopped")
     return {"message": "Trading system stop command issued"}
 
 @app.post("/emergency-stop")
 async def emergency_stop():
+    logger.critical("EMERGENCY STOP command received! Closing all positions.")
     await governor.emergency_stop()
     return {"message": "EMERGENCY STOP command issued. All positions closing."}
 
@@ -56,11 +84,14 @@ async def get_status():
 
 @app.post("/agents/restart/{name}")
 async def restart_agent(name: str):
+    logger.info(f"Request to restart agent: {name}")
     for agent in governor.agents:
         if agent.name == name:
             await agent.stop()
             asyncio.create_task(agent.start())
+            logger.info(f"Agent {name} restarted")
             return {"message": f"Agent {name} restarted"}
+    logger.error(f"Agent {name} not found for restart")
     raise HTTPException(status_code=404, detail=f"Agent {name} not found")
 
 @app.get("/agents/{name}/events")
@@ -77,24 +108,30 @@ async def get_agent_events(name: str, limit: int = 50):
 @app.post("/agents/{name}/activate")
 async def activate_agent(name: str):
     """Activate a specific agent (Task 2)"""
+    logger.info(f"Request to activate agent: {name}")
     for agent in governor.agents:
         if agent.name == name:
             if hasattr(agent, 'is_active'):
                 agent.is_active = True
+                logger.info(f"Agent {name} activated")
                 return {"message": f"Agent {name} activated", "is_active": True}
             else:
+                logger.warning(f"Agent {name} does not support activation control")
                 return {"message": f"Agent {name} does not support activation control"}
     raise HTTPException(status_code=404, detail=f"Agent {name} not found")
 
 @app.post("/agents/{name}/deactivate")
 async def deactivate_agent(name: str):
     """Deactivate a specific agent (Task 2)"""
+    logger.info(f"Request to deactivate agent: {name}")
     for agent in governor.agents:
         if agent.name == name:
             if hasattr(agent, 'is_active'):
                 agent.is_active = False
+                logger.info(f"Agent {name} deactivated")
                 return {"message": f"Agent {name} deactivated", "is_active": False}
             else:
+                logger.warning(f"Agent {name} does not support activation control")
                 return {"message": f"Agent {name} does not support activation control"}
     raise HTTPException(status_code=404, detail=f"Agent {name} not found")
 
@@ -139,4 +176,5 @@ async def get_trades(limit: int = 100):
         return trades
 
 if __name__ == "__main__":
+    logger.info("Starting Uvicorn server...")
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -93,7 +93,7 @@ class EventBus:
             self._agent_events[agent_name] = deque(maxlen=100)
         self._agent_events[agent_name].append(event)
         
-        logger.debug(f"Publishing {event_type.value} with priority {event.priority.name}: {data}")
+        logger.info(f"Publishing {event_type.value} with priority {event.priority.name}: {data}")
         
         # Add to priority queue
         await self._event_queue.put((event.priority, event))

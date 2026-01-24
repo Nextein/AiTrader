@@ -18,7 +18,7 @@ from app.core.config import settings
 import ccxt.async_support as ccxt
 import logging
 
-logging.basicConfig(level=logging.INFO)
+
 logger = logging.getLogger("Governor")
 
 class GovernorAgent:
