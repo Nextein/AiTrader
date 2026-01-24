@@ -8,8 +8,4 @@
 
 ### Bug fixes
 
-Closest support and resistance should immediately move to the next one when price crosses it. Not whatever price-tracking nonsense it's doing now.
-
-Is Weis Waves Volume correct? I'm looking at the plot and I'm not sure if it is. Add color to the  Weis Waves volume plot to make it easier to see.
-
-Add any missing plots to the viz_market_data.py file. 
+Weis Waves volume, I want it to be three indicators, not just one. The current indicator I believe is the standard implementation of Weis Waves. I'd like to add two more custom implementations. The second implementation is called Heikin Ashi Weis Waves, and you can imagine how it is implemented. The third implementation is Relative Weis Waves, and it is implemented by starting a new phase each time there are two 

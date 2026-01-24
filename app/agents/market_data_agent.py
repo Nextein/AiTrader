@@ -169,14 +169,12 @@ class MarketDataAgent(BaseAgent):
                 # So it's a transform with cumsum
                 waves = vol_s.groupby(block_id).cumsum()
                 
-                # Signed Weis Wave? Or just Volume? Weis Waves are usually signed or plotted histogram.
-                # TODO says "Weis Waves Volume". I'll keep it absolute volume for the wave, maybe signed by direction?
-                # Usually it's positive, color indicates direction.
-                return waves
+                return waves, direction
 
-            df['Weis Waves Volume'] = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'standard')
-            df['Relative Weis Waves Volume'] = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'relative')
-            df['Heikin Ashi Weis Waves Volume'] = calculate_weis_waves(df['Heikin Ashi Close'], df['Heikin Ashi Open'], df['Volume'], 'heikin')
+            # Unpack tuples
+            df['Weis Waves Volume'], df['Weis Waves Direction'] = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'standard')
+            df['Relative Weis Waves Volume'], _ = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'relative')
+            df['Heikin Ashi Weis Waves Volume'], _ = calculate_weis_waves(df['Heikin Ashi Close'], df['Heikin Ashi Open'], df['Volume'], 'heikin')
             
             # 5. EMAs
             for length in [9, 21, 55, 144, 252]:
@@ -203,7 +201,7 @@ class MarketDataAgent(BaseAgent):
             
             # 7. Williams Fractals and Closest S/R
             # Fractal(n): High is max of range n.
-            # 3, 5, 7.
+            # 5, 7, 9.
             # Custom implementation for robustness and S/R logic
             
             def get_fractals(high, low, n):
@@ -212,8 +210,8 @@ class MarketDataAgent(BaseAgent):
                 # But for indicators, we often repaint or flag it when confirmed.
                 # Repainting is bad for trading.
                 # BUT, "Closest Support... based on Williams Fractals 7".
-                # If we are at time T, we can only see fractals confirmed up to T-3.
-                # I will calculate fractals based on available data. The most recent 3 values will be NaN (for n=7).
+                # If we are at time T, we can only see fractals confirmed up to T-(n//2).
+                # I will calculate fractals based on available data. The most recent n//2 values will be NaN.
                 
                 offset = n // 2
                 
@@ -246,7 +244,7 @@ class MarketDataAgent(BaseAgent):
                 return fractal_highs, fractal_lows
 
             # Calculate and store
-            for n in [3, 5, 7]:
+            for n in [5, 7, 9]:
                 fh, fl = get_fractals(df['High'], df['Low'], n)
                 # TODO asks for "Williams Fractals N". It's a single column? 
                 # Fractals split into Up/Down. 
@@ -265,76 +263,60 @@ class MarketDataAgent(BaseAgent):
             direction = np.where(df['Close'] >= df['Open'], 1, -1)
             df['Cumulative Volume Delta'] = (df['Volume'] * direction).cumsum()
 
-            # 9. Closest Support/Resistance (Fractals 7)
-            # Support: Max(FractalLow) < current_price (using body)
-            # Resistance: Min(FractalHigh) > current_price (using body)
-            # "The price is obtained from the body... Usually it is the body..."
-            # Refinement: For the fractal CANDLE, use Body High/Low.
-            # Fractal 7 Lows -> Use Min(Open, Close) of that candle.
-            # Fractal 7 Highs -> Use Max(Open, Close) of that candle.
+            # 9. Closest Support/Resistance (Using 5, 7, 9 Fractals)
+            # Strategy: Collect key levels from all fractal timeframes (5, 7, 9).
+            # Treat both Highs and Lows as generic "Key Levels" (Polarity Principle: Resistance becomes Support).
+            # At each step, valid levels are those confirmed in the past.
+            # Closest Support = Max(Level < CurrentPrice)
+            # Closest Resistance = Min(Level > CurrentPrice)
             
-            f7_highs, f7_lows = get_fractals(df['High'], df['Low'], 7)
+            # Re-calculate fractals to have access to separated Highs/Lows for all N
+            # Ideally we optimized this but for clarity/robustness we map them map.
             
-            # Map fractal prices to BODY prices
-            # We need the index of fractals
-            # f7_lows has values at indices where low is fractal.
-            # We want the body bottom at those indices.
+            fractal_definitions = {}
+            for n in [5, 7, 9]:
+                fh, fl = get_fractals(df['High'], df['Low'], n)
+                fractal_definitions[n] = (fh.values, fl.values)
+
             body_bottom = list(np.minimum(df['Open'], df['Close']))
             body_top = list(np.maximum(df['Open'], df['Close']))
-            
-            # We need to iterate to simulate "Closest at time T"
-            # Vectorizing "closest past value" is hard. Use loop.
+            closes = df['Close'].values
             
             supports = []
             resistances = []
             
-            # Maintain sorted lists of active S/R levels observed so far?
-            # Or just brute force lookback? 100 candles is small. Brute force is fine.
-            
-            valid_supports = [] # list of prices
-            valid_resistances = [] # list of prices
-            
-            # We can pre-calculate the Body values for fractal points
-            # is_f7_low = f7_lows.notna()
-            # is_f7_high = f7_highs.notna()
-            
-            # Convert to list for speed
-            f7_low_vals = f7_lows.values
-            f7_high_vals = f7_highs.values
-            closes = df['Close'].values
+            # List of all discovered levels: floats
+            valid_levels = []
             
             for i in range(len(df)):
                 # 1. Update valid levels with NEW fractals confirmed at i
-                # Note: Fractal 7 is confirmed at i-3.
-                # So at step i, we look if i-3 was a fractal.
+                # For each n, confirm_idx = i - (n // 2)
                 
-                conf_idx = i - 3
-                if conf_idx >= 0:
-                    if not np.isnan(f7_low_vals[conf_idx]):
-                        # Add Body Low of conf_idx
-                        valid_supports.append(body_bottom[conf_idx])
-                    if not np.isnan(f7_high_vals[conf_idx]):
-                        # Add Body High of conf_idx
-                        valid_resistances.append(body_top[conf_idx])
+                for n, (fh_vals, fl_vals) in fractal_definitions.items():
+                    offset = n // 2
+                    conf_idx = i - offset
+                    
+                    if conf_idx >= 0:
+                        # Check Low Fractal -> Body Bottom
+                        if not np.isnan(fl_vals[conf_idx]):
+                            valid_levels.append(body_bottom[conf_idx])
+                        
+                        # Check High Fractal -> Body Top
+                        if not np.isnan(fh_vals[conf_idx]):
+                            valid_levels.append(body_top[conf_idx])
                 
-                current_price = closes[i] # "Closest ... to current price ... from body ... THIS can be open or close"
-                # The TODO says "The price is obtained from the body... for the william fractal".
-                # It says "Closest ... level to the current price". Current price is Close (or Open if forming? Close is fine).
+                current_price = closes[i]
                 
-                # Support: Closest value in valid_supports < current_price?
-                # Or just absolute closest?
-                # "Support" implies BELOW. "Resistance" implies ABOVE.
-                # I will filter valid_supports < current_price, then take Max.
-                
-                # Filter strictly below
-                below = [s for s in valid_supports if s < current_price]
+                # 2. Find Closest Support and Resistance from ALL valid levels
+                # Support: Closest value < current_price
+                below = [l for l in valid_levels if l < current_price]
                 if below:
                     supports.append(max(below))
                 else:
-                    supports.append(None) # No support found
+                    supports.append(None)
                     
-                # Filter strictly above
-                above = [r for r in valid_resistances if r > current_price]
+                # Resistance: Closest value > current_price
+                above = [l for l in valid_levels if l > current_price]
                 if above:
                     resistances.append(min(above))
                 else:

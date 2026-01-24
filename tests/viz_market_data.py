@@ -86,11 +86,16 @@ async def main():
                                      line=dict(width=1, color=color), name=f'EMA {length}'), row=1, col=1)
 
     # Fractals (Scatter)
-    if 'Williams Fractals 5' in df_calc.columns:
-        fr = df_calc[df_calc['Williams Fractals 5'].notna()]
-        fig.add_trace(go.Scatter(x=pd.to_datetime(fr['timestamp'], unit='ms'), y=fr['Williams Fractals 5'],
-                                 mode='markers', marker=dict(symbol='triangle-up', size=8, color='cyan'),
-                                 name='Fractals (5)'), row=1, col=1)
+    for n in [5, 7, 9]:
+        col_name = f'Williams Fractals {n}'
+        if col_name in df_calc.columns:
+            fr = df_calc[df_calc[col_name].notna()]
+            # Cycle colors or symbols
+            colors = {5: 'cyan', 7: 'magenta', 9: 'yellow'}
+             # Use a slight offset in marker size or symbol to distinguish if they overlap?
+            fig.add_trace(go.Scatter(x=pd.to_datetime(fr['timestamp'], unit='ms'), y=fr[col_name],
+                                     mode='markers', marker=dict(symbol='triangle-up' if n==5 else 'circle', size=8 + (n-5), color=colors.get(n, 'white')),
+                                     name=f'Fractals ({n})'), row=1, col=1)
     
     # Pivot Points
     if 'Pivot Points' in df_calc.columns:
@@ -112,13 +117,11 @@ async def main():
     # Volume
     fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Volume'], marker_color='grey', name='Volume', opacity=0.3), row=2, col=1)
     
-    # Weis Waves (on secondary Y or same? Typically Volume scale)
-    if 'Weis Waves Volume' in df_calc.columns:
-         # Color based on sign?
-         # User's logic: "Usually positive, color indicates direction".
-         # My implementation returned cumulative volume.
-         # I didn't return direction in the DF. 
-         # But I can stick just the volume.
+    # Weis Waves
+    if 'Weis Waves Volume' in df_calc.columns and 'Weis Waves Direction' in df_calc.columns:
+         colors = list(map(lambda d: 'green' if d > 0 else 'red', df_calc['Weis Waves Direction']))
+         fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Weis Waves Volume'], name='Weis Waves', marker_color=colors, opacity=0.5), row=2, col=1)
+    elif 'Weis Waves Volume' in df_calc.columns:
          fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Weis Waves Volume'], name='Weis Waves', marker_color='blue', opacity=0.5), row=2, col=1)
 
     # CVD (Scatter line)

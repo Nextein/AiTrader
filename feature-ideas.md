@@ -42,6 +42,10 @@ To do so it must have access several things. The analyst agent should be able to
 
 
 
+## report modifications
+
+The market data now only contains one dataframe for each timeframe, and the dataframe contains all candles and indicators for that timeframe, meaning there is no need for an entry for each type of candle, it is all merged together into one object for each timeframe. Remove the heikin ashi and relative candle entries, and rename the japanese entry to just the timeframe ("1w_japanese -> "1w"), with a description specifying it's all candlestick types and indicators.
+
 
 ## report object
 
