@@ -59,6 +59,12 @@ The agents I would like to implement are the following:
 
 1. Regime Change Agent
 2. Support and Resistance Agent
-3. Analyst
+3. Analyst Agent
+4. Market Structure Agent
+5. VWAP Agent
+6. Volume Profile Agent
+
+
+The Regime Change agent 
 
 
