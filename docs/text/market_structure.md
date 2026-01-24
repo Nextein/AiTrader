@@ -27,7 +27,7 @@ Increase in volume spikes during pumps => healthy uptrend.
 
 3. Determine success of trade based on impact on value area placement. He typically uses the 30m timeframe Volume Profile judging a medium timeframe trend.
 
-A sstructural indicator is Value Area Placement, determine progress by value area of one day relates to the next to determine how good of a job is it moving.
+A structural indicator is Value Area Placement, determine progress by value area of one day relates to the next to determine how good of a job is it moving.
 
 Were buyers successful placing value higher?
 
