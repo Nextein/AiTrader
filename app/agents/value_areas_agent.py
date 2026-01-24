@@ -2,6 +2,7 @@ import asyncio
 import pandas as pd
 import numpy as np
 import logging
+from datetime import datetime
 from typing import Dict, Any, List, Optional
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
@@ -139,14 +140,102 @@ class ValueAreasAgent(BaseAgent):
             
             self.processed_count += 1
 
+            # --- Key Levels Calculation (Daily, Weekly, Monthly POCs Above/Below) ---
+            # We use available timeframes to find historical POC levels
+            key_levels = {
+                "daily_poc_above": None,
+                "daily_poc_below": None,
+                "weekly_poc_above": None,
+                "weekly_poc_below": None,
+                "monthly_poc_above": None,
+                "monthly_poc_below": None
+            }
+            
+            latest_price = latest_close
+            
+            # 1. Daily POCs from 1h data (preferred) or 1d data
+            df_1h = analysis_data.get("market_data", {}).get("1h")
+            if df_1h is not None and len(df_1h) > 20:
+                daily_pocs = self._find_period_pocs(df_1h, 'D')
+                above, below = self._get_closest_from_list(latest_price, daily_pocs)
+                key_levels["daily_poc_above"] = above
+                key_levels["daily_poc_below"] = below
+            
+            # 2. Weekly POCs from 1d data
+            df_1d = analysis_data.get("market_data", {}).get("1d")
+            if df_1d is not None and len(df_1d) > 10:
+                weekly_pocs = self._find_period_pocs(df_1d, 'W')
+                above, below = self._get_closest_from_list(latest_price, weekly_pocs)
+                key_levels["weekly_poc_above"] = above
+                key_levels["weekly_poc_below"] = below
+                
+            # 3. Monthly POCs from 1w data or 1d data
+            df_1w = analysis_data.get("market_data", {}).get("1w")
+            if df_1w is not None and len(df_1w) > 4:
+                monthly_pocs = self._find_period_pocs(df_1w, 'M')
+                above, below = self._get_closest_from_list(latest_price, monthly_pocs)
+                key_levels["monthly_poc_above"] = above
+                key_levels["monthly_poc_below"] = below
+            elif df_1d is not None and len(df_1d) > 20:
+                monthly_pocs = self._find_period_pocs(df_1d, 'M')
+                above, below = self._get_closest_from_list(latest_price, monthly_pocs)
+                key_levels["monthly_poc_above"] = above
+                key_levels["monthly_poc_below"] = below
+
+            await analysis.update_section("key_levels", key_levels)
+            # -----------------------------------------------------------------------
+
         except Exception as e:
             logger.error(f"Error in ValueAreasAgent for {symbol}: {e}", exc_info=True)
 
-    def calculate_value_areas(self, df: pd.DataFrame, num_bins: int = 200) -> Optional[Dict[str, Any]]:
+    def _find_period_pocs(self, df: pd.DataFrame, period: str) -> List[float]:
+        """Resamples DF and calculates POC for each period"""
         try:
-            # We use the entire lookback for the profile (e.g., last 100 candles)
-            lookback = min(100, len(df))
-            subset = df.iloc[-lookback:]
+            # Basic check
+            if df is None or df.empty:
+                return []
+            
+            # Ensure we have a datetime index for groupby
+            if not isinstance(df.index, pd.DatetimeIndex):
+                if 'timestamp' in df.columns:
+                    temp_df = df.set_index(pd.to_datetime(df['timestamp'], unit='ms'))
+                else:
+                    return []
+            else:
+                temp_df = df
+
+            pocs = []
+            # Group by period
+            groups = temp_df.groupby(pd.Grouper(freq=period))
+            for _, group in groups:
+                if len(group) < 1:
+                    continue
+                # Calculate POC for this specific group
+                group_res = self.calculate_value_areas(group, num_bins=100, lookback=len(group))
+                if group_res:
+                    pocs.append(group_res['poc'])
+            return pocs
+        except Exception as e:
+            logger.error(f"Error finding period POCs for {period}: {e}")
+            return []
+
+    def _get_closest_from_list(self, price: float, levels: List[float]):
+        """Finds the closest level above and below the given price"""
+        if not levels:
+            return None, None
+        
+        above = [l for l in levels if l > price + 1e-9]
+        below = [l for l in levels if l < price - 1e-9]
+        
+        return (min(above) if above else None), (max(below) if below else None)
+
+    def calculate_value_areas(self, df: pd.DataFrame, num_bins: int = 200, lookback: Optional[int] = None) -> Optional[Dict[str, Any]]:
+        try:
+            if lookback is None:
+                lookback = 100
+                
+            actual_lookback = min(lookback, len(df))
+            subset = df.iloc[-actual_lookback:]
             
             prices = subset['Close'].values
             volumes = subset['Volume'].values
