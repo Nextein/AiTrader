@@ -834,6 +834,13 @@
                                 "NEUTRAL"
                             ]
                         },
+                        "adx": {
+                            "type": "string",
+                            "enum": [
+                                "TRENDING",
+                                "NEUTRAL"
+                            ]
+                        },
                         "last_updated": {
                             "type": "string",
                             "format": "date-time"
