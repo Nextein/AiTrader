@@ -514,9 +514,12 @@ class MarketDataAgent(BaseAgent):
         
         # Fetch fresh data
         try:
+            if not self.is_running:
+                return
+                
             ohlcv = await self.exchange.fetch_ohlcv(symbol, timeframe, limit=100)
             
-            if not ohlcv:
+            if not ohlcv or not self.is_running:
                 return
             
             df = pd.DataFrame(ohlcv, columns=['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'])
@@ -547,6 +550,11 @@ class MarketDataAgent(BaseAgent):
             self.persist_candles(symbol, timeframe, ohlcv)
             
         except Exception as e:
+            # During shutdown, some exchange methods might fail with attribute errors
+            # which we can safely ignore if the agent is stopping.
+            if not self.is_running:
+                return
+                
             logger.error(f"Error fetching data for {symbol} {timeframe}: {e}")
             await event_bus.publish(EventType.ERROR, {"agent": self.name, "symbol": symbol, "error": str(e)})
 
