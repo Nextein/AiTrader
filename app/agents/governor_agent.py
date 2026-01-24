@@ -31,14 +31,14 @@ class GovernorAgent:
             MarketDataAgent(),
             MarketStructureAgent(),
             self.sanity_agent,
-            # RegimeDetectionAgent(),
-            # StrategyAgent(strategy_id="RSI_MACD"),
-            # EMACrossStrategyAgent(fast_period=9, slow_period=21),
-            # AggregatorAgent(),
-            # RiskAgent(),
-            # ExecutionAgent(),
-            # AuditLogAgent(),
-            # AnomalyDetectionAgent(),
+            RegimeDetectionAgent(),
+            StrategyAgent(strategy_id="RSI_MACD"),
+            EMACrossStrategyAgent(fast_period=9, slow_period=21),
+            AggregatorAgent(),
+            RiskAgent(),
+            ExecutionAgent(),
+            AuditLogAgent(),
+            AnomalyDetectionAgent(),
             # DummyStrategyAgent(signal_interval=5, name="DummyStrategy1")
         ]
         self.is_running = False

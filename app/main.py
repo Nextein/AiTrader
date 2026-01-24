@@ -183,7 +183,7 @@ async def get_analysis_symbols():
     """Get list of symbols with analysis objects (Task 2)"""
     return await AnalysisManager.get_all_symbols()
 
-@app.get("/analysis/{symbol}")
+@app.get("/analysis/{symbol:path}")
 async def get_analysis_data(symbol: str):
     """Get full analysis object for a symbol (Task 2)"""
     analysis = await AnalysisManager.get_analysis(symbol)

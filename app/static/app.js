@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!symbol) return;
 
         try {
-            const resp = await fetch(`/analysis/${symbol}`);
+            const resp = await fetch(`/analysis/${encodeURIComponent(symbol)}`);
             const data = await resp.json();
             renderAnalysisData(data);
         } catch (e) {
@@ -745,48 +745,81 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.display = 'flex';
         grid.style.display = 'grid';
 
-        document.getElementById('current-analysis-symbol').innerText = data.symbol;
-        document.getElementById('analysis-state-badge').innerText = data.analysis_state;
-        document.getElementById('analysis-created-date').innerText = new Date(data.date_created * 1000).toLocaleString();
+        document.getElementById('current-analysis-symbol').innerText = data.symbol || 'N/A';
+        document.getElementById('analysis-state-badge').innerText = data.analysis_state || 'UNKNOWN';
+        document.getElementById('analysis-created-date').innerText = data.date_created ? new Date(data.date_created * 1000).toLocaleString() : '--';
         document.getElementById('analysis-sync-time').innerText = new Date().toLocaleTimeString();
 
-        // Render sections
         let html = '';
 
-        // 1. Market Structure Section
+        // Helper to format values
+        const fmt = (val, precision = 2) => {
+            if (val === undefined || val === null) return '--';
+            if (typeof val === 'number') return val.toFixed(precision);
+            return val;
+        };
+
+        const getStatusClass = (val) => {
+            const v = String(val).toUpperCase();
+            if (['UP', 'TRENDING', 'HIGHER', 'BULLISH', 'TRUE', '1'].includes(v)) return 'state-positive';
+            if (['DOWN', 'LOWER', 'BEARISH', 'FALSE', '-1'].includes(v)) return 'state-negative';
+            if (['NEUTRAL', 'RANGING', 'UNDEFINED', '0'].includes(v)) return 'state-neutral';
+            return '';
+        };
+
+        // 1. Market Regime & High Level Intel
+        if (data.market_regime) {
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="compass"></i> Market Regime</h4>
+                    <div class="data-grid">
+            `;
+            const tfs = ['4h', '1h', '15m', '5m'];
+            tfs.forEach(tf => {
+                const regime = data.market_regime[tf];
+                if (!regime) return;
+                html += `
+                    <div class="data-item">
+                        <div class="data-label">${tf} Regime</div>
+                        <div class="data-value ${getStatusClass(regime)}">${regime}</div>
+                    </div>
+                `;
+            });
+            html += `</div></div>`;
+        }
+
+        // 2. Market Structure Analysis
         if (data.market_structure) {
             html += `
                 <div class="analysis-section-card">
-                    <h4><i data-lucide="layout" class="tf-badge"></i> Market Structure</h4>
+                    <h4><i data-lucide="layout"></i> Market Structure</h4>
                     <div class="data-grid">
             `;
 
-            // Show structure for each timeframe
-            Object.entries(data.market_structure).forEach(([tf, struct]) => {
-                if (typeof struct !== 'object' || struct === null) return;
-
-                const adxColor = struct.adx === 'TRENDING' ? 'state-positive' : 'state-neutral';
-                const emaColor = struct.emas === 'UP' ? 'state-positive' : (struct.emas === 'DOWN' ? 'state-negative' : 'state-neutral');
+            const tfs = ['4h', '1h', '15m', '5m'];
+            tfs.forEach(tf => {
+                const struct = data.market_structure[tf];
+                if (!struct || typeof struct !== 'object') return;
 
                 html += `
-                    <div class="data-item" style="grid-column: span 2; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.02)">
-                        <div class="data-label"><span class="tf-badge">${tf}</span> Structure Analysis</div>
+                    <div class="tf-row-header">
+                        <span class="tf-badge">${tf}</span>
                     </div>
                     <div class="data-item">
                         <div class="data-label">Highs</div>
-                        <div class="data-value">${struct.highs}</div>
+                        <div class="data-value ${getStatusClass(struct.highs)}">${fmt(struct.highs)}</div>
                     </div>
                     <div class="data-item">
                         <div class="data-label">Lows</div>
-                        <div class="data-value">${struct.lows}</div>
+                        <div class="data-value ${getStatusClass(struct.lows)}">${fmt(struct.lows)}</div>
                     </div>
                     <div class="data-item">
                         <div class="data-label">EMAs</div>
-                        <div class="data-value ${emaColor}">${struct.emas}</div>
+                        <div class="data-value ${getStatusClass(struct.emas)}">${fmt(struct.emas)}</div>
                     </div>
                     <div class="data-item">
                         <div class="data-label">ADX</div>
-                        <div class="data-value ${adxColor}">${struct.adx}</div>
+                        <div class="data-value ${getStatusClass(struct.adx)}">${fmt(struct.adx)}</div>
                     </div>
                 `;
             });
@@ -794,56 +827,78 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `</div></div>`;
         }
 
-        // 2. Key Levels Section
+        // 3. Key Levels & S/R
         if (data.key_levels) {
             html += `
                 <div class="analysis-section-card">
-                    <h4><i data-lucide="layers" class="tf-badge"></i> Key Price Levels</h4>
+                    <h4><i data-lucide="layers"></i> Supply & Demand Zones</h4>
                     <div class="data-grid">
             `;
-
             Object.entries(data.key_levels).forEach(([k, v]) => {
                 if (k === 'last_updated') return;
                 html += `
                     <div class="data-item">
                         <div class="data-label">${k.replace(/_/g, ' ').toUpperCase()}</div>
-                        <div class="data-value">${typeof v === 'number' ? v.toFixed(2) : (v || '--')}</div>
+                        <div class="data-value text-accent">${fmt(v)}</div>
                     </div>
                 `;
             });
-
             html += `</div></div>`;
         }
 
-        // 3. Market Data (Indicators Overview)
+        // 4. Detailed Indicators Overview
         if (data.market_data) {
             html += `
                 <div class="analysis-section-card">
-                    <h4><i data-lucide="database" class="tf-badge"></i> Indicators Overview</h4>
+                    <h4><i data-lucide="activity"></i> Oscillator & Volatility</h4>
                     <div class="data-grid">
             `;
 
-            Object.entries(data.market_data).forEach(([tf, candles]) => {
+            const tfs = ['4h', '1h', '15m', '5m'];
+            tfs.forEach(tf => {
+                const candles = data.market_data[tf];
                 if (!Array.isArray(candles) || candles.length === 0) return;
-
                 const last = candles[candles.length - 1];
+
                 html += `
-                    <div class="data-item" style="grid-column: span 2; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.02)">
-                        <div class="data-label"><span class="tf-badge">${tf}</span> Latest Candle Indicators</div>
+                    <div class="tf-row-header">
+                         <span class="tf-badge">${tf}</span> Technicals
                     </div>
                     <div class="data-item">
-                        <div class="data-label">Price</div>
-                        <div class="data-value">${last.Close ? last.Close.toFixed(2) : '--'}</div>
+                        <div class="data-label">Latest Price</div>
+                        <div class="data-value large">${fmt(last.Close || last.close)}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">ADX (14)</div>
+                        <div class="data-value">${fmt(last['Average Directional Index'])}</div>
                     </div>
                     <div class="data-item">
                         <div class="data-label">ATR</div>
-                        <div class="data-value">${last['Average True Range'] ? last['Average True Range'].toFixed(2) : '--'}</div>
+                        <div class="data-value">${fmt(last['Average True Range'])}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Weis Waves Vol</div>
+                        <div class="data-value text-warning">${fmt(last['Weis Waves Volume'] || 0, 0)}</div>
                     </div>
                 `;
             });
 
             html += `</div></div>`;
         }
+
+        // 5. Raw Data (Hidden by default, used for "see every datapoint" goal)
+        html += `
+            <div class="analysis-section-card" style="grid-column: 1 / -1;">
+                <h4><i data-lucide="database"></i> Raw JSON State</h4>
+                <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; max-height: 300px; overflow-y: auto;">
+                    <pre style="font-size: 0.75rem; color: var(--text-secondary); margin: 0;">${JSON.stringify(data, (key, value) => {
+            // Truncate long arrays for display
+            if (Array.isArray(value) && value.length > 5) return `[Array(${value.length})]`;
+            return value;
+        }, 2)}</pre>
+                </div>
+            </div>
+        `;
 
         grid.innerHTML = html;
         if (window.lucide) lucide.createIcons();

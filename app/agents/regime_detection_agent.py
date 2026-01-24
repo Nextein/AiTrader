@@ -31,37 +31,57 @@ class RegimeDetectionAgent(BaseAgent):
 
         symbol = data.get("symbol")
         ts = data.get("timestamp")
+        timeframe = data.get("timeframe", "1h")
         
-        if self.last_timestamps.get(symbol) == ts:
+        # Unique key for symbol+tf
+        lookup_key = f"{symbol}_{timeframe}"
+        if self.last_timestamps.get(lookup_key) == ts:
             return
-        self.last_timestamps[symbol] = ts
+        self.last_timestamps[lookup_key] = ts
 
-        candles = data.get("candles")
-        df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-        
-        # Calculate ADX (Average Directional Index) for trend strength
-        # And ATR (Average True Range) for volatility
-        df.ta.adx(append=True)
-        df.ta.atr(append=True)
-        
-        if len(df) < 30:
-            return
+        try:
+            # Get analysis object
+            analysis = await AnalysisManager.get_analysis(symbol)
+            analysis_data = await analysis.get_data()
+            
+            # Get candles from AnalysisObject (updated by MarketDataAgent)
+            df = analysis_data.get("market_data", {}).get(timeframe)
+            
+            if df is None or not isinstance(df, pd.DataFrame):
+                return
+            
+            if len(df) < 30:
+                return
 
-        adx = df['ADX_14'].iloc[-1]
-        current_regime = self.regimes.get(symbol, "UNKNOWN")
-        logger.info(f"Market Monitoring [{symbol}]: ADX={adx:.2f} | Current Regime={current_regime}")
-        
-        new_regime = "RANGING"
-        if adx > 25:
-            new_regime = "TRENDING"
-        
-        if new_regime != current_regime:
-            logger.info(f"Regime Change Detected [{symbol}]: {current_regime} -> {new_regime} (ADX: {adx:.2f})")
-            self.regimes[symbol] = new_regime
-            await event_bus.publish(EventType.REGIME_CHANGE, {
-                "symbol": symbol,
-                "regime": new_regime,
-                "adx": adx,
-                "timestamp": ts,
-                "agent": self.name
-            })
+            # ADX is already calculated by MarketDataAgent!
+            # We can just use it.
+            if 'Average Directional Index' not in df.columns:
+                # Fallback calculation if not present
+                df.ta.adx(append=True)
+                adx = df['ADX_14'].iloc[-1]
+            else:
+                adx = df['Average Directional Index'].iloc[-1]
+            
+            current_regime = self.regimes.get(lookup_key, "UNKNOWN")
+            
+            new_regime = "RANGING"
+            if adx > 25:
+                new_regime = "TRENDING"
+            
+            if new_regime != current_regime:
+                logger.info(f"Regime Change Detected [{symbol} {timeframe}]: {current_regime} -> {new_regime} (ADX: {adx:.2f})")
+                self.regimes[lookup_key] = new_regime
+                
+                # Update Analysis Object
+                await analysis.update_section("market_regime", new_regime, timeframe)
+                
+                await event_bus.publish(EventType.REGIME_CHANGE, {
+                    "symbol": symbol,
+                    "timeframe": timeframe,
+                    "regime": new_regime,
+                    "adx": adx,
+                    "timestamp": ts,
+                    "agent": self.name
+                })
+        except Exception as e:
+            logger.error(f"Error in RegimeDetectionAgent: {e}")

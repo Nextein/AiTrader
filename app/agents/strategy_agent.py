@@ -2,7 +2,9 @@ import pandas as pd
 import pandas_ta as ta
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
+from app.core.analysis import AnalysisManager
 import logging
+import asyncio
 
 logger = logging.getLogger("StrategyAgent")
 
@@ -32,38 +34,39 @@ class StrategyAgent(BaseAgent):
         if not self.is_running:
             return
 
+        symbol = data.get("symbol")
         timestamp = data.get("timestamp")
-        if timestamp == self.last_timestamp:
-            return
+        timeframe = data.get("timeframe", "1h")
+        
+        # Unique key for symbol+tf to avoid re-processing same candle
+        lookup_key = f"{symbol}_{timeframe}"
+        if timestamp == self.last_timestamp: # Simplification: assumes same timestamp = same candle
+             return
         
         self.last_timestamp = timestamp
         self.processed_count += 1
-        candles = data.get("candles")
-        columns = data.get("columns", ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
         
-        # Robust DataFrame creation
-        if len(candles) > 0 and len(candles[0]) != len(columns):
-            # If mismatch, fallback to slicing or basic columns if possible
-            if len(columns) == 6 and len(candles[0]) > 6:
-                 # Assume first 6 are OHLCV
-                 df = pd.DataFrame([c[:6] for c in candles], columns=columns)
-            else:
-                 # Try to use whatever matches
-                 # But usually we should trust 'columns' from the event if it matches candle width
-                 df = pd.DataFrame(candles) # Let pandas handle default int columns
-                 # Assign columns if length matches
-                 if len(df.columns) == len(columns):
-                     df.columns = columns
-        else:
-            df = pd.DataFrame(candles, columns=columns)
+        try:
+            # Get analysis object
+            analysis = await AnalysisManager.get_analysis(symbol)
+            analysis_data = await analysis.get_data()
+            
+            # Get candles from AnalysisObject
+            df = analysis_data.get("market_data", {}).get(timeframe)
+            
+            if df is None or not isinstance(df, pd.DataFrame) or len(df) < 30:
+                return
+            
+            # Simple RSI + MACD Strategy
+            df.ta.rsi(length=14, append=True)
+            df.ta.macd(fast=12, slow=26, signal=9, append=True)
         
-        # Simple RSI + MACD Strategy
-        df.ta.rsi(length=14, append=True)
-        df.ta.macd(fast=12, slow=26, signal=9, append=True)
-        
-        # Get latest values
-        if 'RSI_14' not in df.columns or 'MACD_12_26_9' not in df.columns or 'MACDs_12_26_9' not in df.columns:
-            logger.warning(f"[{self.strategy_id}] Indicators not yet available.")
+            # Get latest values
+            if 'RSI_14' not in df.columns or 'MACD_12_26_9' not in df.columns or 'MACDs_12_26_9' not in df.columns:
+                logger.warning(f"[{self.strategy_id}] Indicators not yet available.")
+                return
+        except Exception as e:
+            logger.error(f"Error in StrategyAgent for {symbol}: {e}")
             return
 
         rsi = df['RSI_14'].iloc[-1]
