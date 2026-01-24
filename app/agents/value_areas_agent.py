@@ -57,8 +57,8 @@ class ValueAreasAgent(BaseAgent):
             if df is None or not isinstance(df, pd.DataFrame) or len(df) < 50:
                 return
 
-            # Calculate Value Areas using fixed number of bins (e.g., 24 for intraday)
-            calc_result = self.calculate_value_areas(df)
+            # Calculate Value Areas with increased granularity (200 rows)
+            calc_result = self.calculate_value_areas(df, num_bins=200)
             
             if not calc_result:
                 return
@@ -142,7 +142,7 @@ class ValueAreasAgent(BaseAgent):
         except Exception as e:
             logger.error(f"Error in ValueAreasAgent for {symbol}: {e}", exc_info=True)
 
-    def calculate_value_areas(self, df: pd.DataFrame, num_bins: int = 50) -> Optional[Dict[str, Any]]:
+    def calculate_value_areas(self, df: pd.DataFrame, num_bins: int = 200) -> Optional[Dict[str, Any]]:
         try:
             # We use the entire lookback for the profile (e.g., last 100 candles)
             lookback = min(100, len(df))
