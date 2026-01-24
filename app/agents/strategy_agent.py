@@ -39,7 +39,23 @@ class StrategyAgent(BaseAgent):
         self.last_timestamp = timestamp
         self.processed_count += 1
         candles = data.get("candles")
-        df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        columns = data.get("columns", ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        
+        # Robust DataFrame creation
+        if len(candles) > 0 and len(candles[0]) != len(columns):
+            # If mismatch, fallback to slicing or basic columns if possible
+            if len(columns) == 6 and len(candles[0]) > 6:
+                 # Assume first 6 are OHLCV
+                 df = pd.DataFrame([c[:6] for c in candles], columns=columns)
+            else:
+                 # Try to use whatever matches
+                 # But usually we should trust 'columns' from the event if it matches candle width
+                 df = pd.DataFrame(candles) # Let pandas handle default int columns
+                 # Assign columns if length matches
+                 if len(df.columns) == len(columns):
+                     df.columns = columns
+        else:
+            df = pd.DataFrame(candles, columns=columns)
         
         # Simple RSI + MACD Strategy
         df.ta.rsi(length=14, append=True)

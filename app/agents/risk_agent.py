@@ -40,11 +40,35 @@ class RiskAgent(BaseAgent):
 
     async def on_market_data(self, data):
         self.latest_candles = data.get("candles")
+        self.latest_columns = data.get("columns")
 
-    def calculate_atr(self, candles, period=14):
+    # Removed redundant check_sl_tp call (handled by ExecutionAgent)
+
+    def calculate_atr(self, candles, period=14, columns=None):
         if not candles or len(candles) < period + 1:
             return None
-        df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        
+        if columns is None:
+             columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume']
+             
+        # Handle case where candles have more columns than we have names for (naive check)
+        # or if we have more names than data.
+        # But safest is to use the passed columns.
+        
+        # If candles is already a DF (unlikely here but good practice)
+        if isinstance(candles, pd.DataFrame):
+            df = candles
+        else:
+            # If we have a mismatch in columns length vs data width, pandas will error.
+            # We will try to match simple OHLCV if columns is default
+            if columns == ['timestamp', 'open', 'high', 'low', 'close', 'volume'] and len(candles[0]) > 6:
+                # We have extra data but no column names provided. 
+                # Be safe: just slice first 6? Or assume standard prefix?
+                # Standard prefix is usually T, O, H, L, C, V.
+                df = pd.DataFrame([c[:6] for c in candles], columns=columns)
+            else:
+                df = pd.DataFrame(candles, columns=columns)
+
         atr = df.ta.atr(length=period)
         if atr is None or atr.empty:
             return None
@@ -93,7 +117,7 @@ class RiskAgent(BaseAgent):
 
             # Risk 2% of equity per trade, adjusted by ATR
             risk_percent = 0.02 
-            atr = self.calculate_atr(self.latest_candles)
+            atr = self.calculate_atr(self.latest_candles, columns=getattr(self, 'latest_columns', None))
             logger.debug(f"ATR (14) calculated: {atr}")
             
             # Fallback for price if missing or zero

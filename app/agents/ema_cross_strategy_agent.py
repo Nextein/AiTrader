@@ -40,7 +40,17 @@ class EMACrossStrategyAgent(BaseAgent):
         
         self.last_timestamp = timestamp
         candles = data.get("candles")
-        df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        columns = data.get("columns", ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        
+        if len(candles) > 0 and len(candles[0]) != len(columns):
+             if len(columns) == 6 and len(candles[0]) > 6:
+                 df = pd.DataFrame([c[:6] for c in candles], columns=columns)
+             else:
+                 df = pd.DataFrame(candles)
+                 if len(df.columns) == len(columns):
+                     df.columns = columns
+        else:
+            df = pd.DataFrame(candles, columns=columns)
         
         # EMA Cross Strategy
         fast_ema_col = f"EMA_{self.fast_period}"
