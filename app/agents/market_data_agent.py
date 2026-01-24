@@ -35,6 +35,11 @@ class MarketDataAgent(BaseAgent):
         
         # Task 5: Cache tracking
         self.cache_enabled = True
+        
+        # Retry configuration
+        self.max_retries = 6
+        self.retry_delays = [1, 2, 5]  # Exponential backoff delays in seconds
+        self.retry_tracker = {}  # Track retries per symbol-timeframe: {(symbol, tf): retry_count}
 
     async def handle_symbol_approved(self, data: Dict[str, Any]):
         """Callback for when a symbol is approved by SanityAgent"""
@@ -74,11 +79,7 @@ class MarketDataAgent(BaseAgent):
                 for symbol in self.symbols:
                     if not self.is_running or not self.is_active:
                         break
-                    try:
-                        await self.fetch_and_publish(symbol, timeframe)
-                    except Exception as e:
-                        logger.error(f"Error fetching {symbol} {timeframe}: {e}")
-                        await asyncio.sleep(0.1)  # Brief pause on error
+                    await self.fetch_and_publish(symbol, timeframe)
             
             # Sleep between cycles
             await asyncio.sleep(10)
@@ -477,7 +478,9 @@ class MarketDataAgent(BaseAgent):
             return df
 
     async def fetch_and_publish(self, symbol: str, timeframe: str):
-        """Fetch data with caching support (Task 5)"""
+        """Fetch data with caching support and retry logic"""
+        retry_key = (symbol, timeframe)
+        
         # Check cache first
         if self.cache_enabled:
             cached_data = self.get_cached_data(symbol, timeframe)
@@ -507,17 +510,27 @@ class MarketDataAgent(BaseAgent):
                 }
                 await event_bus.publish(EventType.MARKET_DATA, data)
                 self.processed_count += 1
+                
+                # Reset retry counter on successful cache hit
+                if retry_key in self.retry_tracker:
+                    del self.retry_tracker[retry_key]
+                    
                 return
         
-        # Fetch fresh data
+        # Get current retry count
+        retry_count = self.retry_tracker.get(retry_key, 0)
+        
+        # Fetch fresh data with retry logic
         try:
             if not self.is_running:
                 return
                 
+            logger.debug(f"Fetching {symbol} {timeframe} (attempt {retry_count + 1}/{self.max_retries + 1})")
+            
             ohlcv = await self.exchange.fetch_ohlcv(symbol, timeframe, limit=100)
             
             if not ohlcv or not self.is_running:
-                return
+                raise ValueError(f"Empty OHLCV data returned for {symbol} {timeframe}")
             
             df = pd.DataFrame(ohlcv, columns=['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'])
             df_with_ind = self.calculate_indicators(df)
@@ -546,14 +559,53 @@ class MarketDataAgent(BaseAgent):
             # I will keep persisting only OHLCV to maintain schema compatibility.
             self.persist_candles(symbol, timeframe, ohlcv)
             
+            # Success - reset retry counter
+            if retry_key in self.retry_tracker:
+                logger.info(f"Successfully fetched {symbol} {timeframe} after {retry_count + 1} attempts")
+                del self.retry_tracker[retry_key]
+            
         except Exception as e:
             # During shutdown, some exchange methods might fail with attribute errors
             # which we can safely ignore if the agent is stopping.
             if not self.is_running:
                 return
+            
+            # Increment retry counter
+            self.retry_tracker[retry_key] = retry_count + 1
+            
+            # Check if we should retry
+            if self.retry_tracker[retry_key] <= self.max_retries:
+                # Calculate delay with exponential backoff
+                delay_index = min(retry_count, len(self.retry_delays) - 1)
+                delay = self.retry_delays[delay_index]
                 
-            logger.error(f"Error fetching data for {symbol} {timeframe}: {e}")
-            await event_bus.publish(EventType.ERROR, {"agent": self.name, "symbol": symbol, "error": str(e)})
+                logger.warning(
+                    f"Error fetching {symbol} {timeframe} (attempt {retry_count + 1}/{self.max_retries + 1}): {e}. "
+                    f"Retrying in {delay}s..."
+                )
+                
+                # Wait before retry
+                await asyncio.sleep(delay)
+                
+                # Retry the fetch
+                await self.fetch_and_publish(symbol, timeframe)
+            else:
+                # Max retries exceeded
+                logger.error(
+                    f"Failed to fetch {symbol} {timeframe} after {self.max_retries + 1} attempts. "
+                    f"Last error: {e}. Will retry in next cycle."
+                )
+                
+                # Reset counter so it can retry in the next main loop cycle
+                del self.retry_tracker[retry_key]
+                
+                await event_bus.publish(EventType.ERROR, {
+                    "agent": self.name, 
+                    "symbol": symbol, 
+                    "timeframe": timeframe,
+                    "error": str(e),
+                    "retry_count": retry_count + 1
+                })
 
     async def handle_data_request(self, data: Dict[str, Any]):
         """Handle on-demand data requests from other agents (Task 5)"""

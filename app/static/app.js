@@ -296,10 +296,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         portfolioBody.innerHTML = orders.map(o => {
             const sideClass = o.side === 'buy' ? 'pos-buy' : 'pos-sell';
-            // PnL calc (approximate, static for now, ideally streamed)
-            // We need current price. We can get it from 'symbolVal' or 'marketData' logs if we cache it.
-            // For now, show '--' or store it.
-            const pnl = 0.0;
+
+            // Format current price
+            const currentPrice = o.current_price !== null && o.current_price !== undefined ? o.current_price.toFixed(2) : '--';
+
+            // Format unrealized PnL with color coding
+            let pnlDisplay = '--';
+            let pnlClass = '';
+            if (o.unrealized_pnl !== null && o.unrealized_pnl !== undefined) {
+                const pnlValue = o.unrealized_pnl.toFixed(2);
+                const pnlPct = o.unrealized_pnl_pct !== null && o.unrealized_pnl_pct !== undefined ? o.unrealized_pnl_pct.toFixed(2) : '0.00';
+                pnlDisplay = `${pnlValue} (${pnlPct}%)`;
+                pnlClass = o.unrealized_pnl >= 0 ? 'pnl-pos' : 'pnl-neg';
+            }
+
             const sl = o.sl_price ? (Array.isArray(o.sl_price) ? o.sl_price.join(', ') : o.sl_price) : '--';
             const tp = o.tp_price ? (Array.isArray(o.tp_price) ? o.tp_price.join(', ') : o.tp_price) : '--';
 
@@ -309,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td class="${sideClass}">${o.side.toUpperCase()}</td>
                     <td>${o.amount.toFixed(4)}</td>
                     <td>${o.price.toFixed(2)}</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td><span style="font-size: 0.8rem">SL: ${sl}<br>TP: ${tp}</span></td>
+                    <td>${currentPrice}</td>
+                    <td class="${pnlClass}">${pnlDisplay}</td>
+                   <td><span style="font-size: 0.8rem">SL: ${sl}<br>TP: ${tp}</span></td>
                 </tr>
             `;
         }).join('');

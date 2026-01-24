@@ -153,7 +153,7 @@ async def get_equity(limit: int = 100):
 
 @app.get("/portfolio")
 async def get_portfolio():
-    """Get current open positions (Task 1)"""
+    """Get current open positions with current price and unrealized PnL"""
     with SessionLocal() as db:
         # In our simple model, anything FILLED (and not CLOSED) is an open position
         # We check for orders with status FILLED and closed_at is NULL
@@ -166,7 +166,76 @@ async def get_portfolio():
             OrderModel.status == 'FILLED',
             OrderModel.closed_at.is_(None)
         ).all()
-        return orders
+        
+        # Enhance orders with current price and PnL
+        enhanced_orders = []
+        for order in orders:
+            order_dict = {
+                "id": order.id,
+                "exchange_order_id": order.exchange_order_id,
+                "symbol": order.symbol,
+                "side": order.side,
+                "order_type": order.order_type,
+                "amount": order.amount,
+                "price": order.price,  # Entry price
+                "sl_price": order.sl_price,
+                "tp_price": order.tp_price,
+                "exit_price": order.exit_price,
+                "pnl": order.pnl,
+                "rationale": order.rationale,
+                "status": order.status,
+                "is_demo": order.is_demo,
+                "timestamp": order.timestamp,
+                "closed_at": order.closed_at,
+                "current_price": None,
+                "unrealized_pnl": None,
+                "unrealized_pnl_pct": None
+            }
+            
+            # Try to get current price from Analysis object
+            try:
+                analysis = await AnalysisManager.get_analysis(order.symbol)
+                data = await analysis.get_data()
+                
+                # Try to get the most recent price from market_data
+                # Check all timeframes and pick the one with most recent data
+                current_price = None
+                latest_timestamp = 0
+                
+                if 'market_data' in data:
+                    for timeframe, df in data['market_data'].items():
+                        if df is not None and isinstance(df, pd.DataFrame) and len(df) > 0:
+                            if 'Close' in df.columns and 'timestamp' in df.columns:
+                                last_timestamp = df['timestamp'].iloc[-1]
+                                if last_timestamp > latest_timestamp:
+                                    latest_timestamp = last_timestamp
+                                    current_price = float(df['Close'].iloc[-1])
+                
+                if current_price is not None:
+                    order_dict["current_price"] = current_price
+                    
+                    # Calculate unrealized PnL
+                    # For buy orders: (current_price - entry_price) * amount
+                    # For sell orders: (entry_price - current_price) * amount
+                    if order.side == 'buy':
+                        unrealized_pnl = (current_price - order.price) * order.amount
+                    else:  # sell
+                        unrealized_pnl = (order.price - current_price) * order.amount
+                    
+                    order_dict["unrealized_pnl"] = unrealized_pnl
+                    
+                    # Calculate unrealized PnL percentage
+                    position_value = order.price * order.amount
+                    if position_value != 0:
+                        unrealized_pnl_pct = (unrealized_pnl / position_value) * 100
+                        order_dict["unrealized_pnl_pct"] = unrealized_pnl_pct
+            
+            except Exception as e:
+                logger.error(f"Error calculating PnL for order {order.id}: {e}")
+            
+            enhanced_orders.append(order_dict)
+        
+        return enhanced_orders
 
 @app.get("/trades")
 async def get_trades(limit: int = 100):
