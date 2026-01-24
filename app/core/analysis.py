@@ -34,6 +34,15 @@ class AnalysisObject:
                 "30m": "UNDEFINED", "15m": "UNDEFINED", "5m": "UNDEFINED",
                 "last_updated": None
             },
+            "value_areas": {
+                "1w": self._default_value_areas(),
+                "1d": self._default_value_areas(),
+                "4h": self._default_value_areas(),
+                "1h": self._default_value_areas(),
+                "30m": self._default_value_areas(),
+                "15m": self._default_value_areas(),
+                "5m": self._default_value_areas(),
+            },
             "key_levels": {
                 "last_updated": None
             }
@@ -50,6 +59,17 @@ class AnalysisObject:
             "pivot_points": "NEUTRAL",
             "emas": "NEUTRAL",
             "adx": "NEUTRAL",
+            "last_updated": None
+        }
+
+    def _default_value_areas(self):
+        return {
+            "poc": None,
+            "vah": None,
+            "val": None,
+            "naked_poc": False,
+            "state": "UNKNOWN",
+            "volume_profile": [],
             "last_updated": None
         }
 

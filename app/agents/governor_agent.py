@@ -2,6 +2,7 @@ import asyncio
 from typing import List
 from app.agents.base_agent import BaseAgent
 from app.agents.market_data_agent import MarketDataAgent
+from app.agents.value_areas_agent import ValueAreasAgent
 from app.agents.market_structure_agent import MarketStructureAgent
 from app.agents.strategy_agent import StrategyAgent
 from app.agents.risk_agent import RiskAgent
@@ -29,6 +30,7 @@ class GovernorAgent:
         self.sanity_agent = SanityAgent()
         self.agents: List[BaseAgent] = [
             MarketDataAgent(),
+            ValueAreasAgent(),
             MarketStructureAgent(),
             self.sanity_agent,
             RegimeDetectionAgent(),

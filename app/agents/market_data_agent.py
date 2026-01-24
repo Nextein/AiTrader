@@ -505,6 +505,7 @@ class MarketDataAgent(BaseAgent):
                     "symbol": symbol,
                     "timeframe": timeframe,
                     "timestamp": float(df_cache['timestamp'].values[-1]),
+                    "latest_close": float(df_cache['Close'].iloc[-1]),
                     "agent": self.name,
                     "from_cache": True
                 }
@@ -546,6 +547,7 @@ class MarketDataAgent(BaseAgent):
                 "symbol": symbol,
                 "timeframe": timeframe,
                 "timestamp": df_with_ind['timestamp'].iloc[-1],
+                "latest_close": float(df_with_ind['Close'].iloc[-1]),
                 "agent": self.name,
                 "from_cache": False
             }

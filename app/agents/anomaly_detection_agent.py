@@ -1,7 +1,9 @@
 import asyncio
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
+from app.core.analysis import AnalysisManager
 import logging
+import pandas as pd
 
 logger = logging.getLogger("AnomalyDetection")
 
@@ -18,6 +20,7 @@ class AnomalyDetectionAgent(BaseAgent):
             await asyncio.sleep(1)
 
     async def on_signal(self, data):
+        # ... logic for signal frequency ...
         if not self.is_running:
             return
 
@@ -37,19 +40,34 @@ class AnomalyDetectionAgent(BaseAgent):
         if not self.is_running:
             return
         
-        # Detect Flash Crashes (e.g. > 5% move in 1 candle)
-        candles = data.get("candles")
-        if len(candles) < 2:
-            return
-            
-        latest = candles[-1][4] # Close
-        prev = candles[-2][4]  # Prev Close
+        symbol = data.get("symbol")
+        timeframe = data.get("timeframe", "1h")
         
-        change = abs(latest - prev) / prev
-        if change > 0.05:
-            logger.error(f"Anomaly Detected: Extreme Price Move ({change*100:.2f}%)")
-            await event_bus.publish(EventType.ANOMALY_ALERT, {
-                "type": "EXTREME_VOLATILITY",
-                "change_pct": change * 100,
-                "agent": self.name
-            })
+        try:
+            # Get analysis object (Single source of truth)
+            analysis = await AnalysisManager.get_analysis(symbol)
+            analysis_data = await analysis.get_data()
+            
+            # Get candles from AnalysisObject
+            df = analysis_data.get("market_data", {}).get(timeframe)
+            
+            if df is None or not isinstance(df, pd.DataFrame) or len(df) < 2:
+                return
+            
+            # Detect Flash Crashes (e.g. > 5% move in 1 candle)
+            latest = df['Close'].iloc[-1]
+            prev = df['Close'].iloc[-2]
+            
+            change = abs(latest - prev) / prev
+            if change > 0.05:
+                logger.error(f"Anomaly Detected: Extreme Price Move ({change*100:.2f}%) on {symbol} {timeframe}")
+                await event_bus.publish(EventType.ANOMALY_ALERT, {
+                    "symbol": symbol,
+                    "timeframe": timeframe,
+                    "type": "EXTREME_VOLATILITY",
+                    "change_pct": change * 100,
+                    "agent": self.name
+                })
+        except Exception as e:
+            logger.error(f"Error in AnomalyDetectionAgent: {e}")
+

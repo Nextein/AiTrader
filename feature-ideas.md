@@ -30,9 +30,6 @@ Do not implement any of these yet.
 
 # PRIORITY
 
-Before the market structure agent,
-
-
 
 
 

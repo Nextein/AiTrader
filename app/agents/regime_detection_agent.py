@@ -3,6 +3,7 @@ import pandas as pd
 import pandas_ta as ta
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
+from app.core.analysis import AnalysisManager
 import logging
 
 logger = logging.getLogger("RegimeDetection")
