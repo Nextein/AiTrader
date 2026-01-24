@@ -26,6 +26,9 @@
                 <a href="#" class="nav-item" data-view="agents">
                     <i data-lucide="users"></i> Agents
                 </a>
+                <a href="#" class="nav-item" data-view="analysis">
+                    <i data-lucide="brain"></i> Intelligence
+                </a>
                 <a href="#" class="nav-item" data-view="logs">
                     <i data-lucide="terminal"></i> Audit Trail
                 </a>
@@ -215,6 +218,48 @@
                         </div>
                         <div id="agents-container-full" class="agents-detailed-grid">
                             <!-- Detailed agent cards will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-analysis" class="view" style="display: none;">
+                <div class="analysis-layout">
+                    <aside class="analysis-sidebar">
+                        <div class="section-header">
+                            <h3><i data-lucide="search"></i> Symbols</h3>
+                        </div>
+                        <div class="symbol-search-box">
+                            <input type="text" id="symbol-search" placeholder="Search symbols...">
+                        </div>
+                        <div id="analysis-symbol-list" class="symbol-list">
+                            <!-- Symbols will be populated here -->
+                            <div class="empty-state">No symbols analyzed yet</div>
+                        </div>
+                    </aside>
+
+                    <div class="analysis-main">
+                        <div id="analysis-content-header" class="analysis-header" style="display: none;">
+                            <div class="analysis-title">
+                                <h2 id="current-analysis-symbol">BTC-USDT</h2>
+                                <span class="badge-status" id="analysis-state-badge">IN_PROGRESS</span>
+                            </div>
+                            <div class="analysis-meta">
+                                <span>Created: <span id="analysis-created-date">--</span></span>
+                                <span>Last Sync: <span id="analysis-sync-time">--</span></span>
+                                <button id="refresh-analysis" class="btn btn-icon"><i
+                                        data-lucide="refresh-cw"></i></button>
+                            </div>
+                        </div>
+
+                        <div id="analysis-placeholder" class="analysis-placeholder">
+                            <div class="placeholder-icon"><i data-lucide="brain-circuit"></i></div>
+                            <h3>Intelligence Hub</h3>
+                            <p>Select a symbol from the sidebar to explore its real-time multi-agent analysis.</p>
+                        </div>
+
+                        <div id="analysis-data-container" class="analysis-grid" style="display: none;">
+                            <!-- Sections will be injected here -->
                         </div>
                     </div>
                 </div>

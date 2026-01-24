@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let nodeId = null;
         if (type === 'market_data' || agent.includes('Market')) nodeId = 'node-market';
-        else if (type === 'regime_change' || agent.includes('Regime') || type.includes('anomaly')) nodeId = 'node-analysis';
+        else if (type === 'regime_change' || agent.includes('Regime') || type === 'analysis_update' || type.includes('anomaly')) nodeId = 'node-analysis';
         else if (type.includes('signal') || agent.includes('Strategy')) nodeId = 'node-strategy';
         else if (agent.includes('Risk')) nodeId = 'node-risk';
         else if (type.includes('order') || agent.includes('Execution')) nodeId = 'node-execution';
@@ -675,10 +675,196 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    // Intelligence Page Logic
+    let selectedAnalysisSymbol = null;
+    let analysisSymbols = [];
+
+    async function fetchAnalysisSymbols() {
+        try {
+            const resp = await fetch('/analysis/symbols');
+            analysisSymbols = await resp.json();
+            renderAnalysisSymbolList();
+        } catch (e) {
+            console.error('Failed to fetch analysis symbols', e);
+        }
+    }
+
+    function renderAnalysisSymbolList() {
+        const container = document.getElementById('analysis-symbol-list');
+        const searchInput = document.getElementById('symbol-search');
+        if (!container) return;
+
+        const filter = searchInput ? searchInput.value.toUpperCase() : '';
+
+        const filtered = analysisSymbols.filter(s => s.toUpperCase().includes(filter));
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<div class="empty-state">No symbols found</div>';
+            return;
+        }
+
+        container.innerHTML = filtered.map(symbol => `
+            <div class="symbol-item ${selectedAnalysisSymbol === symbol ? 'active' : ''}" data-symbol="${symbol}">
+                <span>${symbol}</span>
+                <i data-lucide="chevron-right" style="width: 14px;"></i>
+            </div>
+        `).join('');
+
+        if (window.lucide) lucide.createIcons();
+
+        // Add click listeners
+        container.querySelectorAll('.symbol-item').forEach(item => {
+            item.onclick = () => {
+                selectedAnalysisSymbol = item.getAttribute('data-symbol');
+                renderAnalysisSymbolList(); // Update active state
+                fetchAnalysisData(selectedAnalysisSymbol);
+            };
+        });
+    }
+
+    async function fetchAnalysisData(symbol) {
+        if (!symbol) return;
+
+        try {
+            const resp = await fetch(`/analysis/${symbol}`);
+            const data = await resp.json();
+            renderAnalysisData(data);
+        } catch (e) {
+            console.error('Failed to fetch analysis data', e);
+        }
+    }
+
+    function renderAnalysisData(data) {
+        const placeholder = document.getElementById('analysis-placeholder');
+        const header = document.getElementById('analysis-content-header');
+        const grid = document.getElementById('analysis-data-container');
+
+        if (!placeholder || !header || !grid) return;
+
+        placeholder.style.display = 'none';
+        header.style.display = 'flex';
+        grid.style.display = 'grid';
+
+        document.getElementById('current-analysis-symbol').innerText = data.symbol;
+        document.getElementById('analysis-state-badge').innerText = data.analysis_state;
+        document.getElementById('analysis-created-date').innerText = new Date(data.date_created * 1000).toLocaleString();
+        document.getElementById('analysis-sync-time').innerText = new Date().toLocaleTimeString();
+
+        // Render sections
+        let html = '';
+
+        // 1. Market Structure Section
+        if (data.market_structure) {
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="layout" class="tf-badge"></i> Market Structure</h4>
+                    <div class="data-grid">
+            `;
+
+            // Show structure for each timeframe
+            Object.entries(data.market_structure).forEach(([tf, struct]) => {
+                if (typeof struct !== 'object' || struct === null) return;
+
+                const adxColor = struct.adx === 'TRENDING' ? 'state-positive' : 'state-neutral';
+                const emaColor = struct.emas === 'UP' ? 'state-positive' : (struct.emas === 'DOWN' ? 'state-negative' : 'state-neutral');
+
+                html += `
+                    <div class="data-item" style="grid-column: span 2; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.02)">
+                        <div class="data-label"><span class="tf-badge">${tf}</span> Structure Analysis</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Highs</div>
+                        <div class="data-value">${struct.highs}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Lows</div>
+                        <div class="data-value">${struct.lows}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">EMAs</div>
+                        <div class="data-value ${emaColor}">${struct.emas}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">ADX</div>
+                        <div class="data-value ${adxColor}">${struct.adx}</div>
+                    </div>
+                `;
+            });
+
+            html += `</div></div>`;
+        }
+
+        // 2. Key Levels Section
+        if (data.key_levels) {
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="layers" class="tf-badge"></i> Key Price Levels</h4>
+                    <div class="data-grid">
+            `;
+
+            Object.entries(data.key_levels).forEach(([k, v]) => {
+                if (k === 'last_updated') return;
+                html += `
+                    <div class="data-item">
+                        <div class="data-label">${k.replace(/_/g, ' ').toUpperCase()}</div>
+                        <div class="data-value">${typeof v === 'number' ? v.toFixed(2) : (v || '--')}</div>
+                    </div>
+                `;
+            });
+
+            html += `</div></div>`;
+        }
+
+        // 3. Market Data (Indicators Overview)
+        if (data.market_data) {
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="database" class="tf-badge"></i> Indicators Overview</h4>
+                    <div class="data-grid">
+            `;
+
+            Object.entries(data.market_data).forEach(([tf, candles]) => {
+                if (!Array.isArray(candles) || candles.length === 0) return;
+
+                const last = candles[candles.length - 1];
+                html += `
+                    <div class="data-item" style="grid-column: span 2; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.02)">
+                        <div class="data-label"><span class="tf-badge">${tf}</span> Latest Candle Indicators</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Price</div>
+                        <div class="data-value">${last.Close ? last.Close.toFixed(2) : '--'}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">ATR</div>
+                        <div class="data-value">${last['Average True Range'] ? last['Average True Range'].toFixed(2) : '--'}</div>
+                    </div>
+                `;
+            });
+
+            html += `</div></div>`;
+        }
+
+        grid.innerHTML = html;
+        if (window.lucide) lucide.createIcons();
+    }
+
+    // Event listeners for Intelligence Page
+    const symbolSearch = document.getElementById('symbol-search');
+    if (symbolSearch) {
+        symbolSearch.oninput = renderAnalysisSymbolList;
+    }
+
+    const refreshAnalysisBtn = document.getElementById('refresh-analysis');
+    if (refreshAnalysisBtn) {
+        refreshAnalysisBtn.onclick = () => fetchAnalysisData(selectedAnalysisSymbol);
+    }
+
     // Initial load
     updateStatus();
     fetchLogs();
     updateEquityChart();
+    fetchAnalysisSymbols();
 
     // Polling
     setInterval(updateStatus, 5000);
@@ -686,4 +872,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateEquityChart, 10000);
     setInterval(fetchPortfolio, 2000); // Polling for portfolio
     setInterval(fetchTrades, 5000); // Polling for trades history
+    setInterval(fetchAnalysisSymbols, 10000);
 });
+

@@ -97,6 +97,15 @@ class MarketStructureAgent(BaseAgent):
             
             await analysis.update_section("market_structure", updates, timeframe)
             
+            # 5. Publish Analysis Update Event (Task 1)
+            await event_bus.publish(EventType.ANALYSIS_UPDATE, {
+                "symbol": symbol,
+                "timeframe": timeframe,
+                "section": "market_structure",
+                "agent": self.name,
+                "timestamp": int(time.time())
+            })
+
             self.processed_count += 1
             logger.info(f"Updated market structure for {symbol} {timeframe}")
 

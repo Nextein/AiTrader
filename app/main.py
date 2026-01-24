@@ -6,6 +6,9 @@ from app.core.config import settings
 from app.core.database import SessionLocal, engine
 from app.models.models import AuditLogModel, EquityModel, OrderModel, Base
 from app.core.event_bus import event_bus
+from app.core.analysis import AnalysisManager
+import pandas as pd
+import numpy as np
 import asyncio
 import uvicorn
 import time
@@ -174,6 +177,32 @@ async def get_trades(limit: int = 100):
             OrderModel.status == 'CLOSED'
         ).order_by(OrderModel.closed_at.desc()).limit(limit).all()
         return trades
+
+@app.get("/analysis/symbols")
+async def get_analysis_symbols():
+    """Get list of symbols with analysis objects (Task 2)"""
+    return await AnalysisManager.get_all_symbols()
+
+@app.get("/analysis/{symbol}")
+async def get_analysis_data(symbol: str):
+    """Get full analysis object for a symbol (Task 2)"""
+    analysis = await AnalysisManager.get_analysis(symbol)
+    data = await analysis.get_data()
+    
+    # Pre-process data to make it JSON serializable (convert DataFrames)
+    return serialize_analysis_data(data)
+
+def serialize_analysis_data(obj):
+    if isinstance(obj, pd.DataFrame):
+        # Only take last 100 rows to keep response size manageable
+        return obj.tail(100).replace({np.nan: None}).to_dict(orient='records')
+    elif isinstance(obj, dict):
+        return {k: serialize_analysis_data(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [serialize_analysis_data(v) for v in obj]
+    elif hasattr(obj, 'item'): # numpy types
+        return obj.item()
+    return obj
 
 if __name__ == "__main__":
     logger.info("Starting Uvicorn server...")
