@@ -57,7 +57,10 @@ class EMACrossStrategyAgent(BaseAgent):
         slow_now = df[slow_ema_col].iloc[-1]
         slow_prev = df[slow_ema_col].iloc[-2]
         
-        logger.info(f"[{self.strategy_id}] Indicators >> Fast: {fast_now:.2f} | Slow: {slow_now:.2f}")
+        # logger.info(f"[{self.strategy_id}] Indicators >> Fast: {fast_now:.2f} | Slow: {slow_now:.2f}")
+        # Make this more debug friendly but less spammy if not crossing?
+        # Actually user wants "much more in depth".
+        logger.info(f"[{self.strategy_id}] {data.get('symbol')} | FastEMA({self.fast_period}): {fast_now:.5f} (prev: {fast_prev:.5f}) | SlowEMA({self.slow_period}): {slow_now:.5f} (prev: {slow_prev:.5f})")
         
         signal = "HOLD"
         confidence = 0.0
@@ -68,12 +71,14 @@ class EMACrossStrategyAgent(BaseAgent):
             signal = "BUY"
             confidence = 0.6
             rationale = f"EMA Cross: {fast_ema_col} crossed above {slow_ema_col}"
+            logger.info(f"[{self.strategy_id}] BULLISH CROSS DETECTED!")
         
         # Bearish Cross
         elif fast_prev >= slow_prev and fast_now < slow_now:
             signal = "SELL"
             confidence = 0.6
             rationale = f"EMA Cross: {fast_ema_col} crossed below {slow_ema_col}"
+            logger.info(f"[{self.strategy_id}] BEARISH CROSS DETECTED!")
 
         if signal != "HOLD":
             logger.info(f"[{self.strategy_id}] Generated Signal: {signal}")

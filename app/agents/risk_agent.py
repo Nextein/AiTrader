@@ -55,6 +55,8 @@ class RiskAgent(BaseAgent):
         if not self.is_running:
             return
 
+        logger.info(f"RiskAgent received Signal: {data.get('signal')} {data.get('symbol')}")
+
         # Basic risk validation
         if data.get("confidence", 0) < 0.6:
             logger.info(f"Signal rejected: Confidence too low ({data.get('confidence')})")
@@ -87,9 +89,12 @@ class RiskAgent(BaseAgent):
                 # Last resort: try direct 'USDT' if it was a flat float (unlikely in CCXT but for safety)
                 free_usdt = float(balance.get('USDT', 0))
             
+            logger.debug(f"Free USDT Balance detected: {free_usdt:.2f}")
+
             # Risk 2% of equity per trade, adjusted by ATR
             risk_percent = 0.02 
             atr = self.calculate_atr(self.latest_candles)
+            logger.debug(f"ATR (14) calculated: {atr}")
             
             # Fallback for price if missing or zero
             signal_price = data.get("price")
@@ -99,15 +104,26 @@ class RiskAgent(BaseAgent):
                 else:
                     logger.error("Risk Rejected: No price info available for calculation")
                     return
+            
+            logger.debug(f"Signal Price: {signal_price}")
 
             if atr is not None and atr > 0:
                 # Formula: Size = (Equity * Risk%) / (ATR * N)
                 # Here N=2 for a 2x ATR stop distance buffer
                 n_factor = 2
-                trade_size_usdt = (free_usdt * risk_percent) / (atr / signal_price * n_factor)
-                trade_size_usdt = min(trade_size_usdt, free_usdt * 0.1) # Max 10% of balance per trade
+                raw_trade_size_usdt = (free_usdt * risk_percent) / (atr / signal_price * n_factor)
+                
+                # Check 10% cap
+                max_size_cap = free_usdt * 0.1
+                trade_size_usdt = min(raw_trade_size_usdt, max_size_cap) 
+                
+                logger.debug(f"Calculated Trade Size: Raw={raw_trade_size_usdt:.2f}, Cap={max_size_cap:.2f}, Final={trade_size_usdt:.2f} (Using N={n_factor}, Risk%={risk_percent})")
+
+                if raw_trade_size_usdt > max_size_cap:
+                    logger.info("Trade size capped at 10% of equity.")
             else:
                 trade_size_usdt = self.max_trade_size # Fallback
+                logger.warning(f"ATR invalid. Using fallback static size: {trade_size_usdt}")
             
             if free_usdt < trade_size_usdt:
                 logger.warning(f"Risk Rejected: Insufficient balance ({free_usdt:.2f} USDT < {trade_size_usdt:.2f} USDT)")
@@ -125,7 +141,7 @@ class RiskAgent(BaseAgent):
                 "agent": self.name
             }
         except Exception as e:
-            logger.error(f"Error calculating risk: {e}")
+            logger.error(f"Error calculating risk: {e}", exc_info=True)
             return
 
         logger.info(f"Risk Approved: {order_request['side']} {order_request['symbol']} size: {order_request['amount']:.6f} ({trade_size_usdt:.2f} USDT)")

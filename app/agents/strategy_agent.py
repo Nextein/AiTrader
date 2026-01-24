@@ -54,23 +54,25 @@ class StrategyAgent(BaseAgent):
         macd = df['MACD_12_26_9'].iloc[-1]
         macd_signal = df['MACDs_12_26_9'].iloc[-1]
         
-        logger.info(f"[{self.strategy_id}] Indicators >> RSI: {rsi:.2f} | MACD: {macd:.4f} | Signal: {macd_signal:.4f}")
+        logger.info(f"[{self.strategy_id}] {data.get('symbol')} | RSI: {rsi:.2f} | MACD: {macd:.4f} | Signal: {macd_signal:.4f} | Diff: {macd - macd_signal:.5f}")
         
         signal = "HOLD"
         confidence = 0.0
         rationale = ""
 
-        # Basic Long Condition: RSI < 30 (oversold) and MACD cross up
+        # Basic Long Condition: RSI < 35 (oversold) and MACD cross up
         if rsi < 35 and macd > macd_signal:
             signal = "BUY"
             confidence = 0.7
             rationale = f"RSI is oversold ({rsi:.2f}) and MACD has crossed up."
+            logger.info(f"[{self.strategy_id}] BUY SIGNAL: {rationale}")
         
-        # Basic Short Condition: RSI > 70 (overbought) and MACD cross down
+        # Basic Short Condition: RSI > 65 (overbought) and MACD cross down
         elif rsi > 65 and macd < macd_signal:
             signal = "SELL"
             confidence = 0.7
             rationale = f"RSI is overbought ({rsi:.2f}) and MACD has crossed down."
+            logger.info(f"[{self.strategy_id}] SELL SIGNAL: {rationale}")
 
         if signal != "HOLD":
             logger.info(f"[{self.strategy_id}] Generated Signal: {signal} | Confidence: {confidence}")

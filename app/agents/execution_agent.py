@@ -81,7 +81,8 @@ class ExecutionAgent(BaseAgent):
             return
 
         try:
-            logger.info(f"Executing Order: {data['side']} {data['symbol']} {data['amount']}")
+            logger.info(f"Received Order Request: {data['side'].upper()} {data['symbol']} {data['amount']} (Agent: {data.get('agent', 'Unknown')})")
+            logger.debug(f"Full Order Request Data: {data}")
             
             # Real execution (In MVP, we should check exchange status etc)
             # symbol mapping for bingx might need adjustment depending on ccxt version
@@ -102,6 +103,7 @@ class ExecutionAgent(BaseAgent):
                 'tp_price': tp_price,
                 'rationale': rationale
             }
+            logger.debug(f"Executing with Params set: {params}")
             
             order = await self.exchange.create_order(
                 symbol=symbol,
@@ -132,12 +134,12 @@ class ExecutionAgent(BaseAgent):
                     db.add(db_order)
                     db.commit()
             
-            logger.info(f"ORDER FILLED: {order['id']} | {side.upper()} {amount} {symbol}")
+            logger.info(f"ORDER FILLED: {order.get('id')} | {side.upper()} {amount} {symbol} | Price: {order.get('price', 'N/A')}")
             order["agent"] = self.name
             await event_bus.publish(EventType.ORDER_FILLED, order)
             
         except Exception as e:
-            logger.error(f"Execution Error: {e}")
+            logger.error(f"Execution Error: {e}", exc_info=True)
             await event_bus.publish(EventType.ERROR, {"agent": self.name, "error": str(e)})
 
     async def stop(self):
