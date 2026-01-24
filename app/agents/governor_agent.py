@@ -174,40 +174,45 @@ class GovernorAgent:
 
             logger.info(f"Governor: Found {len(all_symbols)} potential USDT perpetual symbols.")
 
-            # Prioritization: Top 10 (from settings or just first 10)
+            # Prioritization: Initial List (from settings or just first few)
             trading_symbols = settings.TRADING_SYMBOLS if hasattr(settings, 'TRADING_SYMBOLS') else []
-            top_10 = [s for s in trading_symbols if s in all_symbols]
+            initial_pool = [s for s in trading_symbols if s in all_symbols]
             
-            # If TRADING_SYMBOLS has less than 10, fill with others (prefer common ones if possible)
-            if len(top_10) < 10:
-                others = [s for s in all_symbols if s not in top_10]
+            # If TRADING_SYMBOLS has less than MAX_SYMBOLS, fill with others (prefer common ones if possible)
+            if len(initial_pool) < settings.MAX_SYMBOLS:
+                others = [s for s in all_symbols if s not in initial_pool]
                 # In a real app we might sort by volume. Here we'll just take the next few.
-                top_10.extend(others[:10-len(top_10)])
+                initial_pool.extend(others[:settings.MAX_SYMBOLS-len(initial_pool)])
             
-            remaining = [s for s in all_symbols if s not in top_10]
+            remaining = [s for s in all_symbols if s not in initial_pool]
             random.shuffle(remaining)
             
-            prioritized_list = top_10 + remaining
+            prioritized_list = initial_pool + remaining
             
-            logger.info(f"Governor: Starting sanity checks on {len(prioritized_list)} symbols...")
+            logger.info(f"Governor: Starting sanity checks on {len(prioritized_list)} symbols. Limit: {settings.MAX_SYMBOLS}")
             
+            approved_count = 0
             for symbol in prioritized_list:
-                if not self.is_running:
+                if not self.is_running or approved_count >= settings.MAX_SYMBOLS:
                     break
                 
                 # Check with Sanity Agent
                 is_sane = await self.sanity_agent.check_symbol(symbol)
                 
                 if is_sane:
-                    logger.info(f"Governor: Symbol {symbol} PASSED sanity check.")
+                    logger.info(f"Governor: Symbol {symbol} PASSED sanity check ({approved_count + 1}/{settings.MAX_SYMBOLS}).")
                     # Broadcast approval
                     # We use a small delay between publishing to let agents process
                     await event_bus.publish(EventType.SYMBOL_APPROVED, {"symbol": symbol})
+                    approved_count += 1
                 else:
                     logger.warning(f"Governor: Symbol {symbol} FAILED sanity check (Derivative/Weird). Skipping.")
                 
                 # Throttle LLM requests
                 await asyncio.sleep(0.5)
+
+            if approved_count >= settings.MAX_SYMBOLS:
+                logger.info(f"Governor: Reached MAX_SYMBOLS limit ({settings.MAX_SYMBOLS}). Stopping initialization.")
 
         except Exception as e:
             logger.error(f"Governor: Error during symbol initialization: {e}", exc_info=True)
