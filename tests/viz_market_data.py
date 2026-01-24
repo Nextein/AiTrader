@@ -64,15 +64,16 @@ async def main():
     print("Generating detailed plot...")
     
     # Create subplots
-    fig = make_subplots(rows=6, cols=1, shared_xaxes=True, 
-                        vertical_spacing=0.03, 
+    fig = make_subplots(rows=7, cols=1, shared_xaxes=True, 
+                        vertical_spacing=0.02, 
                         subplot_titles=('Price & EMAs & Support/Resistance', 
                                         'Standard Weis Waves', 
                                         'Relative Weis Waves & Phase',
                                         'Heikin Ashi Weis Waves',
                                         'ADX/DI', 
-                                        'Heikin Ashi'),
-                        row_heights=[0.35, 0.1, 0.1, 0.1, 0.1, 0.15])
+                                        'Heikin Ashi',
+                                        'Relative Candles'),
+                        row_heights=[0.3, 0.1, 0.1, 0.1, 0.1, 0.15, 0.15])
 
     # Convert timestamp to datetime
     df_calc['dt'] = pd.to_datetime(df_calc['timestamp'], unit='ms')
@@ -124,7 +125,7 @@ async def main():
 
     # 3. Relative Weis Waves & Phase
     if 'Relative Weis Waves Volume' in df_calc.columns:
-         # Color based on Phase (which drives the wave direction)
+         # Color based on Phase
          if 'Relative Candles Phase' in df_calc.columns:
              colors = list(map(lambda p: 'green' if p > 0 else 'red', df_calc['Relative Candles Phase']))
          else:
@@ -132,27 +133,14 @@ async def main():
              
          fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Relative Weis Waves Volume'], name='Rel Weis Waves', marker_color=colors), row=3, col=1)
 
-    # Plot Phase as a line on secondary axis? Or just overlay?
-    # Let's plot the Phase State as a stepped line to see transitions
-    if 'Relative Candles Phase' in df_calc.columns:
-        # Scale phase to be visible or use secondary y? 
-        # Easier to just create a visual representation, e.g. +1/-1
-        # But row 3 is for Volume.
-        # I'll just rely on the color of the bars for the phase.
-        pass
-
     # 4. Heikin Ashi Weis Waves
     if 'Heikin Ashi Weis Waves Volume' in df_calc.columns:
-         # Need direction for color? We didn't store HA Wave Direction explicitly in DF as column, 
-         # but we can infer or simpler: Just use alternating colors or calculate it on fly.
-         # Actually, the direction is based on HA Candles.
          if 'Heikin Ashi Close' in df_calc.columns and 'Heikin Ashi Open' in df_calc.columns:
              ha_dir = np.sign(df_calc['Heikin Ashi Close'] - df_calc['Heikin Ashi Open'])
              colors = list(map(lambda d: 'green' if d > 0 else 'red', ha_dir))
          else:
              colors = 'orange'
          fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Heikin Ashi Weis Waves Volume'], name='HA Weis Waves', marker_color=colors), row=4, col=1)
-
 
     # 5. ADX (Was Row 3)
     if 'Average Directional Index' in df_calc.columns:
@@ -168,9 +156,42 @@ async def main():
                                  open=df_calc['Heikin Ashi Open'], high=df_calc['Heikin Ashi High'],
                                  low=df_calc['Heikin Ashi Low'], close=df_calc['Heikin Ashi Close'],
                                  name='Heikin Ashi'), row=6, col=1)
+
+    # 7. Relative Candles
+    if 'Relative Candles Open' in df_calc.columns:
+         # Split into Standard and Inside (Gray)
+         # We need to filter the dataframe. Plotly handles gaps if we use x=dt
+         
+         if 'Relative Candles Mode' in df_calc.columns:
+             # Standard
+             std_mask = df_calc['Relative Candles Mode'] != 'Inside'
+             df_std = df_calc[std_mask]
+             
+             fig.add_trace(go.Candlestick(x=df_std['dt'],
+                                     open=df_std['Relative Candles Open'], high=df_std['High'],
+                                     low=df_std['Low'], close=df_std['Relative Candles Close'],
+                                     name='Relative Candles'), row=7, col=1)
+             
+             # Gary (Inside)
+             inside_mask = df_calc['Relative Candles Mode'] == 'Inside'
+             if inside_mask.any():
+                 df_inside = df_calc[inside_mask]
+                 fig.add_trace(go.Candlestick(x=df_inside['dt'],
+                                         open=df_inside['Relative Candles Open'], high=df_inside['High'],
+                                         low=df_inside['Low'], close=df_inside['Relative Candles Close'],
+                                         increasing_line_color= 'gray',
+                                         decreasing_line_color= 'gray',
+                                         name='Inside Candles'), row=7, col=1)
+         else:
+             # Fallback if mode missing
+             fig.add_trace(go.Candlestick(x=df_calc['dt'],
+                                     open=df_calc['Relative Candles Open'], high=df_calc['High'],
+                                     low=df_calc['Low'], close=df_calc['Relative Candles Close'],
+                                     name='Relative Candles'), row=7, col=1)
+
     
     fig.update_layout(title=f'Market Data Verification: {symbol} {timeframe}', 
-                      height=2000, width=1200, template='plotly_dark')
+                      height=2200, width=1200, template='plotly_dark')
     fig.update_xaxes(rangeslider_visible=False)
     
     output_file = "market_data_verification.html"

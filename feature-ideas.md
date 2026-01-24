@@ -55,4 +55,10 @@ All agents receive this object when doing anything related to the symbol.
 
 All agents edit this object when doing anything related to the symbol. Each agent knows which section is is in charge of filling in and updating, as well as which sections it is interested in looking at.
 
+The agents I would like to implement are the following:
+
+1. Regime Change Agent
+2. Support and Resistance Agent
+3. Analyst
+
 

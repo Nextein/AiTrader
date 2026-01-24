@@ -242,12 +242,52 @@ class MarketDataAgent(BaseAgent):
                 else:
                     phases[i] = phases[i-1]
 
+            # Calculate Relative Candles Open/Close (Drawing Logic)
+            # Logic provided by user:
+            # HH & !LL -> Bullish (O=L, C=H)
+            # LL & !HH -> Bearish (O=H, C=L)
+            # HH & LL -> Outside (Follows original candle color: Red->Full Red, Green->Full Green)
+            # Else (Inside/Equal) -> Bearish Full (O=H, C=L)
+            
+            rel_opens = np.copy(opens)
+            rel_closes = np.copy(closes)
+            rel_modes = np.array(['Standard'] * n, dtype=object)
+            
+            # Vectorize or Loop? Loop is strictly safer for exact logic match, n is small (100-1000)
+            for i in range(1, n):
+                prev_h = highs[i-1]
+                prev_l = lows[i-1]
+                curr_h = highs[i]
+                curr_l = lows[i]
+                curr_o = opens[i]
+                curr_c = closes[i]
+                
+                hh = curr_h > prev_h
+                ll = curr_l < prev_l
+                
+                if hh and not ll:
+                    rel_opens[i] = curr_l
+                    rel_closes[i] = curr_h
+                elif ll and not hh:
+                    rel_opens[i] = curr_h
+                    rel_closes[i] = curr_l
+                elif hh and ll:
+                    if curr_o > curr_c: # Original Red
+                        rel_opens[i] = curr_h
+                        rel_closes[i] = curr_l
+                    else: # Original Green/Doji
+                        rel_opens[i] = curr_l
+                        rel_closes[i] = curr_h
+                else:
+                    # Inside or exact -> O=High, C=Low (Red in basic logic, but marked Inside for Gray)
+                    rel_opens[i] = curr_h
+                    rel_closes[i] = curr_l
+                    rel_modes[i] = 'Inside'
+
+            df['Relative Candles Open'] = rel_opens
+            df['Relative Candles Close'] = rel_closes
+            df['Relative Candles Mode'] = rel_modes
             df['Relative Candles Phase'] = phases
-            # Assuming Open/Close for Relative Candles matches Japanese candles as High/Low do,
-            # unless a specific transformation was requested (which wasn't in the logic provided).
-            # We set them to standard O/C.
-            df['Relative Candles Open'] = df['Open']
-            df['Relative Candles Close'] = df['Close']
 
             # 3. Trends/Oscillators
             # ADX
@@ -360,18 +400,11 @@ class MarketDataAgent(BaseAgent):
                 return fractal_highs, fractal_lows
 
             # Calculate and store
-            for n in [5, 7, 9]:
-                fh, fl = get_fractals(df['High'], df['Low'], n)
-                # TODO asks for "Williams Fractals N". It's a single column? 
-                # Fractals split into Up/Down. 
-                # Maybe string "Bearish/Bullish"? 
-                # Or maybe the Price?
-                # I'll add two columns per N? Or one combined?
-                # "Williams Fractals 3" -> Suggests one column.
-                # I will store the Price if it matches either, else NaN.
-                # If both (rare/impossible for odd n?), prefer one.
+            for n_val in [5, 7, 9]:
+                fh, fl = get_fractals(df['High'], df['Low'], n_val)
+                # Store the Price if it matches either, else NaN.
                 merged = fh.fillna(fl)
-                df[f'Williams Fractals {n}'] = merged
+                df[f'Williams Fractals {n_val}'] = merged
 
             # 8. CVD
             # Approx: Vol if Close > Open else -Vol
@@ -379,64 +412,67 @@ class MarketDataAgent(BaseAgent):
             direction = np.where(df['Close'] >= df['Open'], 1, -1)
             df['Cumulative Volume Delta'] = (df['Volume'] * direction).cumsum()
 
-            # 9. Closest Support/Resistance (Using 5, 7, 9 Fractals)
-            # Strategy: Collect key levels from all fractal timeframes (5, 7, 9).
-            # Treat both Highs and Lows as generic "Key Levels" (Polarity Principle: Resistance becomes Support).
-            # At each step, valid levels are those confirmed in the past.
-            # Closest Support = Max(Level < CurrentPrice)
-            # Closest Resistance = Min(Level > CurrentPrice)
+            # 9. Closest Support/Resistance (Using Williams Fractals 9)
+            # Strategy: Separate Support (Low Fractals) and Resistance (High Fractals) pools.
+            # Support Pool = All Highs/Lows of confirmed Down Fractals
+            # Resistance Pool = All Highs/Lows of confirmed Up Fractals
+            # Actually, standard S/R uses the fractal price itself:
+            # Down Fractal Low = Support level
+            # Up Fractal High = Resistance level
             
-            # Re-calculate fractals to have access to separated Highs/Lows for all N
-            # Ideally we optimized this but for clarity/robustness we map them map.
+            fh9, fl9 = get_fractals(df['High'], df['Low'], 9)
+            fh9_vals = fh9.values
+            fl9_vals = fl9.values
             
-            fractal_definitions = {}
-            for n in [5, 7, 9]:
-                fh, fl = get_fractals(df['High'], df['Low'], n)
-                fractal_definitions[n] = (fh.values, fl.values)
-
-            body_bottom = list(np.minimum(df['Open'], df['Close']))
-            body_top = list(np.maximum(df['Open'], df['Close']))
+            highs = df['High'].values
+            lows = df['Low'].values
             closes = df['Close'].values
+            n = len(df)
             
-            supports = []
-            resistances = []
+            supports = [None] * n
+            resistances = [None] * n
             
-            # List of all discovered levels: floats
-            valid_levels = []
+            # Pools of confirmed levels
+            support_pool = []
+            resistance_pool = []
             
-            for i in range(len(df)):
-                # 1. Update valid levels with NEW fractals confirmed at i
-                # For each n, confirm_idx = i - (n // 2)
+            offset = 9 // 2 # 4
+            
+            body_bottom = np.minimum(df['Open'].values, df['Close'].values)
+            body_top = np.maximum(df['Open'].values, df['Close'].values)
+            
+            for i in range(n):
+                # 1. Update pools with fractals confirmed at index i
+                # A fractal at conf_idx is confirmed when we have offset candles after it.
+                conf_idx = i - offset
                 
-                for n, (fh_vals, fl_vals) in fractal_definitions.items():
-                    offset = n // 2
-                    conf_idx = i - offset
+                if conf_idx >= 0:
+                    # New Resistance confirmed (High Fractal) -> Use Body Top
+                    if not np.isnan(fh9_vals[conf_idx]):
+                        resistance_pool.append(body_top[conf_idx])
                     
-                    if conf_idx >= 0:
-                        # Check Low Fractal -> Body Bottom
-                        if not np.isnan(fl_vals[conf_idx]):
-                            valid_levels.append(body_bottom[conf_idx])
-                        
-                        # Check High Fractal -> Body Top
-                        if not np.isnan(fh_vals[conf_idx]):
-                            valid_levels.append(body_top[conf_idx])
+                    # New Support confirmed (Low Fractal) -> Use Body Bottom
+                    if not np.isnan(fl9_vals[conf_idx]):
+                        support_pool.append(body_bottom[conf_idx])
                 
                 current_price = closes[i]
                 
-                # 2. Find Closest Support and Resistance from ALL valid levels
-                # Support: Closest value < current_price
-                below = [l for l in valid_levels if l < current_price]
+                # 2. Find Closest Support (Max Level < Price)
+                below = [l for l in support_pool if l < current_price]
                 if below:
-                    supports.append(max(below))
+                    supports[i] = max(below)
                 else:
-                    supports.append(None)
+                    # Fallback to older levels if broken? 
+                    # user said: "If price breaks a support, the closest support should immediately be the next fractal down."
+                    # This is naturally handled by max(below) if we keep all historical levels.
+                    supports[i] = None
                     
-                # Resistance: Closest value > current_price
-                above = [l for l in valid_levels if l > current_price]
+                # 3. Find Closest Resistance (Min Level > Price)
+                above = [l for l in resistance_pool if l > current_price]
                 if above:
-                    resistances.append(min(above))
+                    resistances[i] = min(above)
                 else:
-                    resistances.append(None)
+                    resistances[i] = None
 
             df['Closest Support'] = supports
             df['Closest Resistance'] = resistances

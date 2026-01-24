@@ -1,9 +1,3 @@
 # Tasks
 
-### Add more indicators:
-
-- [x] Relative Candles (Open, Close, Phase)
-- [x] Weis Waves (Standard, Heikin Ashi, Relative)
-- [x] Visualization Test Updated
-
-All tasks completed.
+Support and resistance levels are not being calculated properly. They should be based on previous williams fractals 9 values and should be the closest to price. If price breaks a support, the closest support should immediately be the next fractal down. Currently it seems like the support and resistance levels simply follow the current candle's high and low until a new fractal forms, but this is incorrect since it leaves many occasions without a proper support or resistance level defined. Fix this. If you have any questions on what I'm referring to, ask me.
