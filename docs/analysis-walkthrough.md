@@ -321,13 +321,6 @@ If you want, next I can:
 
 
 
-
-
-
-
-
-
-
 # Agent output
 
 
@@ -400,3 +393,82 @@ MarketDataAgent
 MarketStructureAgent
  successfully reacts to events, reads the shared data, and populates the market structure analysis fields for multiple timeframes (e.g., 4h, 1h).
 The architecture supports concurrent updates without data loss.
+
+
+
+
+Walkthrough - Symbol Discovery and Sanity Check
+I have completed the tasks in 
+TODO.md
+ regarding symbol discovery, filtering, and sanity checking.
+
+Changes Made
+1. Configuration Update
+Modified 
+config.py
+ to include settings for Ollama:
+
+OLLAMA_BASE_URL: http://localhost:11434
+OLLAMA_MODEL: phi3:mini
+2. Sanity Agent Implementation
+Created 
+sanity_agent.py
+:
+
+Uses LangChain with Ollama to validate symbols.
+Implements a strict prompt to filter out leveraged tokens (BTCUP), multipliers (1000PEPE), and other "weird" assets.
+3. Governor Agent Integration
+Updated 
+governor_agent.py
+:
+
+Implemented 
+initialize_symbols_task
+ which:
+Fetches all USDT perpetual contracts from BingX.
+Prioritizes the Top 10 symbols.
+Randomizes the rest of the symbols.
+Calls 
+SanityAgent
+ for each symbol.
+Publishes a SYMBOL_APPROVED event for valid coins.
+4. Market Data Agent Update
+Updated 
+market_data_agent.py
+:
+
+Now listens for SYMBOL_APPROVED events.
+Dynamically adds approved symbols to its fetch loop.
+Ensures 
+AnalysisObject
+ is only created for approved symbols.
+Verification Results
+Sanity Agent Testing
+I ran a test script 
+verify_sanity.py
+ which confirmed the following:
+
+PASSED: BTC-USDT, ETH-USDT, SOL-USDT, LTC-USDT
+REJECTED: BTCUP-USDT, BTCDOWN-USDT, 1000PEPE-USDT, 1000SHIB-USDT
+Governor Integration Testing
+I ran 
+verify_governor_init.py
+ which demonstrated the full flow:
+
+Found ~300+ potential symbols on BingX.
+Successfully approved major coins like BTC, ETH, LINK, BCH, ADA.
+Correctly skipped derivative or unknown assets.
+# First 5 approved in test:
+['BTC/USDT:USDT', 'ETH/USDT:USDT', 'LINK/USDT:USDT', 'BCH/USDT:USDT', 'ADA/USDT:USDT']
+The system now automatically discovers the best symbols to trade while filtering out trash!
+
+
+The list of symbols should not be predefined. Instead, it should be fetched from the exchange. Then, the symbols should be filtered to only include USDT perpetual contracts, if they are not filtered already (I believe there is an API endpoint only for USDT perpetual contracts, but I might be wrong).
+
+The top 10 symbols should be analysed first, and then the rest should be analysed in a random order.
+
+The first thing that should happen for each symbol is a check to see whether the symbol is an actual cryptocurrency coin or token or if it's some weird derivative like BTCUP-USDT or 1000PEPE-USDT or something similar.
+
+To do so, the Governor Agent should call the Sanity Agent with the symbol as a parameter. The Sanity Agent should return a boolean value indicating whether the symbol is a valid cryptocurrency coin or token or not. To do so it should simply ask the LLM via langchain if the symbol is a valid cryptocurrency coin or token or not. This question should be wrapped in a prompt with maxed out prompt engineering and best practices to ensure a correct answer every time. The LLM available is running locally on ollama. It is phi3:mini, and it is available on my windows laptop via ollama in the usual port.
+
+Only if the Sanity Agent returns true should the analysis object for that symbol be created. If it returns false, the symbol should be skipped.

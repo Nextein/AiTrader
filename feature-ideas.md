@@ -24,6 +24,31 @@ Do not implement any of these yet.
 
 4. SL and TP values can be relative to the entry price or absolute values. They can also be partial or full, allowing for multiple TPs or SLs to be set for a given entry.
 
+
+
+
+
+# PRIORITY
+
+Before the market structure agent,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Analyst AI Agent
 
 I am running Ollama in my windows laptop where I am running the AITrader. I am running it on port 11434. I have the following models downloaded because they are the best I could find given my hardware constraints:
