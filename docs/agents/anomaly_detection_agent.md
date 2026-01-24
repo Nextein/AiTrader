@@ -23,3 +23,7 @@ When an anomaly is detected, it publishes an `ANOMALY_ALERT`. Other agents (like
 | `MARKET_DATA` | **Input** | Monitors price for extreme swings. |
 | `SIGNAL` | **Input** | Monitors frequency of trade ideas. |
 | `ANOMALY_ALERT` | **Output** | Published when thresholds are breached. |
+
+
+# Prompt
+

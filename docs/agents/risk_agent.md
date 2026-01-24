@@ -32,3 +32,7 @@ If the risk is within limits, it converts the USDT trade size into the "base amo
 | `SIGNAL` | **Input** | Receives the consensus decision. |
 | `MARKET_DATA` | **Input** | Uses the candle data to calculate current ATR. |
 | `ORDER_REQUEST` | **Output** | Published if risk checks pass and position size is calculated. |
+
+
+# Prompt
+

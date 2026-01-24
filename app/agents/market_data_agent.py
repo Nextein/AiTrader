@@ -301,7 +301,7 @@ class MarketDataAgent(BaseAgent):
             df['Average True Range'] = df.ta.atr(length=14)
             
             # OBV
-            df['On-Balance Volume'] = df.ta.obv()
+            df['On Balance Volume'] = df.ta.obv()
 
             # 4. Weis Waves
             def calculate_weis_waves(direction_series, vol_s):
@@ -406,11 +406,6 @@ class MarketDataAgent(BaseAgent):
                 merged = fh.fillna(fl)
                 df[f'Williams Fractals {n_val}'] = merged
 
-            # 8. CVD
-            # Approx: Vol if Close > Open else -Vol
-            # direction = np.sign(df['Close'] - df['Open']).replace(0, 1) # Treat doji as buy? or 0? 0 is safe.
-            direction = np.where(df['Close'] >= df['Open'], 1, -1)
-            df['Cumulative Volume Delta'] = (df['Volume'] * direction).cumsum()
 
             # 9. Closest Support/Resistance (Using Williams Fractals 9)
             # Strategy: Separate Support (Low Fractals) and Resistance (High Fractals) pools.

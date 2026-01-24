@@ -32,3 +32,7 @@ Because trend-following works best in "trending" markets, this agent starts with
 | :--- | :--- | :--- |
 | `MARKET_DATA` | **Input** | Receives enriched price data. |
 | `STRATEGY_SIGNAL` | **Output** | Published when an EMA cross is detected. |
+
+
+# Prompt
+

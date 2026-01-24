@@ -30,3 +30,7 @@ In Demo Mode, the Execution Agent also monitors incoming `MARKET_DATA` to see if
 | `ORDER_REQUEST` | **Input** | Triggers the placement of a new trade. |
 | `EMERGENCY_EXIT` | **Input** | Triggers the immediate closure of all positions. |
 | `ORDER_FILLED` | **Output** | Published after a trade is successfully opened or naturally closed (SL/TP). |
+
+
+# Prompt
+

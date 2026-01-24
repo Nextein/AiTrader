@@ -1,0 +1,1972 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CoinAnalysisReport",
+    "type": "object",
+    "properties": {
+        "symbol": {
+            "type": "string",
+            "description": "Trading pair symbol (e.g., BTCUSDT)"
+        },
+        "analysis_state": {
+            "type": "string",
+            "enum": [
+                "NEW",
+                "IN_PROGRESS",
+                "COMPLETED"
+            ],
+            "description": "Current analysis lifecycle state"
+        },
+        "market_data": {
+            "type": "object",
+            "description": "OHLCV market data by timeframe",
+            "properties": {
+                "1w": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 week timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "1d": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 day timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "4h": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (4 hour timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "1h": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 hour timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "30m": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (30 minute timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "15m": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (15 minute timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                },
+                "5m": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (5 minute timeframe, Japanese candlesticks, Heikin Ashi candles, relative candless, Relative candles, and indicators)"
+                }
+            },
+            "additionalProperties": false
+        },
+        "volume_data": {
+            "type": "object",
+            "description": "Volume data for the coin",
+            "properties": {
+                "anchored_vwaps": {
+                    "type": "array",
+                    "description": "Volume-weighted average price data anchored to the start of the current move",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timeframe": {
+                                "type": "string"
+                            },
+                            "anchor": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "vwaps": {
+                                "type": "array",
+                                "description": "Volume-weighted average price",
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            "last_updated": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "vpvr": {
+                    "type": "object",
+                    "description": "Visible Range Volume Profile data for each timeframe",
+                    "properties": {
+                        "1w": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "1d": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "4h": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "1h": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "30m": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "15m": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "5m": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "description": "Array of price-volume pairs",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "volume": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "last_updated": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    }
+                },
+                "value_areas": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timeframe": {
+                                "type": "string",
+                                "enum": [
+                                    "1w",
+                                    "1d",
+                                    "4h",
+                                    "1h",
+                                    "30m",
+                                    "15m",
+                                    "5m"
+                                ]
+                            },
+                            "start_date": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "end_date": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "val": {
+                                "type": "number"
+                            },
+                            "vah": {
+                                "type": "number"
+                            },
+                            "poc": {
+                                "type": "number"
+                            },
+                            "naked": {
+                                "type": "boolean"
+                            },
+                            "status": {
+                                "type": "string",
+                                "enum": [
+                                    "IN",
+                                    "OUT",
+                                    "SFP",
+                                    "FA",
+                                    "RETEST"
+                                ]
+                            },
+                            "support": {
+                                "type": "number"
+                            },
+                            "resistance": {
+                                "type": "number"
+                            },
+                            "last_updated": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "on_balance_volume": {
+                    "type": "object",
+                    "description": "On Balance Volume (OBV) analysis",
+                    "properties": {
+                        "1w_analysis": {
+                            "type": "array",
+                            "description": "Weekly timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "1d_analysis": {
+                            "type": "array",
+                            "description": "Daily timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "4h_analysis": {
+                            "type": "array",
+                            "description": "4h timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "1h_analysis": {
+                            "type": "array",
+                            "description": "1h timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "30m_analysis": {
+                            "type": "array",
+                            "description": "30m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "15m_analysis": {
+                            "type": "array",
+                            "description": "15m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "5m_analysis": {
+                            "type": "array",
+                            "description": "5m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "weis_waves": {
+                    "type": "object",
+                    "description": "Weis Waves analysis",
+                    "properties": {
+                        "1w_analysis": {
+                            "type": "array",
+                            "description": "Weekly timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "1d_analysis": {
+                            "type": "array",
+                            "description": "Daily timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "4h_analysis": {
+                            "type": "array",
+                            "description": "4h timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "1h_analysis": {
+                            "type": "array",
+                            "description": "1h timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "30m_analysis": {
+                            "type": "array",
+                            "description": "30m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "15m_analysis": {
+                            "type": "array",
+                            "description": "15m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "5m_analysis": {
+                            "type": "array",
+                            "description": "5m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "session_volume": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "15m_cvd": {
+                    "type": "object",
+                    "description": "15m cumulative volume delta divergences analysis",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "description": "15m timeframe analysis history",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Timestamp when the analysis entry was created"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "Textual market analysis"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                }
+            }
+        },
+        "support_resistance": {
+            "type": "array",
+            "description": "Support and resistance levels across multiple timeframes",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "timeframe": {
+                        "type": "string",
+                        "enum": [
+                            "1w",
+                            "1d",
+                            "4h",
+                            "1h",
+                            "30m",
+                            "15m",
+                            "5m"
+                        ],
+                        "description": "Timeframe on which this level is identified"
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Price level acting as support or resistance"
+                    },
+                    "strength": {
+                        "type": "string",
+                        "enum": [
+                            "WEAK",
+                            "MODERATE",
+                            "STRONG"
+                        ],
+                        "description": "Relative strength of the level based on touches, volume, or confluence"
+                    },
+                    "last_updated": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when this level was last validated or updated"
+                    }
+                },
+                "required": [
+                    "timeframe",
+                    "price",
+                    "strength",
+                    "last_updated"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "market_structure": {
+            "type": "object",
+            "description": "Market structure analysis per timeframe",
+            "properties": {
+                "1w": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "pivot_points": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "pivot_points",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "1d": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "pivot_points": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "pivot_points",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "4h": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "pivot_points": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "pivot_points",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "1h": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "pivot_points": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "pivot_points",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "30m": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "15m": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                },
+                "5m": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "date",
+                                    "content"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "highs": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "lows": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "value_areas": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHER",
+                                "LOWER"
+                            ]
+                        },
+                        "emas": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    "required": [
+                        "analysis",
+                        "highs",
+                        "lows",
+                        "value_areas",
+                        "emas",
+                        "last_updated"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        },
+        "market_regime": {
+            "type": "object",
+            "properties": {
+                "1w": {
+                    "type": "string",
+                    "description": "Market regime for 1 week timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "1d": {
+                    "type": "string",
+                    "description": "Market regime for 1 day timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "4h": {
+                    "type": "string",
+                    "description": "Market regime for 4 hour timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "1h": {
+                    "type": "string",
+                    "description": "Market regime for 1 hour timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "30m": {
+                    "type": "string",
+                    "description": "Market regime for 30 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "15m": {
+                    "type": "string",
+                    "description": "Market regime for 15 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "5m": {
+                    "type": "string",
+                    "description": "Market regime for 5 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "last_updated": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "key_levels": {
+            "type": "object",
+            "description": "Important price levels derived from market structure",
+            "properties": {
+                "daily_open": {
+                    "type": "number",
+                    "description": "Opening price of the current trading day"
+                },
+                "weekly_open": {
+                    "type": "number",
+                    "description": "Opening price of the previous trading week"
+                },
+                "monthly_open": {
+                    "type": "number",
+                    "description": "Opening price of the previous trading month"
+                },
+                "daily_support": {
+                    "type": "number",
+                    "description": "Support level of the current trading day"
+                },
+                "daily_resistance": {
+                    "type": "number",
+                    "description": "Resistance level of the current trading day"
+                },
+                "weekly_support": {
+                    "type": "number",
+                    "description": "Support level of the current trading week"
+                },
+                "weekly_resistance": {
+                    "type": "number",
+                    "description": "Resistance level of the current trading week"
+                },
+                "monthly_support": {
+                    "type": "number",
+                    "description": "Support level of the current trading month"
+                },
+                "monthly_resistance": {
+                    "type": "number",
+                    "description": "Resistance level of the current trading month"
+                },
+                "global_cc_support": {
+                    "type": "number",
+                    "description": "Support level based on fibonacci retracement"
+                },
+                "global_cc_resistance": {
+                    "type": "number",
+                    "description": "Resistance level based on fibonacci retracement"
+                },
+                "local_cc_support": {
+                    "type": "number",
+                    "description": "Support level based on fibonacci retracement"
+                },
+                "local_cc_resistance": {
+                    "type": "number",
+                    "description": "Resistance level based on fibonacci retracement"
+                },
+                "naked_session_poc_below": {
+                    "type": "boolean",
+                    "description": "Is the next naked POC below current price"
+                },
+                "naked_session_poc_above": {
+                    "type": "boolean",
+                    "description": "Is the next naked POC above current price"
+                },
+                "daily_poc_below": {
+                    "type": "boolean",
+                    "description": "Is the next daily POC below current price"
+                },
+                "daily_poc_above": {
+                    "type": "boolean",
+                    "description": "Is the next daily POC above current price"
+                },
+                "weekly_poc_below": {
+                    "type": "boolean",
+                    "description": "Is the next weekly POC below current price"
+                },
+                "weekly_poc_above": {
+                    "type": "boolean",
+                    "description": "Is the next weekly POC above current price"
+                },
+                "monthly_poc_below": {
+                    "type": "boolean",
+                    "description": "Is the next monthly POC below current price"
+                },
+                "monthly_poc_above": {
+                    "type": "boolean",
+                    "description": "Is the next monthly POC above current price"
+                },
+                "previous_day_high": {
+                    "type": "number",
+                    "description": "Previous day's high price"
+                },
+                "previous_day_low": {
+                    "type": "number",
+                    "description": "Previous day's low price"
+                },
+                "previous_week_high": {
+                    "type": "number",
+                    "description": "Previous week's high price"
+                },
+                "previous_week_low": {
+                    "type": "number",
+                    "description": "Previous week's low price"
+                },
+                "previous_month_high": {
+                    "type": "number",
+                    "description": "Previous month's high price"
+                },
+                "previous_month_low": {
+                    "type": "number",
+                    "description": "Previous month's low price"
+                },
+                "previous_day_vah": {
+                    "type": "number",
+                    "description": "Previous day's value area high"
+                },
+                "previous_day_val": {
+                    "type": "number",
+                    "description": "Previous day's value area low"
+                },
+                "previous_week_vah": {
+                    "type": "number",
+                    "description": "Previous week's value area high"
+                },
+                "previous_week_val": {
+                    "type": "number",
+                    "description": "Previous week's value area low"
+                },
+                "previous_month_vah": {
+                    "type": "number",
+                    "description": "Previous month's value area high"
+                },
+                "previous_month_val": {
+                    "type": "number",
+                    "description": "Previous month's value area low"
+                },
+                "previous_day_poc": {
+                    "type": "number",
+                    "description": "Previous day's POC"
+                },
+                "previous_week_poc": {
+                    "type": "number",
+                    "description": "Previous week's POC"
+                },
+                "previous_month_poc": {
+                    "type": "number",
+                    "description": "Previous month's POC"
+                },
+                "last_updated": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "daily_open",
+                "weekly_open",
+                "monthly_open",
+                "global_cc_support",
+                "global_cc_resistance",
+                "local_cc_support",
+                "local_cc_resistance",
+                "previous_day_poc",
+                "previous_week_poc",
+                "previous_month_poc",
+                "last_updated"
+            ],
+            "additionalProperties": false
+        },
+        "fibonacci_retracement": {
+            "type": "array",
+            "description": "Fibonacci retracement definitions calculated over specific price swings and timeframes",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "timeframe": {
+                        "type": "string",
+                        "enum": [
+                            "1w",
+                            "1d",
+                            "4h",
+                            "1h",
+                            "30m",
+                            "15m",
+                            "5m"
+                        ],
+                        "description": "Timeframe on which the Fibonacci retracement is calculated"
+                    },
+                    "start_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the swing start used for Fibonacci calculation"
+                    },
+                    "end_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the swing end used for Fibonacci calculation"
+                    },
+                    "start_price": {
+                        "type": "number",
+                        "description": "Price at the start of the Fibonacci swing"
+                    },
+                    "end_price": {
+                        "type": "number",
+                        "description": "Price at the end of the Fibonacci swing"
+                    },
+                    "fib_666": {
+                        "type": "number",
+                        "description": "66.6% Fibonacci retracement level derived from the swing"
+                    },
+                    "fib_706": {
+                        "type": "number",
+                        "description": "70.6% Fibonacci retracement level derived from the swing"
+                    },
+                    "last_updated": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when this Fibonacci retracement was last calculated or validated"
+                    }
+                },
+                "required": [
+                    "timeframe",
+                    "start_date",
+                    "end_date",
+                    "start_price",
+                    "end_price",
+                    "fib_666",
+                    "fib_706",
+                    "last_updated"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "ema_strategy": {
+            "type": "object",
+            "properties": {
+                "1w_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "1d_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "4h_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "1h_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "30m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "15m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "5m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "cycles_strategy": {
+            "type": "object",
+            "properties": {
+                "1w_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "1d_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "4h_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "1h_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "30m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "15m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "5m_analysis": {
+                    "type": "object",
+                    "properties": {
+                        "cycles": {
+                            "type": "string",
+                            "enum": [
+                                "UP",
+                                "DOWN",
+                                "NEUTRAL"
+                            ]
+                        },
+                        "analysis": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "last_updated": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "trade_setups": {
+            "type": "array",
+            "description": "Proposed trade setups derived from multi-timeframe technical confluence",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string",
+                        "enum": [
+                            "BUY",
+                            "SELL"
+                        ],
+                        "description": "Intended trade direction"
+                    },
+                    "date_created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the trade setup was initially created"
+                    },
+                    "last_updated": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the trade setup was last modified or revalidated"
+                    },
+                    "entry_target": {
+                        "type": "number",
+                        "description": "Planned entry price for the trade"
+                    },
+                    "sl_target": {
+                        "type": "number",
+                        "description": "Stop-loss price level where the trade is invalidated"
+                    },
+                    "tp_target": {
+                        "type": "number",
+                        "description": "Primary take-profit price target"
+                    },
+                    "confluence": {
+                        "type": "array",
+                        "description": "List of technical or contextual factors supporting the trade setup",
+                        "items": {
+                            "type": "string",
+                            "description": "Reason contributing to trade confluence (e.g., higher timeframe support, Fibonacci level, EMA alignment)"
+                        },
+                        "minItems": 1
+                    },
+                    "confidence": {
+                        "type": "string",
+                        "enum": [
+                            "STRONG",
+                            "MEDIUM",
+                            "LOW"
+                        ],
+                        "description": "Overall confidence rating based on the quantity and quality of confluence factors, with higher timeframe and stronger structural levels carrying more weight"
+                    }
+                },
+                "required": [
+                    "direction",
+                    "date_created",
+                    "last_updated",
+                    "entry_target",
+                    "sl_target",
+                    "tp_target",
+                    "confluence",
+                    "confidence"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "date_created": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "symbol",
+        "analysis_state",
+        "market_data",
+        "date_created",
+        "last_updated"
+    ]
+}

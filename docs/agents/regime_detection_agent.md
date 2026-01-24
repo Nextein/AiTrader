@@ -26,3 +26,7 @@ The agent only publishes a `REGIME_CHANGE` event when the state actually flips. 
 | :--- | :--- | :--- |
 | `MARKET_DATA` | **Input** | Receives enriched price data to perform analysis. |
 | `REGIME_CHANGE` | **Output** | Published only when the market flips between TRENDING and RANGING. |
+
+
+# Prompt
+

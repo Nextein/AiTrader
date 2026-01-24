@@ -38,3 +38,7 @@ If a consensus is reached, the Aggregator picks the SL/TP prices from one of the
 | `STRATEGY_SIGNAL` | **Input** | Receives signals from individual strategy agents. |
 | `REGIME_CHANGE` | **Input** | Updates the internal weighting multipliers. |
 | `SIGNAL` | **Output** | Published only if the consensus score clears the threshold. |
+
+
+# Prompt
+

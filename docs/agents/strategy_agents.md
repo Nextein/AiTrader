@@ -22,3 +22,7 @@ Every strategy signal includes:
 *   `rationale`: A text explanation of why the signal was generated.
 *   `price`: The current market price.
 *   `sl_price` / `tp_price`: Optional suggested Stop Loss and Take Profit levels.
+
+
+# Prompt
+

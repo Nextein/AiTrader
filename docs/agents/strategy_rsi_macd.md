@@ -26,3 +26,7 @@ If both conditions are met, the agent publishes a `STRATEGY_SIGNAL` with a base 
 | :--- | :--- | :--- |
 | `MARKET_DATA` | **Input** | Receives enriched price data. |
 | `STRATEGY_SIGNAL` | **Output** | Published when both RSI and MACD conditions are met. |
+
+
+# Prompt
+

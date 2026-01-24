@@ -64,16 +64,17 @@ async def main():
     print("Generating detailed plot...")
     
     # Create subplots
-    fig = make_subplots(rows=7, cols=1, shared_xaxes=True, 
+    fig = make_subplots(rows=8, cols=1, shared_xaxes=True, 
                         vertical_spacing=0.02, 
                         subplot_titles=('Price & EMAs & Support/Resistance', 
                                         'Standard Weis Waves', 
                                         'Relative Weis Waves & Phase',
                                         'Heikin Ashi Weis Waves',
+                                        'On Balance Volume (OBV)',
                                         'ADX/DI', 
                                         'Heikin Ashi',
                                         'Relative Candles'),
-                        row_heights=[0.3, 0.1, 0.1, 0.1, 0.1, 0.15, 0.15])
+                        row_heights=[0.3, 0.1, 0.1, 0.1, 0.1, 0.1, 0.15, 0.15])
 
     # Convert timestamp to datetime
     df_calc['dt'] = pd.to_datetime(df_calc['timestamp'], unit='ms')
@@ -142,22 +143,26 @@ async def main():
              colors = 'orange'
          fig.add_trace(go.Bar(x=df_calc['dt'], y=df_calc['Heikin Ashi Weis Waves Volume'], name='HA Weis Waves', marker_color=colors), row=4, col=1)
 
-    # 5. ADX (Was Row 3)
+    # 5. OBV
+    if 'On Balance Volume' in df_calc.columns:
+        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['On Balance Volume'], line=dict(color='cyan'), name='OBV'), row=5, col=1)
+
+    # 6. ADX (Was Row 3)
     if 'Average Directional Index' in df_calc.columns:
-        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Average Directional Index'], line=dict(color='white'), name='ADX'), row=5, col=1)
+        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Average Directional Index'], line=dict(color='white'), name='ADX'), row=6, col=1)
     if 'Positive Directional Indicator' in df_calc.columns:
-        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Positive Directional Indicator'], line=dict(color='green'), name='DI+'), row=5, col=1)
+        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Positive Directional Indicator'], line=dict(color='green'), name='DI+'), row=6, col=1)
     if 'Negative Directional Indicator' in df_calc.columns:
-        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Negative Directional Indicator'], line=dict(color='red'), name='DI-'), row=5, col=1)
+        fig.add_trace(go.Scatter(x=df_calc['dt'], y=df_calc['Negative Directional Indicator'], line=dict(color='red'), name='DI-'), row=6, col=1)
         
-    # 6. Heikin Ashi (Was Row 4)
+    # 7. Heikin Ashi (Was Row 4)
     if 'Heikin Ashi Open' in df_calc.columns:
          fig.add_trace(go.Candlestick(x=df_calc['dt'],
                                  open=df_calc['Heikin Ashi Open'], high=df_calc['Heikin Ashi High'],
                                  low=df_calc['Heikin Ashi Low'], close=df_calc['Heikin Ashi Close'],
-                                 name='Heikin Ashi'), row=6, col=1)
+                                 name='Heikin Ashi'), row=7, col=1)
 
-    # 7. Relative Candles
+    # 8. Relative Candles
     if 'Relative Candles Open' in df_calc.columns:
          # Split into Standard and Inside (Gray)
          # We need to filter the dataframe. Plotly handles gaps if we use x=dt
@@ -170,7 +175,7 @@ async def main():
              fig.add_trace(go.Candlestick(x=df_std['dt'],
                                      open=df_std['Relative Candles Open'], high=df_std['High'],
                                      low=df_std['Low'], close=df_std['Relative Candles Close'],
-                                     name='Relative Candles'), row=7, col=1)
+                                     name='Relative Candles'), row=8, col=1)
              
              # Gary (Inside)
              inside_mask = df_calc['Relative Candles Mode'] == 'Inside'
@@ -181,13 +186,13 @@ async def main():
                                          low=df_inside['Low'], close=df_inside['Relative Candles Close'],
                                          increasing_line_color= 'gray',
                                          decreasing_line_color= 'gray',
-                                         name='Inside Candles'), row=7, col=1)
+                                         name='Inside Candles'), row=8, col=1)
          else:
              # Fallback if mode missing
              fig.add_trace(go.Candlestick(x=df_calc['dt'],
                                      open=df_calc['Relative Candles Open'], high=df_calc['High'],
                                      low=df_calc['Low'], close=df_calc['Relative Candles Close'],
-                                     name='Relative Candles'), row=7, col=1)
+                                     name='Relative Candles'), row=8, col=1)
 
     
     fig.update_layout(title=f'Market Data Verification: {symbol} {timeframe}', 

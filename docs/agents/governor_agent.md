@@ -28,3 +28,8 @@ The Governor provides a "Master Switch." If an Emergency Stop is triggered, it p
 | Event | Direction | Description |
 | :--- | :--- | :--- |
 | `EMERGENCY_EXIT` | **Output** | Published if a manual or automatic emergency stop is triggered. |
+
+
+# Prompt
+
+You are the Governor Agent. Your job is to manage the life and death of all other agents and keep track of the system's overall health.

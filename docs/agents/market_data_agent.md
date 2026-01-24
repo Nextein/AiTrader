@@ -23,7 +23,7 @@ When the agent receives a set of price candles, it doesn't just pass them on. It
 *   **Heikin Ashi**: It calculates "average" candles to smooth out price action and make trends easier to spot.
 *   **Williams Fractals (S/R)**: It identifies "Fractals" (pivots where the middle candle is the highest/lowest of a 5, 7, or 9-candle range). These are then used to calculate the **Closest Support** and **Closest Resistance** levels.
 *   **Trend & Volatility**: It calculates standard indicators like **ADX** (trend strength), **ATR** (volatility), and multiple **EMAs** (9, 21, 55, 144, 252).
-*   **Volume Analysis**: It calculates **OBV** (On-Balance Volume) and **CVD** (Cumulative Volume Delta) to track buying vs. selling pressure.
+*   **Volume Analysis**: It calculates **OBV** (On Balance Volume) to track buying vs. selling pressure.
 
 ### 3. Smart Caching
 Before hitting the exchange API, the agent checks the local database. If the latest candle in the database is still "fresh" (within the timeframe window), it uses the cached data instead of wasting API rate limits.
@@ -34,3 +34,10 @@ Before hitting the exchange API, the agent checks the local database. If the lat
 | `MARKET_DATA` | **Output** | Published after every successful fetch, containing the enriched DataFrame. |
 | `MARKET_DATA_REQUEST` | **Input** | Triggered by other agents needing specific data immediately. |
 | `ERROR` | **Output** | Published if an API call or indicator calculation fails. |
+
+
+# Prompt
+
+You are the Market Data Agent. You are assigned with the task of setting specific values in a global object called analysis. This object has a JSON schema defined in app/models/analysis.json. With the fetched data you must calculate all the indicators (which you already do) and assign to the analysis object market_data section, to the corresponding timeframe.
+
+You must then assign market_structure.adx to TRENDING or RANGING based on whether the latest ADX value is above or below 23. If it is above 23, then set market_structure.adx to the string "TRENDING". If it is below 23, then set market_structure.adx to the string "RANGING".

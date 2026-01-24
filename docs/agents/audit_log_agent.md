@@ -28,3 +28,7 @@ This allows the UI Dashboard to show the "Live Audit Trail" and lets developers 
 | Event | Direction | Description |
 | :--- | :--- | :--- |
 | **ALL EVENTS** | **Input** | Subscribes to every event on the bus to record them. |
+
+
+# Prompt
+
