@@ -105,14 +105,149 @@ class MarketDataAgent(BaseAgent):
             df['Heikin Ashi Low'] = ha['HA_low']
             df['Heikin Ashi Close'] = ha['HA_close']
 
-            # 2. Relative Candles (Open - PrevClose, Close - PrevClose)
-            # Assuming 'Relative' means relative to previous close to determine 'Gap' or absolute move
-            # If TODO implies something else, this is the best reasonable interpretation for "Relative Candles Open/Close"
-            prev_close = df['Close'].shift(1)
-            df['Relative Candles Open'] = df['Open'] - prev_close
-            df['Relative Candles Close'] = df['Close'] - prev_close
-            df['Relative Candles Open'] = df['Relative Candles Open'].fillna(0)
-            df['Relative Candles Close'] = df['Relative Candles Close'].fillna(0)
+            # 2. Relative Candles (Logic from TODO.md)
+            # We strictly implement the state machine and phase logic provided.
+            # Convert to numpy for faster access
+            opens = df['Open'].values
+            highs = df['High'].values
+            lows = df['Low'].values
+            closes = df['Close'].values
+            n = len(df)
+            
+            # Helper lambdas (using numpy array indexing)
+            # Note: i is index
+            def is_HH(i): return i > 0 and highs[i] > highs[i-1]
+            def is_HL(i): return i > 0 and lows[i] > lows[i-1]
+            def is_LH(i): return i > 0 and highs[i] < highs[i-1]
+            def is_LL(i): return i > 0 and lows[i] < lows[i-1]
+            def is_green(i): return closes[i] > opens[i]
+            def is_red(i): return closes[i] < opens[i]
+
+            states = ['X'] * n
+            
+            for i in range(2, n):
+                prev_state = states[i-1]
+                
+                # Logic from TODO.md
+                if prev_state == 'X':
+                    if is_HH(i) and is_HL(i): states[i] = 'U'
+                    elif is_LH(i) and is_LL(i): states[i] = 'D'
+                    elif is_LH(i) and is_HL(i):
+                        if is_LH(i-1) and is_HL(i-1): states[i] = 'I2'
+                        else: states[i] = 'I'
+                    elif is_HH(i) and is_LL(i):
+                        if is_green(i): states[i] = 'RU2'
+                        elif is_red(i): states[i] = 'RD2'
+
+                elif prev_state == 'U':
+                    if is_HH(i) and is_HL(i): states[i] = 'U'
+                    elif is_LH(i) and is_LL(i): states[i] = 'RD'
+                    elif is_LH(i) and is_HL(i):
+                        if is_LH(i-1) and is_HL(i-1): states[i] = 'I2'
+                        else: states[i] = 'I'
+                    elif is_HH(i) and is_LL(i): states[i] = 'RU'
+
+                elif prev_state == 'D':
+                    if is_HH(i) and is_HL(i): states[i] = 'RU'
+                    elif is_LH(i) and is_LL(i): states[i] = 'D'
+                    elif is_LH(i) and is_HL(i):
+                        if is_LH(i-1) and is_HL(i-1): states[i] = 'I2'
+                        else: states[i] = 'I'
+                    elif is_HH(i) and is_LL(i): states[i] = 'RU' # Code says RU for both? line 107
+                
+                elif prev_state in ['RU', 'RU2']:
+                    if is_HH(i) and is_HL(i): states[i] = 'U'
+                    elif is_LH(i) and is_LL(i): states[i] = 'RD'
+                    elif is_LH(i) and is_HL(i):
+                        if is_LH(i-1) and is_HL(i-1): states[i] = 'I2'
+                        else: states[i] = 'I'
+                    elif is_HH(i) and is_LL(i):
+                        if is_green(i): states[i] = 'RU2'
+                        elif is_red(i): states[i] = 'RD2'
+
+                elif prev_state in ['RD', 'RD2']:
+                    if is_HH(i) and is_HL(i): states[i] = 'RU'
+                    elif is_LH(i) and is_LL(i): states[i] = 'D'
+                    elif is_LH(i) and is_HL(i): states[i] = 'I'
+                    elif is_HH(i) and is_LL(i):
+                        if is_green(i): states[i] = 'RU2'
+                        elif is_red(i): states[i] = 'RD2'
+                
+                elif prev_state == 'I':
+                    if is_HH(i) and is_HL(i): states[i] = 'RU'
+                    elif is_LH(i) and is_LL(i): states[i] = 'RD'
+                    elif is_LH(i) and is_HL(i): states[i] = 'I2'
+                    elif is_HH(i) and is_LL(i):
+                        if is_green(i): states[i] = 'RU2'
+                        elif is_red(i): states[i] = 'RD2'
+
+                elif prev_state == 'I2':
+                    if is_HH(i) and is_HL(i): states[i] = 'RU'
+                    elif is_LH(i) and is_LL(i): states[i] = 'RD'
+                    elif is_LH(i) and is_HL(i): states[i] = 'I2'
+                    elif is_HH(i) and is_LL(i):
+                        if is_green(i): states[i] = 'RU2'
+                        elif is_red(i): states[i] = 'RD2'
+                else:
+                    states[i] = 'X'
+
+            # Calculate Phases
+            phases = np.zeros(n)
+            # Initialize first phase (0)
+            phases[0] = 1 if is_green(0) else -1
+            for i in range(1, 3):
+                phases[i] = phases[i-1]
+
+            for i in range(3, n):
+                s2, s1, s0 = states[i-2], states[i-1], states[i]
+                
+                up_seq = (
+                    (s1 == 'D' and s0 == 'RU') or
+                    (s2 == 'D' and s1 == 'I' and s0 == 'RU') or
+                    (s1 == 'D' and s0 == 'RU2') or
+                    (s2 == 'D' and s1 == 'I' and s0 == 'RU2') or
+                    (s1 == 'RD' and s0 == 'RU') or
+                    (s2 == 'RD' and s1 == 'I' and s0 == 'RU') or
+                    (s1 == 'RD' and s0 == 'RU2') or
+                    (s2 == 'RD' and s1 == 'I' and s0 == 'RU2') or
+                    (s1 == 'RD2' and s0 == 'RU') or
+                    (s2 == 'RD2' and s1 == 'I' and s0 == 'RU') or
+                    (s1 == 'RD2' and s0 == 'RU2') or
+                    (s2 == 'RD2' and s1 == 'I' and s0 == 'RU2') or
+                    (s2 == 'I' and s1 == 'I2' and s0 == 'RU') or
+                    (s2 == 'I' and s1 == 'I2' and s0 == 'RU2')
+                )
+                
+                down_seq = (
+                    (s1 == 'U' and s0 == 'RD') or
+                    (s2 == 'U' and s1 == 'I' and s0 == 'RD') or
+                    (s1 == 'U' and s0 == 'RD2') or
+                    (s2 == 'U' and s1 == 'I' and s0 == 'RD2') or
+                    (s1 == 'RU' and s0 == 'RD') or
+                    (s2 == 'RU' and s1 == 'I' and s0 == 'RD') or
+                    (s1 == 'RU' and s0 == 'RD2') or
+                    (s2 == 'RU' and s1 == 'I' and s0 == 'RD2') or
+                    (s1 == 'RU2' and s0 == 'RD') or
+                    (s2 == 'RU2' and s1 == 'I' and s0 == 'RD') or
+                    (s1 == 'RU2' and s0 == 'RD2') or
+                    (s2 == 'RU2' and s1 == 'I' and s0 == 'RD2') or
+                    (s2 == 'I' and s1 == 'I2' and s0 == 'RD') or
+                    (s2 == 'I' and s1 == 'I2' and s0 == 'RD2')
+                )
+                
+                if up_seq:
+                    phases[i] = 1
+                elif down_seq:
+                    phases[i] = -1
+                else:
+                    phases[i] = phases[i-1]
+
+            df['Relative Candles Phase'] = phases
+            # Assuming Open/Close for Relative Candles matches Japanese candles as High/Low do,
+            # unless a specific transformation was requested (which wasn't in the logic provided).
+            # We set them to standard O/C.
+            df['Relative Candles Open'] = df['Open']
+            df['Relative Candles Close'] = df['Close']
 
             # 3. Trends/Oscillators
             # ADX
@@ -128,53 +263,34 @@ class MarketDataAgent(BaseAgent):
             # OBV
             df['On-Balance Volume'] = df.ta.obv()
 
-            # 4. Weis Waves Helper
-            def calculate_weis_waves(close_s, open_s, vol_s, method='standard'):
-                # Determine phase
-                # standard: close > open is UP
-                # relative: close > prev_close (which is what we approximated with Relative Candles Close > 0, if RelOpen=Open-PrevClose, RelClose=Close-PrevClose)
-                # But wait, Relative Phase in TODO line 29: "Relative Phase: NOT INCLUDED...".
-                # But "Relative Weis Waves... phases determined by relative candles".
-                # If RelativeCandleClose > RelativeCandleOpen <=> (Close-Prev) > (Open-Prev) <=> Close > Open.
-                # So relative candles phase must utilize the "Gap".
-                # Let's assume:
-                # Standard: Green if Close > Open.
-                # Heikin Ashi: Green if HA_Close > HA_Open.
-                # Relative: Green if Close > Prev Close? (Common "solid/hollow" logic).
+            # 4. Weis Waves
+            def calculate_weis_waves(direction_series, vol_s):
+                # direction_series: 1 for UP, -1 for DOWN, 0 for Neutral
+                # We replace 0 with NaN and ffill to maintain previous wave direction
+                direction = direction_series.replace(0, np.nan).ffill().fillna(1)
                 
-                direction = pd.Series(0, index=close_s.index)
-                
-                if method == 'standard':
-                    direction = np.sign(close_s - open_s)
-                elif method == 'heikin':
-                    direction = np.sign(close_s - open_s) # Pass HA series
-                elif method == 'relative':
-                     # Use Change from previous Close
-                     # If Close > PrevClose => Up.
-                     prev = close_s.shift(1)
-                     direction = np.sign(close_s - prev)
-                
-                # Replace 0 with prev direction to maintain wave? Or 0 is neutral?
-                # Usually 0 (doji) continues previous wave or is ignored.
-                direction = direction.replace(0, np.nan).ffill().fillna(1) # Default to 1
-
-                # Calculate Wave Volume
-                # Use a loop for correctness (or vectorization with groupby)
-                # Group by consecutive blocks of same direction
-                # ID = (Direction != Direction.shift()).cumsum()
+                # Identify blocks of consecutive direction
                 block_id = (direction != direction.shift(1)).cumsum()
                 
-                # Sum volume by block
-                # But we want the CUMULATIVE volume AT EACH CANDLE for the CURRENT wave
-                # So it's a transform with cumsum
+                # Group by block and cumsum volume
                 waves = vol_s.groupby(block_id).cumsum()
                 
                 return waves, direction
 
-            # Unpack tuples
-            df['Weis Waves Volume'], df['Weis Waves Direction'] = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'standard')
-            df['Relative Weis Waves Volume'], _ = calculate_weis_waves(df['Close'], df['Open'], df['Volume'], 'relative')
-            df['Heikin Ashi Weis Waves Volume'], _ = calculate_weis_waves(df['Heikin Ashi Close'], df['Heikin Ashi Open'], df['Volume'], 'heikin')
+            # Standard Weis Waves: Direction based on Candle Color (Close > Open)
+            # If Close == Open, 0
+            std_dir = np.sign(df['Close'] - df['Open'])
+            df['Weis Waves Volume'], df['Weis Waves Direction'] = calculate_weis_waves(std_dir, df['Volume'])
+
+            # Heikin Ashi Weis Waves: Direction based on HA Candle Color
+            # Note: We calculated HA columns earlier
+            ha_dir = np.sign(df['Heikin Ashi Close'] - df['Heikin Ashi Open'])
+            df['Heikin Ashi Weis Waves Volume'], _ = calculate_weis_waves(ha_dir, df['Volume'])
+
+            # Relative Weis Waves: Direction based on Relative Candles Phase
+            # phases is already 1 or -1
+            rel_dir = pd.Series(phases, index=df.index)
+            df['Relative Weis Waves Volume'], _ = calculate_weis_waves(rel_dir, df['Volume'])
             
             # 5. EMAs
             for length in [9, 21, 55, 144, 252]:
