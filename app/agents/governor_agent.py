@@ -2,6 +2,7 @@ import asyncio
 from typing import List
 from app.agents.base_agent import BaseAgent
 from app.agents.market_data_agent import MarketDataAgent
+from app.agents.market_structure_agent import MarketStructureAgent
 from app.agents.strategy_agent import StrategyAgent
 from app.agents.risk_agent import RiskAgent
 from app.agents.execution_agent import ExecutionAgent
@@ -25,15 +26,16 @@ class GovernorAgent:
     def __init__(self):
         self.agents: List[BaseAgent] = [
             MarketDataAgent(),
-            RegimeDetectionAgent(),
-            StrategyAgent(strategy_id="RSI_MACD"),
-            EMACrossStrategyAgent(fast_period=9, slow_period=21),
-            AggregatorAgent(),
-            RiskAgent(),
-            ExecutionAgent(),
-            AuditLogAgent(),
-            AnomalyDetectionAgent(),
-            DummyStrategyAgent(signal_interval=5, name="DummyStrategy1")
+            MarketStructureAgent(),
+            # RegimeDetectionAgent(),
+            # StrategyAgent(strategy_id="RSI_MACD"),
+            # EMACrossStrategyAgent(fast_period=9, slow_period=21),
+            # AggregatorAgent(),
+            # RiskAgent(),
+            # ExecutionAgent(),
+            # AuditLogAgent(),
+            # AnomalyDetectionAgent(),
+            # DummyStrategyAgent(signal_interval=5, name="DummyStrategy1")
         ]
         self.is_running = False
         self.tasks = []

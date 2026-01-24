@@ -30,6 +30,7 @@ class Settings(BaseModel):
     # Trading Parameters for MVP
     TRADING_SYMBOLS: list = ["BTC-USDT", "ETH-USDT", "SOL-USDT"]
     TIMEFRAME: str = "1m"
+    TIMEFRAMES: list = ["1w", "1d", "4h", "1h", "30m", "15m", "5m"]
     ORDER_SIZE_USDT: float = 10.0
     
     # Demo Mode

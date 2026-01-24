@@ -9,6 +9,7 @@ from app.agents.base_agent import BaseAgent
 from app.core.config import settings
 from app.core.event_bus import event_bus, EventType
 from app.core.database import SessionLocal
+from app.core.analysis import AnalysisManager
 from app.models.models import CandleModel
 import logging
 
@@ -492,17 +493,17 @@ class MarketDataAgent(BaseAgent):
                 df_cache = pd.DataFrame(cached_data, columns=['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'])
                 df_with_ind = self.calculate_indicators(df_cache)
                 
-                # Serialize
-                # We can pass the whole DF content as 'candles' (list of lists) and 'columns'
+                # Update Analysis Object
+                analysis = await AnalysisManager.get_analysis(symbol)
+                await analysis.update_section("market_data", df_with_ind, timeframe)
+
+                # Serialize for event bus
                 columns = df_with_ind.columns.tolist()
                 values = df_with_ind.replace({np.nan: None}).values.tolist()
                 
                 data = {
                     "symbol": symbol,
                     "timeframe": timeframe,
-                    "candles": values,
-                    "columns": columns,
-                    "latest_close": df_cache['Close'].values[-1],
                     "timestamp": float(df_cache['timestamp'].values[-1]),
                     "agent": self.name,
                     "from_cache": True
@@ -521,15 +522,16 @@ class MarketDataAgent(BaseAgent):
             df = pd.DataFrame(ohlcv, columns=['timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'])
             df_with_ind = self.calculate_indicators(df)
             
+            # Update Analysis Object
+            analysis = await AnalysisManager.get_analysis(symbol)
+            await analysis.update_section("market_data", df_with_ind, timeframe)
+
             columns = df_with_ind.columns.tolist()
             values = df_with_ind.replace({np.nan: None}).values.tolist()
             
             data = {
                 "symbol": symbol,
                 "timeframe": timeframe,
-                "candles": values,
-                "columns": columns,
-                "latest_close": df_with_ind['Close'].iloc[-1],
                 "timestamp": df_with_ind['timestamp'].iloc[-1],
                 "agent": self.name,
                 "from_cache": False

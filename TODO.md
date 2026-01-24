@@ -47,12 +47,6 @@ Once all timeframes have been fetched, the Key Levels Agent is tasked with popul
 
 
 
-
-
-
-
-
-
 Below is a **fully rewritten, maximally prompt-engineered version** of your prompt, designed specifically for an **AI Coder Agent** (like AntiGravity).
 It uses best practices for:
 
