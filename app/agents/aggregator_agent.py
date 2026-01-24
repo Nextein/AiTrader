@@ -87,13 +87,18 @@ class AggregatorAgent(BaseAgent):
                 final_confidence = abs(avg_score)
 
         if final_signal != "HOLD":
+            # Find a source signal that matches the final decision to get SL/TP
+            representative_signal = next((s for s in signals if s.get("signal") == final_signal), signals[0])
+            
             logger.info(f"Aggregated Signal: {final_signal} | Confidence: {final_confidence:.2f} | Sources: {len(signals)}")
             await event_bus.publish(EventType.SIGNAL, {
-                "symbol": signals[0].get("symbol"),
+                "symbol": representative_signal.get("symbol"),
                 "signal": final_signal,
                 "confidence": final_confidence,
                 "rationale": f"Consensus of {len(signals)} strategies. Avg Score: {avg_score:.2f}",
-                "price": signals[0].get("price"),
+                "price": representative_signal.get("price"),
+                "sl_price": representative_signal.get("sl_price"),
+                "tp_price": representative_signal.get("tp_price"),
                 "timestamp": ts,
                 "agent": self.name
             })
