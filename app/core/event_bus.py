@@ -29,6 +29,7 @@ class EventType(Enum):
     ERROR = "error"
     SYSTEM_STATUS = "system_status"
     EMERGENCY_EXIT = "emergency_exit"
+    SYMBOL_APPROVED = "symbol_approved"
 
 # Default priority mapping for event types
 EVENT_PRIORITY_MAP = {
@@ -41,6 +42,7 @@ EVENT_PRIORITY_MAP = {
     EventType.MARKET_DATA: EventPriority.NORMAL,
     EventType.MARKET_DATA_REQUEST: EventPriority.NORMAL,
     EventType.REGIME_CHANGE: EventPriority.NORMAL,
+    EventType.SYMBOL_APPROVED: EventPriority.NORMAL,
     EventType.ERROR: EventPriority.LOW,
     EventType.SYSTEM_STATUS: EventPriority.LOW,
 }

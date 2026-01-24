@@ -26,9 +26,8 @@ class MarketDataAgent(BaseAgent):
                 'sandbox': settings.BINGX_IS_SANDBOX, 
             }
         })
-        # Task 4: Fetch all symbols or use configured ones
-        self.symbols = settings.TRADING_SYMBOLS if hasattr(settings, 'TRADING_SYMBOLS') else []
-        self.fetch_all_symbols = getattr(settings, 'FETCH_ALL_SYMBOLS', False)
+        # Symbol management: now handled by Governor + SYMBOL_APPROVED events
+        self.symbols = []
         
         # Task 6: Prioritized timeframes (higher to lower)
         self.timeframes = getattr(settings, 'TIMEFRAMES', [settings.TIMEFRAME]) if hasattr(settings, 'TIMEFRAMES') else [settings.TIMEFRAME]
@@ -37,17 +36,12 @@ class MarketDataAgent(BaseAgent):
         # Task 5: Cache tracking
         self.cache_enabled = True
 
-    async def initialize_symbols(self):
-        """Task 4: Fetch all available symbols from exchange"""
-        if self.fetch_all_symbols:
-            try:
-                markets = await self.exchange.load_markets()
-                # Filter for USDT perpetual contracts
-                self.symbols = [symbol for symbol in markets.keys() if '/USDT' in symbol and ':USDT' in symbol]
-                logger.info(f"Loaded {len(self.symbols)} symbols from exchange")
-            except Exception as e:
-                logger.error(f"Failed to load symbols: {e}. Using configured symbols.")
-                self.symbols = settings.TRADING_SYMBOLS
+    async def handle_symbol_approved(self, data: Dict[str, Any]):
+        """Callback for when a symbol is approved by SanityAgent"""
+        symbol = data.get("symbol")
+        if symbol and symbol not in self.symbols:
+            logger.info(f"MarketDataAgent: Adding approved symbol {symbol}")
+            self.symbols.append(symbol)
 
     def get_status(self):
         status = super().get_status()
@@ -61,14 +55,17 @@ class MarketDataAgent(BaseAgent):
 
     async def run_loop(self):
         """Main loop with prioritized fetching"""
-        # Initialize symbols if needed
-        if self.fetch_all_symbols or not self.symbols:
-            await self.initialize_symbols()
-        
-        # Subscribe to market data requests
+        # Subscribe to events
         event_bus.subscribe(EventType.MARKET_DATA_REQUEST, self.handle_data_request)
+        event_bus.subscribe(EventType.SYMBOL_APPROVED, self.handle_symbol_approved)
         
         while self.is_running and self.is_active:
+            if not self.symbols:
+                # Wait for some symbols to be approved
+                logger.debug("MarketDataAgent: Waiting for approved symbols...")
+                await asyncio.sleep(5)
+                continue
+
             # Task 6: Fetch in order from higher timeframe to lower
             for timeframe in sorted(self.timeframes, key=lambda x: self._timeframe_to_minutes(x), reverse=True):
                 if not self.is_running or not self.is_active:

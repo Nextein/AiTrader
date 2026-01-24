@@ -12,21 +12,25 @@ from app.agents.aggregator_agent import AggregatorAgent
 from app.agents.regime_detection_agent import RegimeDetectionAgent
 from app.agents.anomaly_detection_agent import AnomalyDetectionAgent
 from app.agents.dummy_strategy_agent import DummyStrategyAgent
+from app.agents.sanity_agent import SanityAgent
 from app.core.event_bus import event_bus, EventType
 from app.core.database import SessionLocal
 from app.models.models import EquityModel
 from app.core.config import settings
 import ccxt.async_support as ccxt
 import logging
+import random
 
 
 logger = logging.getLogger("Governor")
 
 class GovernorAgent:
     def __init__(self):
+        self.sanity_agent = SanityAgent()
         self.agents: List[BaseAgent] = [
             MarketDataAgent(),
             MarketStructureAgent(),
+            self.sanity_agent,
             # RegimeDetectionAgent(),
             # StrategyAgent(strategy_id="RSI_MACD"),
             # EMACrossStrategyAgent(fast_period=9, slow_period=21),
@@ -60,6 +64,9 @@ class GovernorAgent:
         # 4. Start equity snapshotting
         self.tasks.append(asyncio.create_task(self.equity_snapshot_loop()))
             
+        # 4. Start symbol initialization
+        self.tasks.append(asyncio.create_task(self.initialize_symbols_task()))
+
         logger.info("Governor: All agents are running.")
 
     async def equity_snapshot_loop(self):
@@ -132,6 +139,79 @@ class GovernorAgent:
                 await asyncio.sleep(sleep_time)
         finally:
             await exchange.close()
+
+    async def initialize_symbols_task(self):
+        """Fetches, filters, prioritizes, and sanitizes symbols."""
+        logger.info("Governor: Starting symbol initialization...")
+        
+        # Use a temporary exchange instance to fetch markets
+        exchange = ccxt.bingx({
+            'apiKey': settings.BINGX_API_KEY,
+            'secret': settings.BINGX_SECRET_KEY,
+            'options': {
+                'defaultType': 'swap',
+                'sandbox': settings.BINGX_IS_SANDBOX,
+            }
+        })
+        
+        try:
+            markets = await exchange.load_markets()
+            
+            # Filter for USDT perpetual contracts
+            all_symbols = []
+            for symbol, market in markets.items():
+                # BingX/CCXT linear and quote criteria
+                if market.get('linear') and market.get('quote') == 'USDT':
+                    all_symbols.append(symbol)
+                elif '-USDT' in symbol and market.get('type') == 'swap':
+                    all_symbols.append(symbol)
+
+            if not all_symbols:
+                 # Fallback
+                 all_symbols = [s for s in markets.keys() if '-USDT' in s]
+
+            logger.info(f"Governor: Found {len(all_symbols)} potential USDT perpetual symbols.")
+
+            # Prioritization: Top 10 (from settings or just first 10)
+            trading_symbols = settings.TRADING_SYMBOLS if hasattr(settings, 'TRADING_SYMBOLS') else []
+            top_10 = [s for s in trading_symbols if s in all_symbols]
+            
+            # If TRADING_SYMBOLS has less than 10, fill with others (prefer common ones if possible)
+            if len(top_10) < 10:
+                others = [s for s in all_symbols if s not in top_10]
+                # In a real app we might sort by volume. Here we'll just take the next few.
+                top_10.extend(others[:10-len(top_10)])
+            
+            remaining = [s for s in all_symbols if s not in top_10]
+            random.shuffle(remaining)
+            
+            prioritized_list = top_10 + remaining
+            
+            logger.info(f"Governor: Starting sanity checks on {len(prioritized_list)} symbols...")
+            
+            for symbol in prioritized_list:
+                if not self.is_running:
+                    break
+                
+                # Check with Sanity Agent
+                is_sane = await self.sanity_agent.check_symbol(symbol)
+                
+                if is_sane:
+                    logger.info(f"Governor: Symbol {symbol} PASSED sanity check.")
+                    # Broadcast approval
+                    # We use a small delay between publishing to let agents process
+                    await event_bus.publish(EventType.SYMBOL_APPROVED, {"symbol": symbol})
+                else:
+                    logger.warning(f"Governor: Symbol {symbol} FAILED sanity check (Derivative/Weird). Skipping.")
+                
+                # Throttle LLM requests
+                await asyncio.sleep(0.5)
+
+        except Exception as e:
+            logger.error(f"Governor: Error during symbol initialization: {e}", exc_info=True)
+        finally:
+            await exchange.close()
+            logger.info("Governor: Symbol initialization task finished.")
 
     async def stop(self):
         if not self.is_running:
