@@ -43,6 +43,15 @@ class AnalysisObject:
                 "15m": self._default_value_areas(),
                 "5m": self._default_value_areas(),
             },
+            "vpvr": {
+                "1w": self._default_vpvr(),
+                "1d": self._default_vpvr(),
+                "4h": self._default_vpvr(),
+                "1h": self._default_vpvr(),
+                "30m": self._default_vpvr(),
+                "15m": self._default_vpvr(),
+                "5m": self._default_vpvr(),
+            },
             "key_levels": {
                 "last_updated": None
             }
@@ -69,7 +78,12 @@ class AnalysisObject:
             "val": None,
             "naked_poc": False,
             "state": "UNKNOWN",
-            "volume_profile": [],
+            "last_updated": None
+        }
+
+    def _default_vpvr(self):
+        return {
+            "data": [],
             "last_updated": None
         }
 

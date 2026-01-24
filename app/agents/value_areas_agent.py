@@ -15,6 +15,21 @@ class ValueAreasAgent(BaseAgent):
         self.last_timestamps = {} # {symbol_tf: timestamp}
         self.states = {} # {symbol_tf: state}
         self.poc_history = {} # {symbol_tf: [pocs]} for naked poc tracking
+        
+        # New prompts for internal/external analysis reference
+        self.value_areas_prompt = """
+        You are an expert market profile analyst. Your task is to analyze Value Areas (VAH, VAL, POC).
+        - VAH (Value Area High): The upper boundary of the range where 70% of volume occurred.
+        - VAL (Value Area Low): The lower boundary of the range where 70% of volume occurred.
+        - POC (Point of Control): The price level with the highest volume in the period.
+        Analyzed state should consider if price is 'IN', 'OUT' (above/below), 'SFP' (Swing Failure Pattern), 'FA' (Failed Auction), or 'RETEST' (of POC).
+        """
+        
+        self.vpvr_prompt = """
+        You are an expert volume profile analyst. Your task is to analyze the Visible Range Volume Profile (VPVR).
+        The VPVR provides a distribution of volume across price levels for the visible bars on the chart.
+        High Volume Nodes (HVN) represent areas of high interest/consolidation, while Low Volume Nodes (LVN) represent areas of fast price movement/rejection.
+        """
 
     async def run_loop(self):
         event_bus.subscribe(EventType.MARKET_DATA, self.on_market_data)
@@ -43,10 +58,23 @@ class ValueAreasAgent(BaseAgent):
                 return
 
             # Calculate Value Areas using fixed number of bins (e.g., 24 for intraday)
-            va_data = self.calculate_value_areas(df)
+            calc_result = self.calculate_value_areas(df)
             
-            if not va_data:
+            if not calc_result:
                 return
+
+            # Separate VPVR and Value Area data
+            va_data = {
+                "poc": calc_result['poc'],
+                "vah": calc_result['vah'],
+                "val": calc_result['val'],
+                "last_updated": calc_result['last_updated']
+            }
+            
+            vpvr_data = {
+                "data": calc_result.get("volume_profile", []),
+                "last_updated": calc_result['last_updated']
+            }
 
             # Determine State
             latest_close = df['Close'].iloc[-1]
@@ -105,7 +133,10 @@ class ValueAreasAgent(BaseAgent):
             va_data['naked_poc'] = naked
 
             # Update Analysis Object
+            # We follow the schema by separating these two sections
             await analysis.update_section("value_areas", va_data, timeframe)
+            await analysis.update_section("vpvr", vpvr_data, timeframe)
+            
             self.processed_count += 1
 
         except Exception as e:
@@ -191,3 +222,4 @@ class ValueAreasAgent(BaseAgent):
         except Exception as e:
             logger.error(f"VP Calc Error: {e}")
             return None
+
