@@ -78,3 +78,9 @@ Once the server is running, open your browser and navigate to:
 
 # Transcribe audio files to text
 for %f in (..\course\audio\*.wav) do build\bin\Release\whisper-cli.exe -m models\ggml-base.en.bin -f "%f" -otxt -of "..\course\text\%~nf.txt"
+
+
+# Schema documentation
+To create schema documentation use:
+
+    generate-schema-doc app/models/report.json docs/report-schema.html
