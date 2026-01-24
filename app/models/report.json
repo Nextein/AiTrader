@@ -1,0 +1,376 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CoinAnalysisReport",
+    "type": "object",
+    "properties": {
+        "coin": {
+            "type": "string",
+            "description": "Trading pair symbol (e.g., BTCUSDT)"
+        },
+        "analysis_state": {
+            "type": "string",
+            "enum": [
+                "NEW",
+                "IN_PROGRESS",
+                "COMPLETED"
+            ],
+            "description": "Current analysis lifecycle state"
+        },
+        "market_data": {
+            "type": "object",
+            "description": "OHLCV market data by timeframe",
+            "properties": {
+                "1w_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 week timeframe, Japanese candlestick format)"
+                },
+                "1d_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 day timeframe, Japanese candlestick format)"
+                },
+                "4h_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (4 hour timeframe, Japanese candlestick format)"
+                },
+                "1h_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 hour timeframe, Japanese candlestick format)"
+                },
+                "30m_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (30 minute timeframe, Japanese candlestick format)"
+                },
+                "15m_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (15 minute timeframe, Japanese candlestick format)"
+                },
+                "5m_japanese": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (5 minute timeframe, Japanese candlestick format)"
+                },
+                "1w_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 week timeframe, Heikin Ashi candlestick format)"
+                },
+                "1d_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 day timeframe, Heikin Ashi candlestick format)"
+                },
+                "4h_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (4 hour timeframe, Heikin Ashi candlestick format)"
+                },
+                "1h_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 hour timeframe, Heikin Ashi candlestick format)"
+                },
+                "30m_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (30 minute timeframe, Heikin Ashi candlestick format)"
+                },
+                "15m_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (15 minute timeframe, Heikin Ashi candlestick format)"
+                },
+                "5m_heikin_ashi": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (5 minute timeframe, Heikin Ashi candlestick format)"
+                },
+                "1w_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 week timeframe, relative candlestick format)"
+                },
+                "1d_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 day timeframe, relative candlestick format)"
+                },
+                "4h_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (4 hour timeframe, relative candlestick format)"
+                },
+                "1h_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (1 hour timeframe, relative candlestick format)"
+                },
+                "30m_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (30 minute timeframe, relative candlestick format)"
+                },
+                "15m_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (15 minute timeframe, relative candlestick format)"
+                },
+                "5m_relative_candles": {
+                    "type": [
+                        "pd.DataFrame",
+                        "null"
+                    ],
+                    "description": "Pandas DataFrame OHLCV data (5 minute timeframe, relative candlestick format)"
+                }
+            },
+            "additionalProperties": false
+        },
+        "volume_data": {
+            "type": "object",
+            "description": "Volume data for the coin",
+            "properties": {
+                "anchored_vwaps": {
+                    "type": "array",
+                    "description": "Volume-weighted average price data anchored to the start of the current move",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timeframe": {
+                                "type": "string"
+                            },
+                            "anchor": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "vwaps": {
+                                "type": "array",
+                                "description": "Volume-weighted average price",
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            "last_updated": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "vpvr": {
+                    "type": "array",
+                    "description": "Visible Range Volume Profile data for each timeframe",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "timeframe": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "array",
+                                "description": "Array of price-volume pairs",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "price": {
+                                            "type": "number"
+                                        },
+                                        "volume": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            },
+                            "last_updated": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "value_areas": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "obv": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "weis_waves": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "session_volume": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "15m_cvd": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "market_regime": {
+            "type": "object",
+            "properties": {
+                "1w": {
+                    "type": "string",
+                    "description": "Market regime for 1 week timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "1d": {
+                    "type": "string",
+                    "description": "Market regime for 1 day timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "4h": {
+                    "type": "string",
+                    "description": "Market regime for 4 hour timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "1h": {
+                    "type": "string",
+                    "description": "Market regime for 1 hour timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "30m": {
+                    "type": "string",
+                    "description": "Market regime for 30 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "15m": {
+                    "type": "string",
+                    "description": "Market regime for 15 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "5m": {
+                    "type": "string",
+                    "description": "Market regime for 5 minute timeframe",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNCLEAR",
+                        "NEAR_SR",
+                        "UNDEFINED"
+                    ]
+                },
+                "last_updated": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "date_created": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "last_updated": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "coin",
+        "analysis_state",
+        "market_data",
+        "date_created",
+        "last_updated"
+    ]
+}
