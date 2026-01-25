@@ -58,8 +58,8 @@ class AuditLogAgent(BaseAgent):
                     db.commit()
                 
                 # Terminal output for visibility - use local variable, not detached object
-                logger.info(f"[PERSISTED] Event: {event_type.value} from {agent_name}")
+                self.log(f"EVENT_PERSISTED: {event_type.value} from {agent_name}", level="DEBUG", data=clean_data)
             except Exception as e:
-                logger.error(f"Failed to log event {event_type.value}: {e}")
+                self.log(f"Failed to log event {event_type.value}: {e}", level="ERROR")
 
         return callback

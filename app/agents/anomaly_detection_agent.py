@@ -60,7 +60,7 @@ class AnomalyDetectionAgent(BaseAgent):
             
             change = abs(latest - prev) / prev
             if change > 0.05:
-                logger.error(f"Anomaly Detected: Extreme Price Move ({change*100:.2f}%) on {symbol} {timeframe}")
+                self.log(f"Extreme Price Move ({change*100:.2f}%) on {symbol} {timeframe}", level="ERROR")
                 await event_bus.publish(EventType.ANOMALY_ALERT, {
                     "symbol": symbol,
                     "timeframe": timeframe,
@@ -69,5 +69,5 @@ class AnomalyDetectionAgent(BaseAgent):
                     "agent": self.name
                 })
         except Exception as e:
-            logger.error(f"Error in AnomalyDetectionAgent: {e}")
+            self.log(f"Error in AnomalyDetectionAgent: {e}", level="ERROR")
 

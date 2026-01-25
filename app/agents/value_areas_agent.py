@@ -139,6 +139,15 @@ class ValueAreasAgent(BaseAgent):
             await analysis.update_section("vpvr", vpvr_data, timeframe)
             
             self.processed_count += 1
+            self.log_market_action("CALCULATE_VALUE_AREAS", symbol, {"timeframe": timeframe, "state": state, "poc": va_data['poc']})
+            logger.info(f"Updated value areas and VPVR for {symbol} {timeframe}")
+
+            # Notify that value areas are updated so market structure can proceed
+            await event_bus.publish(EventType.VALUE_AREAS_UPDATED, {
+                "symbol": symbol,
+                "timeframe": timeframe,
+                "timestamp": ts
+            })
 
             # --- Key Levels Calculation (Daily, Weekly, Monthly POCs Above/Below) ---
             # We use available timeframes to find historical POC levels

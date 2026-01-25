@@ -42,10 +42,10 @@ class SanityAgent(BaseAgent):
             
             # Being robust with the response
             is_valid = "TRUE" in result and "FALSE" not in result
-            logger.info(f"SanityAgent: Check for {symbol} ({base_symbol}) -> {is_valid} (Raw: '{result}')")
+            self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "raw": result})
             self.processed_count += 1
             return is_valid
         except Exception as e:
-            logger.error(f"SanityAgent: Error checking {symbol}: {e}")
+            self.log(f"Error checking {symbol}: {e}", level="ERROR")
             # Safe default: False
             return False

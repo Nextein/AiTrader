@@ -509,6 +509,7 @@ class MarketDataAgent(BaseAgent):
                     "agent": self.name,
                     "from_cache": True
                 }
+                self.log_market_action("FETCH_DATA_CACHE", symbol, {"timeframe": timeframe})
                 await event_bus.publish(EventType.MARKET_DATA, data)
                 self.processed_count += 1
                 
@@ -552,6 +553,7 @@ class MarketDataAgent(BaseAgent):
                 "from_cache": False
             }
             
+            self.log_market_action("FETCH_DATA_LIVE", symbol, {"timeframe": timeframe})
             await event_bus.publish(EventType.MARKET_DATA, data)
             self.processed_count += 1
 

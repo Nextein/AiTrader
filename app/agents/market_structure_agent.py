@@ -28,19 +28,17 @@ class MarketStructureAgent(BaseAgent):
         self.ema_chain = self.ema_prompt | self.llm | JsonOutputParser()
 
     async def run_loop(self):
-        """Subscribe to market data updates and react"""
-        event_bus.subscribe(EventType.MARKET_DATA, self.handle_market_data)
+        """Subscribe to value areas updates and react"""
+        event_bus.subscribe(EventType.VALUE_AREAS_UPDATED, self.handle_market_data)
         
-        # Keep alive - base class run_loop is abstract, but we just need to wait here
-        # as we are event-driven
         while self.is_running:
             await asyncio.sleep(1)
 
     async def handle_market_data(self, data: Dict[str, Any]):
-        """React to market data updates for a symbol + timeframe"""
+        """React to value areas updates for a symbol + timeframe"""
         symbol = data.get("symbol")
         timeframe = data.get("timeframe")
-        logger.info(f"Received market data event for {symbol} {timeframe}")
+        logger.info(f"Received value areas update for {symbol} {timeframe}")
         
         if not symbol or not timeframe:
             return
@@ -53,21 +51,11 @@ class MarketStructureAgent(BaseAgent):
             # 2. Get DataFrame from market_data
             df = analysis_data.get("market_data", {}).get(timeframe)
             
-            if df is None:
-                logger.warning(f"DataFrame for {symbol} {timeframe} is None in AnalysisObject")
-                return
-            
-            if not isinstance(df, pd.DataFrame):
-                logger.warning(f"Data for {symbol} {timeframe} is not a DataFrame: {type(df)}")
-                return
-
-            if len(df) < 2:
-                logger.warning(f"Insufficient data in DataFrame for {symbol} {timeframe}: {len(df)} rows")
+            if df is None or not isinstance(df, pd.DataFrame) or len(df) < 50:
+                logger.warning(f"Insufficient data for {symbol} {timeframe}")
                 return
 
             # 3. Calculate Market Structure fields
-            # We compare the last two confirmed candles (or latest vs prev)
-            # Latest candle is usually index -1, previous is -2
             curr = df.iloc[-1]
             prev = df.iloc[-2]
 
@@ -81,6 +69,21 @@ class MarketStructureAgent(BaseAgent):
             pivot_state = "NEUTRAL"
             if curr_pivot is not None and prev_pivot is not None:
                 pivot_state = "UP" if curr_pivot > prev_pivot else ("DOWN" if curr_pivot < prev_pivot else "NEUTRAL")
+
+            # Value Areas Trend Analysis
+            # Look at the last 3 "windows" of 100 bars each, shifted by 10 bars
+            poc1 = self._calculate_poc(df, lookback=100, offset=0)
+            poc2 = self._calculate_poc(df, lookback=100, offset=10)
+            poc3 = self._calculate_poc(df, lookback=100, offset=20)
+            
+            va_state = "NEUTRAL"
+            if poc1 and poc2 and poc3:
+                if poc1 > poc2 > poc3:
+                    va_state = "ASCENDING"
+                elif poc1 < poc2 < poc3:
+                    va_state = "DESCENDING"
+                else:
+                    va_state = "NEUTRAL"
 
             # EMAs analysis via LLM
             ema_cols = [
@@ -106,7 +109,6 @@ class MarketStructureAgent(BaseAgent):
                     emas_in_order = res.get("emas_in_order", "NEUTRAL").upper()
                     emas_fanning = res.get("emas_fanning", "NEUTRAL").upper()
                     
-                    # Validation
                     if emas_in_order not in ["ASCENDING", "DESCENDING", "NEUTRAL"]:
                         emas_in_order = "NEUTRAL"
                     if emas_fanning not in ["EXPANDING", "NEUTRAL"]:
@@ -124,6 +126,7 @@ class MarketStructureAgent(BaseAgent):
             updates = {
                 "highs": highs_state,
                 "lows": lows_state,
+                "value_areas": va_state,
                 "pivot_points": pivot_state,
                 "emas_in_order": emas_in_order,
                 "emas_fanning": emas_fanning,
@@ -133,7 +136,7 @@ class MarketStructureAgent(BaseAgent):
             
             await analysis.update_section("market_structure", updates, timeframe)
             
-            # 5. Publish Analysis Update Event (Task 1)
+            # 5. Publish Analysis Update Event
             await event_bus.publish(EventType.ANALYSIS_UPDATE, {
                 "symbol": symbol,
                 "timeframe": timeframe,
@@ -143,7 +146,49 @@ class MarketStructureAgent(BaseAgent):
             })
 
             self.processed_count += 1
-            logger.info(f"Updated market structure for {symbol} {timeframe}")
+            self.log_market_action("UPDATE_STRUCTURE", symbol, {"timeframe": timeframe, "va_state": va_state})
+            logger.info(f"Updated market structure for {symbol} {timeframe} (VA: {va_state})")
 
         except Exception as e:
             logger.error(f"Error in MarketStructureAgent for {symbol} {timeframe}: {e}", exc_info=True)
+
+    def _calculate_poc(self, df: pd.DataFrame, lookback: int, offset: int = 0) -> Optional[float]:
+        """Calculates POC for a specific window in the dataframe"""
+        try:
+            end = len(df) - offset
+            start = max(0, end - lookback)
+            if end <= start:
+                return None
+            
+            subset = df.iloc[start:end]
+            num_bins = 100
+            
+            highs = subset['High'].values
+            lows = subset['Low'].values
+            volumes = subset['Volume'].values
+
+            min_p = np.min(lows)
+            max_p = np.max(highs)
+            
+            if max_p == min_p: return None
+
+            bin_size = (max_p - min_p) / num_bins
+            profile = np.zeros(num_bins)
+
+            for i in range(len(subset)):
+                h, l, v = highs[i], lows[i], volumes[i]
+                start_bin = int((l - min_p) / bin_size)
+                end_bin = int((h - min_p) / bin_size)
+                start_bin = max(0, min(num_bins - 1, start_bin))
+                end_bin = max(0, min(num_bins - 1, end_bin))
+                
+                num_bins_covered = (end_bin - start_bin) + 1
+                vol_per_bin = v / num_bins_covered if num_bins_covered > 0 else 0
+                for b in range(start_bin, end_bin + 1):
+                    profile[b] += vol_per_bin
+
+            poc_index = np.argmax(profile)
+            poc = float(min_p + (poc_index + 0.5) * bin_size)
+            return poc
+        except Exception:
+            return None

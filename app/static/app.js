@@ -771,9 +771,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getStatusClass = (val) => {
             const v = String(val).toUpperCase();
-            if (['UP', 'TRENDING', 'HIGHER', 'BULLISH', 'TRUE', '1'].includes(v)) return 'state-positive';
-            if (['DOWN', 'LOWER', 'BEARISH', 'FALSE', '-1'].includes(v)) return 'state-negative';
-            if (['NEUTRAL', 'RANGING', 'UNDEFINED', '0'].includes(v)) return 'state-neutral';
+            if (['UP', 'TRENDING', 'HIGHER', 'BULLISH', 'TRUE', '1', 'ASCENDING', 'EXPANDING'].includes(v)) return 'state-positive';
+            if (['DOWN', 'LOWER', 'BEARISH', 'FALSE', '-1', 'DESCENDING'].includes(v)) return 'state-negative';
+            if (['NEUTRAL', 'RANGING', 'UNDEFINED', '0', 'UNKNOWN'].includes(v)) return 'state-neutral';
             return '';
         };
 
@@ -801,9 +801,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Market Structure Analysis
         if (data.market_structure) {
             html += `
-                <div class="analysis-section-card">
+                <div class="analysis-section-card" style="grid-column: span 2;">
                     <h4><i data-lucide="layout"></i> Market Structure</h4>
-                    <div class="data-grid">
+                    <div class="data-grid" style="grid-template-columns: repeat(4, 1fr);">
             `;
 
             const tfs = ['4h', '1h', '15m', '5m'];
@@ -812,8 +812,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!struct || typeof struct !== 'object') return;
 
                 html += `
-                    <div class="tf-row-header">
-                        <span class="tf-badge">${tf}</span>
+                    <div class="tf-row-header" style="grid-column: span 4;">
+                        <span class="tf-badge">${tf}</span> Structure
                     </div>
                     <div class="data-item">
                         <div class="data-label">Highs</div>
@@ -824,12 +824,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="data-value ${getStatusClass(struct.lows)}">${fmt(struct.lows)}</div>
                     </div>
                     <div class="data-item">
-                        <div class="data-label">EMAs</div>
-                        <div class="data-value ${getStatusClass(struct.emas)}">${fmt(struct.emas)}</div>
+                        <div class="data-label">VA Trend</div>
+                        <div class="data-value ${getStatusClass(struct.value_areas)}">${fmt(struct.value_areas || 'NEUTRAL')}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">EMAs Order</div>
+                        <div class="data-value ${getStatusClass(struct.emas_in_order)}">${fmt(struct.emas_in_order)}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">EMAs Fanning</div>
+                        <div class="data-value ${getStatusClass(struct.emas_fanning)}">${fmt(struct.emas_fanning)}</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Pivot Points</div>
+                        <div class="data-value ${getStatusClass(struct.pivot_points)}">${fmt(struct.pivot_points)}</div>
                     </div>
                     <div class="data-item">
                         <div class="data-label">ADX</div>
                         <div class="data-value ${getStatusClass(struct.adx)}">${fmt(struct.adx)}</div>
+                    </div>
+                    <div class="data-item" style="opacity: 0.5;">
+                        <div class="data-label">Last Updated</div>
+                        <div class="data-value" style="font-size: 0.7rem;">${struct.last_updated ? new Date(struct.last_updated * 1000).toLocaleTimeString() : '--'}</div>
                     </div>
                 `;
             });

@@ -29,7 +29,7 @@ class RiskAgent(BaseAgent):
                     'sandbox': settings.BINGX_IS_SANDBOX,
                 }
             })
-            logger.info("RiskAgent initialized in LIVE mode")
+            self.log("RiskAgent initialized in LIVE mode", level="INFO")
 
         self.last_ts = {} # {symbol_tf: ts}
 
@@ -76,7 +76,7 @@ class RiskAgent(BaseAgent):
         sl_price = data.get("sl_price")
         tp_price = data.get("tp_price")
         if sl_price is None or tp_price is None:
-            logger.warning(f"Risk Rejected: Signal missing SL ({sl_price}) or TP ({tp_price})")
+            self.log(f"Risk Rejected: Signal missing SL ({sl_price}) or TP ({tp_price})", level="WARNING")
             return
             
         if not isinstance(sl_price, list): sl_price = [sl_price]
@@ -142,7 +142,7 @@ class RiskAgent(BaseAgent):
             logger.error(f"Error calculating risk: {e}", exc_info=True)
             return
 
-        logger.info(f"Risk Approved: {order_request['side']} {order_request['symbol']} size: {order_request['amount']:.6f} ({trade_size_usdt:.2f} USDT)")
+        self.log(f"Risk Approved: {order_request['side']} {order_request['symbol']} size: {order_request['amount']:.6f}", level="INFO")
         await event_bus.publish(EventType.ORDER_REQUEST, order_request)
 
     async def stop(self):

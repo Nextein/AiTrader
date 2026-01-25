@@ -5,9 +5,10 @@ Do not implement any of these yet.
 
 ### ⚖️ Risk & Execution
 - [ ] **Dynamic Position Sizing**: Risk agent should calculate position size based on current portfolio balance and volatility (ATR).
+- [ ] Risk Agent should calculate position size based on current portfolio, risk profile (desired % risk of total capital balance) and the entry and stop loss prices. It should be calculated so that the $ loss for said entry and stop loss prices matches the desired % risk of total capital balance.
+- [ ] The Trade setup should specify what type of SL it desired. For now, all cases would like to use a risk based on the entry and stop loss prices passed to the risk agent in the signal. The type of SL should be specified in the Strategy Agents when creating strategy signals, since each strategy will have its own way of calculating the SL and TP.
 
 
-3. The user should be able to activate and deactivate different agents overall in the agents tab. Eventually there will be multiple risk agents for example with different risk profiles and logic, and multiple "workflows" will be running concurrently. The system architecture should allow for this growth and versatility in agent connection.
 
 
 # Tests

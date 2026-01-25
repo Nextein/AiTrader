@@ -813,8 +813,8 @@
                         "value_areas": {
                             "type": "string",
                             "enum": [
-                                "HIGHER",
-                                "LOWER",
+                                "ASCENDING",
+                                "DESCENDING",
                                 "NEUTRAL"
                             ]
                         },

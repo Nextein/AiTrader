@@ -27,7 +27,7 @@ class ExecutionAgent(BaseAgent):
                     'sandbox': settings.BINGX_IS_SANDBOX,
                 }
             })
-            logger.info("ExecutionAgent: Running in LIVE/SANDBOX MODE")
+            self.log("Running in LIVE/SANDBOX MODE", level="INFO")
 
     async def run_loop(self):
         event_bus.subscribe(EventType.ORDER_REQUEST, self.on_order_request)
@@ -134,12 +134,12 @@ class ExecutionAgent(BaseAgent):
                     db.add(db_order)
                     db.commit()
             
-            logger.info(f"ORDER FILLED: {order.get('id')} | {side.upper()} {amount} {symbol} | Price: {order.get('price', 'N/A')}")
+            self.log_market_action("ORDER_FILLED", symbol, {"side": side, "amount": amount, "price": order.get('price', price)})
             order["agent"] = self.name
             await event_bus.publish(EventType.ORDER_FILLED, order)
             
         except Exception as e:
-            logger.error(f"Execution Error: {e}", exc_info=True)
+            self.log(f"Execution Error: {e}", level="ERROR")
             await event_bus.publish(EventType.ERROR, {"agent": self.name, "error": str(e)})
 
     async def stop(self):

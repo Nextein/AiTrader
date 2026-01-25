@@ -1003,36 +1003,39 @@ input:checked+.toggle-slider:before {
     margin-right: 0.5rem;
 }
 
-.state-positive {
+.state-positive,
+.state-bullish,
+.state-ascending {
     color: #4ade80;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
 }
 
-/* brighter green */
-.state-negative {
+.state-negative,
+.state-bearish,
+.state-descending {
     color: #f87171;
+    text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
 }
 
-/* brighter red */
 .state-neutral {
     color: #fbbf24;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
 }
-
-/* brighter amber */
 
 /* Glassmorphism for cards */
 .analysis-section-card {
-    background: rgba(22, 27, 34, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(88, 166, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .analysis-section-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
-    border-color: rgba(88, 166, 255, 0.3);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.6);
+    border-color: rgba(88, 166, 255, 0.4);
 }
 
 .analysis-section-card h4 {
