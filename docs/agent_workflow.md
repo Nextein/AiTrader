@@ -19,6 +19,8 @@ graph TD
     end
 
     subgraph L2_Analysis [L2: Analysis Layer]
+        ValueAreas[Value Areas Agent]
+        MarketStructure[Market Structure Agent]
         Regime[Regime Detection Agent]
         Anomaly[Anomaly Detection Agent]
     end
@@ -56,8 +58,12 @@ graph TD
     %% Data Flow
     MarketData -- "MARKET_DATA" --> Strategy1
     MarketData -- "MARKET_DATA" --> Strategy2
-    MarketData -- "MARKET_DATA" --> Regime
+    MarketData -- "MARKET_DATA" --> ValueAreas
     MarketData -- "MARKET_DATA" --> Anomaly
+
+    %% Intelligence Flow
+    ValueAreas -- "VALUE_AREAS_UPDATED" --> MarketStructure
+    MarketStructure -- "ANALYSIS_UPDATE" --> Regime
 
     %% Signal Flow
     Strategy1 -- "STRATEGY_SIGNAL" --> Aggregator
@@ -97,8 +103,9 @@ graph TD
 | :--- | :--- | :--- | :--- |
 | [**Governor**](./agents/governor_agent.md) | Orchestrates the system lifecycle and manages agent state. | System Config | Start/Stop Commands |
 | [**Market Data**](./agents/market_data_agent.md) | Fetches real-time OHLCV data from BingX and persists it. | Exchange API | `MARKET_DATA` |
-| [**Strategy Agents**](./agents/strategy_agents.md) | Apply technical indicators (RSI, MACD, EMA) to generate trade ideas. | `MARKET_DATA` | `STRATEGY_SIGNAL` |
-| [**Regime Detection**](./agents/regime_detection_agent.md)| Classifies the market (Trending vs Ranging) to adjust strategy weights. | `MARKET_DATA` | `REGIME_CHANGE` |
+| [**Value Areas**](./agents/value_areas_agent.md) | Calculates VPVR, POC and Value Area levels per timeframe. | `MARKET_DATA` | `VALUE_AREAS_UPDATED` |
+| [**Market Structure**](./agents/market_structure_agent.md) | Analyzes POC trends and EMA alignments. | `VALUE_AREAS_UPDATED` | `ANALYSIS_UPDATE` |
+| [**Regime Detection**](./agents/regime_detection_agent.md)| Classifies the market (Trending vs Ranging) to adjust strategy weights. | `ANALYSIS_UPDATE` | `REGIME_CHANGE` |
 | [**Aggregator**](./agents/aggregator_agent.md) | Buffers signals and finds consensus using regime-adaptive weighting. | `STRATEGY_SIGNAL` | `SIGNAL` (Consensus) |
 | [**Risk Agent**](./agents/risk_agent.md) | Validates account balance, calculates position sizing, and enforces limits. | `SIGNAL` | `ORDER_REQUEST` |
 | [**Execution**](./agents/execution_agent.md) | Handles the low-level API interaction to place orders on the exchange. | `ORDER_REQUEST` | `ORDER_FILLED` |
@@ -108,6 +115,6 @@ graph TD
 ## Implementation Details
 
 - **Event Bus**: An asynchronous pub-sub mechanism (`app/core/event_bus.py`) that decouples agents.
-- **Base Agent**: All agents inherit from `BaseAgent`, providing a standardized `run_loop` and lifecycle management.
+- **Base Agent**: All agents inherit from `BaseAgent`, providing a standardized `run_loop`, lifecycle management, and a unified logging interface (`self.log`, `self.log_llm_call`, `self.log_market_action`).
 - **Regime-Adaptive Weighting**: The Aggregator increases EMA weights in `TRENDING` markets and RSI weights in `RANGING` markets.
 - **Safety**: The Risk Agent acts as a final gateway, ensuring no trade is placed without sufficient liquidity and confidence.

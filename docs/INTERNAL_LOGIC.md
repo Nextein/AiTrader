@@ -8,6 +8,8 @@ The system is built on an **Event Bus** (Pub/Sub pattern). No agent calls anothe
 
 ### Key Event Types:
 - `MARKET_DATA`: Raw price/volume info.
+- `VALUE_AREAS_UPDATED`: Point of Control and Value Area calculations completed.
+- `ANALYSIS_UPDATE`: Specific analysis section (e.g., market_structure) has been updated.
 - `REGIME_CHANGE`: Classification of market state (Trending/Ranging).
 - `STRATEGY_SIGNAL`: Individual strategy outputs (RSI, EMA, etc.).
 - `SIGNAL`: The final, aggregated decision after consensus.
@@ -37,10 +39,18 @@ Every 10-60 seconds, the following cycle triggers:
 - **Trace**: "Fetched 100 candles..."
 - **Output**: Publishes `MARKET_DATA`.
 
-### Step 2: Intelligence & Analysis (Parallel)
-- **Agent**: `RegimeDetectionAgent`
+### Step 2: Intelligence & Analysis (Sequential & Parallel)
+- **Agent**: `ValueAreasAgent`
   - Listens to: `MARKET_DATA`
-  - Action: Runs ADX/ATR to find the regime.
+  - Action: Calculates VPVR, POC, and Value Areas.
+  - Output: Publishes `VALUE_AREAS_UPDATED`.
+- **Agent**: `MarketStructureAgent`
+  - Listens to: `VALUE_AREAS_UPDATED`
+  - Action: Analyzes POC trends (ASCENDING/DESCENDING) over the last 3 windows.
+  - Output: Updates `market_structure` and publishes `ANALYSIS_UPDATE`.
+- **Agent**: `RegimeDetectionAgent`
+  - Listens to: `ANALYSIS_UPDATE`
+  - Action: Runs ADX/ATR and combines with POC trends for final regime classification.
   - Trace: "Regime Change Detected: TRENDING -> RANGING"
 - **Agent**: `StrategyAgents` (RSI/MACD, EMA Cross)
   - Listen to: `MARKET_DATA`
@@ -75,14 +85,18 @@ Every 10-60 seconds, the following cycle triggers:
 
 The system generates a triple-layer trail for every single tick:
 
-### A. Terminal Logs (Real-time)
-We promoted debugging logs to `INFO`. You can see exactly what each indicator is doing:
+We use a standardized logging system in `BaseAgent` (`app/agents/base_agent.py`) that ensures consistency across the MAS. Agents should use:
+- `self.log(message, level)`: Basic logging with standard prefix.
+- `self.log_llm_call(prompt, symbol, result)`: Tracks model interactions.
+- `self.log_market_action(action, symbol, data)`: Tracks data fetches and structural updates.
+
+Example log output:
 ```bash
-[MarketDataAgent] [BTC-USDT] Fetched 100 candles. Latest Close: 87560.9
-[RegimeDetectionAgent] Market Monitoring: ADX=16.81 | Current Regime=RANGING
-[StrategyAgent_RSI_MACD] Indicators >> RSI: 42.10 | MACD: -0.05
-[AggregatorAgent] Buffered signal from RSI_MACD for processing.
-[AuditLogAgent] [PERSISTED] Event: market_data from unknown
+[MarketDataAgent] MARKET_ACTION: FETCH_DATA_LIVE for BTC-USDT | DATA: {'timeframe': '1h'}
+[ValueAreasAgent] MARKET_ACTION: CALCULATE_VALUE_AREAS for BTC-USDT | DATA: {'timeframe': '1h', 'state': 'IN', 'poc': 87450.5}
+[MarketStructureAgent] Received value areas update for BTC-USDT 1h
+[MarketStructureAgent] MARKET_ACTION: UPDATE_STRUCTURE for BTC-USDT | DATA: {'timeframe': '1h', 'va_state': 'ASCENDING'}
+[RegimeDetectionAgent] LLM_CALL: regime_decision for BTC-USDT | DATA: {'timeframe': '1h', 'regime': 'BULLISH'}
 ```
 
 ### B. Dashboard Trace (Visual)
