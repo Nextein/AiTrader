@@ -1,1 +1,5 @@
-Verify this symbol: {symbol}
+# INPUT SYMBOL
+<symbol>{symbol}</symbol>
+
+Verify the asset above according to your classification taxonomy. 
+Final output: TRUE or FALSE.

@@ -1,2 +1,10 @@
-Current EMAs: {current_emas}
-Previous EMAs: {previous_emas}
+# INPUT DATA
+<current_emas>
+{current_emas}
+</current_emas>
+
+<previous_emas>
+{previous_emas}
+</previous_emas>
+
+Analyze the EMA relationship. Return valid JSON only.

@@ -1,2 +1,6 @@
-Analyze this data:
+# INPUT DATA (Recent 10 Periods)
+<data>
 {data}
+</data>
+
+Identify the current phase. Return ONLY 'UP' or 'DOWN'.

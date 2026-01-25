@@ -1,3 +1,14 @@
-Symbol: {symbol}
-Timeframe Regimes: {regimes}
-Weekly/Monthly Price Action: {pa_data}
+# CONTEXT
+- **Symbol**: <symbol>{symbol}</symbol>
+
+# MULTI-TIMEFRAME REGIMES
+<regimes>
+{regimes}
+</regimes>
+
+# HIGH-TIMEFRAME PRICE ACTION
+<pa_data>
+{pa_data}
+</pa_data>
+
+Determine the overall market regime. Return valid JSON only.

@@ -1,3 +1,10 @@
-Symbol: {symbol}
-Timeframe: {timeframe}
-Data: {data}
+# CONTEXT
+- **Symbol**: <symbol>{symbol}</symbol>
+- **Timeframe**: <timeframe>{timeframe}</timeframe>
+
+# TECHNICAL DATA PACKET
+<data>
+{data}
+</data>
+
+Synthesize the data above and classify the regime. Return valid JSON only.
