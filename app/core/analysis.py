@@ -18,9 +18,10 @@ class AnalysisObject:
             "date_created": int(time.time()),
             "analysis_state": "NEW",
             "market_data": {
-                "1w": None, "1d": None, "4h": None, "1h": None, "30m": None, "15m": None, "5m": None
+                "1M": None, "1w": None, "1d": None, "4h": None, "1h": None, "30m": None, "15m": None, "5m": None
             },
             "market_structure": {
+                "1M": self._default_market_structure(),
                 "1w": self._default_market_structure(),
                 "1d": self._default_market_structure(),
                 "4h": self._default_market_structure(),
@@ -30,11 +31,13 @@ class AnalysisObject:
                 "5m": self._default_market_structure(),
             },
             "market_regime": {
-                "1w": "UNDEFINED", "1d": "UNDEFINED", "4h": "UNDEFINED", "1h": "UNDEFINED",
+                "1M": "UNDEFINED", "1w": "UNDEFINED", "1d": "UNDEFINED", "4h": "UNDEFINED", "1h": "UNDEFINED",
                 "30m": "UNDEFINED", "15m": "UNDEFINED", "5m": "UNDEFINED",
+                "overall": "UNDEFINED",
                 "last_updated": None
             },
             "value_areas": {
+                "1M": self._default_value_areas(),
                 "1w": self._default_value_areas(),
                 "1d": self._default_value_areas(),
                 "4h": self._default_value_areas(),
@@ -44,6 +47,7 @@ class AnalysisObject:
                 "5m": self._default_value_areas(),
             },
             "vpvr": {
+                "1M": self._default_vpvr(),
                 "1w": self._default_vpvr(),
                 "1d": self._default_vpvr(),
                 "4h": self._default_vpvr(),
@@ -66,7 +70,8 @@ class AnalysisObject:
             "lows": "NEUTRAL",
             "value_areas": "NEUTRAL",
             "pivot_points": "NEUTRAL",
-            "emas": "NEUTRAL",
+            "emas_in_order": "NEUTRAL",
+            "emas_fanning": "NEUTRAL",
             "adx": "NEUTRAL",
             "last_updated": None
         }

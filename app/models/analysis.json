@@ -1299,8 +1299,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1311,8 +1310,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1323,8 +1321,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1335,8 +1332,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1347,8 +1343,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1359,8 +1354,7 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },
@@ -1371,8 +1365,18 @@
                         "BULLISH",
                         "BEARISH",
                         "RANGING",
-                        "UNCLEAR",
-                        "NEAR_SR",
+                        "UNKNOWN",
+                        "UNDEFINED"
+                    ]
+                },
+                "overall": {
+                    "type": "string",
+                    "description": "Overall market regime",
+                    "enum": [
+                        "BULLISH",
+                        "BEARISH",
+                        "RANGING",
+                        "UNKNOWN",
                         "UNDEFINED"
                     ]
                 },

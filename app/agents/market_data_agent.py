@@ -660,7 +660,7 @@ class MarketDataAgent(BaseAgent):
 
     def _timeframe_to_minutes(self, timeframe: str) -> int:
         """Convert timeframe string to minutes"""
-        multipliers = {'m': 1, 'h': 60, 'd': 1440, 'w': 10080}
+        multipliers = {'m': 1, 'h': 60, 'd': 1440, 'w': 10080, 'M': 43200}
         if len(timeframe) < 2:
             return 60  # Default
         try:
