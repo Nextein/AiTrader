@@ -8,9 +8,9 @@ from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
 from app.core.analysis import AnalysisManager
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from app.core.config import settings
+from app.core.prompt_loader import PromptLoader
 
 logger = logging.getLogger("MarketStructureAgent")
 
@@ -24,27 +24,7 @@ class MarketStructureAgent(BaseAgent):
             model=settings.OLLAMA_MODEL,
             temperature=0
         )
-        self.ema_prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a technical analysis expert. Analyze the following EMA values and determine the market structure.
-            
-            EMAs provided: 9, 21, 55, 144, 252.
-            
-            Determine:
-            1. 'emas_in_order':
-               - 'ASCENDING' if 9 > 21 > 55 > 144 > 252 (Bullish stack)
-               - 'DESCENDING' if 9 < 21 < 55 < 144 < 252 (Bearish stack)
-               - 'NEUTRAL' otherwise.
-            
-            2. 'emas_fanning':
-               - 'EXPANDING' if the EMAs are spreading apart compared to the previous values (distances between consecutive EMAs are increasing).
-               - 'NEUTRAL' if they are not expanding (e.g., getting closer/contracting or staying same).
-
-            Return your answer in JSON format with keys: "emas_in_order" and "emas_fanning".
-            Values for emas_in_order MUST be one of: ASCENDING, DESCENDING, NEUTRAL.
-            Values for emas_fanning MUST be one of: EXPANDING, NEUTRAL.
-            """),
-            ("user", "Current EMAs: {current_emas}\nPrevious EMAs: {previous_emas}")
-        ])
+        self.ema_prompt = PromptLoader.load("market_structure", "ema_analysis")
         self.ema_chain = self.ema_prompt | self.llm | JsonOutputParser()
 
     async def run_loop(self):

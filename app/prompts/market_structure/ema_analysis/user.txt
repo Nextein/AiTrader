@@ -1,0 +1,2 @@
+Current EMAs: {current_emas}
+Previous EMAs: {previous_emas}

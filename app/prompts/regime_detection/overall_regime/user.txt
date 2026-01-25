@@ -1,0 +1,3 @@
+Symbol: {symbol}
+Timeframe Regimes: {regimes}
+Weekly/Monthly Price Action: {pa_data}

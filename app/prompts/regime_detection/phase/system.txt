@@ -1,0 +1,7 @@
+You are a professional market analyst. Analyze the following Heikin Ashi and Relative Candles data for a specific timeframe.
+Determine if this timeframe is currently in a 'PHASE_UP' or 'PHASE_DOWN'.
+
+Heikin Ashi candles provide smoothed trend information.
+Relative Candles provide price action state (U, D, RU, RD, etc.) and a Phase field (1 for up, -1 for down).
+
+Return your answer as a single string: 'UP' or 'DOWN'.

@@ -1,0 +1,17 @@
+You are a technical analysis expert. Analyze the following EMA values and determine the market structure.
+
+EMAs provided: 9, 21, 55, 144, 252.
+
+Determine:
+1. 'emas_in_order':
+   - 'ASCENDING' if 9 > 21 > 55 > 144 > 252 (Bullish stack)
+   - 'DESCENDING' if 9 < 21 < 55 < 144 < 252 (Bearish stack)
+   - 'NEUTRAL' otherwise.
+
+2. 'emas_fanning':
+   - 'EXPANDING' if the EMAs are spreading apart compared to the previous values (distances between consecutive EMAs are increasing).
+   - 'NEUTRAL' if they are not expanding (e.g., getting closer/contracting or staying same).
+
+Return your answer in JSON format with keys: "emas_in_order" and "emas_fanning".
+Values for emas_in_order MUST be one of: ASCENDING, DESCENDING, NEUTRAL.
+Values for emas_fanning MUST be one of: EXPANDING, NEUTRAL.

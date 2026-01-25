@@ -9,8 +9,9 @@ from app.core.event_bus import event_bus, EventType
 from app.core.analysis import AnalysisManager
 from app.core.config import settings
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
+
+from app.core.prompt_loader import PromptLoader
 
 logger = logging.getLogger("RegimeDetection")
 
@@ -25,53 +26,15 @@ class RegimeDetectionAgent(BaseAgent):
         )
         
         # Phase prompt for higher timeframes
-        self.phase_prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a professional market analyst. Analyze the following Heikin Ashi and Relative Candles data for a specific timeframe.
-            Determine if this timeframe is currently in a 'PHASE_UP' or 'PHASE_DOWN'.
-            
-            Heikin Ashi candles provide smoothed trend information.
-            Relative Candles provide price action state (U, D, RU, RD, etc.) and a Phase field (1 for up, -1 for down).
-            
-            Return your answer as a single string: 'UP' or 'DOWN'."""),
-            ("user", "Analyze this data:\n{data}")
-        ])
+        self.phase_prompt = PromptLoader.load("regime_detection", "phase")
         self.phase_chain = self.phase_prompt | self.llm | StrOutputParser()
 
         # Regime decision prompt
-        self.regime_prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a professional market analyst. Based on the provided technical data, determine the market regime for the given timeframe.
-            
-            Fields provided:
-            - ADX Trending: Is the ADX indicating a trend?
-            - Highs/Lows: Higher Highs, Lower Lows, etc.
-            - EMAs: Order (ASCENDING/DESCENDING/NEUTRAL) and Fanning (EXPANDING/NEUTRAL).
-            - Higher Timeframe Phases: Trend status of 1 and 2 timeframes higher.
-            - 2 Cycles Status: Are there 2 cycles in one direction?
-            - Pivot Points: Increasing or Decreasing.
-            - Directional Indicators: DI+ and DI- relative positions and zero-line cross.
-            
-            Decision must be one of: BULLISH, BEARISH, RANGING, UNKNOWN, UNDEFINED.
-            
-            Return your answer as a JSON object with keys: "regime" and "reasoning"."""),
-            ("user", "Symbol: {symbol}\nTimeframe: {timeframe}\nData: {data}")
-        ])
+        self.regime_prompt = PromptLoader.load("regime_detection", "regime_decision")
         self.regime_chain = self.regime_prompt | self.llm | JsonOutputParser()
 
         # Overall regime prompt
-        self.overall_prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are a senior market strategist. Determine the OVERALL market regime for the next month or couple of weeks.
-            
-            You will be provided with:
-            1. Market regimes for all timeframes (Monthly, Weekly, Daily, 4h, 1h, etc.)
-            2. Candlestick patterns (price action) on Weekly and Monthly timeframes.
-            
-            Contextualize the multi-timeframe alignment to get the greater picture.
-            
-            Decision must be one of: BULLISH, BEARISH, RANGING, UNKNOWN, UNDEFINED.
-            
-            Return your answer as a JSON object with keys: "overall_regime" and "analysis"."""),
-            ("user", "Symbol: {symbol}\nTimeframe Regimes: {regimes}\nWeekly/Monthly Price Action: {pa_data}")
-        ])
+        self.overall_prompt = PromptLoader.load("regime_detection", "overall_regime")
         self.overall_chain = self.overall_prompt | self.llm | JsonOutputParser()
 
     async def run_loop(self):
