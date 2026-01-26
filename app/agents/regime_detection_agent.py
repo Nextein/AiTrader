@@ -18,6 +18,24 @@ logger = logging.getLogger("RegimeDetection")
 class RegimeDetectionAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="RegimeDetectionAgent")
+        self.description = "Analyzes market structure and indicators to determine the current trading regime (Trending/Ranging)."
+        self.tasks = [
+            "Classify market regime per timeframe (1H, 15m, 5m)",
+            "Identify candlestick phases (Phase 1, Phase -1, etc.)",
+            "Synthesize per-timeframe regimes into an overall market bias",
+            "Detect multi-cycle trends"
+        ]
+        self.responsibilities = [
+            "Providing accurate regime classification to strategy agents",
+            "Ensuring higher-timeframe context is respected in lower-timeframe analysis",
+            "Alerting the system of major regime shifts"
+        ]
+        self.prompts = [
+            "regime_detection/phase",
+            "regime_detection/regime_decision",
+            "regime_detection/overall_regime"
+        ]
+        
         self.llm = ChatOpenAI(
             base_url=f"{settings.OLLAMA_BASE_URL}/v1",
             api_key="ollama",
@@ -126,7 +144,7 @@ class RegimeDetectionAgent(BaseAgent):
         try:
             res = await self.regime_chain.ainvoke(info)
             regime = res.get("regime", "UNKNOWN").upper()
-            self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
+            await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
             return regime
         except Exception as e:
             logger.error(f"LLM Error in determine_timeframe_regime: {e}")

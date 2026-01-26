@@ -13,6 +13,20 @@ logger = logging.getLogger("ExecutionAgent")
 class ExecutionAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="ExecutionAgent")
+        self.description = "Interfaces with the exchange to execute orders and manage open positions."
+        self.tasks = [
+            "Execute market orders based on approved requests",
+            "Monitor latest prices for order execution",
+            "Handle emergency exit commands by closing all positions",
+            "Maintain an audit trail of executed orders in the database"
+        ]
+        self.responsibilities = [
+            "Ensuring reliable and fast order placement",
+            "Synchronizing local order state with the exchange",
+            "Managing exchange connection lifecycle"
+        ]
+        self.prompts = []  # No LLM used here
+        
         self.latest_prices = {}
         if settings.DEMO_MODE:
             from app.core.demo_engine import demo_engine
@@ -134,12 +148,12 @@ class ExecutionAgent(BaseAgent):
                     db.add(db_order)
                     db.commit()
             
-            self.log_market_action("ORDER_FILLED", symbol, {"side": side, "amount": amount, "price": order.get('price', price)})
+            await self.log_market_action("ORDER_FILLED", symbol, {"side": side, "amount": amount, "price": order.get('price', price)})
             order["agent"] = self.name
             await event_bus.publish(EventType.ORDER_FILLED, order)
             
         except Exception as e:
-            self.log(f"Execution Error: {e}", level="ERROR")
+            await self.log_event(f"Execution Error: {e}", level="ERROR")
             await event_bus.publish(EventType.ERROR, {"agent": self.name, "error": str(e)})
 
     async def stop(self):

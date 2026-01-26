@@ -330,6 +330,31 @@
                 </div>
             </div>
         </div>
+        <!-- Prompt Viewer Modal -->
+        <div id="prompt-modal" class="modal">
+            <div class="modal-content" style="width: 70%; height: 70%;">
+                <div class="modal-header">
+                    <h3>Prompt: <span id="modal-prompt-name"></span></h3>
+                    <button id="close-prompt-modal" class="btn-icon">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div class="agent-metadata-title" style="font-size: 0.9rem;">System Prompt</div>
+                        <div style="background: #000; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); max-height: 250px; overflow-y: auto;">
+                            <pre id="prompt-system-content" style="white-space: pre-wrap; word-break: break-all; font-size: 0.8rem; color: var(--text-primary);"></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="agent-metadata-title" style="font-size: 0.9rem;">User Prompt Template</div>
+                        <div style="background: #000; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); max-height: 250px; overflow-y: auto;">
+                            <pre id="prompt-user-content" style="white-space: pre-wrap; word-break: break-all; font-size: 0.8rem; color: var(--text-primary);"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="app.js"></script>
     <script>

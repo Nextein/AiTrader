@@ -150,7 +150,7 @@ class CyclesStrategyAgent(BaseAgent):
                     self.log(f"Generated SIGNAL: {trade_setup['signal']} for {symbol}", level="INFO", data=trade_setup)
 
             self.processed_count += 1
-            self.log_llm_call("cycles_strategy_analysis", symbol, {"signal": analysis_entry["signal"]})
+            await self.log_llm_call("cycles_strategy_analysis", symbol, {"signal": analysis_entry["signal"]})
 
         except Exception as e:
             logger.error(f"Error in CyclesStrategyAgent for {symbol}: {e}", exc_info=True)

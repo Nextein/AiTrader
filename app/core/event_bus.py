@@ -33,6 +33,7 @@ class EventType(Enum):
     ANALYSIS_UPDATE = "analysis_update"
     VALUE_AREAS_UPDATED = "value_areas_updated"
     ANALYSIS_COMPLETED = "analysis_completed"
+    AGENT_LOG = "agent_log"
 
 # Default priority mapping for event types
 EVENT_PRIORITY_MAP = {
@@ -51,6 +52,7 @@ EVENT_PRIORITY_MAP = {
     EventType.ANALYSIS_COMPLETED: EventPriority.NORMAL,
     EventType.ERROR: EventPriority.LOW,
     EventType.SYSTEM_STATUS: EventPriority.LOW,
+    EventType.AGENT_LOG: EventPriority.LOW,
 }
 
 class Event:

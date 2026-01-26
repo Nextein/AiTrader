@@ -149,6 +149,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardOpacity = isActive ? '1' : '0.5';
                 const cardFilter = isActive ? 'none' : 'grayscale(50%)';
 
+                const tasksHtml = (agent.tasks || []).length > 0
+                    ? `<div class="agent-metadata-box">
+                        <div class="agent-metadata-title"><i data-lucide="check-circle" style="width:12px"></i> Tasks</div>
+                        <ul class="agent-metadata-list">
+                            ${agent.tasks.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                       </div>`
+                    : '';
+
+                const respHtml = (agent.responsibilities || []).length > 0
+                    ? `<div class="agent-metadata-box">
+                        <div class="agent-metadata-title"><i data-lucide="shield" style="width:12px"></i> Responsibilities</div>
+                        <ul class="agent-metadata-list">
+                            ${agent.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                       </div>`
+                    : '';
+
+                const promptsHtml = (agent.prompts || []).length > 0
+                    ? `<div class="agent-metadata-box">
+                        <div class="agent-metadata-title"><i data-lucide="file-text" style="width:12px"></i> Prompts</div>
+                        <div class="prompt-tags-container">
+                            ${agent.prompts.map(p => `<span class="prompt-tag" data-prompt="${p}">${p}</span>`).join('')}
+                        </div>
+                       </div>`
+                    : '';
+
                 return `
                     <div class="agent-card-detailed ${agent.is_running ? 'status-active' : 'status-idle'}" style="opacity: ${cardOpacity}; filter: ${cardFilter};">
                         <div class="agent-header">
@@ -159,35 +186,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="agent-badge">${agent.type}</span>
                         </div>
                         <div class="agent-body">
-                            <div class="agent-stat-row">
-                                <span class="agent-stat-label">Communication Role</span>
-                                <span class="agent-stat-value">${getAgentRole(agent.name)}</span>
-                            </div>
-                            <div class="agent-stat-row">
-                                <span class="agent-stat-label">Activation</span>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" class="activation-toggle" data-agent="${agent.name}" ${isActive ? 'checked' : ''}>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
+                            <div class="agent-desc">${agent.description || 'No description provided.'}</div>
+                            
                             <div class="agent-stat-row">
                                 <span class="agent-stat-label">Uptime</span>
                                 <span class="agent-stat-value">${formatUptime(agent.uptime)}</span>
                             </div>
                             <div class="agent-stat-row">
-                                <span class="agent-stat-label">Events Processed</span>
+                                <span class="agent-stat-label">Events</span>
                                 <span class="agent-stat-value">${agent.processed_count || 0}</span>
                             </div>
-                            <div class="agent-stat-row">
-                                <span class="agent-stat-label">Status</span>
-                                <span class="agent-stat-value" style="color: ${agent.is_running ? 'var(--success)' : 'var(--danger)'}">
-                                    ${agent.is_running ? 'RUNNING' : 'IDLE'}
-                                </span>
-                            </div>
+                            
+                            ${tasksHtml}
+                            ${respHtml}
+                            ${promptsHtml}
                             ${configHtml}
-                            <div class="agent-actions">
+
+                            <div class="agent-actions" style="margin-top: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1;">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="activation-toggle" data-agent="${agent.name}" ${isActive ? 'checked' : ''}>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span style="font-size: 0.7rem; color: var(--text-secondary)">Active</span>
+                                </div>
                                 <button class="btn btn-small btn-glow-success restart-agent" data-agent="${agent.name}" ${!isActive ? 'disabled' : ''}>
-                                    <i data-lucide="refresh-cw"></i> RESTART
+                                    <i data-lucide="refresh-cw"></i>
                                 </button>
                                 <button class="btn btn-small btn-icon view-events" data-agent="${agent.name}" title="View Events">
                                     <i data-lucide="list"></i>
@@ -393,13 +417,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
                 const candleCount = d.candles || 0;
                 msg = `<span class="text-muted">${d.symbol}</span> <span class="text-accent">${d.latest_close.toFixed(2)}</span> (${candleCount} candles)`;
-            } else if (log.event_type === 'regime_change') {
-                typeClass = 'type-regime';
-            } else if (log.event_type === 'signal') {
-                // Task 8: Beautiful signals
+            } else if (log.event_type === 'agent_log') {
+                typeClass = 'type-regime'; // Using a distinct color
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
-                const sideColor = d.signal === 'BUY' ? 'var(--success)' : 'var(--danger)';
-                msg = `<span style="font-weight: bold; color: ${sideColor}">${d.signal} ${d.symbol}</span> @ ${d.price} | Conf: ${d.confidence} | Reason: ${d.rationale}`;
+                const level = d.level || 'INFO';
+                if (level === 'ERROR') msgClass = 'error';
+                else if (level === 'WARNING') msgClass = 'warning';
+
+                if (d.type === 'llm_call') {
+                    msg = `<span class="text-accent">[LLM] ${d.prompt_name}</span> ${d.symbol ? `for ${d.symbol}` : ''}`;
+                    if (d.result) {
+                        msg += ` <span class="text-muted">→ ${JSON.stringify(d.result).substring(0, 100)}...</span>`;
+                    }
+                } else if (d.type === 'market_action') {
+                    msg = `<span style="color: #00f2fe">[Market] ${d.action}</span> for ${d.symbol}`;
+                } else {
+                    msg = d.message || JSON.stringify(d);
+                }
             } else if (log.event_type === 'order_request' || log.event_type === 'order_filled') {
                 // Task 8: Beautiful orders
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
@@ -684,6 +718,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     }
+
+    // Prompt Viewer Modal logic
+    const promptModal = document.getElementById('prompt-modal');
+    const closePromptBtn = document.getElementById('close-prompt-modal');
+
+    if (closePromptBtn) {
+        closePromptBtn.onclick = () => {
+            promptModal.style.display = 'none';
+        };
+    }
+
+    if (promptModal) {
+        promptModal.onclick = (e) => {
+            if (e.target === promptModal) {
+                promptModal.style.display = 'none';
+            }
+        };
+    }
+
+    async function showPromptContent(promptPath) {
+        try {
+            const resp = await fetch(`/prompts/${promptPath}`);
+            const data = await resp.json();
+
+            document.getElementById('modal-prompt-name').innerText = promptPath;
+            document.getElementById('prompt-system-content').innerText = data.system || '-- Empty --';
+            document.getElementById('prompt-user-content').innerText = data.user || '-- Empty --';
+
+            promptModal.style.display = 'flex';
+        } catch (e) {
+            console.error('Failed to fetch prompt content', e);
+            alert('Failed to load prompt content');
+        }
+    }
+
+    // Delegation for prompt tags
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('prompt-tag')) {
+            const path = e.target.getAttribute('data-prompt');
+            showPromptContent(path);
+        }
+    });
 
     // Intelligence Page Logic
     let selectedAnalysisSymbol = null;

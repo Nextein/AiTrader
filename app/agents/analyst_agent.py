@@ -16,6 +16,20 @@ logger = logging.getLogger("AnalystAgent")
 class AnalystAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="AnalystAgent")
+        self.description = "Synthesizes multi-timeframe data and strategy signals into a unified market bias."
+        self.tasks = [
+            "Monitor analysis updates from other agents",
+            "Synthesize market regime, structure, and strategy signals",
+            "Perform top-down analysis using LLM",
+            "Detect OBV divergences on 15m timeframe"
+        ]
+        self.responsibilities = [
+            "Providing a unified primary bias (BULLISH/BEARISH/NEUTRAL)",
+            "Identifying top trading setups",
+            "Ensuring cross-timeframe consistency in analysis"
+        ]
+        self.prompts = ["analyst/top_down_analysis"]
+        
         self.llm = ChatOpenAI(
             base_url=f"{settings.OLLAMA_BASE_URL}/v1",
             api_key="ollama",
@@ -68,6 +82,7 @@ class AnalystAgent(BaseAgent):
 
             # 3. LLM Synthesis
             res = await self.analyst_chain.ainvoke(top_down_data)
+            await self.log_llm_call("top_down_analysis", symbol, res)
             
             # 4. Update Analysis Object
             analysis_update = {

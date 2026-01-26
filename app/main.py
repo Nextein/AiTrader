@@ -82,13 +82,14 @@ async def get_status():
             "sandbox": settings.BINGX_IS_SANDBOX,
             "demo_mode": settings.DEMO_MODE
         },
-        "agents": [agent.get_status() for agent in governor.agents]
+        "agents": [governor.get_status()] + [agent.get_status() for agent in governor.agents]
     }
 
 @app.post("/agents/restart/{name}")
 async def restart_agent(name: str):
     logger.info(f"Request to restart agent: {name}")
-    for agent in governor.agents:
+    all_agents = [governor] + governor.agents
+    for agent in all_agents:
         if agent.name == name:
             await agent.stop()
             asyncio.create_task(agent.start())
@@ -103,7 +104,8 @@ async def get_agent_events(name: str, limit: int = 50):
     events = event_bus.get_agent_events(name, limit)
     if not events:
         # Check if agent exists
-        agent_exists = any(agent.name == name for agent in governor.agents)
+        all_agents = [governor] + governor.agents
+        agent_exists = any(agent.name == name for agent in all_agents)
         if not agent_exists:
             raise HTTPException(status_code=404, detail=f"Agent {name} not found")
     return {"agent_name": name, "events": events, "count": len(events)}
@@ -112,7 +114,8 @@ async def get_agent_events(name: str, limit: int = 50):
 async def activate_agent(name: str):
     """Activate a specific agent (Task 2)"""
     logger.info(f"Request to activate agent: {name}")
-    for agent in governor.agents:
+    all_agents = [governor] + governor.agents
+    for agent in all_agents:
         if agent.name == name:
             if hasattr(agent, 'is_active'):
                 agent.is_active = True
@@ -127,7 +130,8 @@ async def activate_agent(name: str):
 async def deactivate_agent(name: str):
     """Deactivate a specific agent (Task 2)"""
     logger.info(f"Request to deactivate agent: {name}")
-    for agent in governor.agents:
+    all_agents = [governor] + governor.agents
+    for agent in all_agents:
         if agent.name == name:
             if hasattr(agent, 'is_active'):
                 agent.is_active = False
@@ -260,6 +264,23 @@ async def get_analysis_data(symbol: str):
     
     # Pre-process data to make it JSON serializable (convert DataFrames)
     return serialize_analysis_data(data)
+
+@app.get("/prompts")
+async def list_all_prompts():
+    """List all available prompts (Task 1)"""
+    from app.core.prompt_loader import PromptLoader
+    return {"prompts": PromptLoader.list_prompts()}
+
+@app.get("/prompts/{path:path}")
+async def get_prompt_content(path: str):
+    """Get raw content of a specific prompt (Task 1)"""
+    from app.core.prompt_loader import PromptLoader
+    parts = path.split("/")
+    if len(parts) != 2:
+        raise HTTPException(status_code=400, detail="Path must be in format 'agent/task'")
+    
+    agent, task = parts
+    return PromptLoader.get_raw(agent, task)
 
 def serialize_analysis_data(obj):
     if isinstance(obj, pd.DataFrame):

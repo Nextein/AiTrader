@@ -42,7 +42,7 @@ class SanityAgent(BaseAgent):
             
             # Being robust with the response
             is_valid = "TRUE" in result and "FALSE" not in result
-            self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "raw": result})
+            await self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "raw": result})
             self.processed_count += 1
             return is_valid
         except Exception as e:

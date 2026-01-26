@@ -35,6 +35,22 @@ logger = logging.getLogger("Governor")
 
 class GovernorAgent:
     def __init__(self):
+        self.name = "GovernorAgent"
+        self.description = "The central orchestrator of the multi-agent system."
+        self.tasks = [
+            "Initialize all specialized agents",
+            "Perform symbol screening and prioritization",
+            "Monitor system-wide health and performance",
+            "Handle emergency shutdown procedures"
+        ]
+        self.responsibilities = [
+            "Coordinating information flow between agents",
+            "Ensuring overall system stability and safety",
+            "Managing account-level resources and equity snapshots"
+        ]
+        self.prompts = []
+        self.start_time = None
+        
         self.sanity_agent = SanityAgent()
         self.agents: List[BaseAgent] = [
             MarketDataAgent(),
@@ -59,19 +75,44 @@ class GovernorAgent:
             # DummyStrategyAgent(signal_interval=5, name="DummyStrategy1")
         ]
         self.is_running = False
-        self.tasks = []
+        self.is_active = True
+        self.tasks_list = [] # Renamed from self.tasks to avoid conflict
+
+    def get_status(self):
+        import time
+        uptime = time.time() - self.start_time if self.start_time else 0
+        return {
+            "name": self.name,
+            "is_running": self.is_running,
+            "is_active": True,
+            "type": "GovernorAgent",
+            "uptime": uptime,
+            "processed_count": 0,
+            "description": self.description,
+            "tasks": self.tasks,
+            "responsibilities": self.responsibilities,
+            "prompts": self.prompts,
+            "config": {
+                "max_symbols": settings.MAX_SYMBOLS,
+                "demo_mode": settings.DEMO_MODE
+            }
+        }
 
     async def start(self):
         if self.is_running:
             return
         
+        if self.start_time is None:
+            import time
+            self.start_time = time.time()
+            
         self.is_running = True
-        logger.info("Governor: Starting all agents...")
+        await self.log_event("Governor: Starting all agents...", level="INFO")
         
         # In a real hierarchical system, we might start them in order, 
         # but with the event bus, order doesn't strictly matter for initialization.
         for agent in self.agents:
-            self.tasks.append(asyncio.create_task(agent.start()))
+            self.tasks_list.append(asyncio.create_task(agent.start()))
             
         # 3. Initialize Demo Balance if needed
         if settings.DEMO_MODE:
@@ -79,12 +120,41 @@ class GovernorAgent:
             await demo_engine.initialize_balance()
             
         # 4. Start equity snapshotting
-        self.tasks.append(asyncio.create_task(self.equity_snapshot_loop()))
+        self.tasks_list.append(asyncio.create_task(self.equity_snapshot_loop()))
             
         # 4. Start symbol initialization
-        self.tasks.append(asyncio.create_task(self.initialize_symbols_task()))
+        self.tasks_list.append(asyncio.create_task(self.initialize_symbols_task()))
 
-        logger.info("Governor: All agents are running.")
+        await self.log_event("Governor: All agents are running.", level="INFO")
+
+    def log(self, message: str, level: str = "INFO", data: dict = None):
+        """Standardized logging for governor"""
+        from app.core.logger import logger as system_logger
+        log_msg = f"[{self.name}] {message}"
+        if data:
+            log_msg += f" | DATA: {data}"
+        
+        levels = {
+            "DEBUG": system_logger.debug,
+            "INFO": system_logger.info,
+            "WARNING": system_logger.warning,
+            "ERROR": system_logger.error,
+            "CRITICAL": system_logger.critical
+        }
+        levels.get(level.upper(), system_logger.info)(log_msg)
+
+    async def log_event(self, message: str, data: dict = None, level: str = "INFO"):
+        """Publishes an AGENT_LOG event to the event bus"""
+        from app.core.event_bus import event_bus, EventType
+        import time
+        self.log(message, level, data)
+        await event_bus.publish(EventType.AGENT_LOG, {
+            "agent": self.name,
+            "message": message,
+            "data": data,
+            "level": level,
+            "timestamp": int(time.time())
+        })
 
     async def equity_snapshot_loop(self):
         """Periodically snapshots the account equity for history."""
@@ -268,35 +338,36 @@ class GovernorAgent:
         if not self.is_running:
             return
         
-        logger.info("Governor: Stopping all agents...")
+        await self.log_event("Governor: Stopping all agents...", level="INFO")
         for agent in self.agents:
             await agent.stop()
             
         # Cancel tasks
-        for task in self.tasks:
+        for task in self.tasks_list:
             task.cancel()
         
-        self.tasks = []
+        self.tasks_list = []
         self.is_running = False
-        logger.info("Governor: System stopped.")
+        await self.log_event("Governor: System stopped.", level="INFO")
 
     async def emergency_stop(self):
-        logger.warning("Governor: EMERGENCY STOP TRIGGERED!")
+        await self.log_event("Governor: EMERGENCY STOP TRIGGERED!", level="CRITICAL")
         self.is_running = False
         
         # 1. Publish Emergency Exit Event (Execution agent will close positions)
-        await event_bus.publish(EventType.EMERGENCY_EXIT, {"reason": "User manual trigger"})
+        from app.core.event_bus import event_bus, EventType
+        await event_bus.publish(EventType.EMERGENCY_EXIT, {"reason": "User manual trigger", "agent": self.name})
         
         # 2. Stop all agents
         for agent in self.agents:
             await agent.stop()
             
         # 3. Cancel tasks
-        for task in self.tasks:
+        for task in self.tasks_list:
             task.cancel()
         
-        self.tasks = []
-        logger.warning("Governor: System emergency stop complete.")
+        self.tasks_list = []
+        await self.log_event("Governor: System emergency stop complete.", level="WARNING")
 
 # Global instance
 governor = GovernorAgent()

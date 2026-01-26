@@ -14,6 +14,20 @@ logger = logging.getLogger("RiskAgent")
 class RiskAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="RiskAgent")
+        self.description = "Validates signals and manages position sizing to protect capital."
+        self.tasks = [
+            "Calculate optimal position size based on ATR and account equity",
+            "Validate signal confidence and SL/TP presence",
+            "Check portfolio drawdown and exposure limits",
+            "Monitor available balance on the exchange"
+        ]
+        self.responsibilities = [
+            "Preventing over-leveraging and excessive risk exposure",
+            "Ensuring every trade has a valid exit plan (SL/TP)",
+            "Maintaining compliance with system-wide risk parameters"
+        ]
+        self.prompts = []  # Heuristic based
+        
         self.max_trade_size = settings.ORDER_SIZE_USDT
         self.risk_per_trade = 0.01 # 1% default
         self.max_portfolio_drawdown = 0.05 # 5% max drawdown

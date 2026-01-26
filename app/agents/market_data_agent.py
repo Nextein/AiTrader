@@ -18,6 +18,20 @@ logger = logging.getLogger("MarketDataAgent")
 class MarketDataAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="MarketDataAgent")
+        self.description = "Manages data ingestion from BingX exchange and calculates technical indicators."
+        self.tasks = [
+            "Fetch OHLCV data for multiple symbols and timeframes",
+            "Calculate technical indicators (HA, OBV, Weis Waves, etc.)",
+            "Maintain a local database cache of market data",
+            "Throttle and prioritize data fetching based on timeframe"
+        ]
+        self.responsibilities = [
+            "Ensuring data integrity and freshness",
+            "Providing a unified data structure for all other agents",
+            "Managing exchange API rate limits and connection state"
+        ]
+        self.prompts = []  # No LLM used here
+        
         self.exchange = ccxt.bingx({
             'apiKey': settings.BINGX_API_KEY,
             'secret': settings.BINGX_SECRET_KEY,
@@ -513,7 +527,7 @@ class MarketDataAgent(BaseAgent):
                     "from_cache": True,
                     "candles": len(df_cache)
                 }
-                self.log_market_action("FETCH_DATA_CACHE", symbol, {"timeframe": timeframe})
+                await self.log_market_action("FETCH_DATA_CACHE", symbol, {"timeframe": timeframe})
                 await event_bus.publish(EventType.MARKET_DATA, data)
                 self.processed_count += 1
                 
@@ -559,7 +573,7 @@ class MarketDataAgent(BaseAgent):
                 "candles": len(df)
             }
             
-            self.log_market_action("FETCH_DATA_LIVE", symbol, {"timeframe": timeframe})
+            await self.log_market_action("FETCH_DATA_LIVE", symbol, {"timeframe": timeframe})
             await event_bus.publish(EventType.MARKET_DATA, data)
             self.processed_count += 1
 
