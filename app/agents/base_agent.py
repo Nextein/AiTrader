@@ -28,6 +28,8 @@ class BaseAgent(ABC):
     async def run_loop(self):
         pass
 
+    def get_status(self):
+        uptime = time.time() - self.start_time if self.start_time else 0
         return {
             "name": self.name,
             "is_running": self.is_running,

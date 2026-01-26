@@ -82,6 +82,14 @@ class AnalystAgent(BaseAgent):
             
             self.processed_count += 1
             logger.info(f"Updated Unified Analysis for {symbol}: {analysis_update['primary_bias']}")
+            
+            # Publish completion event for Governor to move to next symbol
+            await event_bus.publish(EventType.ANALYSIS_COMPLETED, {
+                "symbol": symbol,
+                "agent": self.name,
+                "timestamp": int(time.time()),
+                "bias": analysis_update['primary_bias']
+            })
 
         except Exception as e:
             logger.error(f"Error in AnalystAgent for {symbol}: {e}", exc_info=True)

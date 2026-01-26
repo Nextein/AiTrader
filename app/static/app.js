@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 typeClass = 'type-market';
                 // Task 8: Making logs beautiful (enhanced market data)
                 const d = typeof log.data === 'string' ? JSON.parse(log.data) : log.data;
-                const candleCount = d.candles ? d.candles.length : 0;
+                const candleCount = d.candles || 0;
                 msg = `<span class="text-muted">${d.symbol}</span> <span class="text-accent">${d.latest_close.toFixed(2)}</span> (${candleCount} candles)`;
             } else if (log.event_type === 'regime_change') {
                 typeClass = 'type-regime';

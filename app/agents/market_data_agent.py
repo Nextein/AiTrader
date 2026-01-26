@@ -510,7 +510,8 @@ class MarketDataAgent(BaseAgent):
                     "timestamp": float(df_cache['timestamp'].values[-1]),
                     "latest_close": float(df_cache['Close'].iloc[-1]),
                     "agent": self.name,
-                    "from_cache": True
+                    "from_cache": True,
+                    "candles": len(df_cache)
                 }
                 self.log_market_action("FETCH_DATA_CACHE", symbol, {"timeframe": timeframe})
                 await event_bus.publish(EventType.MARKET_DATA, data)
@@ -532,7 +533,8 @@ class MarketDataAgent(BaseAgent):
                 
             logger.debug(f"Fetching {symbol} {timeframe} (attempt {retry_count + 1}/{self.max_retries + 1})")
             
-            ohlcv = await self.exchange.fetch_ohlcv(symbol, timeframe, limit=100)
+            # Task 4: Fetch at least 200 candles (300 for safety and indicator warm-up)
+            ohlcv = await self.exchange.fetch_ohlcv(symbol, timeframe, limit=300)
             
             if not ohlcv or not self.is_running:
                 raise ValueError(f"Empty OHLCV data returned for {symbol} {timeframe}")
@@ -553,7 +555,8 @@ class MarketDataAgent(BaseAgent):
                 "timestamp": df_with_ind['timestamp'].iloc[-1],
                 "latest_close": float(df_with_ind['Close'].iloc[-1]),
                 "agent": self.name,
-                "from_cache": False
+                "from_cache": False,
+                "candles": len(df)
             }
             
             self.log_market_action("FETCH_DATA_LIVE", symbol, {"timeframe": timeframe})
@@ -634,7 +637,7 @@ class MarketDataAgent(BaseAgent):
                 candles = db.query(CandleModel).filter(
                     CandleModel.symbol == symbol,
                     CandleModel.timeframe == timeframe
-                ).order_by(CandleModel.timestamp.asc()).limit(100).all()
+                ).order_by(CandleModel.timestamp.asc()).limit(300).all()
                 
                 if candles:
                     return [[

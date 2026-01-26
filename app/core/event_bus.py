@@ -32,6 +32,7 @@ class EventType(Enum):
     SYMBOL_APPROVED = "symbol_approved"
     ANALYSIS_UPDATE = "analysis_update"
     VALUE_AREAS_UPDATED = "value_areas_updated"
+    ANALYSIS_COMPLETED = "analysis_completed"
 
 # Default priority mapping for event types
 EVENT_PRIORITY_MAP = {
@@ -47,6 +48,7 @@ EVENT_PRIORITY_MAP = {
     EventType.SYMBOL_APPROVED: EventPriority.NORMAL,
     EventType.ANALYSIS_UPDATE: EventPriority.NORMAL,
     EventType.VALUE_AREAS_UPDATED: EventPriority.NORMAL,
+    EventType.ANALYSIS_COMPLETED: EventPriority.NORMAL,
     EventType.ERROR: EventPriority.LOW,
     EventType.SYSTEM_STATUS: EventPriority.LOW,
 }
@@ -77,6 +79,15 @@ class EventBus:
             self._subscribers[event_type] = []
         self._subscribers[event_type].append(callback)
         logger.info(f"Subscribed to {event_type.value}")
+
+    def unsubscribe(self, event_type: EventType, callback: Callable[[Dict[str, Any]], None]):
+        """Unsubscribe a callback from an event type"""
+        if event_type in self._subscribers:
+            try:
+                self._subscribers[event_type].remove(callback)
+                logger.info(f"Unsubscribed from {event_type.value}")
+            except ValueError:
+                pass
 
     def clear_subscribers(self):
         """Clears all subscribers across all event types. Useful for testing."""

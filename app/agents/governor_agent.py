@@ -215,15 +215,44 @@ class GovernorAgent:
                 is_sane = await self.sanity_agent.check_symbol(symbol)
                 
                 if is_sane:
-                    logger.info(f"Governor: Symbol {symbol} PASSED sanity check ({approved_count + 1}/{settings.MAX_SYMBOLS}).")
+                    # Task 3: Standardize symbol format (e.g., BTC/USDT:USDT -> BTC-USDT)
+                    # This makes it more readable and consistent for the user
+                    display_symbol = symbol.replace('/', '-').split(':')[0]
+                    
+                    logger.info(f"Governor: Symbol {display_symbol} PASSED sanity check ({approved_count + 1}/{settings.MAX_SYMBOLS}).")
+                    
+                    # Task 1: Sequential Analysis. We wait for completion before next symbol.
+                    # We'll use a Future or Event to wait for the ANALYSIS_COMPLETED event.
+                    completion_event = asyncio.Event()
+                    
+                    async def on_completed(data):
+                        if data.get("symbol") == display_symbol:
+                            completion_event.set()
+                    
+                    event_bus.subscribe(EventType.ANALYSIS_COMPLETED, on_completed)
+                    
                     # Broadcast approval
-                    # We use a small delay between publishing to let agents process
-                    await event_bus.publish(EventType.SYMBOL_APPROVED, {"symbol": symbol})
+                    # Task 2: Pass 'agent': 'SanityAgent' so it shows correctly in audit trail
+                    await event_bus.publish(EventType.SYMBOL_APPROVED, {
+                        "symbol": display_symbol, 
+                        "agent": "SanityAgent"
+                    })
                     approved_count += 1
+
+                    # Wait for analysis completion with a timeout (e.g., 60 seconds)
+                    # If it times out, we move to the next symbol anyway to avoid getting stuck
+                    try:
+                        logger.info(f"Governor: Waiting for analysis completion for {display_symbol}...")
+                        await asyncio.wait_for(completion_event.wait(), timeout=60.0)
+                        logger.info(f"Governor: Analysis completed for {display_symbol}.")
+                    except asyncio.TimeoutError:
+                        logger.warning(f"Governor: Timeout waiting for analysis completion for {display_symbol}. Moving on.")
+                    finally:
+                        event_bus.unsubscribe(EventType.ANALYSIS_COMPLETED, on_completed)
                 else:
                     logger.warning(f"Governor: Symbol {symbol} FAILED sanity check (Derivative/Weird). Skipping.")
                 
-                # Throttle LLM requests
+                # Throttle
                 await asyncio.sleep(0.5)
 
             if approved_count >= settings.MAX_SYMBOLS:
