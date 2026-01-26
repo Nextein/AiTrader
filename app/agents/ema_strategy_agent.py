@@ -100,18 +100,16 @@ class EMAStrategyAgent(BaseAgent):
             input_data = {
                 "symbol": symbol,
                 "timeframe": timeframe,
-                "price": curr['Close'],
-                "ema9": ema9_curr,
-                "ema21": ema21_curr,
-                "ema55": ema55_curr,
-                "cross_9_21": cross_9_21,
-                "cross_21_55": cross_21_55,
-                "emas_in_order": ms.get("emas_in_order"),
-                "emas_fanning": ms.get("emas_fanning"),
-                "highs": ms.get("highs"),
-                "lows": ms.get("lows"),
-                "regime": regime,
-                "overall_regime": overall_regime
+                "market_context": self.format_market_context(df, window=50),
+                "analysis_summary": {
+                    "price": curr['Close'],
+                    "cross_9_21": cross_9_21,
+                    "cross_21_55": cross_21_55,
+                    "market_structure": ms,
+                    "regime": regime,
+                    "overall_regime": overall_regime,
+                    "value_areas": analysis_data.get("value_areas", {}).get(timeframe)
+                }
             }
             
             res = await self.analysis_chain.ainvoke(input_data)

@@ -1,10 +1,9 @@
-# INPUT DATA
-<current_emas>
-{current_emas}
-</current_emas>
+Analyze the EMA structure and directional performance for {symbol} on the {timeframe} timeframe.
 
-<previous_emas>
-{previous_emas}
-</previous_emas>
+### Market Context (Last 50 Candles)
+{market_context}
 
-Analyze the EMA relationship. Return valid JSON only.
+### Preliminary Assessment Summary
+{analysis_summary}
+
+Analyze the EMA relationship and classify the directional performance based on the 3-step assessment rules (Direction, Facilitation, Success). Return valid JSON only.

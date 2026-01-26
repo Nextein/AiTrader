@@ -1,9 +1,9 @@
 Analyze the following top-down technical data for {symbol}:
 
-Overall System Regime: {overall_regime}
-OBV Divergence (15m): {obv_divergence_15m}
+### Timeframe Context (Key Charts)
+{market_context}
 
-Timeframe Details:
-{timeframe_data}
+### Unified Analysis Packet
+{analysis_summary}
 
-Based on this synthesis, provide the unified analyst summary, determine the primary directional bias, and highlight any overlapping high-confidence setups.
+Based on this synthesis, provide the unified analyst summary, determine the primary directional bias (BULLISH, BEARISH, or NEUTRAL), and highlight any overlapping high-confidence setups. Return valid JSON only.

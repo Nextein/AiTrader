@@ -114,15 +114,18 @@ class BounceStrategyAgent(BaseAgent):
             input_data = {
                 "symbol": symbol,
                 "timeframe": timeframe,
-                "price": curr['Close'],
-                "ema9": ema9,
-                "ema21": ema21,
-                "ema55": ema55,
-                "lr_slope": lr_slope,
-                "macd_val": macd_val,
-                "d1_trend": d1_trend,
-                "h4_pullback": h4_pullback,
-                "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN")
+                "market_context": self.format_market_context(
+                    df, 
+                    window=50,
+                    columns=['Open', 'High', 'Low', 'Close', 'Exponential Moving Average 21', 'Linear Regression Slope']
+                ),
+                "analysis_summary": {
+                    "price": curr['Close'],
+                    "macd_val": macd_val,
+                    "d1_trend": d1_trend,
+                    "h4_pullback": h4_pullback,
+                    "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN")
+                }
             }
             
             res = await self.analysis_chain.ainvoke(input_data)

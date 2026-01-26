@@ -103,8 +103,19 @@ class MarketStructureAgent(BaseAgent):
             if len(curr_emas) == 5 and not any(pd.isna(v) for v in curr_emas.values()):
                 try:
                     res = await self.ema_chain.ainvoke({
-                        "current_emas": curr_emas,
-                        "previous_emas": prev_emas
+                        "symbol": symbol,
+                        "timeframe": timeframe,
+                        "market_context": self.format_market_context(
+                            df, 
+                            window=50,
+                            columns=['Open', 'High', 'Low', 'Close'] + ema_cols
+                        ),
+                        "analysis_summary": {
+                            "highs_state": highs_state,
+                            "lows_state": lows_state,
+                            "pivot_state": pivot_state,
+                            "va_state": va_state
+                        }
                     })
                     emas_in_order = res.get("emas_in_order", "NEUTRAL").upper()
                     emas_fanning = res.get("emas_fanning", "NEUTRAL").upper()

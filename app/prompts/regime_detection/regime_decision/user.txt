@@ -1,10 +1,9 @@
-# CONTEXT
-- **Symbol**: <symbol>{symbol}</symbol>
-- **Timeframe**: <timeframe>{timeframe}</timeframe>
+Analyze the market regime for {symbol} on the {timeframe} timeframe.
 
-# TECHNICAL DATA PACKET
-<data>
-{data}
-</data>
+### Market Context (Last 50 Candles)
+{market_context}
 
-Synthesize the data above and classify the regime. Return valid JSON only.
+### Technical Data Packet
+{analysis_summary}
+
+Classify the market regime (BULLISH, BEARISH, RANGING, or UNDEFINED) based on Auction Market Theory and the provided data. Return valid JSON only.

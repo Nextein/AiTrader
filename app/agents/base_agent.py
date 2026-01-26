@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional
 import asyncio
 from app.core.event_bus import event_bus, EventType
 
@@ -101,3 +102,37 @@ class BaseAgent(ABC):
             "details": details,
             "timestamp": int(time.time())
         })
+
+    def format_market_context(self, df: Any, window: int = 50, columns: list = None) -> str:
+        """
+        Formats a pandas DataFrame into a clean markdown table for LLM context.
+        Done manually to avoid 'tabulate' dependency.
+        """
+        import pandas as pd
+        if not isinstance(df, pd.DataFrame) or df.empty:
+            return "No data available."
+
+        subset = df.tail(window).copy()
+        if not columns:
+            columns = ['Open', 'High', 'Low', 'Close', 'Volume']
+            potential_cols = [
+                'Exponential Moving Average 9', 'Exponential Moving Average 21', 'Exponential Moving Average 55',
+                'Relative Candles Phase', 'Heikin Ashi Close', 'Williams Fractals 9'
+            ]
+            columns += [c for c in potential_cols if c in subset.columns]
+
+        available_cols = [c for c in columns if c in subset.columns]
+        subset = subset[available_cols]
+        
+        # Round and format
+        for col in subset.select_dtypes(include=['number']).columns:
+            subset[col] = subset[col].apply(lambda x: f"{x:.2f}" if pd.notnull(x) else "NaN")
+
+        # Build table
+        header = "| " + " | ".join(available_cols) + " |"
+        separator = "| " + " | ".join(["---"] * len(available_cols)) + " |"
+        rows = []
+        for _, row in subset.iterrows():
+            rows.append("| " + " | ".join(row.values) + " |")
+        
+        return "\n".join([header, separator] + rows)

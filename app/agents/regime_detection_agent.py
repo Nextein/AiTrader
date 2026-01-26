@@ -145,7 +145,12 @@ class RegimeDetectionAgent(BaseAgent):
             res = await self.regime_chain.ainvoke({
                 "symbol": analysis.symbol,
                 "timeframe": timeframe,
-                "data": info
+                "market_context": self.format_market_context(
+                    df, 
+                    window=50, 
+                    columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Average Directional Index', 'Relative Candles Phase']
+                ),
+                "analysis_summary": info
             })
             regime = res.get("regime", "UNKNOWN").upper()
             await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})

@@ -1,17 +1,10 @@
-Analyze the following data for {symbol} on the {timeframe} timeframe:
+Analyze the following market data and analysis context for {symbol} on the {timeframe} timeframe.
 
-Current Price: {price}
-Heikin Ashi Direction: {ha_dir}
-Relative Candle Phase: {rel_phase}
-Trigger Activated: {trigger_activated}
+### Market Context (Last 50 Candles)
+{market_context}
 
-Market Structure:
-- Highs: {highs}
-- Lows: {lows}
-- Timeframe Regime: {regime}
-- Overall System Regime: {overall_regime}
-- Higher Timeframe (H1) Regime: {h1_regime}
+### Technical Analysis Summary
+{analysis_summary}
 
-Average True Range (ATR): {atr}
-
-Based on these parameters, provide your concluding analysis and signal. If providing a BUY or SELL signal, ensure your SL and TP are calculated based on the ATR and recent cycle extremes as described in the rules.
+Based on this deep context, provide your concluding analysis and signal for the "Cycles and Eternal" strategy. 
+If providing a BUY or SELL signal, ensure your SL and TP are calculated based on the ATR and recent cycle extremes found in the data.

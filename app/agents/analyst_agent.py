@@ -81,7 +81,18 @@ class AnalystAgent(BaseAgent):
                 }
 
             # 3. LLM Synthesis
-            res = await self.analyst_chain.ainvoke(top_down_data)
+            # For the Analyst, we provide a multi-timeframe context table (4h and 1h)
+            h4_df = analysis_data.get("market_data", {}).get("4h")
+            h1_df = analysis_data.get("market_data", {}).get("1h")
+            
+            combined_context = "### 4H Context\n" + self.format_market_context(h4_df, window=20)
+            combined_context += "\n\n### 1H Context\n" + self.format_market_context(h1_df, window=20)
+            
+            res = await self.analyst_chain.ainvoke({
+                "symbol": symbol,
+                "market_context": combined_context,
+                "analysis_summary": top_down_data
+            })
             await self.log_llm_call("top_down_analysis", symbol, res)
             
             # 4. Update Analysis Object

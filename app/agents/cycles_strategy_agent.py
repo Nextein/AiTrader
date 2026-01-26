@@ -106,16 +106,22 @@ class CyclesStrategyAgent(BaseAgent):
             input_data = {
                 "symbol": symbol,
                 "timeframe": timeframe,
-                "price": curr['Close'],
-                "ha_dir": ha_dir,
-                "rel_phase": rel_phase,
-                "trigger_activated": trigger_activated,
-                "highs": ms.get("highs"),
-                "lows": ms.get("lows"),
-                "regime": regime,
-                "overall_regime": overall_regime,
-                "h1_regime": h1_regime,
-                "atr": atr
+                "market_context": self.format_market_context(
+                    df, 
+                    window=50,
+                    columns=['Open', 'High', 'Low', 'Close', 'Heikin Ashi Close', 'Relative Candles Phase']
+                ),
+                "analysis_summary": {
+                    "price": curr['Close'],
+                    "ha_dir": ha_dir,
+                    "rel_phase": rel_phase,
+                    "trigger_activated": trigger_activated,
+                    "market_structure": ms,
+                    "regime": regime,
+                    "overall_regime": overall_regime,
+                    "h1_regime": h1_regime,
+                    "atr": atr
+                }
             }
             
             res = await self.analysis_chain.ainvoke(input_data)

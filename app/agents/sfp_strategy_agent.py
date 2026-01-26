@@ -85,16 +85,18 @@ class SFPStrategyAgent(BaseAgent):
             input_data = {
                 "symbol": symbol,
                 "timeframe": timeframe,
-                "price": latest_close,
-                "high": latest_high,
-                "low": latest_low,
-                "close": latest_close,
-                "open": latest_open,
-                "vah": va.get("vah"),
-                "val": va.get("val"),
-                "va_state": va_state,
-                "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN"),
-                "ms": analysis_data.get("market_structure", {}).get(timeframe, {})
+                "market_context": self.format_market_context(
+                    df, 
+                    window=50, 
+                    columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Weis Waves Volume', 'Weis Waves Direction']
+                ),
+                "analysis_summary": {
+                    "vah": va.get("vah"),
+                    "val": va.get("val"),
+                    "va_state": va_state,
+                    "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN"),
+                    "market_structure": analysis_data.get("market_structure", {}).get(timeframe, {})
+                }
             }
             
             res = await self.analysis_chain.ainvoke(input_data)
