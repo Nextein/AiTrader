@@ -302,6 +302,9 @@ class MarketDataAgent(BaseAgent):
             # OBV
             df['On Balance Volume'] = df.ta.obv()
 
+            # 4. Linear Regression Slope (for TODO.md strategies)
+            df['Linear Regression Slope'] = df.ta.linreg(close='Close', length=14, slope=True)
+
             # 4. Weis Waves
             def calculate_weis_waves(direction_series, vol_s):
                 # direction_series: 1 for UP, -1 for DOWN, 0 for Neutral

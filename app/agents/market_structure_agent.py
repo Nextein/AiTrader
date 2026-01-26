@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import time
 import logging
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
 from app.core.analysis import AnalysisManager
@@ -118,9 +118,21 @@ class MarketStructureAgent(BaseAgent):
 
             # ADX State
             latest_adx = curr.get('Average Directional Index')
-            adx_state = "NEUTRAL"
-            if latest_adx is not None:
-                adx_state = "TRENDING" if latest_adx >= 23 else "NEUTRAL"
+            adx_state = "TRENDING" if latest_adx is not None and latest_adx >= 23 else "NEUTRAL"
+            
+            # Weis Waves Analysis
+            weis_dir = curr.get('Weis Waves Direction', 0)
+            weis_vol = curr.get('Weis Waves Volume', 0)
+            weis_state = "UP" if weis_dir > 0 else ("DOWN" if weis_dir < 0 else "NEUTRAL")
+            
+            # Relative Candle Phase
+            rel_phase_val = curr.get('Relative Candles Phase', 0)
+            rel_phase = "UP" if rel_phase_val == 1 else ("DOWN" if rel_phase_val == -1 else "NEUTRAL")
+            
+            # Global vs Local (Simplification: using different lookbacks)
+            local_poc = poc1
+            global_poc = self._calculate_poc(df, lookback=min(len(df), 300), offset=0)
+            structure_scale = "GLOBAL_ALIGNED" if (va_state == "ASCENDING" and curr['Close'] > global_poc) else "LOCAL_ONLY"
 
             # 4. Update Analysis Object
             updates = {
@@ -131,12 +143,16 @@ class MarketStructureAgent(BaseAgent):
                 "emas_in_order": emas_in_order,
                 "emas_fanning": emas_fanning,
                 "adx": adx_state,
+                "weis_waves": {"direction": weis_state, "volume": float(weis_vol)},
+                "relative_phase": rel_phase,
+                "structure_scale": structure_scale,
                 "last_updated": int(time.time())
             }
             
             await analysis.update_section("market_structure", updates, timeframe)
             
-            # 5. Publish Analysis Update Event
+            # 5. LLM Reasoning for structure (Brief summary)
+            # (Optional: can add more fields if needed)
             await event_bus.publish(EventType.ANALYSIS_UPDATE, {
                 "symbol": symbol,
                 "timeframe": timeframe,

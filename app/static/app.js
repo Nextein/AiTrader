@@ -798,6 +798,100 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `</div></div>`;
         }
 
+        // 1b. Unified Analysis (Master Bias)
+        if (data.unified_analysis) {
+            html += `
+                <div class="analysis-section-card highlight">
+                    <h4><i data-lucide="user-check"></i> Master Analyst Summary</h4>
+                    <div style="padding: 1rem; background: rgba(0,242,254,0.05); border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="font-weight: bold; color: var(--accent); margin-bottom: 0.5rem;">BIAS: ${data.unified_analysis.primary_bias}</div>
+                        <div style="font-size: 0.9rem; line-height: 1.5;">${data.unified_analysis.summary}</div>
+                    </div>
+                    <div class="data-grid">
+                        ${(data.unified_analysis.top_setups || []).map(s => `
+                            <div class="data-item">
+                                <div class="data-label">${s.strategy} (${s.timeframe})</div>
+                                <div class="data-value state-positive">${s.reasoning}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. Support & Resistance
+        if (data.support_resistance) {
+            const sr = data.support_resistance.overall || data.support_resistance['1h'] || {};
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="layers"></i> Support & Resistance</h4>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">Closest Support</div>
+                            <div class="data-value state-positive">${fmt(sr.closest_support)}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Closest Resistance</div>
+                            <div class="data-value state-negative">${fmt(sr.closest_resistance)}</div>
+                        </div>
+                    </div>
+                    ${(sr.confluences || []).length > 0 ? `
+                        <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+                            <div class="data-label" style="font-size: 0.7rem;">CONFLUENCES</div>
+                            ${sr.confluences.map(c => `
+                                <div style="font-size: 0.8rem; display: flex; justify-content: space-between; margin-top: 4px;">
+                                    <span>${c.sources.join(' + ')}</span>
+                                    <span class="text-accent">${fmt(c.price)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // 3. Fibonacci & CC Channel
+        if (data.fibonacci) {
+            const fib = data.fibonacci['1h'] || {};
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="hash"></i> Fibonacci & CC Channel</h4>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">CC High (66.6%)</div>
+                            <div class="data-value text-accent">${fmt(fib.cc_channel?.high)}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">CC Low (70.6%)</div>
+                            <div class="data-value text-accent">${fmt(fib.cc_channel?.low)}</div>
+                        </div>
+                        <div class="data-item" style="grid-column: span 2">
+                            <div class="data-label">In CC Channel</div>
+                            <div class="data-value ${fib.in_cc_channel ? 'state-positive' : 'state-neutral'}">${fib.in_cc_channel ? 'YES' : 'NO'}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 4. Anchored VWAP & GP
+        if (data.anchored_vwap) {
+            const avwap = data.anchored_vwap['1h'] || {};
+            html += `
+                <div class="analysis-section-card">
+                    <h4><i data-lucide="trending-up"></i> Anchored VWAP + GP</h4>
+                    <div class="data-grid">
+                        ${(avwap.vwaps || []).map(v => `
+                            <div class="data-item">
+                                <div class="data-label">Anchor @ ${new Date(v.anchor_time).toLocaleTimeString()}</div>
+                                <div class="data-value" style="color: #00f2fe">${fmt(v.current_val)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
         // 2. Market Structure Analysis
         if (data.market_structure) {
             html += `

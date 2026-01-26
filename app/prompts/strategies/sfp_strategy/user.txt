@@ -1,0 +1,18 @@
+Analyze the following data for {symbol} on the {timeframe} timeframe:
+
+Current Candle:
+- High: {high}
+- Low: {low}
+- Open: {open}
+- Close: {close}
+
+Value Area:
+- VAH: {vah}
+- VAL: {val}
+- VA State: {va_state}
+
+Market Context:
+- Regime: {regime}
+- Structure: {ms}
+
+Based on these parameters, determine if a Swing Failure Pattern (SFP) has occurred. If so, calculate the SL and TP according to the rules (SL at the extreme, TP at POC or range edge). Focus on whether the close back inside the range is clean.

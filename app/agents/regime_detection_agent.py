@@ -124,12 +124,12 @@ class RegimeDetectionAgent(BaseAgent):
         }
         
         try:
-            })
+            res = await self.regime_chain.ainvoke(info)
             regime = res.get("regime", "UNKNOWN").upper()
             self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
             return regime
         except Exception as e:
-            self.log(f"LLM Error in determine_timeframe_regime: {e}", level="ERROR")
+            logger.error(f"LLM Error in determine_timeframe_regime: {e}")
             return "UNKNOWN"
 
     async def _get_tf_phase(self, analysis, timeframe: str) -> str:

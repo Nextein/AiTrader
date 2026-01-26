@@ -8,12 +8,12 @@ Classify the market regime as BULLISH, BEARISH, RANGING, UNKNOWN, or UNDEFINED b
 
 ## 1. BULLISH
 - **Primary Signals**: EMAs ASCENDING, EMAs EXPANDING, Highs/Lows making Higher Highs + Higher Lows.
-- **Secondary Boosters**: ADX Trending (≥23), DI+ > DI-, HTF Phases are UP.
+- **Secondary Boosters**: ADX Trending (>=23), DI+ > DI-, HTF Phases are UP.
 - **Confirmation**: 2 Cycles status is POSITIVE.
 
 ## 2. BEARISH
 - **Primary Signals**: EMAs DESCENDING, EMAs EXPANDING, Highs/Lows making Lower Highs + Lower Lows.
-- **Secondary Boosters**: ADX Trending (≥23), DI- > DI+, HTF Phases are DOWN.
+- **Secondary Boosters**: ADX Trending (>=23), DI- > DI+, HTF Phases are DOWN.
 - **Confirmation**: 2 Cycles status is NEGATIVE.
 
 ## 3. RANGING
@@ -32,9 +32,9 @@ Classify the market regime as BULLISH, BEARISH, RANGING, UNKNOWN, or UNDEFINED b
 # RESPONSE FORMAT
 You MUST return a valid JSON object.
 ```json
-{
+{{
   "regime": "BULLISH" | "BEARISH" | "RANGING" | "UNKNOWN" | "UNDEFINED",
   "reasoning": "A concise step-by-step logic explaining the weight given to conflicting signals and the final consensus."
-}
+}}
 ```
 Final output must be valid JSON only.

@@ -32,7 +32,7 @@ class EMACrossStrategyAgent(BaseAgent):
             await asyncio.sleep(1)
 
     async def on_market_data(self, data):
-        if not self.is_running:
+        if not self.is_running or not self.is_active:
             return
 
         symbol = data.get("symbol")

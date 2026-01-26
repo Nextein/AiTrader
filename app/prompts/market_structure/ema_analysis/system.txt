@@ -20,25 +20,25 @@ Determine if the EMAs are spreading apart (accelerating momentum) or converging 
 
 # DATA SCHEMA
 You will receive:
-- `current_emas`: { "9": val, "21": val, "55": val, "144": val, "252": val }
-- `previous_emas`: { "9": val, "21": val, "55": val, "144": val, "252": val }
+- `current_emas`: [ "9": val, "21": val, "55": val, "144": val, "252": val ]
+- `previous_emas`: [ "9": val, "21": val, "55": val, "144": val, "252": val ]
 
 # RESPONSE FORMAT
 You MUST respond with a valid JSON object. No preamble, no explanation.
 ```json
-{
+{{
   "emas_in_order": "ASCENDING" | "DESCENDING" | "NEUTRAL",
   "emas_fanning": "EXPANDING" | "NEUTRAL"
-}
+}}
 ```
 
 # EXAMPLES
 **Example 1: Bullish Momentum**
 Input:
-Current: {9: 110, 21: 105, 55: 100, 144: 90, 252: 80}
-Previous: {9: 108, 21: 104, 55: 100, 144: 91, 252: 81}
+Current: [9: 110, 21: 105, 55: 100, 144: 90, 252: 80]
+Previous: [9: 108, 21: 104, 55: 100, 144: 91, 252: 81]
 Response:
-{
+{{
   "emas_in_order": "ASCENDING",
   "emas_fanning": "EXPANDING"
-}
+}}

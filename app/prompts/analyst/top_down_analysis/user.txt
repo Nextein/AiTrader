@@ -1,0 +1,9 @@
+Analyze the following top-down technical data for {symbol}:
+
+Overall System Regime: {overall_regime}
+OBV Divergence (15m): {obv_divergence_15m}
+
+Timeframe Details:
+{timeframe_data}
+
+Based on this synthesis, provide the unified analyst summary, determine the primary directional bias, and highlight any overlapping high-confidence setups.

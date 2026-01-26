@@ -7,6 +7,7 @@ from app.core.config import settings
 from app.core.analysis import AnalysisManager
 import logging
 import asyncio
+from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger("RiskAgent")
 
@@ -14,6 +15,8 @@ class RiskAgent(BaseAgent):
     def __init__(self):
         super().__init__(name="RiskAgent")
         self.max_trade_size = settings.ORDER_SIZE_USDT
+        self.risk_per_trade = 0.01 # 1% default
+        self.max_portfolio_drawdown = 0.05 # 5% max drawdown
         
         # Use demo engine or live BingX based on DEMO_MODE
         if settings.DEMO_MODE:
@@ -82,60 +85,51 @@ class RiskAgent(BaseAgent):
         if not isinstance(sl_price, list): sl_price = [sl_price]
         if not isinstance(tp_price, list): tp_price = [tp_price]
 
-        # Dynamic Position Sizing
+        # 1. Fetch Balance and Portfolio stats
+        balance = await self.exchange.fetch_balance()
+        free_usdt = self._extract_free_usdt(balance)
+
+        # Confidence-based multiplier (0.6 to 1.0 -> 0.5x to 1.2x)
+        confidence = data.get("confidence", 0.7)
+        conf_multiplier = (confidence - 0.5) * 2
+        conf_multiplier = max(0.5, min(1.2, conf_multiplier))
+
+        # Dynamic Position Sizing (ATR based)
         try:
-            logger.info("Calculating dynamic position size...")
-            
-            # Use 1h for ATR calculation by default or the signal timeframe if provided
             tf = settings.TIMEFRAME
             analysis = await AnalysisManager.get_analysis(symbol)
             analysis_data = await analysis.get_data()
             df = analysis_data.get("market_data", {}).get(tf)
 
-            balance = await self.exchange.fetch_balance()
-            if 'USDT' in balance and isinstance(balance['USDT'], dict):
-                free_usdt = float(balance['USDT'].get('free', 0))
-            elif 'free' in balance and 'USDT' in balance['free']:
-                free_usdt = float(balance['free']['USDT'])
-            else:
-                free_usdt = float(balance.get('USDT', {}).get('free', 0))
-            
-            # Risk 2% of equity per trade
-            risk_percent = 0.02 
             atr = self.calculate_atr(df)
-            
-            signal_price = data.get("price")
-            if not signal_price or signal_price <= 0:
-                if df is not None and not df.empty:
-                    signal_price = float(df['Close'].iloc[-1])
-                else:
-                    logger.error("Risk Rejected: No price info available")
-                    return
-            
-            if atr is not None and atr > 0:
-                n_factor = 2
-                raw_trade_size_usdt = (free_usdt * risk_percent) / (atr / signal_price * n_factor)
-                max_size_cap = free_usdt * 0.1
-                trade_size_usdt = min(raw_trade_size_usdt, max_size_cap) 
-                logger.debug(f"Position Sizing | Size: {trade_size_usdt:.2f} USDT (ATR: {atr:.4f})")
-            else:
-                trade_size_usdt = self.max_trade_size
-                logger.warning(f"ATR invalid. Using fallback static size: {trade_size_usdt}")
+            signal_price = data.get("price") or (df['Close'].iloc[-1] if df is not None else 0)
 
-            
+            if atr and atr > 0:
+                # Sizing formula: (Equity * Risk%) / (StopDistance)
+                # We use 1.5 * ATR as stop distance if not provided
+                sl_dist = abs(signal_price - sl_price[0]) if sl_price else (1.5 * atr)
+                raw_size_usdt = (free_usdt * self.risk_per_trade * conf_multiplier) / (sl_dist / signal_price)
+
+                # Caps
+                max_size = free_usdt * 0.2 # Max 20% of account in one position
+                trade_size_usdt = min(raw_size_usdt, max_size, self.max_trade_size)
+            else:
+                trade_size_usdt = self.max_trade_size * conf_multiplier
+
             if free_usdt < trade_size_usdt:
-                logger.warning(f"Risk Rejected: Insufficient balance ({free_usdt:.2f} USDT < {trade_size_usdt:.2f} USDT)")
+                logger.warning(f"Risk Rejected: Insufficient balance {free_usdt} for size {trade_size_usdt}")
                 return
-                
+
             order_request = {
                 "symbol": data.get("symbol"),
                 "side": "buy" if data.get("signal") == "BUY" else "sell",
                 "type": "market",
-                "amount": trade_size_usdt / signal_price, # amount in base asset
+                "amount": float(trade_size_usdt / signal_price),
                 "price": signal_price,
                 "sl_price": sl_price,
                 "tp_price": tp_price,
-                "rationale": f"{data.get('rationale')} | Dynamic Size: {trade_size_usdt:.2f} USDT",
+                "confidence": confidence,
+                "rationale": f"{data.get('rationale')} | Conf: {confidence:.2f} | Size: {trade_size_usdt:.2f} USDT",
                 "agent": self.name
             }
         except Exception as e:
@@ -151,4 +145,9 @@ class RiskAgent(BaseAgent):
         if hasattr(self.exchange, 'close'):
             await self.exchange.close()
 
-import asyncio
+    def _extract_free_usdt(self, balance: Dict) -> float:
+        if 'USDT' in balance and isinstance(balance['USDT'], dict):
+            return float(balance['USDT'].get('free', 0))
+        if 'free' in balance and 'USDT' in balance['free']:
+            return float(balance['free']['USDT'])
+        return float(balance.get('USDT', {}).get('free', 0))

@@ -8,7 +8,15 @@ from app.agents.strategy_agent import StrategyAgent
 from app.agents.risk_agent import RiskAgent
 from app.agents.execution_agent import ExecutionAgent
 from app.agents.audit_log_agent import AuditLogAgent
-from app.agents.ema_cross_strategy_agent import EMACrossStrategyAgent
+from app.agents.ema_strategy_agent import EMAStrategyAgent
+from app.agents.cycles_strategy_agent import CyclesStrategyAgent
+from app.agents.bounce_strategy_agent import BounceStrategyAgent
+from app.agents.support_resistance_agent import SupportResistanceAgent
+from app.agents.fibonacci_agent import FibonacciAgent
+from app.agents.anchored_vwap_agent import AnchoredVWAPAgent
+from app.agents.sfp_strategy_agent import SFPStrategyAgent
+from app.agents.analyst_agent import AnalystAgent
+from app.agents.trader_agent import TraderAgent
 from app.agents.aggregator_agent import AggregatorAgent
 from app.agents.regime_detection_agent import RegimeDetectionAgent
 from app.agents.anomaly_detection_agent import AnomalyDetectionAgent
@@ -34,8 +42,15 @@ class GovernorAgent:
             MarketStructureAgent(),
             self.sanity_agent,
             RegimeDetectionAgent(),
-            StrategyAgent(strategy_id="RSI_MACD"),
-            EMACrossStrategyAgent(fast_period=9, slow_period=21),
+            EMAStrategyAgent(),
+            CyclesStrategyAgent(),
+            BounceStrategyAgent(),
+            SupportResistanceAgent(),
+            FibonacciAgent(),
+            AnchoredVWAPAgent(),
+            SFPStrategyAgent(),
+            AnalystAgent(),
+            TraderAgent(),
             AggregatorAgent(),
             RiskAgent(),
             ExecutionAgent(),

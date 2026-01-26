@@ -1,0 +1,15 @@
+Analyze the following data for {symbol} on the {timeframe} timeframe:
+
+Current Price: {price}
+EMA 9: {ema9}
+EMA 21: {ema21}
+EMA 55: {ema55}
+Linear Regression Slope: {lr_slope}
+MACD Value: {macd_val}
+
+Multi-Timeframe Context:
+- D1 Trend Direction: {d1_trend}
+- H4 Pullback Detected: {h4_pullback}
+- Timeframe Regime: {regime}
+
+Based on these parameters, provide your concluding analysis and signal. Focus on whether the pullback recovery is confirmed and aligns with the higher timeframe trend and regression slope.

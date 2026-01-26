@@ -41,7 +41,7 @@ class Settings(BaseModel):
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
 
     # Analysis Limits
-    MAX_SYMBOLS: int = int(os.getenv("MAX_SYMBOLS", "10"))
+    MAX_SYMBOLS: int = int(os.getenv("MAX_SYMBOLS", "30"))
 
     # Ollama / Sanity Agent
     OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
