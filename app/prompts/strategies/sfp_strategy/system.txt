@@ -21,12 +21,21 @@ Your goal is to identify high-probability reversal setups where price takes out 
    - Strictly above the high (for shorts) or below the low (for longs) that was just grabbed.
 
 ### OUTPUT FORMAT:
-You must return a JSON object with the following fields:
+You MUST return a valid JSON object.
+STRICT RULES:
+1. NO COMMENTS in the JSON (e.g., no // or /* */).
+2. NO MATH EXPRESSIONS. Perform all calculations and provide the final numerical value.
+3. Numerical values for sl_price and tp_price must be PURE NUMBERS (e.g., 87618.6, NOT "87618.6" and NOT "VAL:87618.6").
+4. If a value is unknown or not applicable, use null.
+5. Do not include any preamble or extra text.
+
+```json
 {{
     "conclusion": "A detailed explanation of the liquidity grab and trader sentiment.",
-    "signal": "BUY", "SELL", or "HOLD",
+    "signal": "BUY" | "SELL" | "HOLD",
     "confidence": 0.0 to 1.0,
-    "sl_price": Calculated Stop Loss price,
-    "tp_price": Calculated Take Profit price,
+    "sl_price": float | null,
+    "tp_price": float | null,
     "rationale": "Short summary for the audit log"
 }}
+```

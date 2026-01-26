@@ -26,10 +26,14 @@ Determine the OVERALL market regime by correlating regimes across different time
 
 # RESPONSE FORMAT
 You MUST respond with a valid JSON object.
+STRICT RULES:
+1. NO COMMENTS in the JSON (e.g., no // or /* */).
+2. NO MATH EXPRESSIONS.
+3. Valid JSON only, no preamble or extra text.
+
 ```json
 {{
   "overall_regime": "BULLISH" | "BEARISH" | "RANGING" | "UNKNOWN" | "UNDEFINED",
   "analysis": "A detailed synthesis of how HTF alignment and price action led to this decision."
 }}
 ```
-Final output must be valid JSON only.

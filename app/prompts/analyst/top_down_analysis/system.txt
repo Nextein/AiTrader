@@ -13,11 +13,18 @@ Your goal is to perform a strict top-down analysis of market conditions across m
 - Identify the "Top Setups" (confluence of multiple strategies).
 
 ### OUTPUT FORMAT:
-You must return a JSON object with the following fields:
+You MUST return a valid JSON object.
+STRICT RULES:
+1. NO COMMENTS in the JSON (e.g., no // or /* */).
+2. NO MATH EXPRESSIONS.
+3. Valid JSON only, no preamble or extra text.
+
+```json
 {{
-    "summary": "A comprehensive 2-3 sentence overview of the technical landscape.",
-    "primary_bias": "BULLISH", "BEARISH", or "NEUTRAL",
+    "summary": "A comprehensive overview of the technical landscape.",
+    "primary_bias": "BULLISH" | "BEARISH" | "NEUTRAL",
     "top_setups": [
-        {{"strategy": "StrategyName", "timeframe": "TF", "reasoning": "Brief detail"}}
+        {{"strategy": "string", "timeframe": "string", "reasoning": "string"}}
     ]
 }}
+```

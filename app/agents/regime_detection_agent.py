@@ -142,7 +142,11 @@ class RegimeDetectionAgent(BaseAgent):
         }
         
         try:
-            res = await self.regime_chain.ainvoke(info)
+            res = await self.regime_chain.ainvoke({
+                "symbol": analysis.symbol,
+                "timeframe": timeframe,
+                "data": info
+            })
             regime = res.get("regime", "UNKNOWN").upper()
             await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
             return regime

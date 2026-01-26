@@ -116,12 +116,20 @@ class RiskAgent(BaseAgent):
             df = analysis_data.get("market_data", {}).get(tf)
 
             atr = self.calculate_atr(df)
-            signal_price = data.get("price") or (df['Close'].iloc[-1] if df is not None else 0)
+            signal_price = data.get("price") or (df['Close'].iloc[-1] if df is not None and not df.empty else 0)
+
+            if signal_price <= 0:
+                logger.warning(f"Risk Rejected: Invalid signal price {signal_price}")
+                return
 
             if atr and atr > 0:
-                # Sizing formula: (Equity * Risk%) / (StopDistance)
-                # We use 1.5 * ATR as stop distance if not provided
-                sl_dist = abs(signal_price - sl_price[0]) if sl_price else (1.5 * atr)
+                # Sizing formula: (Equity * Risk%) / (StopDistance / Price)
+                sl_dist = abs(signal_price - sl_price[0]) if sl_price and len(sl_price) > 0 else (1.5 * atr)
+                
+                # Prevent division by zero if SL is exactly at signal price
+                if sl_dist <= 0:
+                    sl_dist = 1.5 * atr
+                
                 raw_size_usdt = (free_usdt * self.risk_per_trade * conf_multiplier) / (sl_dist / signal_price)
 
                 # Caps
@@ -129,6 +137,11 @@ class RiskAgent(BaseAgent):
                 trade_size_usdt = min(raw_size_usdt, max_size, self.max_trade_size)
             else:
                 trade_size_usdt = self.max_trade_size * conf_multiplier
+
+            # Final safety check for size
+            if trade_size_usdt <= 0:
+                logger.warning(f"Risk Rejected: Calculated trade size is {trade_size_usdt}")
+                return
 
             if free_usdt < trade_size_usdt:
                 logger.warning(f"Risk Rejected: Insufficient balance {free_usdt} for size {trade_size_usdt}")

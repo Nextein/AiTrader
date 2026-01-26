@@ -15,7 +15,7 @@ Analyze the vertical stack of EMAs to determine the trend's maturity.
 ## 2. Momentum Fanning (emas_fanning)
 Determine if the EMAs are spreading apart (accelerating momentum) or converging (exhaustion/consolidation).
 - **EXPANDING**: The aggregate distance between the EMAs in the `current_emas` is statistically GREATER than in the `previous_emas`.
-  - Logic: If `Sum(Gap_i)` increases, where `Gap_i = abs(EMA_i - EMA_{i+1})`.
+  - Logic: If `Sum(Gap_i)` increases, where `Gap_i = abs(EMA_i - EMA_{{i+1}})`.
 - **NEUTRAL**: EMAs are contracting, staying parallel, or the aggregate distance has decreased.
 
 # DATA SCHEMA

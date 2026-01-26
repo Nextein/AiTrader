@@ -31,10 +31,14 @@ Classify the market regime as BULLISH, BEARISH, RANGING, UNKNOWN, or UNDEFINED b
 
 # RESPONSE FORMAT
 You MUST return a valid JSON object.
+STRICT RULES:
+1. NO COMMENTS in the JSON (e.g., no // or /* */).
+2. NO MATH EXPRESSIONS.
+3. Valid JSON only, no preamble or extra text.
+
 ```json
 {{
   "regime": "BULLISH" | "BEARISH" | "RANGING" | "UNKNOWN" | "UNDEFINED",
-  "reasoning": "A concise step-by-step logic explaining the weight given to conflicting signals and the final consensus."
+  "reasoning": "A concise step-by-step logic."
 }}
 ```
-Final output must be valid JSON only.

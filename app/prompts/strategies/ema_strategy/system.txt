@@ -20,12 +20,21 @@ Your goal is to provide a high-probability analysis of a symbol based on Exponen
    - Price is chopping around the EMAs.
 
 ### OUTPUT FORMAT:
-You must return a JSON object with the following fields:
+You MUST return a valid JSON object.
+STRICT RULES:
+1. NO COMMENTS in the JSON (e.g., no // or /* */).
+2. NO MATH EXPRESSIONS. Perform all calculations and provide the final numerical value.
+3. Numerical values for sl_price and tp_price must be PURE NUMBERS.
+4. If a value is unknown or not applicable, use null.
+5. Do not include any preamble or extra text.
+
+```json
 {{
     "conclusion": "A detailed explanation of the EMA alignment and why this is a good/bad setup.",
-    "signal": "BUY", "SELL", or "HOLD",
+    "signal": "BUY" | "SELL" | "HOLD",
     "confidence": 0.0 to 1.0,
-    "sl_price": Calculated Stop Loss price,
-    "tp_price": Calculated Take Profit price (aim for at least 1.5:1 RR),
+    "sl_price": float | null,
+    "tp_price": float | null,
     "rationale": "Short summary for the audit log"
 }}
+```
