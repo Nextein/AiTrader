@@ -1,8 +1,8 @@
 import os
 import sys
 
-# Add the app directory to sys.path
-sys.path.append(os.path.abspath(os.getcwd()))
+# Add project root to path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app.core.prompt_loader import PromptLoader
 

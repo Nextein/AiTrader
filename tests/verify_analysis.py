@@ -1,6 +1,12 @@
 import asyncio
 import logging
 import json
+import os
+import sys
+
+# Add project root to path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app.agents.market_data_agent import MarketDataAgent
 from app.agents.market_structure_agent import MarketStructureAgent
 from app.core.analysis import AnalysisManager

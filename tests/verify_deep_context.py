@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import json
 
-# Add the app directory to sys.path
-sys.path.append(os.path.abspath(os.getcwd()))
+# Add project root to path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app.core.prompt_loader import PromptLoader
 from app.agents.base_agent import BaseAgent
