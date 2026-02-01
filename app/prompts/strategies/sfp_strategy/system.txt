@@ -37,13 +37,13 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
     "reasoning": "Detailed technical analysis applying SFP rules (Level grab, close back check, and volume/delta confirmation).",
     "signal": "BUY",
     "confidence": 0.85,
     "sl_price": 60000.50,
     "tp_price": 62000.00,
     "rationale": "SFP of previous weekly low with high volume absorption."
-}
+}}
 
 Use "signal": "HOLD" if no setup is present.

@@ -32,13 +32,13 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
     "reasoning": "RCP transition from -1 to 1, HTF regime BULLISH, HA green with no bottom wick",
     "signal": "BUY",
     "confidence": 0.85,
     "sl_price": 77200.00,
     "tp_price": 80500.00,
     "rationale": "New bullish cycle initiated with HTF alignment."
-}
+}}
 
 Use "signal": "HOLD" if no setup is present.

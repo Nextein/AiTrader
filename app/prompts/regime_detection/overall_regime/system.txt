@@ -34,7 +34,7 @@ STRICT RULES:
 5. NO MATH EXPRESSIONS.
 
 # JSON SCHEMA
-{
+{{
   "reasoning": "Weekly and Monthly both BULLISH with Daily in alignment, strong HTF confluence",
   "overall_regime": "BULLISH"
-}
+}}

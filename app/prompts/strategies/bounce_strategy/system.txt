@@ -26,13 +26,13 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
     "reasoning": "D1 bullish trend confirmed, H4 pullback to EMA 21, M30 crossover complete",
     "signal": "BUY",
     "confidence": 0.82,
     "sl_price": 77000.00,
     "tp_price": 81000.00,
     "rationale": "HTF trend continuation after clean pullback to support."
-}
+}}
 
 Use "signal": "HOLD" if no setup is present.

@@ -31,13 +31,13 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
     "reasoning": "EMA 9 > 21 > 55, fanning increasing, price above all EMAs",
     "signal": "BUY",
     "confidence": 0.88,
     "sl_price": 77500.00,
     "tp_price": 80000.00,
     "rationale": "Strong bullish EMA alignment with expanding momentum."
-}
+}}
 
 Use "signal": "HOLD" if no setup is present.

@@ -32,7 +32,7 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
   "reasoning": "Last 5 candles show HA green with Phase 1 dominance, indicating bullish momentum",
   "phase": "UP"
-}
+}}

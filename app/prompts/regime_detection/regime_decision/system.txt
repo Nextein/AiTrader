@@ -35,8 +35,8 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
   "reasoning": "Detailed technical synthesis analyzing VA placement (Higher), EMA alignment (Ascending), and momentum (ADX>25)",
   "regime": "BULLISH",
   "confidence": 0.92
-}
+}}

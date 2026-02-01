@@ -25,15 +25,15 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
     "reasoning": "HTF bullish regime, daily structure intact, confluence at 0.618 fib with EMA 55",
     "summary": "Market showing bullish structure with high-probability entries on H4.",
     "primary_bias": "BULLISH",
     "top_setups": [
-        {
+        {{
             "strategy": "EMA + SFP Confluence",
             "timeframe": "1H",
             "reasoning": "SFP at VAL within Champions Channel, price above EMA 55."
-        }
+        }}
     ]
-}
+}}

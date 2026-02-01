@@ -32,9 +32,9 @@ STRICT RULES:
 3. No text before or after the JSON.
 
 # JSON SCHEMA
-{
+{{
   "reasoning": "EMAs stacked ascending (9>21>55>114>252), fanning expanding over last 5 periods",
   "emas_in_order": "ASCENDING",
   "emas_fanning": "EXPANDING",
   "performance": "VERY STRONG"
-}
+}}
