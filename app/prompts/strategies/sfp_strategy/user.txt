@@ -6,6 +6,6 @@ Analyze the following market data and analysis context for {symbol} on the {time
 ### Technical Analysis Summary
 {analysis_summary}
 
-Based on this deep context, determine if a high-probability Swing Failure Pattern (SFP) or Liquidity Grab has occurred. 
-If so, provide a BUY or SELL signal with SL and TP calculated according to the rules (SL at the extreme, TP at POC or range edge). 
-Pay close attention to "Trapped Traders" logic (POC location in wick) if visible in the data.
+Based on this deep context, determine if a high-probability Swing Failure Pattern (SFP) or Liquidity Grab has occurred.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

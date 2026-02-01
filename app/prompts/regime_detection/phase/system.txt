@@ -24,15 +24,14 @@ Examine the most recent 10 periods of candlestick data to determine if the curre
 3. **Consensus**: If Heikin Ashi and Relative Candles align (e.g., HA is Green and Phase is 1), the phase is high confidence.
 4. **Tie-breaking**: If mixed, look at the aggregate of the 10 candles. Which side has more 'Expansion' events?
 
-# OUTPUT PROTOCOL
-- Perform internal reasoning (Chain of Thought).
-- FINAL response must be ONLY the word: **UP** or **DOWN**.
-- No punctuation, no markdown, no explanation in the final output.
+# OUTPUT FORMAT
+You MUST return a valid JSON object.
+STRICT RULES:
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-# EXAMPLE DATA INPUT
-```
-Period 10 (Oldest): HA Green, Phase 1, State U
-...
-Period 1: HA Green, Phase 1, State U
-```
-Output: UP
+# JSON SCHEMA
+{{
+  "reasoning": "Detailed Chain of Thought analyzing the weight of recent candles and consensus between HA and Phase.",
+  "phase": "UP | DOWN"
+}}

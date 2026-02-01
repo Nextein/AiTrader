@@ -6,5 +6,6 @@ Analyze the following market data and analysis context for {symbol} on the {time
 ### Technical Analysis Summary
 {analysis_summary}
 
-Based on this deep context, provide your concluding analysis and signal for the "Cycles and Eternal" strategy. 
-If providing a BUY or SELL signal, ensure your SL and TP are calculated based on the ATR and recent cycle extremes found in the data.
+Based on this deep context, provide your concluding analysis and signal for the "Cycles and Eternal" strategy.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

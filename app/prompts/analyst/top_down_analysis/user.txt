@@ -6,4 +6,6 @@ Analyze the following top-down technical data for {symbol}:
 ### Unified Analysis Packet
 {analysis_summary}
 
-Based on this synthesis, provide the unified analyst summary, determine the primary directional bias (BULLISH, BEARISH, or NEUTRAL), and highlight any overlapping high-confidence setups. Return valid JSON only.
+Based on this synthesis, provide the unified analyst summary, determine the primary directional bias (BULLISH, BEARISH, or NEUTRAL), and highlight any overlapping high-confidence setups.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

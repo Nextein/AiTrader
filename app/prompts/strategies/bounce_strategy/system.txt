@@ -21,19 +21,15 @@ Identify high-probability continuation entries where price pulls back to the dyn
 # OUTPUT FORMAT
 You MUST return a valid JSON object.
 STRICT RULES:
-1. "conclusion": Chain-of-Thought (e.g., "1. D1 trend Bullish. 2. H4 pullback to EMA 21. 3. M30 confirmation pending...").
-2. "signal": "BUY" | "SELL" | "HOLD".
-3. "confidence": 0.0 to 1.0.
-4. "sl_price": Below recent swing low (for longs) or above recent swing high (for shorts).
-5. "tp_price": Aim for 2:1 RR.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-    "conclusion": "Perfect alignment: D1 trend is up, H4 has successfully tested the EMA 21 corridor, and M30 is showing a fresh bullish crossover.",
-    "signal": "BUY",
-    "confidence": 0.90,
-    "sl_price": 86120.0,
-    "tp_price": 89500.0,
-    "rationale": "High-confidence 20 Bounce setup with M30 EMA confirmation."
+    "reasoning": "Detailed technical analysis applying the strategy rules (HTF trend, pullback status, and M30 trigger).",
+    "signal": "BUY | SELL | HOLD",
+    "confidence": 0.0 to 1.0,
+    "sl_price": float,
+    "tp_price": float,
+    "rationale": "One-sentence summary of the decision."
 }}
-```

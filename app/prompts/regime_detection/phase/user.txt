@@ -1,6 +1,6 @@
 # INPUT DATA (Recent 10 Periods)
-<data>
 {data}
-</data>
 
-Identify the current phase. Return ONLY 'UP' or 'DOWN'.
+Based on the data above, identify the current phase.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

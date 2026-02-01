@@ -6,5 +6,6 @@ Analyze the following market data and analysis context for {symbol} on the {time
 ### Technical Analysis Summary
 {analysis_summary}
 
-Based on this deep context, provide your concluding analysis and signal for the "20 Bounce" strategy. 
-Focus on whether the pullback recovery is confirmed and aligns with the higher timeframe trend and regression slope shown in the data.
+Based on this deep context, provide your concluding analysis and signal for the "20 Bounce" strategy.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

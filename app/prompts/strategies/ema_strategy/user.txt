@@ -6,5 +6,6 @@ Analyze the following market data and analysis context for {symbol} on the {time
 ### Technical Analysis Summary
 {analysis_summary}
 
-Based on this deep context, provide your concluding analysis and signal. 
-If providing a BUY or SELL signal, ensure your SL and TP are calculated strictly based on technical levels found in the data (near recent extremes or EMA levels).
+Based on this deep context, provide your concluding analysis and signal.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

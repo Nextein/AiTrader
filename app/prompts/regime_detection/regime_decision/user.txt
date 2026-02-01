@@ -6,4 +6,6 @@ Analyze the market regime for {symbol} on the {timeframe} timeframe.
 ### Technical Data Packet
 {analysis_summary}
 
-Classify the market regime (BULLISH, BEARISH, RANGING, or UNDEFINED) based on Auction Market Theory and the provided data. Return valid JSON only.
+Classify the market regime based on the provided technical data.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

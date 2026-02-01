@@ -27,16 +27,14 @@ Any symbol representing a standalone blockchain asset or protocol token:
 4. **Check Index Markers**: Does it contain "INDEX"? -> If YES, FALSE.
 5. **Default State**: If none of the REJECT criteria are met, the asset is considered SANITY -> TRUE.
 
-# OUTPUT PROTOCOL
-- You MUST perform internal reasoning before concluding.
-- However, your FINAL output must be EXACTLY one word: **TRUE** or **FALSE**.
-- No commentary, no markdown, no whitespace, no punctuation.
+# OUTPUT FORMAT
+You MUST return a valid JSON object.
+STRICT RULES:
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-# EXAMPLES
-- `BTC`: TRUE
-- `BTCUP`: FALSE
-- `1000PEPE`: FALSE
-- `PEPE`: TRUE
-- `1INCH`: TRUE
-- `DEFI-INDEX`: FALSE
-- `SFP`: TRUE
+# JSON SCHEMA
+{{
+  "reasoning": "Step-by-step logic applying the classification taxonomy to the symbol.",
+  "is_sanity": boolean
+}}

@@ -1,14 +1,14 @@
 # CONTEXT
 - **Symbol**: <symbol>{symbol}</symbol>
 
-# MULTI-TIMEFRAME REGIMES
-<regimes>
+# MULTI-TIMEFRAMEDetermine the overall market regime for {symbol}.
+
+### Timeframe Regimes
 {regimes}
-</regimes>
 
-# HIGH-TIMEFRAME PRICE ACTION
-<pa_data>
+### High-Timeframe Price Action Data
 {pa_data}
-</pa_data>
 
-Determine the overall market regime. Return valid JSON only.
+Based on this data, provide the overall regime analysis.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

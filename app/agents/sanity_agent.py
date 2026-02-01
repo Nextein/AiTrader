@@ -2,8 +2,9 @@ import asyncio
 from typing import Dict, Any
 from app.agents.base_agent import BaseAgent
 from langchain_openai import ChatOpenAI
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.output_parsers import JsonOutputParser
 from app.core.config import settings
+from app.core.validation import validate_llm_response
 import logging
 
 from app.core.prompt_loader import PromptLoader
@@ -21,7 +22,7 @@ class SanityAgent(BaseAgent):
             temperature=0
         )
         self.prompt = PromptLoader.load("sanity", "symbol_verify")
-        self.chain = self.prompt | self.llm | StrOutputParser()
+        self.chain = self.prompt | self.llm | JsonOutputParser()
 
     async def run_loop(self):
         # SanityAgent is primarily a helper called by GovernorAgent, 
@@ -38,13 +39,15 @@ class SanityAgent(BaseAgent):
             base_symbol = symbol.split('-')[0].split('/')[0].split(':')[0]
             
             response = await self.chain.ainvoke({"symbol": base_symbol})
-            result = response.strip().upper()
             
-            # Being robust with the response
-            is_valid = "TRUE" in result and "FALSE" not in result
-            await self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "raw": result})
-            self.processed_count += 1
-            return is_valid
+            if validate_llm_response(response, ["is_sanity"]):
+                is_valid = response.get("is_sanity", False)
+                await self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "response": response})
+                self.processed_count += 1
+                return is_valid
+            else:
+                logger.error(f"Invalid sanity output for {symbol}: {response}")
+                return False
         except Exception as e:
             self.log(f"Error checking {symbol}: {e}", level="ERROR")
             # Safe default: False

@@ -26,20 +26,15 @@ Analyze the provided EMA data (9, 21, 55 periods) and generate a high-conviction
 # OUTPUT FORMAT
 You MUST return a valid JSON object.
 STRICT RULES:
-1. "conclusion": Detailed Chain-of-Thought reasoning.
-2. "signal": "BUY", "SELL", or "HOLD".
-3. "confidence": 0.0 to 1.0 (requires >= 0.7 for valid signal).
-4. "sl_price": Pure number (float). Use Market Structure (Recent Low/High) or distance below the EMA 55.
-5. "tp_price": Pure number (float). Aim for a minimum 2:1 Reward-to-Risk ratio.
-6. NO MATH, NO COMMENTS, NO PREAMBLE.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-    "conclusion": "Step-by-step reasoning: 1. EMA stacking order... 2. Fanning/Expansion state... 3. Price relation to EMA 55... 4. Market context alignment.",
-    "signal": "BUY" | "SELL" | "HOLD",
-    "confidence": 0.95,
-    "sl_price": 87450.5,
-    "tp_price": 92000.0,
-    "rationale": "Strong EMA fanning + Price breakout above EMA 55."
+    "reasoning": "Step-by-step reasoning analyzing EMA stacking order, fanning state, price relation to EMA 55, and market context alignment.",
+    "signal": "BUY | SELL | HOLD",
+    "confidence": 0.0 to 1.0,
+    "sl_price": float,
+    "tp_price": float,
+    "rationale": "One-sentence summary of the decision."
 }}
-```

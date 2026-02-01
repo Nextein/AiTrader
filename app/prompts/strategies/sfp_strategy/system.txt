@@ -32,17 +32,15 @@ Identify high-probability reversal setups where price takes out a significant hi
 # OUTPUT FORMAT
 You MUST return a valid JSON object.
 STRICT RULES:
-1. "conclusion": Detailed Chain-of-Thought (e.g., "1. Low taken at X. 2. Close back above at Y. 3. POC trapped at Z.").
-2. Numerical values for sl_price and tp_price must be PURE NUMBERS.
-3. If no setup exists, signal "HOLD" with confidence < 0.5.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-    "conclusion": "Detailed analysis of the grab and the trapped trader volume profile.",
-    "signal": "BUY" | "SELL" | "HOLD",
-    "confidence": 0.85,
-    "sl_price": 87000.0,
-    "tp_price": 89500.0,
-    "rationale": "SFP of Daily Low with large trapped selling volume in the wick."
+    "reasoning": "Detailed technical analysis applying SFP rules (Level grab, close back check, and volume/delta confirmation).",
+    "signal": "BUY | SELL | HOLD",
+    "confidence": 0.0 to 1.0,
+    "sl_price": float,
+    "tp_price": float,
+    "rationale": "One-sentence summary of the decision."
 }}
-```

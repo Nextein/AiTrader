@@ -10,6 +10,7 @@ from app.core.config import settings
 from app.core.prompt_loader import PromptLoader
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
+from app.core.validation import validate_llm_response, safe_transfer
 
 logger = logging.getLogger("AnalystAgent")
 
@@ -93,29 +94,30 @@ class AnalystAgent(BaseAgent):
                 "market_context": combined_context,
                 "analysis_summary": top_down_data
             })
-            await self.log_llm_call("top_down_analysis", symbol, res)
-            
-            # 4. Update Analysis Object
-            analysis_update = {
-                "summary": res.get("summary"),
-                "primary_bias": res.get("primary_bias", "NEUTRAL").upper(),
-                "top_setups": res.get("top_setups", []),
-                "obv_divergence": obv_div,
-                "last_updated": int(time.time())
-            }
-            
-            await analysis.update_section("unified_analysis", analysis_update)
-            
-            self.processed_count += 1
-            logger.info(f"Updated Unified Analysis for {symbol}: {analysis_update['primary_bias']}")
-            
-            # Publish completion event for Governor to move to next symbol
-            await event_bus.publish(EventType.ANALYSIS_COMPLETED, {
-                "symbol": symbol,
-                "agent": self.name,
-                "timestamp": int(time.time()),
-                "bias": analysis_update['primary_bias']
-            })
+            if validate_llm_response(res, ["summary", "primary_bias"]):
+                # 4. Update Analysis Object
+                analysis_update = {
+                    "summary": res.get("summary"),
+                    "primary_bias": res.get("primary_bias", "NEUTRAL").upper(),
+                    "top_setups": res.get("top_setups", []),
+                    "obv_divergence": obv_div,
+                    "last_updated": int(time.time())
+                }
+                
+                await safe_transfer(analysis, "unified_analysis", analysis_update)
+                
+                self.processed_count += 1
+                logger.info(f"Updated Unified Analysis for {symbol}: {analysis_update['primary_bias']}")
+                
+                # Publish completion event for Governor to move to next symbol
+                await event_bus.publish(EventType.ANALYSIS_COMPLETED, {
+                    "symbol": symbol,
+                    "agent": self.name,
+                    "timestamp": int(time.time()),
+                    "bias": analysis_update['primary_bias']
+                })
+            else:
+                logger.error(f"Invalid analyst output for {symbol}: {res}")
 
         except Exception as e:
             logger.error(f"Error in AnalystAgent for {symbol}: {e}", exc_info=True)

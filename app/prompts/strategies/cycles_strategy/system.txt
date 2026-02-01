@@ -27,17 +27,15 @@ Identify the start of new market cycles (UP/DOWN phases) based on HA candle reve
 # OUTPUT FORMAT
 You MUST return a valid JSON object.
 STRICT RULES:
-1. "conclusion": Detailed Chain-of-Thought (e.g., "1. HTF Regime is BULLISH. 2. RCP switched from -1 to 1. 3. HA candle turned green...").
-2. "signal": "BUY" | "SELL" | "HOLD".
-3. "confidence": 0.0 to 1.0.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-    "conclusion": "Perfect cycle transition: HTF is trending up, the local RCP has just reset to Phase 1, and HA candles show strong bullish momentum without bottom wicks.",
-    "signal": "BUY",
-    "confidence": 0.88,
-    "sl_price": 86400.0,
-    "tp_price": 91000.0,
-    "rationale": "Cycle reversal confirmed by RCP transition and HA candle alignment."
+    "reasoning": "Detailed technical analysis applying cycle strategy rules (Alignment, RCP transition, and HA structure).",
+    "signal": "BUY | SELL | HOLD",
+    "confidence": 0.0 to 1.0,
+    "sl_price": float,
+    "tp_price": float,
+    "rationale": "One-sentence summary of the decision."
 }}
-```

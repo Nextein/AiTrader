@@ -24,19 +24,16 @@ Based on Step 1 and 2, classify the "Directional Performance":
 - **BALANCING**: Braided/Neutral stack AND Contracting.
 - **WEAKENING**: Crossover occurring against the primary stack order.
 
-# RESPONSE FORMAT
-You MUST respond with a valid JSON object.
+# OUTPUT FORMAT
+You MUST return a valid JSON object.
 STRICT RULES:
-1. "emas_in_order": "ASCENDING" | "DESCENDING" | "NEUTRAL".
-2. "emas_fanning": "EXPANDING" | "NEUTRAL".
-3. "performance": "VERY STRONG" | "MODERATELY STRONG" | "BALANCING" | "WEAKENING".
-4. "reasoning": Concise step-by-step logic.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-  "emas_in_order": "ASCENDING",
-  "emas_fanning": "EXPANDING",
-  "performance": "VERY STRONG",
-  "reasoning": "1. Perfect bullish stack detected. 2. EMA gaps are statistically increasing. 3. Buyers are successfully facilitating trade higher."
+  "reasoning": "Concise step-by-step logic detailing the stack state and fanning behavior.",
+  "emas_in_order": "ASCENDING | DESCENDING | NEUTRAL",
+  "emas_fanning": "EXPANDING | NEUTRAL",
+  "performance": "VERY STRONG | MODERATELY STRONG | BALANCING | WEAKENING"
 }}
-```

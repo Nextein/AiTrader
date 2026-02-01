@@ -1,5 +1,6 @@
 # INPUT SYMBOL
-<symbol>{symbol}</symbol>
+{symbol}
 
-Verify the asset above according to your classification taxonomy. 
-Final output: TRUE or FALSE.
+Verify the asset above according to your classification taxonomy.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

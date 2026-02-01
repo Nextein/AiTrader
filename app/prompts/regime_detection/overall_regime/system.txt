@@ -24,16 +24,16 @@ Determine the OVERALL market regime by correlating regimes across different time
 - **RANGING**: No clear alignment; conflicting regimes between HTF and LTF; price contained within Weekly/Monthly levels.
 - **UNKNOWN / UNDEFINED**: Extreme volatility or lack of data preventing a clear bias.
 
-# RESPONSE FORMAT
-You MUST respond with a valid JSON object.
+# OUTPUT FORMAT
+You MUST return a valid JSON object.
 STRICT RULES:
-1. NO COMMENTS in the JSON (e.g., no // or /* */).
-2. NO MATH EXPRESSIONS.
-3. Valid JSON only, no preamble or extra text.
+1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
+2. Follow the schema provided below exactly.
+3. NO COMMENTS in the JSON (e.g., no // or /* */).
+4. NO MATH EXPRESSIONS.
 
-```json
+# JSON SCHEMA
 {{
-  "overall_regime": "BULLISH" | "BEARISH" | "RANGING" | "UNKNOWN" | "UNDEFINED",
-  "analysis": "A detailed synthesis of how HTF alignment and price action led to this decision."
+  "reasoning": "A detailed synthesis of how HTF alignment and price action led to this decision.",
+  "overall_regime": "BULLISH | BEARISH | RANGING | UNKNOWN | UNDEFINED"
 }}
-```

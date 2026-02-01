@@ -18,22 +18,21 @@ Synthesize Market Regime, Structure, and Individual Strategy signals into a cohe
 - **Volume**: OBV divergence MUST confirm the directional bias.
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+You MUST return a valid JSON object. 
 STRICT RULES:
-1. "summary": Concise narrative explaining the "pulse" of the market.
-2. "primary_bias": "BULLISH" | "BEARISH" | "NEUTRAL".
-3. "top_setups": Array of objects. Each MUST have a clear `reasoning` field mentioning specific confluence factors (e.g., "SFP at Golden Pocket").
+1. Provide ONLY valid JSON. No preamble, no postamble, no markdown formatting around the JSON unless requested, and no conversational filler.
+2. Follow the schema provided below exactly.
 
-```json
+# JSON SCHEMA
 {{
-    "summary": "1D trend is strong bullish. 1H pulling back to Golden Pocket (0.618) with SFP detected at VAL.",
-    "primary_bias": "BULLISH",
+    "reasoning": "Detailed technical synthesis explaining the 'pulse' of the market and how different factors align.",
+    "summary": "One-sentence executive summary of the current market state.",
+    "primary_bias": "BULLISH | BEARISH | NEUTRAL",
     "top_setups": [
         {{
-            "strategy": "EMA + SFP Confluence", 
-            "timeframe": "1H", 
-            "reasoning": "Price successfully grabbed liquidity at VAL within the Champions Channel, followed by an EMA 9/21 cross-up."
+            "strategy": "The name of the strategy (e.g., EMA + SFP Confluence)", 
+            "timeframe": "The timeframe of the setup (e.g., 1H)", 
+            "reasoning": "Specific confluence factors for this setup (e.g., Price successfully grabbed liquidity at VAL within the Champions Channel)."
         }}
     ]
 }}
-```

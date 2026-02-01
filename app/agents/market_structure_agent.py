@@ -11,6 +11,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
 from app.core.config import settings
 from app.core.prompt_loader import PromptLoader
+from app.core.validation import validate_llm_response, safe_transfer
 
 logger = logging.getLogger("MarketStructureAgent")
 
@@ -117,13 +118,17 @@ class MarketStructureAgent(BaseAgent):
                             "va_state": va_state
                         }
                     })
-                    emas_in_order = res.get("emas_in_order", "NEUTRAL").upper()
-                    emas_fanning = res.get("emas_fanning", "NEUTRAL").upper()
                     
-                    if emas_in_order not in ["ASCENDING", "DESCENDING", "NEUTRAL"]:
-                        emas_in_order = "NEUTRAL"
-                    if emas_fanning not in ["EXPANDING", "NEUTRAL"]:
-                        emas_fanning = "NEUTRAL"
+                    if validate_llm_response(res, ["emas_in_order", "emas_fanning"]):
+                        emas_in_order = res.get("emas_in_order", "NEUTRAL").upper()
+                        emas_fanning = res.get("emas_fanning", "NEUTRAL").upper()
+                        
+                        if emas_in_order not in ["ASCENDING", "DESCENDING", "NEUTRAL"]:
+                            emas_in_order = "NEUTRAL"
+                        if emas_fanning not in ["EXPANDING", "NEUTRAL"]:
+                            emas_fanning = "NEUTRAL"
+                    else:
+                        logger.error(f"Invalid EMA analysis output for {symbol} {timeframe}: {res}")
                 except Exception as e:
                     logger.error(f"LLM Error in MarketStructureAgent for {symbol}: {e}")
 
@@ -160,7 +165,7 @@ class MarketStructureAgent(BaseAgent):
                 "last_updated": int(time.time())
             }
             
-            await analysis.update_section("market_structure", updates, timeframe)
+            await safe_transfer(analysis, "market_structure", updates, timeframe)
             
             # 5. LLM Reasoning for structure (Brief summary)
             # (Optional: can add more fields if needed)

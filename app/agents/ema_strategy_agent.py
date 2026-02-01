@@ -11,6 +11,7 @@ from app.core.config import settings
 from app.core.prompt_loader import PromptLoader
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
+from app.core.validation import validate_llm_response, safe_transfer
 
 logger = logging.getLogger("EMAStrategyAgent")
 
@@ -114,38 +115,41 @@ class EMAStrategyAgent(BaseAgent):
             
             res = await self.analysis_chain.ainvoke(input_data)
             
-            # 5. Populate Analysis Object
-            analysis_entry = {
-                "conclusion": res.get("conclusion"),
-                "signal": res.get("signal", "HOLD").upper(),
-                "confidence": res.get("confidence", 0.0),
-                "last_updated": int(time.time())
-            }
-            
-            await analysis.update_section("ema_strategy", {"analysis": analysis_entry}, timeframe)
-            
-            # 6. Generate Trade Setup if signal
-            if analysis_entry["signal"] != "HOLD" and analysis_entry["confidence"] >= 0.7:
-                trade_setup = {
-                    "strategy_id": self.strategy_id,
-                    "symbol": symbol,
-                    "timeframe": timeframe,
-                    "signal": analysis_entry["signal"],
-                    "entry_price": curr['Close'],
-                    "sl_price": res.get("sl_price"),
-                    "tp_price": res.get("tp_price"),
-                    "rationale": res.get("rationale"),
-                    "confidence": analysis_entry["confidence"],
-                    "timestamp": int(time.time())
+            if validate_llm_response(res, ["signal", "reasoning"]):
+                # 5. Populate Analysis Object
+                analysis_entry = {
+                    "reasoning": res.get("reasoning"),
+                    "signal": res.get("signal", "HOLD").upper(),
+                    "confidence": res.get("confidence", 0.0),
+                    "last_updated": int(time.time())
                 }
                 
-                # Check validity of SL/TP
-                if trade_setup["sl_price"] and trade_setup["tp_price"]:
-                    await event_bus.publish(EventType.STRATEGY_SIGNAL, trade_setup)
-                    self.log(f"Generated SIGNAL: {trade_setup['signal']} for {symbol}", level="INFO", data=trade_setup)
+                await safe_transfer(analysis, "ema_strategy", {"analysis": analysis_entry}, timeframe)
+                
+                # 6. Generate Trade Setup if signal
+                if analysis_entry["signal"] != "HOLD" and analysis_entry["confidence"] >= 0.7:
+                    trade_setup = {
+                        "strategy_id": self.strategy_id,
+                        "symbol": symbol,
+                        "timeframe": timeframe,
+                        "signal": analysis_entry["signal"],
+                        "entry_price": curr['Close'],
+                        "sl_price": res.get("sl_price"),
+                        "tp_price": res.get("tp_price"),
+                        "rationale": res.get("rationale") or res.get("reasoning"),
+                        "confidence": analysis_entry["confidence"],
+                        "timestamp": int(time.time())
+                    }
+                    
+                    # Check validity of SL/TP
+                    if trade_setup["sl_price"] and trade_setup["tp_price"]:
+                        await event_bus.publish(EventType.STRATEGY_SIGNAL, trade_setup)
+                        self.log(f"Generated SIGNAL: {trade_setup['signal']} for {symbol}", level="INFO", data=trade_setup)
 
-            self.processed_count += 1
-            await self.log_llm_call("ema_strategy_analysis", symbol, {"signal": analysis_entry["signal"]})
+                self.processed_count += 1
+                await self.log_llm_call("ema_strategy_analysis", symbol, {"signal": analysis_entry["signal"]})
+            else:
+                logger.error(f"Invalid EMA strategy output for {symbol} {timeframe}: {res}")
 
         except Exception as e:
             logger.error(f"Error in EMAStrategyAgent for {symbol}: {e}", exc_info=True)

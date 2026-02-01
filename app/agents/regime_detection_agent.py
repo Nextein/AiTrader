@@ -12,6 +12,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
 
 from app.core.prompt_loader import PromptLoader
+from app.core.validation import validate_llm_response, safe_transfer
 
 logger = logging.getLogger("RegimeDetection")
 
@@ -45,7 +46,7 @@ class RegimeDetectionAgent(BaseAgent):
         
         # Phase prompt for higher timeframes
         self.phase_prompt = PromptLoader.load("regime_detection", "phase")
-        self.phase_chain = self.phase_prompt | self.llm | StrOutputParser()
+        self.phase_chain = self.phase_prompt | self.llm | JsonOutputParser()
 
         # Regime decision prompt
         self.regime_prompt = PromptLoader.load("regime_detection", "regime_decision")
@@ -76,7 +77,8 @@ class RegimeDetectionAgent(BaseAgent):
             regime = await self.determine_timeframe_regime(analysis, timeframe)
             
             # Update Analysis Object
-            await analysis.update_section("market_regime", regime, timeframe)
+            if regime != "UNDEFINED" and regime != "UNKNOWN":
+                await analysis.update_section("market_regime", regime, timeframe)
             
             # 2. Check if we should update overall regime (Rate limited to once per minute per symbol)
             now = time.time()
@@ -152,9 +154,14 @@ class RegimeDetectionAgent(BaseAgent):
                 ),
                 "analysis_summary": info
             })
-            regime = res.get("regime", "UNKNOWN").upper()
-            await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
-            return regime
+            
+            if validate_llm_response(res, ["regime"]):
+                regime = res.get("regime", "UNKNOWN").upper()
+                await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
+                return regime
+            else:
+                logger.error(f"Invalid regime output for {analysis.symbol} {timeframe}: {res}")
+                return "UNKNOWN"
         except Exception as e:
             logger.error(f"LLM Error in determine_timeframe_regime: {e}")
             return "UNKNOWN"
@@ -171,8 +178,14 @@ class RegimeDetectionAgent(BaseAgent):
         
         try:
             res = await self.phase_chain.ainvoke({"data": formatted_data})
-            return res.strip().upper()
-        except:
+            if validate_llm_response(res, ["phase"]):
+                phase = res.get("phase", "UNKNOWN").upper()
+                return phase
+            else:
+                logger.error(f"Invalid phase output for {analysis.symbol}: {res}")
+                return "UNKNOWN"
+        except Exception as e:
+            logger.error(f"Error in _get_tf_phase: {e}")
             return "UNKNOWN"
 
     def _check_two_cycles(self, df: pd.DataFrame) -> str:
@@ -222,25 +235,28 @@ class RegimeDetectionAgent(BaseAgent):
                 "pa_data": pa_data
             })
             
-            overall = res.get("overall_regime", "UNKNOWN").upper()
-            
-            # Update overall and last_updated
-            updates = {
-                "overall": overall,
-                "last_updated": int(time.time())
-            }
-            await analysis.update_section("market_regime", updates)
-            
-            logger.info(f"Updated Overall Regime for {analysis.symbol}: {overall}")
-            
-            # Publish REGIME_CHANGE event for overall regime
-            await event_bus.publish(EventType.REGIME_CHANGE, {
-                "symbol": analysis.symbol,
-                "timeframe": "overall",
-                "regime": overall,
-                "timestamp": int(time.time()),
-                "agent": self.name
-            })
+            if validate_llm_response(res, ["overall_regime"]):
+                overall = res.get("overall_regime", "UNKNOWN").upper()
+                
+                # Update overall and last_updated
+                updates = {
+                    "overall": overall,
+                    "last_updated": int(time.time())
+                }
+                await safe_transfer(analysis, "market_regime", updates)
+                
+                logger.info(f"Updated Overall Regime for {analysis.symbol}: {overall}")
+                
+                # Publish REGIME_CHANGE event for overall regime
+                await event_bus.publish(EventType.REGIME_CHANGE, {
+                    "symbol": analysis.symbol,
+                    "timeframe": "overall",
+                    "regime": overall,
+                    "timestamp": int(time.time()),
+                    "agent": self.name
+                })
+            else:
+                logger.error(f"Invalid overall regime output for {analysis.symbol}: {res}")
             
         except Exception as e:
             logger.error(f"LLM Error in determine_overall_regime: {e}")
