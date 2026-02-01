@@ -144,7 +144,7 @@ class RegimeDetectionAgent(BaseAgent):
         }
         
         try:
-            res = await self.regime_chain.ainvoke({
+            inputs = {
                 "symbol": analysis.symbol,
                 "timeframe": timeframe,
                 "market_context": self.format_market_context(
@@ -153,14 +153,15 @@ class RegimeDetectionAgent(BaseAgent):
                     columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Average Directional Index', 'Relative Candles Phase']
                 ),
                 "analysis_summary": info
-            })
+            }
+
+            res = await self.call_llm_with_retry(self.regime_chain, inputs, required_keys=["regime"])
             
-            if validate_llm_response(res, ["regime"]):
+            if res:
                 regime = res.get("regime", "UNKNOWN").upper()
                 await self.log_llm_call("regime_decision", analysis.symbol, {"timeframe": timeframe, "regime": regime})
                 return regime
             else:
-                logger.error(f"Invalid regime output for {analysis.symbol} {timeframe}: {res}")
                 return "UNKNOWN"
         except Exception as e:
             logger.error(f"LLM Error in determine_timeframe_regime: {e}")
@@ -177,12 +178,11 @@ class RegimeDetectionAgent(BaseAgent):
                                 'Relative Candles Open', 'Relative Candles Close', 'Relative Candles Phase']].to_string()
         
         try:
-            res = await self.phase_chain.ainvoke({"data": formatted_data})
-            if validate_llm_response(res, ["phase"]):
+            res = await self.call_llm_with_retry(self.phase_chain, {"data": formatted_data}, required_keys=["phase"])
+            if res:
                 phase = res.get("phase", "UNKNOWN").upper()
                 return phase
             else:
-                logger.error(f"Invalid phase output for {analysis.symbol}: {res}")
                 return "UNKNOWN"
         except Exception as e:
             logger.error(f"Error in _get_tf_phase: {e}")
@@ -229,13 +229,15 @@ class RegimeDetectionAgent(BaseAgent):
                 pa_data[tf] = df.tail(5)[['Open', 'High', 'Low', 'Close']].to_dict()
         
         try:
-            res = await self.overall_chain.ainvoke({
+            inputs = {
                 "symbol": analysis.symbol,
                 "regimes": {k: v for k, v in regimes.items() if k != "last_updated" and k != "overall"},
                 "pa_data": pa_data
-            })
+            }
             
-            if validate_llm_response(res, ["overall_regime"]):
+            res = await self.call_llm_with_retry(self.overall_chain, inputs, required_keys=["overall_regime"])
+            
+            if res:
                 overall = res.get("overall_regime", "UNKNOWN").upper()
                 
                 # Update overall and last_updated
@@ -256,7 +258,8 @@ class RegimeDetectionAgent(BaseAgent):
                     "agent": self.name
                 })
             else:
-                logger.error(f"Invalid overall regime output for {analysis.symbol}: {res}")
+                 logger.warning(f"Failed to determine overall regime for {analysis.symbol}")
+            
             
         except Exception as e:
             logger.error(f"LLM Error in determine_overall_regime: {e}")

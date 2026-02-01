@@ -103,12 +103,12 @@ class MarketStructureAgent(BaseAgent):
             
             if len(curr_emas) == 5 and not any(pd.isna(v) for v in curr_emas.values()):
                 try:
-                    res = await self.ema_chain.ainvoke({
+                    inputs = {
                         "symbol": symbol,
                         "timeframe": timeframe,
                         "market_context": self.format_market_context(
                             df, 
-                            window=50,
+                            window=50, 
                             columns=['Open', 'High', 'Low', 'Close'] + ema_cols
                         ),
                         "analysis_summary": {
@@ -117,9 +117,11 @@ class MarketStructureAgent(BaseAgent):
                             "pivot_state": pivot_state,
                             "va_state": va_state
                         }
-                    })
+                    }
                     
-                    if validate_llm_response(res, ["emas_in_order", "emas_fanning"]):
+                    res = await self.call_llm_with_retry(self.ema_chain, inputs, required_keys=["emas_in_order", "emas_fanning"])
+                    
+                    if res:
                         emas_in_order = res.get("emas_in_order", "NEUTRAL").upper()
                         emas_fanning = res.get("emas_fanning", "NEUTRAL").upper()
                         
@@ -128,7 +130,7 @@ class MarketStructureAgent(BaseAgent):
                         if emas_fanning not in ["EXPANDING", "NEUTRAL"]:
                             emas_fanning = "NEUTRAL"
                     else:
-                        logger.error(f"Invalid EMA analysis output for {symbol} {timeframe}: {res}")
+                        logger.warning(f"Failed to get EMA analysis for {symbol} {timeframe}")
                 except Exception as e:
                     logger.error(f"LLM Error in MarketStructureAgent for {symbol}: {e}")
 

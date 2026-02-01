@@ -113,9 +113,9 @@ class EMAStrategyAgent(BaseAgent):
                 }
             }
             
-            res = await self.analysis_chain.ainvoke(input_data)
+            res = await self.call_llm_with_retry(self.analysis_chain, input_data, required_keys=["signal", "reasoning"])
             
-            if validate_llm_response(res, ["signal", "reasoning"]):
+            if res:
                 # 5. Populate Analysis Object
                 analysis_entry = {
                     "reasoning": res.get("reasoning"),
@@ -149,7 +149,7 @@ class EMAStrategyAgent(BaseAgent):
                 self.processed_count += 1
                 await self.log_llm_call("ema_strategy_analysis", symbol, {"signal": analysis_entry["signal"]})
             else:
-                logger.error(f"Invalid EMA strategy output for {symbol} {timeframe}: {res}")
+                 logger.warning(f"Failed to get EMA strategy output for {symbol} {timeframe}")
 
         except Exception as e:
             logger.error(f"Error in EMAStrategyAgent for {symbol}: {e}", exc_info=True)

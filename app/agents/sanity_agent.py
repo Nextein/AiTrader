@@ -38,15 +38,14 @@ class SanityAgent(BaseAgent):
             # Clean symbol (e.g., BTC-USDT or BTC/USDT:USDT -> BTC)
             base_symbol = symbol.split('-')[0].split('/')[0].split(':')[0]
             
-            response = await self.chain.ainvoke({"symbol": base_symbol})
+            response = await self.call_llm_with_retry(self.chain, {"symbol": base_symbol}, required_keys=["is_sanity"])
             
-            if validate_llm_response(response, ["is_sanity"]):
+            if response:
                 is_valid = response.get("is_sanity", False)
                 await self.log_llm_call("symbol_verify", symbol, {"is_valid": is_valid, "response": response})
                 self.processed_count += 1
                 return is_valid
             else:
-                logger.error(f"Invalid sanity output for {symbol}: {response}")
                 return False
         except Exception as e:
             self.log(f"Error checking {symbol}: {e}", level="ERROR")

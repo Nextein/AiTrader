@@ -136,3 +136,35 @@ class BaseAgent(ABC):
             rows.append("| " + " | ".join(row.values) + " |")
         
         return "\n".join([header, separator] + rows)
+
+    async def call_llm_with_retry(self, chain: Any, inputs: Dict[str, Any], required_keys: List[str] = None, max_retries: int = 5) -> Optional[Dict[str, Any]]:
+        """
+        Invokes an LLM chain with retry logic for JSON parsing and validation.
+        """
+        from app.core.validation import validate_llm_response
+        
+        for attempt in range(max_retries):
+            try:
+                res = await chain.ainvoke(inputs)
+                
+                # If required_keys is provided, validate the response
+                if required_keys:
+                    if validate_llm_response(res, required_keys):
+                        return res
+                    else:
+                        self.log(f"Attempt {attempt + 1}/{max_retries} failed: Invalid JSON structure for {required_keys}. Retrying...", level="WARNING")
+                else:
+                    # If no keys required, just return as long as it's not None
+                    if res is not None:
+                        return res
+                    else:
+                        self.log(f"Attempt {attempt + 1}/{max_retries} failed: NULL response. Retrying...", level="WARNING")
+                        
+            except Exception as e:
+                self.log(f"Attempt {attempt + 1}/{max_retries} failed: {str(e)}. Retrying...", level="WARNING")
+            
+            # Small delay before retry
+            await asyncio.sleep(1)
+            
+        self.log(f"Failed to get valid LLM response after {max_retries} attempts.", level="ERROR")
+        return None

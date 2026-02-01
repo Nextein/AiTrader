@@ -2,6 +2,7 @@ import asyncio
 import time
 import logging
 import pandas as pd
+import numpy as np
 from typing import Dict, Any, List
 from app.agents.base_agent import BaseAgent
 from app.core.event_bus import event_bus, EventType
@@ -89,12 +90,13 @@ class AnalystAgent(BaseAgent):
             combined_context = "### 4H Context\n" + self.format_market_context(h4_df, window=20)
             combined_context += "\n\n### 1H Context\n" + self.format_market_context(h1_df, window=20)
             
-            res = await self.analyst_chain.ainvoke({
+            res = await self.call_llm_with_retry(self.analyst_chain, {
                 "symbol": symbol,
                 "market_context": combined_context,
                 "analysis_summary": top_down_data
-            })
-            if validate_llm_response(res, ["summary", "primary_bias"]):
+            }, required_keys=["summary", "primary_bias"])
+            
+            if res:
                 # 4. Update Analysis Object
                 analysis_update = {
                     "summary": res.get("summary"),
@@ -117,7 +119,7 @@ class AnalystAgent(BaseAgent):
                     "bias": analysis_update['primary_bias']
                 })
             else:
-                logger.error(f"Invalid analyst output for {symbol}: {res}")
+                 logger.warning(f"Failed to generate unified analysis for {symbol}")
 
         except Exception as e:
             logger.error(f"Error in AnalystAgent for {symbol}: {e}", exc_info=True)
