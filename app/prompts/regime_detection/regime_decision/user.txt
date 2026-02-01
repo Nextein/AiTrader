@@ -6,6 +6,13 @@ Analyze the market regime for {symbol} on the {timeframe} timeframe.
 ### Technical Data Packet
 {analysis_summary}
 
+### TASK
 Classify the market regime based on the provided technical data.
+
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "regime": "BULLISH", "BEARISH", "RANGING", or "UNDEFINED"
+- "reasoning": A detailed explanation of your analysis.
+- "confidence": A float between 0 and 1.
 
 OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.

@@ -6,6 +6,13 @@ Analyze the following market structure data for {symbol} on the {timeframe} time
 ### Analysis Summary
 {analysis_summary}
 
+### TASK
 Based on this data, provide the EMA structural analysis.
 
-OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "emas_in_order": "ASCENDING", "DESCENDING", or "NEUTRAL"
+- "emas_fanning": "EXPANDING" or "NEUTRAL"
+- "reasoning": A detailed explanation of your analysis.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

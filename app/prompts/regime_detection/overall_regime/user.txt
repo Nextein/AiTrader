@@ -1,7 +1,4 @@
-# CONTEXT
-- **Symbol**: <symbol>{symbol}</symbol>
-
-# MULTI-TIMEFRAMEDetermine the overall market regime for {symbol}.
+Determine the overall market regime for {symbol} based on multiple timeframes.
 
 ### Timeframe Regimes
 {regimes}
@@ -9,6 +6,13 @@
 ### High-Timeframe Price Action Data
 {pa_data}
 
-Based on this data, provide the overall regime analysis.
+### TASK
+Based on this data, provide the overall market regime analysis.
+
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "overall_regime": "BULLISH", "BEARISH", "RANGING", or "UNDEFINED"
+- "reasoning": A detailed explanation of your analysis.
+- "confidence": A float between 0 and 1.
 
 OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

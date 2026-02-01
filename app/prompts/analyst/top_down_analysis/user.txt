@@ -6,6 +6,14 @@ Analyze the following top-down technical data for {symbol}:
 ### Unified Analysis Packet
 {analysis_summary}
 
+### TASK
 Based on this synthesis, provide the unified analyst summary, determine the primary directional bias (BULLISH, BEARISH, or NEUTRAL), and highlight any overlapping high-confidence setups.
 
-OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "summary": A detailed synthesis of the market state across all timeframes.
+- "primary_bias": "BULLISH", "BEARISH", or "NEUTRAL".
+- "top_setups": An array of high-confidence setups identified (can be empty).
+- "reasoning": The technical logic behind your bias.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

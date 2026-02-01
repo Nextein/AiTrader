@@ -6,6 +6,16 @@ Analyze the following market data and analysis context for {symbol} on the {time
 ### Technical Analysis Summary
 {analysis_summary}
 
-Based on this deep context, provide your concluding analysis and signal for the "20 Bounce" strategy.
+### TASK
+Based on the data above, you must provide your concluding analysis and trade signal for the "20 Bounce" strategy.
 
-OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "signal": "BUY", "SELL", or "HOLD"
+- "reasoning": A detailed explanation of your analysis.
+- "confidence": A float between 0 and 1.
+- "sl_price": The stop loss price (if signal is not HOLD).
+- "tp_price": The take profit price (if signal is not HOLD).
+- "rationale": A brief summary of the trade rationale.
+
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.

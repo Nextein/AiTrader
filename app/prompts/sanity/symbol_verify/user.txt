@@ -1,6 +1,13 @@
 # INPUT SYMBOL
 {symbol}
 
-Verify the asset above according to your classification taxonomy.
+### TASK
+Verify if the asset above is a valid cryptocurrency or financial asset according to your classification taxonomy.
+
+### OUTPUT INSTRUCTIONS
+You MUST return a JSON object with the following keys:
+- "is_sanity": boolean (true if valid, false if invalid/nonsense)
+- "category": string (e.g. "Cryptocurrency", "Stablecoin", "Unknown")
+- "reasoning": string
 
 OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.
