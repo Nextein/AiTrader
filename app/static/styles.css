@@ -586,7 +586,8 @@ body {
     box-shadow: 0 0 15px rgba(88, 166, 255, 0.1);
 }
 
-.flow-node.pulse-active {
+.flow-node.pulse-active,
+.agent-card.pulse-active {
     animation: node-flash 0.5s ease-out;
 }
 

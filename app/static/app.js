@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const miniContainer = document.getElementById('agents-container-mini');
         if (miniContainer) {
             miniContainer.innerHTML = agents.map(agent => `
-                <div class="agent-card ${agent.is_running ? 'status-active' : 'status-idle'}">
+                <div class="agent-card ${agent.is_running ? 'status-active' : 'status-idle'}" data-agent="${agent.name}">
                     <div class="agent-info">
                         <span class="agent-status-dot"></span>
                         <span class="agent-name">${agent.name}</span>
@@ -467,6 +467,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const type = latestLog.event_type;
         const agent = latestLog.agent_name;
 
+        // 1. Pulse the specific agent card in dashboard
+        const agentCard = document.querySelector(`.agent-card[data-agent="${agent}"]`);
+        if (agentCard) {
+            agentCard.classList.add('pulse-active');
+            setTimeout(() => agentCard.classList.remove('pulse-active'), 1000);
+        }
+
+        // 2. Pulse the flow node in sidebar
         let nodeId = null;
         if (type === 'market_data' || agent.includes('Market')) nodeId = 'node-market';
         else if (type === 'regime_change' || agent.includes('Regime') || type === 'analysis_update' || type.includes('anomaly')) nodeId = 'node-analysis';
