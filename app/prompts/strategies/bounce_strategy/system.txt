@@ -19,17 +19,20 @@ Identify high-probability continuation entries where price pulls back to the dyn
 - **Filter**: MACD Histogram must be expanding in the direction of the trade (Positive for Longs, Negative for Shorts).
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-    "reasoning": "Detailed technical analysis applying the strategy rules (HTF trend, pullback status, and M30 trigger).",
-    "signal": "BUY | SELL | HOLD",
-    "confidence": 0.0 to 1.0,
-    "sl_price": float,
-    "tp_price": float,
-    "rationale": "One-sentence summary of the decision."
-}}
+{
+    "reasoning": "D1 bullish trend confirmed, H4 pullback to EMA 21, M30 crossover complete",
+    "signal": "BUY",
+    "confidence": 0.82,
+    "sl_price": 77000.00,
+    "tp_price": 81000.00,
+    "rationale": "HTF trend continuation after clean pullback to support."
+}
+
+Use "signal": "HOLD" if no setup is present.

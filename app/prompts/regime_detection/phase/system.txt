@@ -15,8 +15,8 @@ Examine the most recent 10 periods of candlestick data to determine if the curre
 - **Phase -1**: Bearish Expansion (Price making progress down).
 - **States**:
   - `U` (Up) / `D` (Down): Direct breakout/momentum.
-  - `RU` (Relative Up) / `RD` (Relative Down): Corrective or secondary moves in the overall direction.
-  - `I` (Inside): Contained move, often neutral or low volatility.
+  - `RU` (Reversal Up) / `RD` (Reversal Down): Corrective move in the overall direction.
+  - `I` (Inside or Indecision): Contained move, often neutral or low volatility.
 
 # ANALYTICAL PROTOCOL
 1. **Recency Weighting**: Prioritize the last 3-5 candles. If the last 3 candles are unanimously biased, they likely define the current phase.
@@ -25,13 +25,14 @@ Examine the most recent 10 periods of candlestick data to determine if the curre
 4. **Tie-breaking**: If mixed, look at the aggregate of the 10 candles. Which side has more 'Expansion' events?
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-  "reasoning": "Detailed Chain of Thought analyzing the weight of recent candles and consensus between HA and Phase.",
-  "phase": "UP | DOWN"
-}}
+{
+  "reasoning": "Last 5 candles show HA green with Phase 1 dominance, indicating bullish momentum",
+  "phase": "UP"
+}

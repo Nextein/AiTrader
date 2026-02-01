@@ -152,7 +152,7 @@ class RegimeDetectionAgent(BaseAgent):
                     window=50, 
                     columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Average Directional Index', 'Relative Candles Phase']
                 ),
-                "analysis_summary": info
+                "analysis_summary": "\n".join([f"- {k}: {v}" for k, v in info.items()])
             }
 
             res = await self.call_llm_with_retry(self.regime_chain, inputs, required_keys=["regime"])

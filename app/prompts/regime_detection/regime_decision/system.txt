@@ -28,14 +28,15 @@ Classify the market regime as BULLISH, BEARISH, RANGING, or UNDEFINED based on A
 - Conflicting signals (e.g., Bullish EMAs but aggressive Lower Lows/Highs or Value placed lower).
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-  "reasoning": "Detailed technical synthesis analyzing VA placement, EMA alignment, and momentum state.",
-  "regime": "BULLISH | BEARISH | RANGING | UNDEFINED",
-  "confidence": 0.0 to 1.0
-}}
+{
+  "reasoning": "Detailed technical synthesis analyzing VA placement (Higher), EMA alignment (Ascending), and momentum (ADX>25)",
+  "regime": "BULLISH",
+  "confidence": 0.92
+}

@@ -111,12 +111,12 @@ class MarketStructureAgent(BaseAgent):
                             window=50, 
                             columns=['Open', 'High', 'Low', 'Close'] + ema_cols
                         ),
-                        "analysis_summary": {
-                            "highs_state": highs_state,
-                            "lows_state": lows_state,
-                            "pivot_state": pivot_state,
-                            "va_state": va_state
-                        }
+                        "analysis_summary": (
+                            f"- Highs State: {highs_state}\n"
+                            f"- Lows State: {lows_state}\n"
+                            f"- Pivot State: {pivot_state}\n"
+                            f"- Value Area State: {va_state}"
+                        )
                     }
                     
                     res = await self.call_llm_with_retry(self.ema_chain, inputs, required_keys=["emas_in_order", "emas_fanning"])

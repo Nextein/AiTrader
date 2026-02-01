@@ -102,15 +102,15 @@ class EMAStrategyAgent(BaseAgent):
                 "symbol": symbol,
                 "timeframe": timeframe,
                 "market_context": self.format_market_context(df, window=50),
-                "analysis_summary": {
-                    "price": curr['Close'],
-                    "cross_9_21": cross_9_21,
-                    "cross_21_55": cross_21_55,
-                    "market_structure": ms,
-                    "regime": regime,
-                    "overall_regime": overall_regime,
-                    "value_areas": analysis_data.get("value_areas", {}).get(timeframe)
-                }
+                "analysis_summary": (
+                    f"- Price: {curr['Close']}\n"
+                    f"- Cross 9/21: {cross_9_21}\n"
+                    f"- Cross 21/55: {cross_21_55}\n"
+                    f"- Market Structure: {ms}\n"
+                    f"- Regime: {regime}\n"
+                    f"- Overall Regime: {overall_regime}\n"
+                    f"- Value Areas: {analysis_data.get('value_areas', {}).get(timeframe)}"
+                )
             }
             
             res = await self.call_llm_with_retry(self.analysis_chain, input_data, required_keys=["signal", "reasoning"])

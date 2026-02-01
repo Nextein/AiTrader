@@ -30,17 +30,20 @@ Identify high-probability reversal setups where price takes out a significant hi
     - TP2: Opposite side of the range (VAH/VAL).
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
+{
     "reasoning": "Detailed technical analysis applying SFP rules (Level grab, close back check, and volume/delta confirmation).",
-    "signal": "BUY | SELL | HOLD",
-    "confidence": 0.0 to 1.0,
-    "sl_price": float,
-    "tp_price": float,
-    "rationale": "One-sentence summary of the decision."
-}}
+    "signal": "BUY",
+    "confidence": 0.85,
+    "sl_price": 60000.50,
+    "tp_price": 62000.00,
+    "rationale": "SFP of previous weekly low with high volume absorption."
+}
+
+Use "signal": "HOLD" if no setup is present.

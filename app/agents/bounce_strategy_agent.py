@@ -120,13 +120,13 @@ class BounceStrategyAgent(BaseAgent):
                     window=50, 
                     columns=['Open', 'High', 'Low', 'Close', 'Exponential Moving Average 21', 'Linear Regression Slope']
                 ),
-                "analysis_summary": {
-                    "price": curr['Close'],
-                    "macd_val": macd_val,
-                    "d1_trend": d1_trend,
-                    "h4_pullback": h4_pullback,
-                    "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN")
-                }
+                "analysis_summary": (
+                    f"- Price: {curr['Close']}\n"
+                    f"- MACD Value: {macd_val}\n"
+                    f"- D1 Trend: {d1_trend}\n"
+                    f"- H4 Pullback: {h4_pullback}\n"
+                    f"- Regime: {analysis_data.get('market_regime', {}).get(timeframe, 'UNKNOWN')}"
+                )
             }
             
             res = await self.call_llm_with_retry(self.analysis_chain, input_data, required_keys=["signal", "reasoning"])

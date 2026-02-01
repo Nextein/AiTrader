@@ -25,15 +25,16 @@ Based on Step 1 and 2, classify the "Directional Performance":
 - **WEAKENING**: Crossover occurring against the primary stack order.
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-  "reasoning": "Concise step-by-step logic detailing the stack state and fanning behavior.",
-  "emas_in_order": "ASCENDING | DESCENDING | NEUTRAL",
-  "emas_fanning": "EXPANDING | NEUTRAL",
-  "performance": "VERY STRONG | MODERATELY STRONG | BALANCING | WEAKENING"
-}}
+{
+  "reasoning": "EMAs stacked ascending (9>21>55>114>252), fanning expanding over last 5 periods",
+  "emas_in_order": "ASCENDING",
+  "emas_fanning": "EXPANDING",
+  "performance": "VERY STRONG"
+}

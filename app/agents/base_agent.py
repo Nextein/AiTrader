@@ -149,7 +149,7 @@ class BaseAgent(ABC):
                 
                 # If required_keys is provided, validate the response
                 if required_keys:
-                    if validate_llm_response(res, required_keys):
+                    if validate_llm_response(res, required_keys, agent_name=self.name):
                         return res
                     else:
                         self.log(f"Attempt {attempt + 1}/{max_retries} failed: Invalid JSON structure for {required_keys}. Retrying...", level="WARNING")

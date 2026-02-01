@@ -25,17 +25,20 @@ Identify the start of new market cycles (UP/DOWN phases) based on HA candle reve
 - **Take Profit (TP)**: Target the next HTF resistance/support level or minimum 2:1 RR.
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-    "reasoning": "Detailed technical analysis applying cycle strategy rules (Alignment, RCP transition, and HA structure).",
-    "signal": "BUY | SELL | HOLD",
-    "confidence": 0.0 to 1.0,
-    "sl_price": float,
-    "tp_price": float,
-    "rationale": "One-sentence summary of the decision."
-}}
+{
+    "reasoning": "RCP transition from -1 to 1, HTF regime BULLISH, HA green with no bottom wick",
+    "signal": "BUY",
+    "confidence": 0.85,
+    "sl_price": 77200.00,
+    "tp_price": 80500.00,
+    "rationale": "New bullish cycle initiated with HTF alignment."
+}
+
+Use "signal": "HOLD" if no setup is present.

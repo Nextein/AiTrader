@@ -4,18 +4,18 @@ from pydantic import BaseModel, ValidationError
 
 logger = logging.getLogger("Validation")
 
-def validate_llm_response(data: Any, required_keys: List[str]) -> bool:
+def validate_llm_response(data: Any, required_keys: List[str], agent_name: str = "UnknownAgent") -> bool:
     """
     Simple validation for LLM JSON output.
     Checks if data is a dict and has all required keys.
     """
     if not isinstance(data, dict):
-        logger.error(f"Validation failed: Output is {type(data)}, expected dict.")
+        logger.error(f"[{agent_name}] Validation failed: Output is {type(data)}, expected dict. Data: {data}")
         return False
     
     missing_keys = [key for key in required_keys if key not in data]
     if missing_keys:
-        logger.error(f"Validation failed: Missing keys {missing_keys}")
+        logger.error(f"[{agent_name}] Validation failed: Missing keys {missing_keys}")
         return False
     
     return True

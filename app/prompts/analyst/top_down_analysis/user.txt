@@ -8,4 +8,4 @@ Analyze the following top-down technical data for {symbol}:
 
 Based on this synthesis, provide the unified analyst summary, determine the primary directional bias (BULLISH, BEARISH, or NEUTRAL), and highlight any overlapping high-confidence setups.
 
-OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.

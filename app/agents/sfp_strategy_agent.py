@@ -91,13 +91,13 @@ class SFPStrategyAgent(BaseAgent):
                     window=50, 
                     columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Weis Waves Volume', 'Weis Waves Direction']
                 ),
-                "analysis_summary": {
-                    "vah": va.get("vah"),
-                    "val": va.get("val"),
-                    "va_state": va_state,
-                    "regime": analysis_data.get("market_regime", {}).get(timeframe, "UNKNOWN"),
-                    "market_structure": analysis_data.get("market_structure", {}).get(timeframe, {})
-                }
+                "analysis_summary": (
+                    f"- Value Area High (VAH): {va.get('vah')}\n"
+                    f"- Value Area Low (VAL): {va.get('val')}\n"
+                    f"- Value Area State: {va_state}\n"
+                    f"- Market Regime: {analysis_data.get('market_regime', {}).get(timeframe, 'UNKNOWN')}\n"
+                    f"- Market Structure: {analysis_data.get('market_structure', {}).get(timeframe, {})}"
+                )
             }
             
             res = await self.call_llm_with_retry(self.analysis_chain, input_data, required_keys=["signal", "reasoning"])

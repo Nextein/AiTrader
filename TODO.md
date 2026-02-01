@@ -1,0 +1,3 @@
+llm output validation errors should be more verbose. At least they should show which agent failed.
+
+In the dashboard UI, the "Active Agents" section should have each agent flicker when it is processing a request or has processed a request, or has received/triggered an event. Basically the flickering that goes on in agents section in sidebar for the "Information Flow" should also take place but for each agent in the dashboard's "Active Agents" section.

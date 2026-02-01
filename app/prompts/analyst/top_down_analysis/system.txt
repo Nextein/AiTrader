@@ -18,21 +18,22 @@ Synthesize Market Regime, Structure, and Individual Strategy signals into a cohe
 - **Volume**: OBV divergence MUST confirm the directional bias.
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object. 
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, no markdown formatting around the JSON unless requested, and no conversational filler.
-2. Follow the schema provided below exactly.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
 
 # JSON SCHEMA
-{{
-    "reasoning": "Detailed technical synthesis explaining the 'pulse' of the market and how different factors align.",
-    "summary": "One-sentence executive summary of the current market state.",
-    "primary_bias": "BULLISH | BEARISH | NEUTRAL",
+{
+    "reasoning": "HTF bullish regime, daily structure intact, confluence at 0.618 fib with EMA 55",
+    "summary": "Market showing bullish structure with high-probability entries on H4.",
+    "primary_bias": "BULLISH",
     "top_setups": [
-        {{
-            "strategy": "The name of the strategy (e.g., EMA + SFP Confluence)", 
-            "timeframe": "The timeframe of the setup (e.g., 1H)", 
-            "reasoning": "Specific confluence factors for this setup (e.g., Price successfully grabbed liquidity at VAL within the Champions Channel)."
-        }}
+        {
+            "strategy": "EMA + SFP Confluence",
+            "timeframe": "1H",
+            "reasoning": "SFP at VAL within Champions Channel, price above EMA 55."
+        }
     ]
-}}
+}

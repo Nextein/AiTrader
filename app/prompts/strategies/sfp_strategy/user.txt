@@ -8,4 +8,4 @@ Analyze the following market data and analysis context for {symbol} on the {time
 
 Based on this deep context, determine if a high-probability Swing Failure Pattern (SFP) or Liquidity Grab has occurred.
 
-OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE.
+OUTPUT MUST BE VALID JSON ONLY. NO PREAMBLE OR POSTAMBLE. DO NOT REPEAT THE INPUT DATA.

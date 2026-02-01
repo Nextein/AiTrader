@@ -25,15 +25,16 @@ Determine the OVERALL market regime by correlating regimes across different time
 - **UNKNOWN / UNDEFINED**: Extreme volatility or lack of data preventing a clear bias.
 
 # OUTPUT FORMAT
-You MUST return a valid JSON object.
+The output must be a raw JSON object string. Do not wrap it in markdown code blocks.
 STRICT RULES:
-1. Provide ONLY valid JSON. No preamble, no postamble, and no conversational filler.
-2. Follow the schema provided below exactly.
-3. NO COMMENTS in the JSON (e.g., no // or /* */).
-4. NO MATH EXPRESSIONS.
+1. Provide ONLY valid JSON.
+2. No '```json' or '```' wrappers.
+3. No text before or after the JSON.
+4. NO COMMENTS in the JSON (e.g., no // or /* */).
+5. NO MATH EXPRESSIONS.
 
 # JSON SCHEMA
-{{
-  "reasoning": "A detailed synthesis of how HTF alignment and price action led to this decision.",
-  "overall_regime": "BULLISH | BEARISH | RANGING | UNKNOWN | UNDEFINED"
-}}
+{
+  "reasoning": "Weekly and Monthly both BULLISH with Daily in alignment, strong HTF confluence",
+  "overall_regime": "BULLISH"
+}

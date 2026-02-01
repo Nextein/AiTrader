@@ -112,17 +112,17 @@ class CyclesStrategyAgent(BaseAgent):
                     window=50, 
                     columns=['Open', 'High', 'Low', 'Close', 'Heikin Ashi Close', 'Relative Candles Phase']
                 ),
-                "analysis_summary": {
-                    "price": curr['Close'],
-                    "ha_dir": ha_dir,
-                    "rel_phase": rel_phase,
-                    "trigger_activated": trigger_activated,
-                    "market_structure": ms,
-                    "regime": regime,
-                    "overall_regime": overall_regime,
-                    "h1_regime": h1_regime,
-                    "atr": atr
-                }
+                "analysis_summary": (
+                    f"- Price: {curr['Close']}\n"
+                    f"- Heikin Ashi Direction: {ha_dir}\n"
+                    f"- Relative Phase: {rel_phase}\n"
+                    f"- Trigger Activated: {trigger_activated}\n"
+                    f"- Market Structure: {ms}\n"
+                    f"- Regime: {regime}\n"
+                    f"- Overall Regime: {overall_regime}\n"
+                    f"- Higher Timeframe Regime: {h1_regime}\n"
+                    f"- ATR: {atr}"
+                )
             }
             
             res = await self.call_llm_with_retry(self.analysis_chain, input_data, required_keys=["signal", "reasoning"])

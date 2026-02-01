@@ -90,10 +90,15 @@ class AnalystAgent(BaseAgent):
             combined_context = "### 4H Context\n" + self.format_market_context(h4_df, window=20)
             combined_context += "\n\n### 1H Context\n" + self.format_market_context(h1_df, window=20)
             
+            # Format summary as string
+            formatted_summary = f"Symbol: {top_down_data['symbol']}\nOverall Regime: {top_down_data['overall_regime']}\nOBV Divergence (15m): {top_down_data['obv_divergence_15m']}\n\nTimeframe Data:"
+            for tf, tf_data in top_down_data["timeframe_data"].items():
+                formatted_summary += f"\n- {tf}: Regime={tf_data.get('regime')}, Structure={tf_data.get('structure')}, Signals=[EMA:{tf_data.get('ema_signal')}, Cycles:{tf_data.get('cycles_signal')}, SFP:{tf_data.get('sfp_signal')}]"
+
             res = await self.call_llm_with_retry(self.analyst_chain, {
                 "symbol": symbol,
                 "market_context": combined_context,
-                "analysis_summary": top_down_data
+                "analysis_summary": formatted_summary
             }, required_keys=["summary", "primary_bias"])
             
             if res:
